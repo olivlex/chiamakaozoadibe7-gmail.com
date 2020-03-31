@@ -1,0 +1,783 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href=@Url.Content("/asset/img/favicon.png") type="image/gif">
+    <meta name="description" content="Cash Now Now - loans, savings, payments, agency.">
+    <meta name="keywords" content="Cash Now Now - loans, savings, payments, agency.">
+    <title>Cash Now Now</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/bootstrap.min.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/fontawesome-all.min.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/reset.css")>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/style.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/responsive.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/DashboardStyles/css/MyStyle.css")>
+    <!--Google Analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160045399-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160045399-1');
+    </script>
+    <!--Google Analytics-->
+</head>
+
+<body class="js">
+    <div id="preloader"></div>
+-
+    <!-- start logo menu area -->
+    <header class="second-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="second-logo">
+                        <a href="/"><img src=@Url.Content("/asset/img/logo.png") alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-10 menuShift">
+                    <div id="cssmenu">
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+
+                            </li>
+                           
+                            <li>
+                                <a href="#">NYSC LOAN</a>
+                                <ul>
+
+                                    <li><a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")">Apply Here</a></li>
+                                    <li><a href="@Url.Action("CheckNYSCLoan", "NYSCLOAN")">Check Loan Status</a></li>
+                                    <li><a href="@Url.Action("termsconditions", "Home")">Terms and Conditions</a></li>
+                                    <li><a href="@Url.Action("FAQ", "Home")">FAQs</a></li>
+                                   
+
+                                </ul>
+                            </li>
+                            <li>
+
+                                <a href="#">REFERRALS</a>
+
+
+                                <ul>
+
+                                    <li><a href="@Url.Action("ReferralReg", "Home")">How to Register</a></li>
+                                    <li><a href="@Url.Action("HIW", "Home")">How It Works</a></li>
+                                    <li><a href="@Url.Action("ReferralTermsAndConditions", "Home")">Referral TermsAnd Conditions</a></li>
+                                    <li><a href="@Url.Action("ReferralFAQs", "Home")">Referral FAQs</a></li>
+
+                                </ul>
+                            </li>
+                             @*<li><a href="#">Eligibility</a></li>*@
+                            <li class="referal"> @*<a href="@Url.Action("Signup", "User")"  class="btn btn-primary">Become A Referrer</a>*@
+                                <a class="btn btn-primary" href="@Url.Action("Signup", "User", new { Regid = '1' })">Become A Referrer</a>
+                            </li> 
+
+                            @*<li>*@
+                              
+                                
+                                    @*<ul>*@
+
+
+
+
+                                        @*<li><a href="#">How It Works</a></li>*@
+
+
+                                    @*</ul>
+</li>*@
+
+                            
+                            @*<li><a href="@Url.Action("", "User")">Contact us</a></li>*@
+                        </ul>
+                      
+                    </div>
+                   
+                </div>
+
+                
+                @if (Session["User"] == null)
+                {
+                    <div class="col-lg-1">
+                        <a href="@Url.Action("Signin", "User")" class="btn btn-primary btn-sm"> Login</a>
+                    </div>
+                    <div class="col-lg-1">
+                        @*<a href="#" class="btn btn-primary btn-sm"> Register</a>*@
+                       <a class="btn btn-primary btn-sm" href="@Url.Action("Signup", "User", new { Regid = '2' })">Register</a>
+                    </div>
+                }
+                @if (Session["User"] != null)
+                {
+                    <div class="col-lg-1">
+                        <a href=@Url.Action("ApproveLoan", "AdminA")><button class="btn btn-primary btn-sm">Dashboard</button></a>
+                    </div>
+                        <div class="col-lg-1">
+                            <a href=@Url.Action("LogOut", "User")><button class="btn btn-primary btn-sm">Logout</button></a>
+                        </div>
+                }
+
+            </div>
+        </div>
+    </header>
+    <!-- /header -->
+    <!-- end of logo menu area -->
+    <!-- start slider area -->
+    <section class="main-slider-area">
+        <div class="active-main-slider owl-carousel">
+            <div class="main-slider-item" style="background-image: url(@Url.Content("/asset/img/slider-1.jpg"));">
+                <div class="slider-one-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-left">
+                                <div class="main-slider-welcome-text slidertwo">
+                                    <div class="slider-cell">
+                                        <h2 class="sub-title" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRIght">Leading loan provider in the market</h2>
+                                        <h2 class="main-title" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">
+                                            Do you need a loan for your NYSC accommodation?
+                                            <br>@*enhancement loan?*@
+                                        </h2>
+                                        <div class="welcome-button" data-animation-in="fadeInDown" data-animation-out="animate-out fadeOutDown">
+                                            <a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")" class="btn btn-default button-primary">Apply Now</a>
+                                            
+                                            <!-- <a href="#" class="button-secondary btn btn-default">Contact Us</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-slider-item" style="background-image: url(@Url.Content("/asset/img/slider-2.jpg"));">
+                <div class="slider-one-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="main-slider-welcome-text slidertwo">
+                                    <div class="slider-cell">
+                                        <h2 class="sub-title" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">We provide loans for Corps Members</h2>
+                                        <h2 class="main-title" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">
+                                            Are you a Corps member?
+
+                                            <br>do you need a loan to get by?
+                                        </h2>
+                                        <div class="welcome-button" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">
+                                            <a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")" class="btn btn-default button-primary">Apply Now</a>
+                                            <!-- <a href="#" class="button-secondary btn btn-default"><span></span>  PLAY STORE</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-slider-item" style="background-image: url(@Url.Content("/asset/img/slider-3.jpg"));">
+                <div class="slider-one-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main-slider-welcome-text slidertwo">
+                                    <div class="slider-cell">
+                                        <h2 class="sub-title" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRight">Are you a Corps member?</h2>
+                                        <h2 class="main-title" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRight">Get a loan to take care of your pressing needs while in service</h2>
+                                        <div class="welcome-button" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRight">
+                                            <a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")" class="btn btn-default button-primary">Apply Now</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of header area -->
+    <!-- start second about area -->
+    <section class="second-about-area section-padding">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-6">
+                    <div class="second-about-content">
+                        <h2>About CashNowNow</h2>
+                        <p>
+                            CashNowNow offers loans to active NYSC members during their service year.  Active corps members can receive up to &#8358;100,000 to aid with accommodation, training costs, and other personal needs. <br />
+                            @*·        Simple and quick application process <br />
+                            ·        Loan amount up to  N(&#8358;) 100,000 (based on FG allowance)<br />
+                            ·        Additional personal loans available  (based on PPA allowance)<br />
+                            ·        No guarantor or collateral required<br />
+                            ·        Single monthly payment*@
+
+                            @*<ul>
+                                <li>Simple and quick application process</li>
+                                <li>Loan amount up to  (&#8358;)100,000 (based on FG allowance)</li>
+                                <li>Additional personal loans available  (based on PPA allowance)</li>
+                                <li> No guarantor or collateral required</li>
+                                <li> Single monthly payment</li>
+                            </ul>*@
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="about-cradit-list">
+                        @*<p style="font-weight:bold;color:black;">: </p>*@
+                        <h3>BENEFITS OF THE LOAN</h3>
+                        <ul>
+                            <li> Simple application process</li>                         
+                            <li>  Quick disbursement</li>
+                            <li>Loan amount up to  &#8358;100,000 (based on FG allowance)</li>                            
+                            <li>Additional personal loans available  (based on Place of Primary Assignment(PPA) allowance)</li>
+                            <li>No guarantor or collateral required</li>
+                            <li>Flexible repayment options</li>
+                        </ul>
+                         @*<p>* Checking your rate won't affect your credit score.</p>*@ 
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    <!-- end of second about area -->
+    <!-- start loan options checking section -->
+    <section class="loan-options-checking">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 checkingbg1 text-center">
+                    <div class="single-loan-checking-options">
+                        <div class="icon">
+                            <img src="asset/img/edom.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>REFER AND EARN</h4>
+                            <p>
+                                You can earn commissions by referring corps members to apply for loans on the platform by using your referral link or referral code .
+                                <br>  @*All loans must be repaid in full prior to the pass out date.*@
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 checkingbg2 text-center">
+                    <div class="single-loan-checking-options">
+                        <div class="icon">
+                            <img src="asset/img/document.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>EXTRA CASH</h4>
+                            <p>
+                                You can get extra cash of up to N50,000 when you present a bank statement 
+                                <br>showing a proof of your extra income as paid by your place of primary assignment(PPA).   
+                            </p>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+    <!-- end of loan options checking section -->
+    <!-- .start loan process second -->
+    <section class="second-loan-process section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="section-title">
+                        <h2>Simple Loan Process</h2>
+                        <p>The online application process allows for easy submission and tracking of your application throughout the process.  
+                        We disburse within 24 hours of approval</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row process-list">
+                <div class="col-md-3 second-process">
+                    <div class="second-single-loan-process">
+                        <h4>Complete and Submit Online Form</h4>
+                        <div class="icon">
+                            <img src="asset/img/pade.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 second-process">
+                    <div class="second-single-loan-process">
+                        <h4>Activate Standing Order at Bank</h4>
+                        <div class="icon">
+                            <img src="asset/img/dollar.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 second-process">
+                    <div class="second-single-loan-process">
+                        <h4>Loan <br/> Approved</h4>
+                        <div class="icon">
+                            <img src="asset/img/handshake.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 second-process">
+                    <div class="second-single-loan-process">
+                        <h4>Money <br/> Disbursed</h4>
+                        <div class="icon">
+                            <img src="asset/img/get-money.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of loan process two -->
+    <!-- start services section -->
+    <section class="loan-second-services section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="section-title">
+                        <h2>CashNowNow Services</h2>
+                        <p>CashNowNow strives to be a leading provider of financial services and loans to people across Nigeria.  
+                        We have a broad selction of products available including;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="second-single-servces" style="background-image: url(asset/img/services-1.png)">
+                        <div class="display-cell">
+                            <div class="icon">
+                                <img src="asset/img/icon-1.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h4>Payroll Loans</h4>
+                                <p>
+                                    Personal loans available to individuals based on monthly salary
+
+                                    <br> @*centuries suffer altered.*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="second-single-servces" style="background-image: url(asset/img/services-1.png)">
+                        <div class="display-cell">
+                            <div class="icon">
+                                <img src="asset/img/car.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h4>Pension loan</h4>
+                                <p>
+                                    Loans are available for pensioners for business, agriculture and personal needs.
+
+                                    <br> @*centuries suffer altered.*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="second-single-servces" style="background-image: url(asset/img/services-1.png)">
+                        <div class="display-cell">
+                            <div class="icon">
+                                <img src="asset/img/money.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h4>Small and Medium Enterprise Loan</h4>
+                                <p>
+                                    Loans available for LPO financing, equipment financing, working capital, and other operational expenses
+
+                                    <br> @*centuries suffer altered.*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="second-single-servces" style="background-image: url(asset/img/services-1.png)">
+                        <div class="display-cell">
+                            <div class="icon">
+                                <img src="asset/img/home.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h4>Student Loans</h4>
+                                <p>Personal loans available for educational and personal expenses
+                                <br> @*centuries suffer altered.*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="second-single-servces" style="background-image: url(asset/img/services-1.png)">
+                        <div class="display-cell">
+                            <div class="icon">
+                                <img src="asset/img/education.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h4>Cooperative Loans</h4>
+                                <p>
+                                    equipment financing, and working capital financing available to active cooperatives and their members
+                                  <br> @*centuries suffer altered.*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="second-single-servces" style="background-image: url(asset/img/services-1.png)">
+                        <div class="display-cell">
+                            <div class="icon">
+                                <img src="asset/img/card.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h4>Agent Working Capital Loans</h4>
+                                <p>
+                                    equipment financing and working capital loans available for agents involved in agency banking, utility sales businesses and other e-payment services
+
+                                    <br> @*centuries suffer altered.*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of services section -->
+    <!-- start calculator  -->
+   
+    <!-- end of calculator -->
+    <!-- start dream quote  -->
+    <section class="dream-quote section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="dream-quote-text">
+                        <h4>Loans available, just give us a call</h4>
+                        <h2>
+                            Make any dream a reality with one
+                            <br>of our loan plans
+                        </h2>
+                        @*<a href="#" class="btn btn-default btn-sm">OUR SERVICES</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+
+    <section class="custom-faq section-padding"> 
+
+        <div class="faq-question-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="faq-single-title">NYSC Loan Customer FAQs</h2>
+                        <div id="accordion" class="second-accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            What are the requirements to apply for the loan?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <ul style="list-style-type:disc;">
+                                            <li>You must be an active NYSC corps member with at least two months remaining before your pass out date</li>
+                                            <li>Verifiable Bank Verification Number (BVN) </li>
+                                            <li>Evidence of the payment of your FG allowance into the official NYSC bank account  </li>
+                                            <li>A primary mobile number and email address </li>
+                                            <li>A verifiable permanent home address </li>
+                                            <li>Verifiable contact details for a supervisor/manager at your place of primary assignment (PPA) or a guarantor</li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            How do I apply?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        The application process is simple and can be completed online 24/7 at http://nysc.cashnownow.net  We recommend the use of the Chrome or Microsoft Edge browsers.<br />
+                                        Fill in the online application form and click the submit button to send.  As part of the application process you will be required to upload the following:
+                                        <ul style="list-style-type:disc;">
+                                            <li>Copy of your NYSC ID card or posting letter</li>
+                                            <li>Copy of your bank statement for your official NYSC account to demonstrate the previous deposit of the FG allowance </li>
+                                            <li>Bank Verification Number (BVN)</li>
+
+
+                                        </ul>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            How much can I qualify for?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        The maximum amount you are qualified for is dependent on the remaining months in your service year.  See the table below:
+
+
+                                        <table>
+                                            <tr>
+                                                <th>Months remaining with NYSC</th>
+                                                <th>Max loan amount (Naira)</th>
+                                                <th>Tenure (months)</th>
+                                                <th>Monthly repayment (Naira)</th>
+                                            </tr>
+                                            <tr>
+                                                <td>11</td>
+                                                <td>100,000</td>
+                                                <td>10</td>
+                                                <td>14,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td>85,000</td>
+                                                <td>9</td>
+                                                <td>13,547</td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td>75,000</td>
+                                                <td>8</td>
+                                                <td>13,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>70,000</td>
+                                                <td>7</td>
+                                                <td>13,857</td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>60,000</td>
+                                                <td>6</td>
+                                                <td>13,567</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>50,000</td>
+                                                <td>5</td>
+                                                <td>13,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>40,000</td>
+                                                <td>4</td>
+                                                <td>12,925</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>30,000</td>
+                                                <td>3</td>
+                                                <td>12,633</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>20,000</td>
+                                                <td>2</td>
+                                                <td>12,450</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                          
+                       <br/>
+                                <a href="@Url.Action("FAQ", "Home")" class="btn btn-default btn-sm">More FAQs</a>
+                  
+</div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+        <!-- end of customer faq section -->
+        <!-- start footer area -->
+        <section class="footer-area footer-two section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <div class="footer-title">
+                                <h4>About Us</h4>
+
+                            </div>
+
+
+
+                            <div class="footer-two-social">
+                                @*<a href="#" class="fa fa-facebook-f"></a>*@
+                                @*<a href="CashNowNow1" class="fa fa-twitter"></a>*@
+                                @*<a class="twitter-timeline" href="https://twitter.com/CashNowNow1?ref_src=twsrc%5Etfw">Tweets by CashNowNow1</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*@
+
+                                <a href="https://twitter.com/CashNowNow1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow CashNowNow1</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+                                @*<a href="https://twitter.com/intent/tweet?screen_name=CashNowNow1&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to CashNowNow1</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*@
+                                @*<a href="#" class="fa fa-google-plus"></a>
+                                    <a href="#" class="fa fa-pinterest"></a>
+                                    <a href="#" class="fa fa-linkedin"></a>*@
+                                <br/>
+                                <a href="#" class="fa fa-instagram"></a>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-md-3 col-lg-2">
+                            <div class="footer-widget pages-widget">
+                                <div class="footer-title">
+                                    <h4>Resources</h4>
+                                </div>
+                                <ul>
+                                    <li><a href="#">How it works</a></li>
+                                    <li><a href="#">Apply</a></li>
+                                    <li><a href="#">FAQs </a></li>
+                                    <li><a href="#">Contact us </a></li>
+                                </ul>
+                            </div>
+                        </div>*@
+                    <div class="col-md-5 col-lg-3">
+                        <div class="footer-widget pages-widget">
+                            <div class="footer-title">
+                                <h4>Useful Links</h4>
+                            </div>
+                            <ul>
+                                @*<li><a href="#">How it works</a></li>*@
+                                @*<li><a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")">Apply Here</a></li>*@
+                                <li><a href="@Url.Action("termsconditions", "Home")">TERMS AND CONDITIONS</a></li>
+                                <li><a href="@Url.Action("HIW", "Home")">REFERRALS</a></li>
+                               @*<li><a href="@Url.Action("FAQ", "Home")">FAQ</a></li>*@
+                                @*<li><a href="#">Contact us </a></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <div class="footer-title">
+                                <h4>Contact Us</h4>
+                            </div>
+                            <div class="contact-widget">
+                                <ul>
+                                    @*<li>
+                                        <div class="icon">
+                                            <img src="asset/img/map-pin.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <p>Cash Now Now 10B, Kingsley Emu Street, Lekki Phase 1, Lagos.</p>
+                                        </div>
+                                    </li>*@
+                                    <li>
+                                        <div class="icon">
+                                            <img src="asset/img/envalope-2.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <p>
+                                                Contact us at customercare@uvlot.com for more information
+                                                <span>@*reply within 2 Hours*@</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <img src="asset/img/envalope-2.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <p>
+                                                +234 901.424.2062 or <br />
+                                                +234 806.275.0890
+                                                <span>Available from 9am to 7pm Monday to Friday </span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="copy-right-section second-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <div class="copyright-text">
+                            <p><i class="fa fa-copyright"></i> 2020 Cash Now Now. All Rights Reserved | Powered by <a href="http://www.paelyt.com" target="_blank">Paelyt Solution</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ul class="footer-nav">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Loans</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Contactus</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of footer area -->
+        <!-- Optional JavaScript -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn4uayw359fjMh4P9i2rKKZYHzXaqTRNs"></script>
+        <script src=@Url.Content("/asset/js/jquery-3.3.1.min.js")></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src=@Url.Content("/asset/js/popper.min.js")></script>
+        <script src=@Url.Content("/asset/js/bootstrap.min.js")></script>
+        <script src=@Url.Content("/asset/js/gmap.js")></script>
+        <script src=@Url.Content("/asset/js/jquery.nice-select.js")></script>
+        <script src=@Url.Content("/asset/js/menumaker.js")></script>
+        <script src=@Url.Content("/asset/js/owl.carousel.min.js")></script>
+        <script src=@Url.Content("/asset/js/slider.js")></script>
+        <script src=@Url.Content("/asset/js/calculator.js")></script>
+        <script src=@Url.Content("/asset/js/active.js")></script>
+        <script>
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.second-header').addClass("sticky");
+                }
+                else {
+                    $('.second-header').removeClass("sticky");
+                }
+            });
+        </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "CheckEligibility2";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@model DataAccessA.Classes.AppLoans
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            @*<h4 class="title">AllApprovedLoans</h4>*@
+            <!-- Mega Form Starts -->
+
+            <section class="section-padding contact-us-padding form-padding">
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            @using (Html.BeginForm("CheckEligibility2", "AdminA", FormMethod.Post, new { id = "signup" }))
+                            {
+                                <form action="#" method="post">
+
+                                   
+                                    <div class="tables">
+                                        <h2 class="title1">Check Eligibility2</h2>
+                                        <div class="row list-input">
+
+
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Phone Number<span class="color-red">*</span></label>
+                                            @Model.PhoneNumber                                               
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Institution<span class="color-red">*</span></label>
+                                              @Model.Institutions
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Matriculation Number<span class="color-red">*</span></label>
+                                                @Model.MatriculationNumber 
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="control-label">First Name<span class="color-red">*</span></label>
+                                                @Model.Firstname
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Last Name<span class="color-red">*</span></label>
+                                                @Model.Surname
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Faculty<span class="color-red">*</span></label>
+                                                @Model.Faculty
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Department<span class="color-red">*</span></label>
+                                                @Model.Department
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Credit Limit<span class="color-red">*</span></label>
+                                                @Model.CreditLimit
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Amount Borrowed<span class="color-red">*</span></label>
+                                                @Model.ExistingLoan_OutstandingAmount
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="single-get-touch">
+
+                                                    @*<a href="#"><button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Check</button></a>*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a href=@Url.Action("Exportoexcel", "AdminA", new { }) class="">
+                                                    <button type="submit" class="btn btn-default" onchange="CallChangefunc()">Export To Excel</button>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <td></td>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>

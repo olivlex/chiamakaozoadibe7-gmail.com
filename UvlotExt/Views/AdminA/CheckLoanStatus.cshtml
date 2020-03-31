@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "CheckLoanStatus";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@model DataAccessA.Classes.LoanViewModel
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            @*<h4 class="title">AllApprovedLoans</h4>*@
+            <!-- Mega Form Starts -->
+
+            <section class="section-padding contact-us-padding form-padding">
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            @using (Html.BeginForm("CheckLoanStatus", "AdminA", FormMethod.Post, new { id = "signup" }))
+                            {
+                                <form action="#" method="post">
+
+                                    @if (TempData["ErrMsg"] != null)
+                                    {
+                                        <div id="Msgs" class="alert alert-danger">
+                                            @TempData["ErrMsg"]
+                                        </div>
+                                    }
+
+
+                                    <h2 class="title1">CheckLoanStatus</h2>
+                                    <div class="row list-input">
+
+
+                                        <div class="col-md-6 mr0">
+                                            <div class="single-get-touch">
+                                                <input type="text" value="" required name="RefNumber" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <div class="single-get-touch">
+                                                @* <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction"></button>*@
+                                                <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </form>
+                            }
+                        </div>
+
+                        @if (ViewBag.Data == null)
+                        {
+                            <h2>No Record Found</h2>
+                        }
+                        else
+                        {
+
+                            foreach (var LoanStat in ViewBag.Data)
+                            {
+
+                                <div class="col-sm-12">
+                                    <label class="control-label">Loan RefNumber<span class="color-red">*</span></label>
+                                    <span>@LoanStat.LoanRefNumber</span>
+                                </div>
+                                
+                                <div class="col-sm-12">
+                                    <label class="control-label">Surname<span class="color-red">*</span></label>
+                                    <span>@LoanStat.Surname</span>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <label class="control-label">Firstname<span class="color-red">*</span></label>
+                                    <span>@LoanStat.Firstname</span>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <label class="control-label">Institutions<span class="color-red">*</span></label>
+                                    <span>@LoanStat.Institutions</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="control-label">Loan Amount<span class="color-red">*</span></label>
+                                    <span>@LoanStat.LoanAmount</span>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <label class="control-label">Matriculation Number<span class="color-red">*</span></label>
+                                    <span>@LoanStat.MatriculationNumber</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="control-label">Application Status<span class="color-red">*</span></label>
+                                    <span>@LoanStat.ApplicationStatus</span>
+                                </div>
+                            }
+                        }
+            </section>
+
+            <!-- // Mega Form Ends-->
+
+            <div class="col-md-2">
+                <a href=@Url.Action("Exportoexcel", "AdminA", new { }) class="">
+                    <button type="submit" class="btn btn-default" onchange="CallChangefunc()">Export To Excel</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+    function updatemark(arg)
+    {
+        var abc = ""
+//Iterating the collection of checkboxes which checked marked
+        $('input[type=checkbox]').each(function () {
+            if (this.checked) {
+                abc = abc + $(this).val() + ","
+                //assign set value to hidden field
+                $('#SkillID').val(abc);
+                //alert('testing');
+                // alert($('#SkillID').val(abc).val);
+                alert(abc);
+
+
+            }
+        });
+        window.location.href = "/Admin/CreateUser?value=" + abc;
+    }
+    </script>
+
+
+
+

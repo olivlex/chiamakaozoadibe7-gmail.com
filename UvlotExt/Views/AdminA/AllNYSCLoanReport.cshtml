@@ -1,0 +1,217 @@
+﻿
+@{
+    ViewBag.Title = "CreateUser";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
+}
+<script type="text/javascript">
+$(document).ready(function() {
+$('table td:nth-child(6)').each(function() {
+    //alert('test');
+  let $this = $(this);
+
+  // make sure it's a number
+  if (!isNaN($this.text())) {
+
+    if (+$this.text() > 20)
+	{
+
+	    var pieces = parseFloat($this.text()).toFixed(2).split('')
+        let ii = pieces.length - 3
+        while ((ii -= 3) > 0) {
+            pieces.splice(ii, 0, ',')
+        }
+        $this.text(pieces.join(''));
+
+    }
+	else
+	{
+      $this.css('color', 'red');
+    }
+  }
+
+});
+});
+</script>
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            <!--<h4 class="title">Create User</h4>-->
+            <!-- Mega Form Starts -->
+           @if (TempData["Error"] != "")
+            {
+            <div id="Msgs" class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+           }
+        @if (TempData["SucMsg"] != "")
+            {
+            <div id="Msgs" class="alert alert-success">
+                @TempData["SucMsg"]
+            </div>
+        }
+            <section class="section-padding contact-us-padding form-padding">
+
+                <div class="tables">
+                    <h2 class="title1">Recommend Loan</h2>
+                    <div class="table-responsive bs-example widget-shadow">
+                        @*<h4>Users:</h4>*@
+                        @{int i = 0;}
+                        <table id="myTable" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    @*<th>Title</th>*@
+                                    <th>SURNAME</th>
+                                    <th>FIRST NAME</th>
+                                    <th>GENDER</th>
+                                    @*<th>Marital Status</th>*@
+                                    <th>DATE OF BIRTH</th>
+                                    <th>PHONE NUMBER</th>
+                                    <th>EMAIL ADDRESS</th>
+                                    @*<th>Permanent Address</th>
+
+                                   
+                                    <th>State of Residence</th>
+                                    <th>LGA</th>
+                                    <th>Temporary Address</th>
+                                   
+                                    <th>TempState of Residence</th>
+                                    <th>TempLGA</th>*@
+                                    <th>STATE CODE</th>
+
+                                    <th>NYSC STATE OF RESIDENCE</th>
+                                    <th>NYSC LGA</th>
+                                    <th>LOAN TENURE</th>
+                                    <th>EMPLOYER</th>
+                                    <th>OFFICIAL ADDRESS</th>
+
+                                    <th>PASS OUT MONTH</th>
+
+                                    <th>CDS DAY</th>
+                                    <th>CDS GROUP</th>
+                                    <th>NET MONTHLY INCOME</th>
+                                    @*<th>EMG FullName</th>
+
+                                    <th>EMG Relationship</th>
+                                    <th>EMG PhoneNumber</th>
+                                    <th>EMG EmailAddress</th>
+                                    <th>EMG HomeAddress</th>*@
+                                    <th>LOAN AMOUNT</th>
+
+                                    <th>LOAN REF-NUMBER</th>
+                                    @*<th>EXISTING LOAN</th>
+                                    <th>EXISTING-LOAN OUTSTANDING-AMOUNT</th>
+                                    <th>EXISTING LOAN  NUMBER OF MONTHS LEFT</th>*@
+                                    <th>REFERRAL CODE</th>
+                                    
+                                    <th>BVN</th>
+                                    <th>VALUE DATE</th>
+                                    <th>APPLICATION STATUS</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @if (ViewBag.Data == null)
+                                {
+                                    <h2>No Record Found</h2>
+                                }
+                                else
+                                {
+
+                                    foreach (var LoanApp in ViewBag.Data)
+                                    {
+                                        <tr>
+
+                                            <td scope="row">@(++i)</td>
+
+                                            @*<td>@LoanApp.Title</td>*@
+                                            <td>@LoanApp.Surname</td>
+                                            <td>@LoanApp.Firstname</td>
+                                            <td>@LoanApp.Gender</td>
+                                            @*<td>@LoanApp.MaritalStatus</td>*@
+                                            <td>@LoanApp.DateOfBirth</td>
+                                            <td>@LoanApp.PhoneNumber</td>
+                                            <td>@LoanApp.EmailAddress</td>
+                                            @*<td>@LoanApp.PermanentAddress</td>
+                                           
+                                            <td>@LoanApp.StateofResidence</td>
+                                            <td>@LoanApp.LGAs</td>
+                                            <td>@LoanApp.TemporaryAddress</td>
+                                           
+                                            <td>@LoanApp.TempStateofResidence</td>
+                                            <td>@LoanApp.TempLGAs</td>*@
+                                            <td>@LoanApp.StateCode</td>
+                                            <td>@LoanApp.NyscStateofResidence</td>
+
+                                            <td>@LoanApp.NyscLGAs</td>
+                                            <td>@LoanApp.LoanTenure</td>
+                                            <td>@LoanApp.Employer</td>
+                                            <td>@LoanApp.OfficialAddress</td>
+                                            <td>@LoanApp.PassOutMonth</td>
+
+                                            <td>@LoanApp.CDSDay</td>
+
+                                            <td>@LoanApp.CDSGroup</td>
+                                            <td>@LoanApp.NetMonthlyIncome</td>
+                                            @*<td>@LoanApp.EMG_FullName</td>
+                                            <td>@LoanApp.EMG_Relationship</td>
+                                            <td>@LoanApp.EMG_PhoneNumber</td>
+
+                                            <td>@LoanApp.EMG_EmailAddress</td>
+                                            <td>@LoanApp.EMG_HomeAddress</td>*@
+                                            <td>@LoanApp.LoanAmount</td>
+
+
+                                            <td>@LoanApp.LoanRefNumber</td>
+                                            @*<td>@LoanApp.ExistingLoan</td>
+                                            <td>@LoanApp.ExistingLoan_OutstandingAmount</td>
+                                            <td>@LoanApp.ExistingLoan_NoOfMonthsLeft</td>*@
+
+
+                                            <td>@LoanApp.ReferralCode</td>
+                                           
+                                            <td>@LoanApp.BVN</td>
+                                            <td>@LoanApp.ValueDate</td>
+                                            <td>@LoanApp.ApplicationStatus</td>
+
+                                            @*<td>
+                                                <a onclick="return confirm('Are You Sure?')" href="@Url.Action("AllNYSCLoanReport", "AdminA", new { id = @LoanApp.LoanRefNumber })">Edit User</a>
+                                            </td>*@
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        
+            <!-- // Mega Form Ends-->
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    function ConvertAmount(amount) {
+
+
+        //  alert(amount);
+        x = parseFloat(amount).toFixed(2).split('');
+        //  alert(x);
+        let ii = x.length - 3
+        while ((ii -= 3) > 0) {
+            x.splice(ii, 0, ',')
+        }
+
+        x.value = x.join('');
+
+        return x.value;
+        // document.getElementById("LoansAmount").value = x.value;
+
+    }
+</script>

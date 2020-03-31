@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "Acknowledgement";
+    // Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
+}
+@*<h2>AllApprovedLoans</h2>*@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('table td:nth-child(26)').each(function ()
+    {
+    //alert('test');
+  let $this = $(this);
+
+  // make sure it's a number
+  if (!isNaN($this.text())) {
+
+    if (+$this.text() > 20)
+	{
+
+	    var pieces = parseFloat($this.text()).toFixed(2).split('')
+        let ii = pieces.length - 3
+        while ((ii -= 3) > 0) {
+            pieces.splice(ii, 0, ',')
+        }
+        $this.text(pieces.join(''));
+
+    }
+	else
+	{
+      $this.css('color', 'red');
+    }
+  }
+
+});
+});
+</script>
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            <h4 class="title1">Loan Transaction</h4>
+            <!-- Mega Form Starts -->
+
+            <section class="section-padding contact-us-padding form-padding">
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            @using (Html.BeginForm("RejectedApplications", "AdminA", FormMethod.Post, new { id = "signup" }))
+                            {
+                                <form action="#" method="post">
+
+                                    @if (TempData["ErrMsg"] != "")
+                                    {
+                                        <div id="Msgs" class="alert alert-danger">
+                                            @TempData["ErrMsg"]
+                                        </div>
+                                    }
+                                    <div class="tables">
+
+                                        <div class="row list-input">
+
+
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    <select id="ApplicationStatus" name="ApplicationStatus" data-live-search="true" required="required">
+                                                        <option data-tokens="Select State">Application Status</option>
+                                                        @*<option id="ApplicationStatus" value="8" data-tokens="">HR REJECT</option>*@
+                                                        <option id="ApplicationStatus" value="6" data-tokens="">OPERATIONS REJECT</option>
+                                                        <option id="ApplicationStatus" value="7" data-tokens="">SECOND STAGE REJECT</option>
+                                                        <option id="ApplicationStatus" value="8" data-tokens="">THIRD STAGE REJECT</option>
+                                                        <option id="ApplicationStatus" value="10" data-tokens="">DISBURSE REJECT</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            @*@Html.HiddenFor(model => model.UserRole.skilledId)*@
+
+                                            <div class="col-md-12">
+                                                <div class="single-get-touch">
+                                                    @* <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction"></button>*@
+                                                    <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tables">
+                    @*<h2 class="title1">Loan Report</h2>*@
+
+                    <div class="">
+
+                        <div class="table-responsive bs-example widget-shadow">
+                            @*<h4>Users:</h4>*@
+                            @{int i = 0;}
+                            <table id="myTable" class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Name</th>
+                                        <th>AccountName</th>
+                                        <th>AccountNumber</th>
+                                        <th>PermanentAddress</th>
+                                        <th>Loan Amount (N)</th>
+                                        <th>Loan Tenure (Months)</th>
+                                        <th>Date</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.Data == null)
+                                    {
+                                        <h2>No Record Found</h2>
+                                    }
+                                    else
+                                    {
+                                        foreach (var Loan in ViewBag.Data)
+                                        {
+                                            <tr>
+                                                <td scope="row">@(++i)</td>
+                                                <td>@Loan.Surname  @Loan.Firstname</td>
+                                                <td>@Loan.AccountName</td>
+                                                <td>@Loan.AccountNumber</td>
+                                                <td>@Loan.PermanentAddress</td>
+                                                <td>@Loan.ConvertedAmount</td>
+                                                <td>@Loan.LoanTenure</td>
+                                                <td>@Loan.ValueDate</td>
+
+                                                @*<td>
+                            <a onclick="return confirm('Are You Sure?')" href="@Url.Action("LoanReport", "Admin", new { id = @LoanApp.LoanRefNumber })">Edit User</a>
+                        </td>*@
+                                            </tr>
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                            @if (ViewBag.Data != null)
+                            {
+                                <div class="col-md-2">
+                                    <a href=@Url.Action("Exportoexcel", "AdminA")>
+                                        <button type="submit" class="btn btn-default" onchange="CallChangefunc()">Export To Excel</button>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            @*<h2 class="title1">LoanTransactionbyDate</h2>*@
+
+        </div>
+        <!-- // Mega Form Ends-->
+
+    </div>
+
+</div>

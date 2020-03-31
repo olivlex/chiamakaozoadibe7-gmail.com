@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "LoanRepayment";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@model DataAccessA.Classes.LoanViewModel
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            @*<h4 class="title">AllApprovedLoans</h4>*@
+            <!-- Mega Form Starts -->
+
+            <section class="section-padding contact-us-padding form-padding">
+
+                @*<div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10">
+                                @using (Html.BeginForm("LoanTransactionbyDate", "AdminA", FormMethod.Post, new { id = "signup" }))
+                                {
+                                    <form action="#" method="post">
+
+                                        @if (TempData["ErrMsg"] != null)
+                                        {
+                                            <div id="Msgs" class="alert alert-danger">
+                                                @TempData["ErrMsg"]
+                                            </div>
+                                        }
+
+                                        <div class="tables">
+                                            <h2 class="title1">LoanAmountTransactions</h2>
+                                            <div class="row list-input">
+
+
+                                                <div class="col-md-6 mr0">
+                                                    <div class="single-get-touch">
+                                                        <input type="text" value="" required name="RefNumber" />
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-md-12">
+                                                    <div class="single-get-touch">
+
+                                                        <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                    </form>
+                                }
+                            </div>
+                        </div>
+                    </div>*@
+
+                <div class="table-responsive bs-example widget-shadow">
+                    @*<h4>Users:</h4>*@
+                    @{int i = 0;}
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+
+                                <th>Date</th>
+                                <th>Loan Payment</th>
+                                <th>No Transactions</th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (ViewBag.Data == null)
+                            {
+                                <h2>No Record Found</h2>
+                            }
+                            else
+                            {
+
+                                foreach (var LoanApp in ViewBag.Data)
+                                {
+                                    <tr>
+
+
+
+
+
+
+                                        <td scope="row">@(++i)</td>
+                                        <td>@LoanApp.DateCreated</td>
+                                        <td>@LoanApp.LoanAmount</td>
+                                        <td>@LoanApp.NoOFTransaction</td>
+
+
+
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+        </section>
+
+        <!-- // Mega Form Ends-->
+
+    </div>
+
+</div>
+</div>
+
+<script>
+
+    function updatemark(arg)
+    {
+        var abc = ""
+//Iterating the collection of checkboxes which checked marked
+        $('input[type=checkbox]').each(function () {
+            if (this.checked) {
+                abc = abc + $(this).val() + ","
+                //assign set value to hidden field
+                $('#SkillID').val(abc);
+                //alert('testing');
+                // alert($('#SkillID').val(abc).val);
+                alert(abc);
+
+
+            }
+        });
+        window.location.href = "/Admin/CreateUser?value=" + abc;
+    }
+</script>
+
+
+
+

@@ -1,0 +1,437 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "termsconditions";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href=@Url.Content("/asset/img/favicon.png") type="image/gif">
+    <meta name="description" content="Cash Now Now - loans, savings, payments, agency.">
+    <meta name="keywords" content="Cash Now Now - loans, savings, payments, agency.">
+    <title>Cash Now Now</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/bootstrap.min.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/fontawesome-all.min.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/reset.css")>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/style.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/responsive.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/DashboardStyles/css/MyStyle.css")>
+
+
+</head>
+
+
+<body class="js">
+    <div id="preloader"></div>
+
+
+    <!-- start logo menu area -->
+    <header class="second-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="second-logo">
+                        <a href="/"><img src=@Url.Content("/asset/img/logo.png") alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-10 menuShift">
+                    <div id="cssmenu">
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+
+                            </li>
+                            @*<li><a href="#">About us </a></li>*@
+                            <li>
+                                <a href="#">NYSC LOAN</a>
+                                <ul>
+
+                                    <li><a href="/NYSCLOAN/NYSCLoanAppForm">Apply Here</a></li>
+                                    <li><a href="/NYSCLOAN/CheckNYSCLoan">Check Loan Status</a></li>
+                                    <li><a href="@Url.Action("termsconditions", "Home")">Terms and Conditions</a></li>
+                                    <li><a href="@Url.Action("FAQ", "Home")">FAQs</a></li>
+                                  
+                                </ul>
+                            </li>
+
+                            <li>
+
+                                <a href="#">REFERRALS</a>
+
+
+                                <ul>
+                                    <li><a href="@Url.Action("ReferralReg", "Home")">How to Register</a></li>
+                                    <li><a href="@Url.Action("HIW", "Home")">How It Works</a></li>
+                                    <li><a href="@Url.Action("ReferralTermsAndConditions", "Home")">Referral TermsAnd Conditions</a></li>
+                                    <li><a href="@Url.Action("ReferralFAQs", "Home")">Referral FAQs</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li><a href="#">Eligibility</a></li> -->
+
+
+                            <li class="referal">
+                                <a href="@Url.Action("Signup", "User")" class="btn btn-primary">Become A Referrer</a>
+                            </li>
+
+                            @*<li>
+                                <div class="col-lg-1">
+                                    <a href="#" class="btn btn-primary btn-sm"> A Referral</a>
+                                </div>
+                                <ul>*@
+
+
+
+                                  
+                                    @*<li><a href="#">How It Works</a></li>*@
+                                   
+
+                                @*</ul>
+                            </li>*@
+                            <!--<li><a href="#">Contact us</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+                @if (Session["User"] == null)
+                {
+                    <div class="col-lg-1">
+                        <a href="@Url.Action("Signin", "User")" class="btn btn-primary btn-sm"> Login</a>
+                    </div>
+                    <div class="col-lg-1">
+                        @*<a href="#" class="btn btn-primary btn-sm"> Register</a>*@
+                        <a href="@Url.Action("Signup", "User")" class="btn btn-primary btn-sm"> Register</a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </header>
+    <!-- /header -->
+    <!-- end of logo menu area -->
+    <!-- end of header area -->
+    <div class="page-header01">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center ">
+                    <h2>Terms & Conditions</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            @*<li class="breadcrumb-item"><a href="http://nysc.cashnownow.net">Home</a></li>*@
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">General terms and conditions</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of page header -->
+    <!--Terms and Conditions Stars-->
+
+    <section class="about-page-shortcode section-padding">
+        <div class="container rowpadding-with-border00">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="about-content">
+                        <h2>General terms and conditions</h2>
+                        <!-- <h2 class="faq-single-title">Payroll Loan</h2> -->
+                        <!-- <ol type="1" style="margin-left:20px;">
+                           <li>These terms and conditions apply to and regulate the provision of credit facilities advanced by the lending company,
+                               Uvlot.com. These terms and conditions set out the terms governing this credit facility.</li>
+                           <li>By signing this application form you will hereby referred to as the borrower and agree to be bound to the terms
+                               and conditions of this loan. Therefore it is important that the borrower reads these terms and conditions carefully
+                               and keeps them for future reference.</li>
+                           <li>The loan amount must be paid on or before the due date communicated in the loan schedule. </li>
+                           <li>Reserved interest rate chargeable on the Borrower's account shall be Uvlot’s prime lending rate from time to time.</li>
+                           <li>Interest will be charged on all amounts owed by the borrower. </li>
+                           <li>The borrower undertakes to continue to honour his/her obligation with Uvlot for as long as the facility remains outstanding.</li>
+                           <li>In the event that the borrower does not make repayment on due date, the outstanding principal amount and accrued interest shall
+                               be conclusive evidence that a sum is due and owing from the borrower.</li>
+                          <li>A grace period of 5 days is given to the borrower to contact Paelyt, the lending organisation, to make repayment.
+                              Monthly default fees over the approved lending rate on the outstanding unpaid obligation will be charged without recourse to the borrower.  </li>
+                          <li>In the event that the borrower continues to default in making any repayment on the due date, uvlot reserves the right at its discretion,
+                              to transfer the defaulting accounts to a third-party agency to recover any outstanding debt due to the Paelyt. All costs incurred
+                              by the third-party agency to recover the loan will be added to the outstanding balance of the borrower for payment.</li>
+                          <li>In the event that Uvlot agrees to restructure the loan, a facility restructuring fee will be applied to the outstanding
+                              amount and charged to the borrower.</li>
+                          <li>Early redemption of the loan is permitted. The borrower will pay the higher of 1) all the outstanding principal plus
+                              75% of the outstanding interest on the day of loan redemption; or 2) the outstanding principal plus the entire interest
+                              that would have been charged if the loan had a tenure that ended in the settlement month.</li>
+                          <li>On full repayment of the loan, Uvlot shall issue a discharge notice to the borrower.</li>
+
+
+                        </ol> -->
+                        <p>1. These terms and conditions are provided in combination with the application form and apply to the borrower, defined as the person who applies for and receives the loan. The terms and conditions outline the rules under which the loan will be issued, and repayments made.</p>
+                        <p>2. The CashNowNow NYSC loan is an allowance backed loan which allows corps members to borrow an amount based on the remaining tenure of their NYSC service as stated in the application form and verified by Paelyt Solutions Limited (“Paelyt”) the lender.</p>
+                        <p>3. Depending on the amount borrowed and the tenure of the loan, a standard repayment amount will be due monthly.  The repayment amount will be in equal monthly instalments.  The monthly instalments must be paid on or before the due date communicated in the loan schedule.</p>
+                        <p>4. Reserved interest rate chargeable on the Borrower's account shall be Paelyt Solution Limited's (“Paelyt”) prime lending rate which my change from time to time.</p>
+                        <p>5. The borrower undertakes to continue to honour his/her obligation with Paelyt for as long as the facility remains outstanding.</p>
+                        <p>6. In the event that the borrower does not make repayment on due date, the outstanding repayment amount shall be conclusive evidence that a sum is due and owing from the borrower.</p>
+                        <p>7. A grace period of 5 days is given to the borrower to contact Paelyt, the lending organization, to make repayment. Default fees of 2% per month on the outstanding unpaid obligation will be charged without recourse to the borrower.</p>
+                        <p>8. If the borrower continues to default in making monthly repayment, Paelyt reserves the right at its sole discretion, to transfer the defaulting accounts to a third-party agency to recover any outstanding debt due to the Paelyt. All costs incurred by the third- party agency to recover the loan will be added to the outstanding balance of the borrower for payment.</p>
+                        <p>9. If Paelyt agrees to restructure the loan, a facility restructuring fee of 1.0% of the outstanding amount shall be charged and the borrower shall make repayments by the due date.</p>
+                        <p>10. Early payoff of the loan is permitted. Early repayment amount will be principal outstanding plus interest accrued plus 50% of the additional interest that would have accrued if the loan had not been terminated.</p>
+                        <p>11. Upon confirmation of the receipt of the full loan repayment amount, Paelyt will issue a discharge notice to the borrower.</p>
+                        <p>12. Paelyt shall advise the borrower of any changes in the repayment amounts, charges, fees or any other change to the terms and conditions of the loan.</p>
+                        <p>13. Paelyt is hereby authorized to use any data relating to the borrower for evaluating the loan application and for marketing related purposes. Paelyt may at its sole discretion share information with the credit bureaus and reference agencies, whether based locally or abroad, other financial institutions, regulatory and law enforcement agencies etc. information about the borrower. This may include information on the conduct of the borrower's account together with details of any non-payment, delayed payment etc. for the purpose of assisting Paelyt  in making lending or rating decision about the borrower.</p>
+                        <p>14. The borrower hereby irrevocably undertakes to fully indemnify Paelyt against all cost and expenses (including legal fees, collection commission etcetera), arising in any way in connection with the borrower's accounts; in enforcing the terms and conditions herein; or from the recovery of any amounts due to Paelyt or incurred by Paelyt in any legal proceedings of whatever nature.</p>
+                        <p>15.The Agreement herein binds the borrower and is not assignable or transferable.</p>
+                        <p>16. Approval of this facility is subject to the borrower meeting the CashNowNow NYSC Loan product requirements.</p>
+                        <p>17.The borrower is to bear charges for his/her identity verification on the NYSC platform as well as BVN verification and such charges are evenly spread across the loan tenure. </p>
+                        <p>18. In the event the loan application is not approved, the signed terms and conditions becomes null and void.</p>
+                        <p>19. In the event the loan application is approved, an extra one month payment is added to the loan repayment tenure to cover any loan default which may occur during the loan period. The extra month payment will not take place in the event there is strict compliance with loan repayment.</p>
+                        <p>20. In enforcing the terms and conditions herein in the case of default, the borrower’s place of primary assignment contact or the guarantor provided in the course of loan application will be deeply liable to recovering the loan.</p>
+                        <p>21. I declare that I apply for the above-mentioned loan on the strict understanding that if my request is granted, I will accept the terms and conditions as set out above. I also agree to fulfil at any time all requirements which Paelyt  may, at its discretion, stipulate as a condition for granting the loan. Any wrongdoing or false claim relating to the information provided in this form will be treated as fraudulent, and accordingly attract necessary punitive measures. </p>
+                        <p>22. In the event of leaving my NYSC posting for any reason whatsoever before the loan is fully repaid, I declare that I will pay the outstanding balance. If there subsequently remains an outstanding balance, I will immediately make alternative arrangements to pay the said sum. </p>
+                        <p>23. Paelyt may, pursuant to this Agreement, charge, attach and debit the balances standing to the credit of the Borrower in any account linked to, or associated with, the Borrower by way of a Bank Verification Number (BVN) in any commercial bank, microfinance bank, mortgage bank, finance house, payment service bank, mobile payment service operators or any other financial service operatorship for which the Central Bank of Nigeria may issue any licenses in the future whether such accounts be opened or in existence before, during or after the execution of this Agreement.</p>
+                        <p>24. Paelyt may exercise its prerogative pursuant to clause 23 hereof without notice, warning, advice, caution, announcement, or other recourse whatsoever to the Borrower </p>
+                        <p>25. The Borrower hereby waives any right of confidentiality whether arising under common law or statute or in any other manner whatsoever and irrevocably agree that I shall not argue to the contrary before any court of law, tribunal, administrative authority or any other body acting in any judicial or quasi-judicial capacity</p>
+                        
+
+
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--/ Terms and Conditions Ends-->
+    <!-- start footer area -->
+    @*<section class="footer-area footer-two section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>About Us</h4>
+                        </div>
+                        <p>
+                            With experience and knowledge uvlot wе’rе hеrе to рrоvіdе уоu wіth fіnаnсіаl ѕоlutіоnѕ fоr аll уоur lеndіng needs. Whether you are lооkіng fоr any kind of loan,
+                            оur lending tеаm wіll ,..
+                        </p>
+                        <div class="footer-two-social">
+                            <a href="#" class="fa fa-facebook-f"></a>
+                            <a href="#" class="fa fa-twitter"></a>
+                            <a href="#" class="fa fa-google-plus"></a>
+                            <a href="#" class="fa fa-pinterest"></a>
+                            <a href="#" class="fa fa-linkedin"></a>
+                            <a href="#" class="fa fa-instagram"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-2">
+                    <div class="footer-widget pages-widget">
+                        <div class="footer-title">
+                            <h4>Resources</h4>
+                        </div>
+                        <ul>
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Apply</a></li>
+                            <li><a href="#">FAQs </a></li>
+                            <li><a href="#">Contact us </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-3">
+                    <div class="footer-widget pages-widget">
+                        <div class="footer-title">
+                            <h4>Useful Links</h4>
+                        </div>
+                        <ul>
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Apply</a></li>
+                            <li><a href="#">FAQs </a></li>
+                            <li><a href="#">Contact us </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>Contact us</h4>
+                        </div>
+                        <div class="contact-widget">
+                            <ul>
+                                <li>
+                                    <div class="icon">
+                                        <img src=@Url.Content("/asset/img/map-pin.png") alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>Cash Now Now 10B, Kingsley Emu Street, Lekki Phase 1, Lagos.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <img src=@Url.Content("/asset/img/envalope-2.png") alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            mail@cashnownow.com
+                                            <span>reply within 2 Hours</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <img src=@Url.Content("/asset/img/phone01.png") alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            +234 806 493 8136
+                                            <span>24 Hours Support </span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <section class="footer-area footer-two section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>About Us</h4>
+
+                        </div>
+
+
+
+                        <div class="footer-two-social">
+                            @*<a href="#" class="fa fa-facebook-f"></a>*@
+                            @*<a href="CashNowNow1" class="fa fa-twitter"></a>*@
+                            @*<a class="twitter-timeline" href="https://twitter.com/CashNowNow1?ref_src=twsrc%5Etfw">Tweets by CashNowNow1</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*@
+
+                            <a href="https://twitter.com/CashNowNow1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow CashNowNow1</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+                            @*<a href="https://twitter.com/intent/tweet?screen_name=CashNowNow1&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to CashNowNow1</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*@
+                            @*<a href="#" class="fa fa-google-plus"></a>
+                                <a href="#" class="fa fa-pinterest"></a>
+                                <a href="#" class="fa fa-linkedin"></a>*@
+                            <br />
+                            <a href="#" class="fa fa-instagram"></a>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-3 col-lg-2">
+                        <div class="footer-widget pages-widget">
+                            <div class="footer-title">
+                                <h4>Resources</h4>
+                            </div>
+                            <ul>
+                                <li><a href="#">How it works</a></li>
+                                <li><a href="#">Apply</a></li>
+                                <li><a href="#">FAQs </a></li>
+                                <li><a href="#">Contact us </a></li>
+                            </ul>
+                        </div>
+                    </div>*@
+                <div class="col-md-5 col-lg-3">
+                    <div class="footer-widget pages-widget">
+                        <div class="footer-title">
+                            <h4>Useful Links</h4>
+                        </div>
+                        <ul>
+                            @*<li><a href="#">How it works</a></li>*@
+                            <li><a href="@Url.Action("termsconditions", "Home")">TERMS AND CONDITIONS</a></li>
+                            <li><a href="@Url.Action("HIW", "Home")">REFERRALS</a></li>
+                            @*<li><a href="#">Contact us </a></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>Contact Us</h4>
+                        </div>
+                        <div class="contact-widget">
+                            <ul>
+                                @*<li>
+                                        <div class="icon">
+                                            <img src="asset/img/map-pin.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <p>Cash Now Now 10B, Kingsley Emu Street, Lekki Phase 1, Lagos.</p>
+                                        </div>
+                                    </li>*@
+                                <li>
+                                    <div class="icon">
+                                        <img src="@Url.Content("/asset/img/envalope-2.png")" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            Contact us at customercare@cashnownow.net for more information
+                                            <span>@*reply within 2 Hours*@</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <img src="@Url.Content("/asset/img/envalope-2.png")" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            +234 901.424.2062 or <br />
+                                            +234 806.275.0890
+                                            <span>Available from 9am to 7pm Monday to Friday </span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="copy-right-section second-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <div class="copyright-text">
+                        <p><i class="fa fa-copyright"></i> 2020 Cash Now Now. All Rights Reserved | Powered by <a href="http://www.paelyt.com" target="_blank">Paelyt Solution</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ul class="footer-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Loans</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">Contactus</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of footer area -->
+    <script src=@Url.Content("/asset/js/jquery-3.3.1.min.js")></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src=@Url.Content("/asset/js/jquery-ui.js")></script>
+    <script src=@Url.Content("/asset/js/popper.min.js")></script>
+    <script src=@Url.Content("/asset/js/bootstrap.min.js")></script>
+    <script src=@Url.Content("/asset/js/jquery.nice-select.js")></script>
+    <script src=@Url.Content("/asset/js/menumaker.js")></script>
+    <script src=@Url.Content("/asset/js/owl.carousel.min.js")></script>
+    <script src=@Url.Content("/asset/js/slider.js")></script>
+    <script src=@Url.Content("/asset/js/active.js")></script>
+</body>
+
+</html>

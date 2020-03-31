@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Debit Status";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<html>
+<body>
+    <div class="charts">
+        <div class="mid-content-top charts-grids">
+            <div class="middle-content">
+                @*<h4 class="title">AllApprovedLoans</h4>*@
+                <!-- Mega Form Starts -->
+
+                <section class="section-padding contact-us-padding form-padding">
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10">
+                                @using (Html.BeginForm("DebitStatus", "AdminA", FormMethod.Post, new { id = "signup" }))
+                                {
+                                    <form action="#" method="post">
+
+                                        @if (TempData["ErrMsg"] != null)
+                                        {
+                                            <div id="Msgs" class="alert alert-danger">
+                                                @TempData["ErrMsg"]
+                                            </div>
+                                        }
+                                        <div class="tables">
+                                            <h2 class="title1">Debit Status</h2>
+                                            <div class="row list-input">
+
+
+                                                <input type="text" class="form-control" name="requestID" value="@TempData["requestID"]" style="display:none">
+
+                                                <div class="col-sm-6">
+                                                    <div class="single-get-touch">
+                                                        <label class="control-label">mandate Id<span class="color-red">*</span></label>
+                                                        <input type="text" class="form-control" name="mandateId" required="required" value="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="single-get-touch">
+
+                                                        <a href="#"><button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Submit</button></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <td></td>
+                                    </form>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+    <div>
+
+        Amount : @TempData["value1"]
+        RRR : @TempData["value2"]
+        Description : @TempData["value3"]
+    </div>
+
+</body>
+
+</html>
+
+
+
+

@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Sigin";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model DataAccessA.Classes.AppLoanss
+
+<style>
+    input {
+        border: 0;
+    }
+</style>
+
+<div class="page-header01">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center ">
+                <h2>Acknowledgement</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Acknowledgement</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of page header -->
+<section class="section-padding contact-us-padding form-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                @using (Html.BeginForm("Acknowledgement", "AdminA", FormMethod.Get))
+                {
+                    <form action="#" method="post">
+
+
+                        <div class="row list-input">
+                            <div class="col-md-12 col-lg-12 formHeaderBg">
+                                <h3 class="formHeader">Acknowledgement</h3>
+                            </div>
+
+
+                           
+                                
+                                    <div class="col-md-6 mr0">
+                                        <div class="single-get-touch">       
+                                            <P>Surname : @Model.Surname</P>
+                                        </div>
+                                        </div>
+
+                            <div class="col-md-6 right">
+                                <div class="single-get-touch">
+                                    <P>Firstname : @Model.Firstname</P>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    <P>Middle Name : @Model.Othernames</P>
+                                </div>
+                            </div>
+                         
+
+                            <div class="col-md-6 right">
+                                <div class="single-get-touch">
+                                    <p>Phone Number : @Model.PhoneNumber</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    <p>Email: @Model.EmailAddress</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 right">
+                                <div class="single-get-touch">
+                                    <p>@*Loan Tenure(months) :@Model.LoanTenure*@ </p>
+                                </div>
+                            </div>
+
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        <p>Reference Number : @Model.LoanRefNumber</p>
+                                    </div>
+                                </div>
+                            <div class="col-md-6 right">
+                                <div class="single-get-touch">
+                                    <p>Loan Amount(&#8358;) : @Model.ConvertedAmount</p>
+                                   
+                                </div>
+                            </div>
+
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        <p>Loan Tenure(months) :@Model.LoanTenure </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 right">
+                                    <div class="single-get-touch">
+                                        <p>Repayment Amount : @ViewData["RepaymentAmount"]</p>
+                                    </div>
+                                </div>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    <p>Application Date :@Model.ValueDate </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 right">
+                                <div class="single-get-touch">
+                                    <p>Application Status : @Model.ApplicationStatus</p>
+                                </div>
+                            </div>
+
+                                @*<div class="col-md-6 mr0">
+                <div class="single-get-touch">
+                    <input type="submit" name="submit" class="btn btn-default btn-sm2 btnAction" value="Continue" />
+                </div>
+            </div>*@
+
+
+
+                            </div>
+
+
+
+</form>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- start footer area -->
+<!-- end of footer area -->
+<script src=@Url.Content("/asset/js/jquery-3.3.1.min.js")></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src=@Url.Content("/asset/js/jquery-ui.js")></script>
+<script src=@Url.Content("/asset/js/popper.min.js")></script>
+<script src=@Url.Content("/asset/js/bootstrap.min.js")></script>
+<script src=@Url.Content("/asset/js/jquery.nice-select.js")></script>
+<script src=@Url.Content("/asset/js/menumaker.js")></script>
+<script src=@Url.Content("/asset/js/owl.carousel.min.js")></script>
+<script src=@Url.Content("/asset/js/slider.js")></script>
+<script src=@Url.Content("/asset/js/active.js")></script>
+
+ function ConvertAmount(amount) {
+
+
+      //  alert(amount);
+        x = parseFloat(amount).toFixed(2).split('');
+      //  alert(x);
+        let ii = x.length - 3
+        while ((ii -= 3) > 0) {
+            x.splice(ii, 0, ',')
+        }
+
+        x.value = x.join('');
+
+        return x.value;
+       // document.getElementById("LoansAmount").value = x.value;
+
+    }

@@ -1,0 +1,237 @@
+﻿
+@{
+    ViewBag.Title = "Sigin";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+@model DataAccessA.Classes.AppLoanss
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<div class="page-header01">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center ">
+                <h2>Sign-in</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sign-up</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section-padding contact-us-padding form-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- <div class="col-md-12 col-lg-10">              
+            </div> -->
+
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6">
+
+
+                <div class="main-login main-center">
+
+                   @using (Html.BeginForm("Signup", "User", FormMethod.Post, new { id = "signup" }))
+                   {
+                    <form action="#" method="post">
+
+
+                        @if (TempData["ErrMsg"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-danger">
+
+                                @TempData["ErrMsg"]
+                            </div>
+                        }
+                        @if (TempData["SucMsg"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-danger">
+
+                                @TempData["SucMsg"]
+                            </div>
+                        }
+                        <br>
+                        <div class="form-group">
+
+                            <div class="cols-sm-10">
+                                <div class="input-group fieldStyle">
+                                    <span class="input-group-addon fieldBorder"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control fieldBorder" name="fname" onblur="getText();" id="name" placeholder="Enter your Name" required />
+                                    @*@Html.TextBoxFor(model => model.Firstname, new { placeholder = "Firstname*", required = "required" })*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="cols-sm-10">
+                                <div class="input-group fieldStyle">
+                                    <span class="input-group-addon fieldBorder"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control fieldBorder" name="email" id="email" placeholder="Enter your Email" required />
+                                    @*@Html.TextBoxFor(model => model.EmailAddress, new { placeholder = "EmailAddress*", required = "required" })*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="cols-sm-10">
+                                <div class="input-group fieldStyle">
+                                    <span class="input-group-addon fieldBorder"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control fieldBorder" name="address" id="address" placeholder="Contact Address" required />
+                                    @*@Html.TextBoxFor(model => model.EmailAddress, new { placeholder = "EmailAddress*", required = "required" })*@
+                                </div>
+                            </div>
+                        </div>
+
+                       
+
+                        <div class="form-group">
+                            <div class="cols-sm-10">
+                                <div class="input-group fieldStyle">
+                                    <span class="input-group-addon fieldBorder"><i class="fa fa-envelope fa" aria-hidden="true"></i ></span>
+                                    @*<input type="text" class="form-control fieldBorder" name="nStates" id="nStates" placeholder="RESIDENCE STATE" required />*@
+                                    @Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "States", @name = "States", onchange = "GetStates();", @Class="form-control fieldBorder" })
+                             @*@Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "Stat", @name = "Sta", onchange = "GetStates();", @Class = "form-control fieldBorder" })*@
+                                  </div>
+                            </div>
+                            </div>
+                        <div class="form-group">
+                            <div class="cols-sm-10">
+                                <div class="input-group fieldStyle">
+                                    <span class="input-group-addon fieldBorder"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <select id="lgaList" name="lgaList" class="form-control fieldBorder" data-live-search="true" required="required" onchange="getText();">
+                                        <option default data-tokens="SELECT LGA">SELECT LGA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="form-group">
+
+                                <div class="cols-sm-10">
+                                    <div class="input-group fieldStyle">
+                                        <span class="input-group-addon fieldBorder"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control fieldBorder" name="phone" id="username" placeholder="Enter your Phone" required />
+                                        @*@Html.TextBoxFor(model => model.PhoneNumber, new { placeholder = "PhoneNumber*", required = "required" })*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="cols-sm-10">
+                                    <div class="input-group fieldStyle">
+                                        <span class="input-group-addon fieldBorder"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control fieldBorder" name="password" id="password" placeholder="Enter your Password" required />
+                                        @*@Html.TextBoxFor(model => model.PaswordVal, new { placeholder = "PaswordVal*", required = "required" })*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="cols-sm-10">
+                                    <div class="input-group fieldStyle">
+                                        <span class="input-group-addon fieldBorder"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control fieldBorder" name="cpassword" id="confirm" placeholder="Confirm your Password" required />
+                                        @*@Html.TextBoxFor(model => model.PaswordVal, new { placeholder = "PaswordVal*", required = "required" })*@
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="form-group">
+
+                            <div class="cols-sm-10">
+                                <div class="input-group fieldStyle">
+                                    <span class="input-group-addon fieldBorder"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control fieldBorder" name="ReferralCode" id="confirm" placeholder="Referral Code"/>
+                                    @*@Html.TextBoxFor(model => model.PaswordVal, new { placeholder = "PaswordVal*", required = "required" })*@
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="form-group fieldStyle">
+                                <div class="btnFull">
+                                    <a href="#">
+                                        <button type="submit" name="submit"  class="btn btn-default btn-sm4 btnAction btnFull">Agent/Referral Register</button>
+
+                                    </a>
+                                </div>
+                            </div>
+
+</form>
+                   }
+                    <p>Already have an account? <a href="@Url.Action("Signin", "User")">Login</a></p>
+                </div>
+
+
+            </div>
+            <div class="col-md-3">
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    @*$(document).ready(function () {
+     
+        function GetStates() {
+            alert('test');
+            $("#States").change(function () {
+                alert('test1');
+                $("#lgaList").empty();
+                alert('test2');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getLGAsByStateID","User")',
+                    dataType: 'json',
+                    data: { id: $("#States").val() },
+                    success: function (lga) {
+
+                        $.each(lga, function (i, lga) {
+                            $("#lgaList").append('<option value="'
+                                                       + lga.Value + '">'
+                                                 + lga.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
+                    }
+                });
+                return false;
+            })
+        }
+    }*@
+   
+
+     $(document).ready(function () {
+
+    $("#States").change(function () {
+        $("#lgaList").empty();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("getLGAsByStateID","NYSCLOAN")',
+            dataType: 'json',
+            data: { id: $("#States").val() },
+            success: function (lga) {
+
+                $.each(lga, function (i, lga) {
+                    $("#lgaList").append('<option value="'
+                                               + lga.Value + '">'
+                                         + lga.Text + '</option>');
+                });
+            },
+            error: function (ex) {
+                // alert('Failed.' + ex);
+            }
+        });
+        return false;
+    })
+       });
+</script>

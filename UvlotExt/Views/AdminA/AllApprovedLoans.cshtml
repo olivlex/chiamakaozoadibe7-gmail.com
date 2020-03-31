@@ -1,0 +1,215 @@
+﻿
+@{
+    ViewBag.Title = "AllApprovedLoans";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@model DataAccessA.Classes.LoanViewModel
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            @*<h4 class="title">AllApprovedLoans</h4>*@
+            <!-- Mega Form Starts -->
+
+            <section class="section-padding contact-us-padding form-padding">
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            @using (Html.BeginForm("AllApprovedLoans", "AdminA", FormMethod.Post, new { id = "signup" }))
+                            {
+                                <form action="#" method="post">
+
+                                    @if (TempData["ErrMsg"] != null)
+                                    {
+                                        <div id="Msgs" class="alert alert-danger">
+                                            @TempData["ErrMsg"]
+                                        </div>
+                                    }
+                                    <div class="tables">
+                                        <h2 class="title1">Loan Report</h2>
+                                        <div class="row list-input">
+
+
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    <select id="ApplicationStatus" name="ApplicationStatus" data-live-search="true" required="required">
+                                                        <option data-tokens="Select State">Application Status</option>
+                                                        @foreach (var AppStat in ViewBag.ApplicationStatus)
+                                                        {
+                                                            <option id="ApplicationStatus" value="@AppStat.ID" data-tokens="@AppStat.Name">@AppStat.Name</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            @*@Html.HiddenFor(model => model.UserRole.skilledId)*@
+
+                                            <div class="col-md-12">
+                                                <div class="single-get-touch">
+                                                    @* <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction"></button>*@
+                                                    <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
+                                                </div>
+                                            </div>
+
+                                           
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                            <div class="col-md-2">
+                                <a href=@Url.Action("Exportoexcel", "AdminA", new { }) class="">
+                                    <button type="submit" class="btn btn-default" onchange="CallChangefunc()">Export To Excel</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                <div class="table-responsive bs-example widget-shadow">
+                    @*<h4>Users:</h4>*@
+                    @{int i = 0;}
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+
+                                <th>Loan Product</th>
+                                <th>Title</th>
+                                <th>Surname</th>
+                                <th>Firstname</th>
+                                <th>Othernames</th>
+                                <th>Gender</th>
+                                <th>Marital Status</th>
+                                <th>Means Of ID</th>
+                                <th>Identfication Number</th>
+                                <th>Date Of Birth</th>
+                                <th>Phone Number</th>
+                                <th>Email Address</th>
+                                <th>Contact Address</th>
+                                <th>Land mark</th>
+                                <th>Closest Bus Stop</th>
+                                <th>State of Residence</th>
+                                <th>LGA</th>
+
+                                <th>Organization</th>
+                                <th>Applicant ID</th>
+                                <th>NOK FullName</th>
+                                <th>NOK Relationship</th>
+                                <th>NOK PhoneNumber</th>
+                                <th>NOK EmailAddress</th>
+                                <th>NOK HomeAddress</th>
+                                <th>Loan Amount</th>
+                                <th>Loan Tenure</th>
+
+                                <th>Loan RefNumber</th>
+                                <th>Existing Loan</th>
+                                <th>ExistingLoan OutstandingAmount</th>
+                                <th>ExistingLoan NoOfMonthsLeft</th>
+                                <th>Bank Code</th>
+                                <th>Account Number</th>
+                                <th>Account Name</th>
+                                <th>BVN</th>
+                                <th>Value Date</th>
+                                <th>Application Status</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (ViewBag.Data == null)
+                            {
+                                <h2>No Record Found</h2>
+                            }
+                            else
+                            {
+
+                                foreach (var LoanApp in ViewBag.Data)
+                                {
+                                    <tr>
+
+                                        <td scope="row">@(++i)</td>
+                                        <td>@LoanApp.LoanProduct</td>
+                                        <td>@LoanApp.Title</td>
+                                        <td>@LoanApp.Surname</td>
+                                        <td>@LoanApp.Firstname</td>
+                                        <td>@LoanApp.Othernames</td>
+                                        <td>@LoanApp.Gender</td>
+                                        <td>@LoanApp.MaritalStatus</td>
+                                        <td>@LoanApp.MeansOfIdentifications</td>
+                                        <td>@LoanApp.IdentficationNumber</td>
+                                        <td>@LoanApp.DateOfBirth</td>
+                                        <td>@LoanApp.PhoneNumber</td>
+                                        <td>@LoanApp.EmailAddress</td>
+                                        <td>@LoanApp.ContactAddress</td>
+                                        <td>@LoanApp.Landmark</td>
+                                        <td>@LoanApp.ClosestBusStop</td>
+                                        <td>@LoanApp.NigerianStates</td>
+                                        <td>@LoanApp.LGAs</td>
+                                        <td>@LoanApp.Organization</td>
+                                        <td>@LoanApp.ApplicantID</td>
+                                        <td>@LoanApp.NOK_FullName</td>
+                                        <td>@LoanApp.NOK_Relationship</td>
+                                        <td>@LoanApp.NOK_PhoneNumber</td>
+                                        <td>@LoanApp.NOK_EmailAddress</td>
+                                        <td>@LoanApp.NOK_HomeAddress</td>
+                                        <td>@LoanApp.LoanAmount</td>
+                                        <td>@LoanApp.LoanTenure</td>
+                                        <td>@LoanApp.LoanRefNumber</td>
+                                        <td>@LoanApp.ExistingLoan</td>
+                                        <td>@LoanApp.ExistingLoan_OutstandingAmount</td>
+                                        <td>@LoanApp.ExistingLoan_NoOfMonthsLeft</td>
+                                        <td>@LoanApp.BankCode</td>
+                                        <td>@LoanApp.AccountNumber</td>
+                                        <td>@LoanApp.AccountName</td>
+                                        <td>@LoanApp.BVN</td>
+                                        <td>@LoanApp.ValueDate</td>
+                                        <td>@LoanApp.ApplicationStatus</td>
+
+                                        <td>
+                                            <a onclick="return confirm('Are You Sure?')" href="@Url.Action("LoanReport", "Admin", new { id = @LoanApp.LoanRefNumber })">Edit User</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+        
+
+        <!-- // Mega Form Ends-->
+
+    </div>
+
+</div>
+
+<script>
+function CallChangefunc(val)
+{
+    window.location.href = "/AdminA/Exportoexcel";
+}
+</script>
+<script>
+
+    function updatemark(arg)
+    {
+        var abc = ""
+//Iterating the collection of checkboxes which checked marked
+        $('input[type=checkbox]').each(function () {
+            if (this.checked) {
+                abc = abc + $(this).val() + ","
+                //assign set value to hidden field
+                $('#SkillID').val(abc);
+                //alert('testing');
+                // alert($('#SkillID').val(abc).val);
+                alert(abc);
+
+
+            }
+        });
+        window.location.href = "/Admin/CreateUser?value=" + abc;
+    }
+</script>
+
+

@@ -1,0 +1,382 @@
+﻿
+
+@using System.Data;
+@{
+    ViewBag.Title = "CheckAppStatus";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@model DataAccessA.Classes.LoanViewModel
+<h2>Importexcel1</h2>
+<!--[if !IE]><!-->
+
+<style type="text/css">
+    /* Generic Styling, for Desktops/Laptops */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    /* Zebra striping */
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+
+    th {
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+
+    td, th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+    /*
+    Max width before this PARTICULAR table gets nasty
+    This query will take effect for any screen smaller than 760px
+    and also iPads specifically.
+    */
+    @@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+        tr {
+            border: 1px solid #ccc;
+        }
+
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+            td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+
+            /*
+     Label the data
+     */
+            td:before {
+                content: attr(data-title);
+            }
+    }
+</style>
+
+@*<style type="text/css">
+    body {
+        background-color: #f6f6ff;
+        font-family: Calibri, Myriad;
+    }
+
+    #main {
+        width: 780px;
+        padding: 20px;
+        margin: auto;
+    }
+
+    table.timecard {
+        margin: auto;
+        width: 600px;
+        border-collapse: collapse;
+        border: 1px solid #fff; /*for older IE*/
+        border-style: hidden;
+    }
+
+        table.timecard caption {
+            background-color: #f79646;
+            color: #fff;
+            font-size: x-large;
+            font-weight: bold;
+            letter-spacing: .3em;
+        }
+
+        table.timecard thead th {
+            padding: 8px;
+            background-color: #fde9d9;
+            font-size: large;
+        }
+
+            table.timecard thead th#thDay {
+                width: 40%;
+            }
+
+            table.timecard thead th#thRegular, table.timecard thead th#thOvertime, table.timecard thead th#thTotal {
+                width: 20%;
+            }
+
+        table.timecard th, table.timecard td {
+            padding: 3px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #f79646 #ccc;
+        }
+
+        table.timecard td {
+            text-align: right;
+        }
+
+        table.timecard tbody th {
+            text-align: left;
+            font-weight: normal;
+        }
+
+        table.timecard tfoot {
+            font-weight: bold;
+            font-size: large;
+            background-color: #687886;
+            color: #fff;
+        }
+
+        table.timecard tr.even {
+            background-color: #fde9d9;
+        }
+</style>*@
+
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript">
+    var myMessages = ['info', 'warning', 'error', 'success'];
+    function hideAllMessages() {
+        var messagesHeights = new Array(); // this array will store height for each
+
+        for (i = 0; i < myMessages.length; i++) {
+            messagesHeights[i] = $('.' + myMessages[i]).outerHeight(); // fill array
+            $('.' + myMessages[i]).css('top', -messagesHeights[i]); //move element outside viewport
+        }
+    }
+    function showMessage(type) {
+        $('.' + type + '-trigger').click(function () {
+            hideAllMessages();
+            $('.' + type).animate({ top: "0" }, 50000);
+        });
+    }
+    $(document).ready(function () {
+        hideAllMessages();
+        $("#Upload").click(function () {
+
+            var formData = new FormData();
+            var totalFiles = document.getElementById("FileUpload1").files.length;
+            for (var i = 0; i < totalFiles; i++) {
+                var file = document.getElementById("FileUpload1").files[i];
+
+                formData.append("FileUpload1", file);
+            }
+            $.ajax({
+                type: "POST",
+                url: '/Excel/Importexcel1',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    showMessage(myMessages[3]);
+
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script> 
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            @*<h4 class="title">AllApprovedLoans</h4>*@
+            <!-- Mega Form Starts -->
+
+            <section class="section-padding contact-us-padding form-padding">
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                           
+                                  <!--<![endif]-->
+                                @using (Html.BeginForm("Importexcel1", "Excel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                                {
+                                    <table>
+
+                                        @*<tr><td>Sum:</td><td>@(ViewBag.mySum != null ? ViewBag.mySum.ToString() : "")</td></tr>*@
+                                        <tr><td>Sum:</td><td>@( ViewBag.LoanCal != null ? ViewBag.LoanCal.ToString() : "")</td></tr>
+                                        <tr><td>Excel file</td><td><input type="file" id="FileUpload1" name="FileUpload1" required /></td></tr>
+                                        <tr><td></td><td><input type="submit" id="Submit" name="Submit" value="Submit" /></td></tr>
+                                        @*<tr><td></td><td><input type="submit" id="Upload" name="Upload" value="Ajax Upload" /></td></tr>*@
+                                    </table>
+                                }
+                                <div>
+                                    @*<div class="success message">
+                                        <h3>Congrats, you did it!</h3>
+                                        <p>This is just a success notification message.</p>
+                                    </div>*@
+
+
+
+                                    <div class="col-md-12">
+
+                                        <table id="" class="table table-bordered">
+                                            @if (ViewBag.Data != null)
+                                            {
+                                                <thead>
+                                                    <tr>
+                                                        @{int ii=0;}
+                                                        @foreach (DataColumn column in (ViewBag.Data as System.Data.DataTable).Columns)
+                                                        {
+                                                            <th>@column.ColumnName.ToUpper()</th>
+                                                            if (ii > 10)
+                                                            {
+                                                                break;
+                                                            }
+                                                            ii += 1;
+                                                        }
+                                                    </tr>
+                                                 </thead>
+                                                if ((ViewBag.Data as System.Data.DataTable).Rows.Count > 0)
+                                                {
+                                                    foreach (DataRow dr in (ViewBag.Data as System.Data.DataTable).Rows)
+                                                    {
+
+                                                        <tr>
+                                                            @{int ir = 0;}
+                                                            @foreach (DataColumn column in (ViewBag.Data as System.Data.DataTable).Columns)
+                                                            {
+                                                                <td data-title='@column.ColumnName'>
+
+                                                                    @dr[column].ToString()&nbsp;
+                                                                </td>
+                                                                if (ir > 10)
+                                                                    {
+                                                                        break;
+                                                                    }
+                                                                  ir += 1;
+                                                                
+                                                                    }
+
+                                                        </tr>
+
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    int count = (ViewBag.Data as System.Data.DataTable).Columns.Count;
+                                                    <tr>
+
+                                                        <td colspan='@count' style="color:red;">
+
+                                                            No Data Found.
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                if (ViewBag.Error != null)
+                                                {
+                                                    <tr>
+                                                        <td style="color:red;">
+
+                                                            @(ViewBag.Error != null ? ViewBag.Error.ToString() : "")
+                                                        </td>
+
+
+
+                                                    </tr>
+                                                }
+                                            }
+                                            </table>
+                                            <div class="col-md-12">
+                                                <div class="single-get-touch">
+
+                                                   
+                                                        @using (Html.BeginForm("uploaddata", "Excel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                        {
+                                                            <div class="col-md-12">
+                                                                <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Upload</button></a>
+                                                            </div>
+                                                        }
+                                                    
+
+                                                </div>
+                                            </div>
+
+                                          
+                                   </div>
+
+                       
+                        </div>
+                    </div>
+
+                   </div>
+                    </div>    
+
+            </section>
+
+            <!-- // Mega Form Ends-->
+
+
+        </div>
+    </div>
+    </div>
+    <script>
+
+    function updatemark(arg)
+    {
+        var abc = ""
+//Iterating the collection of checkboxes which checked marked
+        $('input[type=checkbox]').each(function () {
+            if (this.checked) {
+                abc = abc + $(this).val() + ","
+                //assign set value to hidden field
+                $('#SkillID').val(abc);
+                //alert('testing');
+                // alert($('#SkillID').val(abc).val);
+                alert(abc);
+
+
+            }
+        });
+        window.location.href = "/Admin/CreateUser?value=" + abc;
+    }
+    </script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+

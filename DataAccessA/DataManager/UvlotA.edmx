@@ -1,0 +1,2384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UvlotAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccomodationType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationStatus">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Name" Type="nvarchar" MaxLength="225" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="225" />
+          <Property Name="FlutterWaveBankCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Bankold">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="BanksManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Othernames" Type="nvarchar" MaxLength="150" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnrollmentBranch" Type="nvarchar" MaxLength="500" />
+          <Property Name="Nationlaity" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marital_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactAddress" Type="nvarchar" MaxLength="350" />
+          <Property Name="VerifiedStatus" Type="int" />
+          <Property Name="ServiceResponse" Type="nvarchar" MaxLength="350" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DocUpload">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DocImagePath" Type="nvarchar(max)" />
+          <Property Name="User_FK" Type="int" />
+          <Property Name="colls1" Type="nvarchar" MaxLength="100" />
+          <Property Name="cols2" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EmployerLoanDetail">
+          <Key>
+            <PropertyRef Name="LoanApplication_FK" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanApplication_FK" Type="int" Nullable="false" />
+          <Property Name="EmployerID" Type="nvarchar" MaxLength="150" />
+          <Property Name="OfficialEmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="150" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="150" />
+          <Property Name="EmploymentStatus_FK" Type="int" />
+          <Property Name="Department" Type="nvarchar" MaxLength="150" />
+          <Property Name="NetMonthlyIncome" Type="float" />
+          <Property Name="LandMark" Type="nvarchar" MaxLength="150" />
+          <Property Name="ClosestBusStop" Type="nvarchar" MaxLength="150" />
+          <Property Name="LGA_FK" Type="nvarchar" MaxLength="150" />
+          <Property Name="LengthOfServiceInYrs" Type="int" />
+          <Property Name="LengthOfServiceInMth" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="EmploymentStatus">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="Guarantor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanApplication_FK" Type="int" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Othernames" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContactAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="RelationShipWithApplicant" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="Institution">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstitutionType_FK" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InstitutionCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstitutionAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="InstitutionEmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="InstitutionPhoneNo" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContactPhoneNo" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContactEmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="HeadOfInstition" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="InstitutionType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="LGA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="State_FK" Type="int" Nullable="false" />
+          <Property Name="Audit" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsVisible" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanApplication">
+          <Key>
+            <PropertyRef Name="LoanRefNumber" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Institution_FK" Type="int" />
+          <Property Name="LoanRefNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoanProduct_FK" Type="int" />
+          <Property Name="Title_FK" Type="int" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Othernames" Type="nvarchar" MaxLength="150" />
+          <Property Name="Gender_FK" Type="int" />
+          <Property Name="MaritalStatus_FK" Type="int" />
+          <Property Name="MeansOfID_FK" Type="int" />
+          <Property Name="MeansOfIDFilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdentficationNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContactAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="Landmark" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClosestBusStop" Type="nvarchar" MaxLength="250" />
+          <Property Name="StateofResidence_FK" Type="int" />
+          <Property Name="LGA_FK" Type="int" />
+          <Property Name="AccomodationType_FK" Type="int" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="350" />
+          <Property Name="ApplicantID" Type="nvarchar" MaxLength="250" />
+          <Property Name="NOK_FullName" Type="nvarchar" MaxLength="150" />
+          <Property Name="NOK_Relationship" Type="nvarchar" MaxLength="150" />
+          <Property Name="NOK_PhoneNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="NOK_EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="NOK_HomeAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="LoanAmount" Type="float" />
+          <Property Name="LoanTenure" Type="int" />
+          <Property Name="RepaymentMethod_FK" Type="int" />
+          <Property Name="ExistingLoan" Type="bit" />
+          <Property Name="ExistingLoan_OutstandingAmount" Type="float" />
+          <Property Name="ExistingLoan_NoOfMonthsLeft" Type="int" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="350" />
+          <Property Name="BVN" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ApplicationStatus_FK" Type="int" />
+          <Property Name="LoanComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApprovedLoanAmount" Type="float" />
+          <Property Name="ApprovedTenure" Type="float" />
+          <Property Name="ApprovedInterest" Type="float" />
+        </EntityType>
+        <EntityType Name="LoanApproval">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanApplication_FK" Type="int" />
+          <Property Name="CommentBy" Type="int" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="ApplicationStatus_FK" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="LoanInterestRate">
+          <Key>
+            <PropertyRef Name="InterestRate" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanType_FK" Type="int" />
+          <Property Name="InterestRate" Type="float" Nullable="false" />
+          <Property Name="LoanTenure" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="Institution_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="LoanLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Institution_FK" Type="int" />
+          <Property Name="ApplicantID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TranxDate" Type="datetime" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="RefNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PartnerRefNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="PaymentFlag_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="LoanProduct">
+          <Key>
+            <PropertyRef Name="Institution_FK" />
+            <PropertyRef Name="LoanProduct" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Institution_FK" Type="int" Nullable="false" />
+          <Property Name="LoanType_FK" Type="int" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoanProduct" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LoanAmount" Type="float" />
+          <Property Name="InterestValue" Type="float" />
+          <Property Name="RepaymentAmount" Type="float" />
+          <Property Name="LoanTenure_FK" Type="int" />
+          <Property Name="MaxLoanTenure" Type="int" />
+          <Property Name="GracePeriod" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_FK" Type="int" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LoanSerialNo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NYSCSerialNo" Type="int" />
+          <Property Name="PayrollSerialNo" Type="int" />
+        </EntityType>
+        <EntityType Name="LoansLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicantID" Type="nvarchar" MaxLength="150" />
+          <Property Name="Institution_FK" Type="int" />
+          <Property Name="trnDate" Type="datetime" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="RefNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LoanTenure">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoanType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="MaritalStatus">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="MarketingChannel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="ListOrderID" Type="int" />
+        </EntityType>
+        <EntityType Name="MarketingDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_FK" Type="int" />
+          <Property Name="MarketingChannel_FK" Type="int" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MeansOfIdentification">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="NigerianState">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Audit" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsVisible" Type="int" Nullable="false" />
+          <Property Name="Country_FK" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+        </EntityType>
+        <EntityType Name="NYSCApplicationStatus">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="NyscLoanApplication">
+          <Key>
+            <PropertyRef Name="RefNumber" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title_FK" Type="int" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Othernames" Type="nvarchar" MaxLength="150" />
+          <Property Name="Gender_FK" Type="int" />
+          <Property Name="MaritalStatus_FK" Type="int" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContactAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PermanentAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="Landmark" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClosestBusStop" Type="nvarchar" MaxLength="250" />
+          <Property Name="StateofResidence_FK" Type="int" />
+          <Property Name="LGA_FK" Type="int" />
+          <Property Name="TemporaryAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="TempLandmark" Type="nvarchar" MaxLength="250" />
+          <Property Name="TempClosestBusStop" Type="nvarchar" MaxLength="250" />
+          <Property Name="TempLGA_FK" Type="int" />
+          <Property Name="TempStateofResidence_FK" Type="int" />
+          <Property Name="StateCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="NyscStateofResidence_FK" Type="int" />
+          <Property Name="NyscLGA_FK" Type="int" />
+          <Property Name="Employer" Type="nvarchar" MaxLength="150" />
+          <Property Name="OfficialAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="PassOutMonth" Type="nvarchar" MaxLength="150" />
+          <Property Name="CDSDay" Type="nvarchar" MaxLength="150" />
+          <Property Name="CDSGroup" Type="nvarchar" MaxLength="150" />
+          <Property Name="NetMonthlyIncome" Type="float" />
+          <Property Name="EMG_FullName" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMG_Relationship" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMG_PhoneNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMG_EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMG_HomeAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="LoanAmount" Type="float" />
+          <Property Name="LoanTenure" Type="int" />
+          <Property Name="ExistingLoan" Type="bit" />
+          <Property Name="ExistingLoan_OutstandingAmount" Type="float" />
+          <Property Name="ExistingLoan_NoOfMonthsLeft" Type="int" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="350" />
+          <Property Name="BVN" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarketingChannel" Type="nvarchar(max)" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="NYSCApplicationStatus_FK" Type="int" />
+          <Property Name="NyscIdCardFilePath" Type="nvarchar(max)" />
+          <Property Name="STA_FilePath" Type="nvarchar(max)" />
+          <Property Name="ReferralCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoanComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoanSerialNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="RepaymentAmount" Type="float" />
+          <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NYSCLoanApproval">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanApplication_FK" Type="int" />
+          <Property Name="CommentBy" Type="int" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="ApplicationStatus_FK" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="NYSCLoanLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanApplication_FK" Type="int" />
+          <Property Name="TrnDate" Type="datetime" />
+          <Property Name="ReferenceNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="PaymentFlag" Type="int" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NYSCLoanSetUp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenure" Type="int" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Repayment" Type="float" />
+        </EntityType>
+        <EntityType Name="NyscMaritalStatus">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="Flag" Type="int" />
+        </EntityType>
+        <EntityType Name="NYSCReferralLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_FK" Type="int" />
+          <Property Name="ReferralCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrnDate" Type="datetime" />
+          <Property Name="ReferenceNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="PageName" />
+          </Key>
+          <Property Name="PageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PageUrl" Type="nvarchar(max)" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="PageHeader" Type="int" />
+        </EntityType>
+        <EntityType Name="PageAuthentication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Page_FK" Type="int" />
+          <Property Name="Role_FK" Type="int" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="pageHeader">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="page_header" Type="varchar" MaxLength="150" />
+          <Property Name="isvisible" Type="int" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+            <PropertyRef Name="PartnerKey" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_FK" Type="int" />
+          <Property Name="PartnerID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PartnerKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="TokenVal" Type="nvarchar" MaxLength="250" />
+          <Property Name="myTokenTime" Type="float" />
+        </EntityType>
+        <EntityType Name="PatnerTransactLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatnerCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="PatnerUrl" Type="nvarchar(max)" />
+          <Property Name="PatnerResponse" Type="nvarchar(max)" />
+          <Property Name="PatnerReference" Type="nvarchar" MaxLength="100" />
+          <Property Name="BankAcct" Type="nvarchar" MaxLength="100" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RefNum" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ValueDate" Type="datetime" />
+          <Property Name="ValueTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentFlag">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="RepaymentMethod">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleName" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="ValueDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StudentLoanDetail">
+          <Key>
+            <PropertyRef Name="LoanApplication_FK" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanApplication_FK" Type="int" Nullable="false" />
+          <Property Name="MatricNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="Institution" Type="nvarchar" MaxLength="350" />
+          <Property Name="Faculty" Type="nvarchar" MaxLength="250" />
+          <Property Name="Department" Type="nvarchar" MaxLength="250" />
+          <Property Name="CourseOfStudy" Type="nvarchar" MaxLength="250" />
+          <Property Name="InstitutionAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="YearOfAdmission" Type="nvarchar" MaxLength="50" />
+          <Property Name="YearOfExpectedCompletion" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentLevel_FK" Type="int" />
+          <Property Name="CurrentSemester_FK" Type="int" />
+          <Property Name="ValueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentRecord">
+          <Key>
+            <PropertyRef Name="Institution_FK" />
+            <PropertyRef Name="MatriculationNumber" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Institution_FK" Type="int" Nullable="false" />
+          <Property Name="MatriculationNumber" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Othernames" Type="nvarchar" MaxLength="150" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="Faculty" Type="nvarchar" MaxLength="150" />
+          <Property Name="Deparment" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreditLimit" Type="float" />
+          <Property Name="NoOfBorrows" Type="int" />
+          <Property Name="AmountBorrowed" Type="float" />
+          <Property Name="OutstandingBalance" Type="float" />
+          <Property Name="CustomMessage" Type="nvarchar" MaxLength="500" />
+          <Property Name="Registered" Type="int" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="100" />
+          <Property Name="Lastname" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PaswordVal" Type="varchar(max)" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="ResetPassword" Type="int" />
+          <Property Name="ValueDate" Type="datetime" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="PinNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title_FK" Type="int" />
+          <Property Name="GenderID" Type="int" />
+          <Property Name="EmploymentStatus_FK" Type="int" />
+          <Property Name="StateofResidence_FK" Type="int" />
+          <Property Name="LGA_FK" Type="int" />
+          <Property Name="ContactAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferralCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyReferralCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferralLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="User_FK" />
+            <PropertyRef Name="Role_FK" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_FK" Type="int" Nullable="false" />
+          <Property Name="Role_FK" Type="int" Nullable="false" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="ValueDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Page_Page">
+          <End Role="pageHeader" Type="Self.pageHeader" Multiplicity="0..1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pageHeader">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="PageHeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="LoanRepayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="LoanTransactionbyDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="UpdatePartner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="myTimer" Type="float" Mode="In" />
+          <Parameter Name="myTokenVal" Type="nvarchar" Mode="In" />
+          <Parameter Name="partnerID" Type="nvarchar" Mode="In" />
+          <Parameter Name="RecID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="UvlotAModelStoreContainer">
+          <EntitySet Name="AccomodationType" EntityType="Self.AccomodationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bankold" EntityType="Self.Bankold" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BanksManager" EntityType="Self.BanksManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocUpload" EntityType="Self.DocUpload" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployerLoanDetail" EntityType="Self.EmployerLoanDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmploymentStatus" EntityType="Self.EmploymentStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guarantor" EntityType="Self.Guarantor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Institution" EntityType="Self.Institution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstitutionType" EntityType="Self.InstitutionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGA" EntityType="Self.LGA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanApplication" EntityType="Self.LoanApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanApproval" EntityType="Self.LoanApproval" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanInterestRate" EntityType="Self.LoanInterestRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanLedger" EntityType="Self.LoanLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanProduct" EntityType="Self.LoanProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoansLedger" EntityType="Self.LoansLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanTenure" EntityType="Self.LoanTenure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanType" EntityType="Self.LoanType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarketingChannel" EntityType="Self.MarketingChannel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarketingDetails" EntityType="Self.MarketingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeansOfIdentification" EntityType="Self.MeansOfIdentification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NigerianState" EntityType="Self.NigerianState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NYSCApplicationStatus" EntityType="Self.NYSCApplicationStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NyscLoanApplication" EntityType="Self.NyscLoanApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NYSCLoanApproval" EntityType="Self.NYSCLoanApproval" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NYSCLoanLedger" EntityType="Self.NYSCLoanLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NYSCLoanSetUp" EntityType="Self.NYSCLoanSetUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NyscMaritalStatus" EntityType="Self.NyscMaritalStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NYSCReferralLedger" EntityType="Self.NYSCReferralLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageAuthentication" EntityType="Self.PageAuthentication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pageHeader" EntityType="Self.pageHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatnerTransactLog" EntityType="Self.PatnerTransactLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentFlag" EntityType="Self.PaymentFlag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RepaymentMethod" EntityType="Self.RepaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentLoanDetail" EntityType="Self.StudentLoanDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentRecord" EntityType="Self.StudentRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Title" EntityType="Self.Title" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanSerialNo" EntityType="Self.LoanSerialNo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LoanSerialNo].[ID] AS [ID], 
+    [LoanSerialNo].[NYSCSerialNo] AS [NYSCSerialNo], 
+    [LoanSerialNo].[PayrollSerialNo] AS [PayrollSerialNo]
+    FROM [dbo].[LoanSerialNo] AS [LoanSerialNo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Page_Page" Association="Self.FK_Page_Page">
+            <End Role="pageHeader" EntitySet="pageHeader" />
+            <End Role="Page" EntitySet="Page" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UvlotAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccomodationType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationStatu">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="225" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+          <Property Name="FlutterWaveBankCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BanksManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lastname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Othernames" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnrollmentBranch" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Nationlaity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddress" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="VerifiedStatus" Type="Int32" />
+          <Property Name="ServiceResponse" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DocUpload">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_FK" Type="Int32" />
+          <Property Name="colls1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cols2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployerLoanDetail">
+          <Key>
+            <PropertyRef Name="LoanApplication_FK" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanApplication_FK" Type="Int32" Nullable="false" />
+          <Property Name="EmployerID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="OfficialEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Occupation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmploymentStatus_FK" Type="Int32" />
+          <Property Name="Department" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NetMonthlyIncome" Type="Double" />
+          <Property Name="LandMark" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ClosestBusStop" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LGA_FK" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LengthOfServiceInYrs" Type="Int32" />
+          <Property Name="LengthOfServiceInMth" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EmploymentStatu">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Guarantor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanApplication_FK" Type="Int32" />
+          <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Othernames" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="RelationShipWithApplicant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Institution">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstitutionType_FK" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InstitutionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionEmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionPhoneNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhoneNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HeadOfInstition" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="InstitutionType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LGA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State_FK" Type="Int32" Nullable="false" />
+          <Property Name="Audit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsVisible" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanApplication">
+          <Key>
+            <PropertyRef Name="LoanRefNumber" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Institution_FK" Type="Int32" />
+          <Property Name="LoanRefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoanProduct_FK" Type="Int32" />
+          <Property Name="Title_FK" Type="Int32" />
+          <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Othernames" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Gender_FK" Type="Int32" />
+          <Property Name="MaritalStatus_FK" Type="Int32" />
+          <Property Name="MeansOfID_FK" Type="Int32" />
+          <Property Name="MeansOfIDFilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IdentficationNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Landmark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClosestBusStop" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StateofResidence_FK" Type="Int32" />
+          <Property Name="LGA_FK" Type="Int32" />
+          <Property Name="AccomodationType_FK" Type="Int32" />
+          <Property Name="Organization" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NOK_FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NOK_Relationship" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NOK_PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NOK_EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NOK_HomeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LoanAmount" Type="Double" />
+          <Property Name="LoanTenure" Type="Int32" />
+          <Property Name="RepaymentMethod_FK" Type="Int32" />
+          <Property Name="ExistingLoan" Type="Boolean" />
+          <Property Name="ExistingLoan_OutstandingAmount" Type="Double" />
+          <Property Name="ExistingLoan_NoOfMonthsLeft" Type="Int32" />
+          <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountName" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="BVN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="ApplicationStatus_FK" Type="Int32" />
+          <Property Name="LoanComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovedLoanAmount" Type="Double" />
+          <Property Name="ApprovedTenure" Type="Double" />
+          <Property Name="ApprovedInterest" Type="Double" />
+        </EntityType>
+        <EntityType Name="LoanApproval">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanApplication_FK" Type="Int32" />
+          <Property Name="CommentBy" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationStatus_FK" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LoanInterestRate">
+          <Key>
+            <PropertyRef Name="InterestRate" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanType_FK" Type="Int32" />
+          <Property Name="InterestRate" Type="Double" Nullable="false" />
+          <Property Name="LoanTenure" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="Institution_FK" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LoanLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Institution_FK" Type="Int32" />
+          <Property Name="ApplicantID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TranxDate" Type="DateTime" Precision="3" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="RefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartnerRefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="PaymentFlag_FK" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LoanProduct">
+          <Key>
+            <PropertyRef Name="Institution_FK" />
+            <PropertyRef Name="LoanProduct1" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Institution_FK" Type="Int32" Nullable="false" />
+          <Property Name="LoanType_FK" Type="Int32" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoanProduct1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoanAmount" Type="Double" />
+          <Property Name="InterestValue" Type="Double" />
+          <Property Name="RepaymentAmount" Type="Double" />
+          <Property Name="LoanTenure_FK" Type="Int32" />
+          <Property Name="MaxLoanTenure" Type="Int32" />
+          <Property Name="GracePeriod" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_FK" Type="Int32" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LoansLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Institution_FK" Type="Int32" />
+          <Property Name="trnDate" Type="DateTime" Precision="3" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="RefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LoanTenure">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LoanType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MaritalStatu">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MeansOfIdentification">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NigerianState">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsVisible" Type="Int32" Nullable="false" />
+          <Property Name="Country_FK" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NYSCApplicationStatu">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NyscLoanApplication">
+          <Key>
+            <PropertyRef Name="RefNumber" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title_FK" Type="Int32" />
+          <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Othernames" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Gender_FK" Type="Int32" />
+          <Property Name="MaritalStatus_FK" Type="Int32" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Landmark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClosestBusStop" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StateofResidence_FK" Type="Int32" />
+          <Property Name="LGA_FK" Type="Int32" />
+          <Property Name="TemporaryAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TempLandmark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TempClosestBusStop" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TempLGA_FK" Type="Int32" />
+          <Property Name="TempStateofResidence_FK" Type="Int32" />
+          <Property Name="StateCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NyscStateofResidence_FK" Type="Int32" />
+          <Property Name="NyscLGA_FK" Type="Int32" />
+          <Property Name="Employer" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="OfficialAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PassOutMonth" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CDSDay" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CDSGroup" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NetMonthlyIncome" Type="Double" />
+          <Property Name="EMG_FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_Relationship" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_HomeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LoanAmount" Type="Double" />
+          <Property Name="LoanTenure" Type="Int32" />
+          <Property Name="ExistingLoan" Type="Boolean" />
+          <Property Name="ExistingLoan_OutstandingAmount" Type="Double" />
+          <Property Name="ExistingLoan_NoOfMonthsLeft" Type="Int32" />
+          <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountName" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="BVN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="NYSCApplicationStatus_FK" Type="Int32" />
+          <Property Name="NyscIdCardFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STA_FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoanComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoanSerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarketingChannel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RepaymentAmount" Type="Double" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NYSCLoanApproval">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanApplication_FK" Type="Int32" />
+          <Property Name="CommentBy" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationStatus_FK" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NYSCLoanSetUp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenure" Type="Int32" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Repayment" Type="Double" />
+        </EntityType>
+        <EntityType Name="NyscMaritalStatu">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="Flag" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="PageName" />
+          </Key>
+          <Property Name="PageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PageHeader" Type="Int32" />
+          <NavigationProperty Name="pageHeader1" Relationship="Self.FK_Page_Page" FromRole="Page" ToRole="pageHeader" />
+        </EntityType>
+        <EntityType Name="PageAuthentication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Page_FK" Type="Int32" />
+          <Property Name="Role_FK" Type="Int32" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="pageHeader">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="page_header" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="isvisible" Type="Int32" />
+          <NavigationProperty Name="Pages" Relationship="Self.FK_Page_Page" FromRole="pageHeader" ToRole="Page" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+            <PropertyRef Name="PartnerKey" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_FK" Type="Int32" />
+          <Property Name="PartnerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartnerKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TokenVal" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="myTokenTime" Type="Double" />
+        </EntityType>
+        <EntityType Name="PaymentFlag">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RepaymentMethod">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleName" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="StudentLoanDetail">
+          <Key>
+            <PropertyRef Name="LoanApplication_FK" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanApplication_FK" Type="Int32" Nullable="false" />
+          <Property Name="MatricNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Institution" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Faculty" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CourseOfStudy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfAdmission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfExpectedCompletion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentLevel_FK" Type="Int32" />
+          <Property Name="CurrentSemester_FK" Type="Int32" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StudentRecord">
+          <Key>
+            <PropertyRef Name="Institution_FK" />
+            <PropertyRef Name="MatriculationNumber" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Institution_FK" Type="Int32" Nullable="false" />
+          <Property Name="MatriculationNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Othernames" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Faculty" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Deparment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="Double" />
+          <Property Name="NoOfBorrows" Type="Int32" />
+          <Property Name="AmountBorrowed" Type="Double" />
+          <Property Name="OutstandingBalance" Type="Double" />
+          <Property Name="CustomMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Registered" Type="Int32" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaswordVal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ResetPassword" Type="Int32" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="PinNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title_FK" Type="Int32" />
+          <Property Name="GenderID" Type="Int32" />
+          <Property Name="EmploymentStatus_FK" Type="Int32" />
+          <Property Name="StateofResidence_FK" Type="Int32" />
+          <Property Name="LGA_FK" Type="Int32" />
+          <Property Name="ContactAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralLevel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="User_FK" />
+            <PropertyRef Name="Role_FK" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_FK" Type="Int32" Nullable="false" />
+          <Property Name="Role_FK" Type="Int32" Nullable="false" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LoanSerialNo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NYSCSerialNo" Type="Int32" />
+          <Property Name="PayrollSerialNo" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Page_Page">
+          <End Role="pageHeader" Type="Self.pageHeader" Multiplicity="0..1" />
+          <End Role="Page" Type="Self.Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pageHeader">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="PageHeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UvlotAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccomodationTypes" EntityType="Self.AccomodationType" />
+          <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatu" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="BanksManagers" EntityType="Self.BanksManager" />
+          <EntitySet Name="DocUploads" EntityType="Self.DocUpload" />
+          <EntitySet Name="EmployerLoanDetails" EntityType="Self.EmployerLoanDetail" />
+          <EntitySet Name="EmploymentStatus" EntityType="Self.EmploymentStatu" />
+          <EntitySet Name="Guarantors" EntityType="Self.Guarantor" />
+          <EntitySet Name="Institutions" EntityType="Self.Institution" />
+          <EntitySet Name="InstitutionTypes" EntityType="Self.InstitutionType" />
+          <EntitySet Name="LGAs" EntityType="Self.LGA" />
+          <EntitySet Name="LoanApplications" EntityType="Self.LoanApplication" />
+          <EntitySet Name="LoanApprovals" EntityType="Self.LoanApproval" />
+          <EntitySet Name="LoanInterestRates" EntityType="Self.LoanInterestRate" />
+          <EntitySet Name="LoanLedgers" EntityType="Self.LoanLedger" />
+          <EntitySet Name="LoanProducts" EntityType="Self.LoanProduct" />
+          <EntitySet Name="LoansLedgers" EntityType="Self.LoansLedger" />
+          <EntitySet Name="LoanTenures" EntityType="Self.LoanTenure" />
+          <EntitySet Name="LoanTypes" EntityType="Self.LoanType" />
+          <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatu" />
+          <EntitySet Name="MeansOfIdentifications" EntityType="Self.MeansOfIdentification" />
+          <EntitySet Name="NigerianStates" EntityType="Self.NigerianState" />
+          <EntitySet Name="NYSCApplicationStatus" EntityType="Self.NYSCApplicationStatu" />
+          <EntitySet Name="NyscLoanApplications" EntityType="Self.NyscLoanApplication" />
+          <EntitySet Name="NYSCLoanApprovals" EntityType="Self.NYSCLoanApproval" />
+          <EntitySet Name="NYSCLoanSetUps" EntityType="Self.NYSCLoanSetUp" />
+          <EntitySet Name="NyscMaritalStatus" EntityType="Self.NyscMaritalStatu" />
+          <EntitySet Name="Pages" EntityType="Self.Page" />
+          <EntitySet Name="PageAuthentications" EntityType="Self.PageAuthentication" />
+          <EntitySet Name="pageHeaders" EntityType="Self.pageHeader" />
+          <EntitySet Name="Partners" EntityType="Self.Partner" />
+          <EntitySet Name="PaymentFlags" EntityType="Self.PaymentFlag" />
+          <EntitySet Name="RepaymentMethods" EntityType="Self.RepaymentMethod" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="StudentLoanDetails" EntityType="Self.StudentLoanDetail" />
+          <EntitySet Name="StudentRecords" EntityType="Self.StudentRecord" />
+          <EntitySet Name="Titles" EntityType="Self.Title" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="LoanSerialNoes" EntityType="Self.LoanSerialNo" />
+          <AssociationSet Name="FK_Page_Page" Association="Self.FK_Page_Page">
+            <End Role="pageHeader" EntitySet="pageHeaders" />
+            <End Role="Page" EntitySet="Pages" />
+          </AssociationSet>
+          <FunctionImport Name="LoanRepayment" ReturnType="Collection(UvlotAModel.LoanRepayment_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="LoanTransactionbyDate" ReturnType="Collection(UvlotAModel.LoanTransactionbyDate_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePartner">
+            <Parameter Name="myTimer" Mode="In" Type="Double" />
+            <Parameter Name="myTokenVal" Mode="In" Type="String" />
+            <Parameter Name="partnerID" Mode="In" Type="String" />
+            <Parameter Name="RecID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="PatnerTransactLogs" EntityType="UvlotAModel.PatnerTransactLog" />
+          <EntitySet Name="MarketingChannels" EntityType="UvlotAModel.MarketingChannel" />
+          <EntitySet Name="MarketingDetails" EntityType="UvlotAModel.MarketingDetail" />
+          <EntitySet Name="NYSCLoanLedgers" EntityType="UvlotAModel.NYSCLoanLedger" />
+          <EntitySet Name="NYSCReferralLedgers" EntityType="UvlotAModel.NYSCReferralLedger" />
+          <EntitySet Name="Bankolds" EntityType="UvlotAModel.Bankold" />
+        </EntityContainer>
+        <ComplexType Name="LoanRepayment_Result">
+          <Property Type="Int32" Name="NoOFTransaction" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" />
+          <Property Type="Double" Name="LoanAmount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="LoanTransactionbyDate_Result">
+          <Property Type="Int32" Name="NoOFTransaction" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" />
+          <Property Type="Double" Name="LoanAmount" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="PatnerTransactLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatnerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatnerUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PatnerResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PatnerReference" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BankAcct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RefNum" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+          <Property Name="ValueTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MarketingChannel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ListOrderID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MarketingDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_FK" Type="Int32" />
+          <Property Name="MarketingChannel_FK" Type="Int32" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NYSCLoanLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanApplication_FK" Type="Int32" />
+          <Property Name="TrnDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="PaymentFlag" Type="Int32" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NYSCReferralLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="User_FK" Type="Int32" />
+          <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrnDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bankold">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UvlotAModelStoreContainer" CdmEntityContainer="UvlotAEntities">
+          <EntitySetMapping Name="AccomodationTypes">
+            <EntityTypeMapping TypeName="UvlotAModel.AccomodationType">
+              <MappingFragment StoreEntitySet="AccomodationType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationStatus">
+            <EntityTypeMapping TypeName="UvlotAModel.ApplicationStatu">
+              <MappingFragment StoreEntitySet="ApplicationStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="UvlotAModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="FlutterWaveBankCode" ColumnName="FlutterWaveBankCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BanksManagers">
+            <EntityTypeMapping TypeName="UvlotAModel.BanksManager">
+              <MappingFragment StoreEntitySet="BanksManager">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Othernames" ColumnName="Othernames" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="EnrollmentBranch" ColumnName="EnrollmentBranch" />
+                <ScalarProperty Name="Nationlaity" ColumnName="Nationlaity" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="VerifiedStatus" ColumnName="VerifiedStatus" />
+                <ScalarProperty Name="ServiceResponse" ColumnName="ServiceResponse" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocUploads">
+            <EntityTypeMapping TypeName="UvlotAModel.DocUpload">
+              <MappingFragment StoreEntitySet="DocUpload">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DocName" ColumnName="DocName" />
+                <ScalarProperty Name="DocImagePath" ColumnName="DocImagePath" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="colls1" ColumnName="colls1" />
+                <ScalarProperty Name="cols2" ColumnName="cols2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployerLoanDetails">
+            <EntityTypeMapping TypeName="UvlotAModel.EmployerLoanDetail">
+              <MappingFragment StoreEntitySet="EmployerLoanDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+                <ScalarProperty Name="OfficialEmailAddress" ColumnName="OfficialEmailAddress" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="EmploymentStatus_FK" ColumnName="EmploymentStatus_FK" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="NetMonthlyIncome" ColumnName="NetMonthlyIncome" />
+                <ScalarProperty Name="LandMark" ColumnName="LandMark" />
+                <ScalarProperty Name="ClosestBusStop" ColumnName="ClosestBusStop" />
+                <ScalarProperty Name="LGA_FK" ColumnName="LGA_FK" />
+                <ScalarProperty Name="LengthOfServiceInYrs" ColumnName="LengthOfServiceInYrs" />
+                <ScalarProperty Name="LengthOfServiceInMth" ColumnName="LengthOfServiceInMth" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmploymentStatus">
+            <EntityTypeMapping TypeName="UvlotAModel.EmploymentStatu">
+              <MappingFragment StoreEntitySet="EmploymentStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guarantors">
+            <EntityTypeMapping TypeName="UvlotAModel.Guarantor">
+              <MappingFragment StoreEntitySet="Guarantor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Othernames" ColumnName="Othernames" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="RelationShipWithApplicant" ColumnName="RelationShipWithApplicant" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Institutions">
+            <EntityTypeMapping TypeName="UvlotAModel.Institution">
+              <MappingFragment StoreEntitySet="Institution">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InstitutionType_FK" ColumnName="InstitutionType_FK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InstitutionCode" ColumnName="InstitutionCode" />
+                <ScalarProperty Name="InstitutionAddress" ColumnName="InstitutionAddress" />
+                <ScalarProperty Name="InstitutionEmailAddress" ColumnName="InstitutionEmailAddress" />
+                <ScalarProperty Name="InstitutionPhoneNo" ColumnName="InstitutionPhoneNo" />
+                <ScalarProperty Name="ContactPhoneNo" ColumnName="ContactPhoneNo" />
+                <ScalarProperty Name="ContactEmailAddress" ColumnName="ContactEmailAddress" />
+                <ScalarProperty Name="HeadOfInstition" ColumnName="HeadOfInstition" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstitutionTypes">
+            <EntityTypeMapping TypeName="UvlotAModel.InstitutionType">
+              <MappingFragment StoreEntitySet="InstitutionType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGAs">
+            <EntityTypeMapping TypeName="UvlotAModel.LGA">
+              <MappingFragment StoreEntitySet="LGA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="State_FK" ColumnName="State_FK" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanApplications">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanApplication">
+              <MappingFragment StoreEntitySet="LoanApplication">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Institution_FK" ColumnName="Institution_FK" />
+                <ScalarProperty Name="LoanRefNumber" ColumnName="LoanRefNumber" />
+                <ScalarProperty Name="LoanProduct_FK" ColumnName="LoanProduct_FK" />
+                <ScalarProperty Name="Title_FK" ColumnName="Title_FK" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Othernames" ColumnName="Othernames" />
+                <ScalarProperty Name="Gender_FK" ColumnName="Gender_FK" />
+                <ScalarProperty Name="MaritalStatus_FK" ColumnName="MaritalStatus_FK" />
+                <ScalarProperty Name="MeansOfID_FK" ColumnName="MeansOfID_FK" />
+                <ScalarProperty Name="MeansOfIDFilePath" ColumnName="MeansOfIDFilePath" />
+                <ScalarProperty Name="IdentficationNumber" ColumnName="IdentficationNumber" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="ClosestBusStop" ColumnName="ClosestBusStop" />
+                <ScalarProperty Name="StateofResidence_FK" ColumnName="StateofResidence_FK" />
+                <ScalarProperty Name="LGA_FK" ColumnName="LGA_FK" />
+                <ScalarProperty Name="AccomodationType_FK" ColumnName="AccomodationType_FK" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="NOK_FullName" ColumnName="NOK_FullName" />
+                <ScalarProperty Name="NOK_Relationship" ColumnName="NOK_Relationship" />
+                <ScalarProperty Name="NOK_PhoneNumber" ColumnName="NOK_PhoneNumber" />
+                <ScalarProperty Name="NOK_EmailAddress" ColumnName="NOK_EmailAddress" />
+                <ScalarProperty Name="NOK_HomeAddress" ColumnName="NOK_HomeAddress" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="LoanTenure" ColumnName="LoanTenure" />
+                <ScalarProperty Name="RepaymentMethod_FK" ColumnName="RepaymentMethod_FK" />
+                <ScalarProperty Name="ExistingLoan" ColumnName="ExistingLoan" />
+                <ScalarProperty Name="ExistingLoan_OutstandingAmount" ColumnName="ExistingLoan_OutstandingAmount" />
+                <ScalarProperty Name="ExistingLoan_NoOfMonthsLeft" ColumnName="ExistingLoan_NoOfMonthsLeft" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="BVN" ColumnName="BVN" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ApplicationStatus_FK" ColumnName="ApplicationStatus_FK" />
+                <ScalarProperty Name="LoanComment" ColumnName="LoanComment" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ApprovedLoanAmount" ColumnName="ApprovedLoanAmount" />
+                <ScalarProperty Name="ApprovedTenure" ColumnName="ApprovedTenure" />
+                <ScalarProperty Name="ApprovedInterest" ColumnName="ApprovedInterest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanApprovals">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanApproval">
+              <MappingFragment StoreEntitySet="LoanApproval">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
+                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ApplicationStatus_FK" ColumnName="ApplicationStatus_FK" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanInterestRates">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanInterestRate">
+              <MappingFragment StoreEntitySet="LoanInterestRate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoanType_FK" ColumnName="LoanType_FK" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="LoanTenure" ColumnName="LoanTenure" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Institution_FK" ColumnName="Institution_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanLedgers">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanLedger">
+              <MappingFragment StoreEntitySet="LoanLedger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Institution_FK" ColumnName="Institution_FK" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="TranxDate" ColumnName="TranxDate" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="RefNumber" ColumnName="RefNumber" />
+                <ScalarProperty Name="PartnerRefNumber" ColumnName="PartnerRefNumber" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="PaymentFlag_FK" ColumnName="PaymentFlag_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanProducts">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanProduct">
+              <MappingFragment StoreEntitySet="LoanProduct">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Institution_FK" ColumnName="Institution_FK" />
+                <ScalarProperty Name="LoanType_FK" ColumnName="LoanType_FK" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="LoanProduct1" ColumnName="LoanProduct" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="InterestValue" ColumnName="InterestValue" />
+                <ScalarProperty Name="RepaymentAmount" ColumnName="RepaymentAmount" />
+                <ScalarProperty Name="LoanTenure_FK" ColumnName="LoanTenure_FK" />
+                <ScalarProperty Name="MaxLoanTenure" ColumnName="MaxLoanTenure" />
+                <ScalarProperty Name="GracePeriod" ColumnName="GracePeriod" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoansLedgers">
+            <EntityTypeMapping TypeName="UvlotAModel.LoansLedger">
+              <MappingFragment StoreEntitySet="LoansLedger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="Institution_FK" ColumnName="Institution_FK" />
+                <ScalarProperty Name="trnDate" ColumnName="trnDate" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="RefNumber" ColumnName="RefNumber" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanTenures">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanTenure">
+              <MappingFragment StoreEntitySet="LoanTenure">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanTypes">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanType">
+              <MappingFragment StoreEntitySet="LoanType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaritalStatus">
+            <EntityTypeMapping TypeName="UvlotAModel.MaritalStatu">
+              <MappingFragment StoreEntitySet="MaritalStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeansOfIdentifications">
+            <EntityTypeMapping TypeName="UvlotAModel.MeansOfIdentification">
+              <MappingFragment StoreEntitySet="MeansOfIdentification">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NigerianStates">
+            <EntityTypeMapping TypeName="UvlotAModel.NigerianState">
+              <MappingFragment StoreEntitySet="NigerianState">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Country_FK" ColumnName="Country_FK" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCApplicationStatus">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCApplicationStatu">
+              <MappingFragment StoreEntitySet="NYSCApplicationStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NyscLoanApplications">
+            <EntityTypeMapping TypeName="UvlotAModel.NyscLoanApplication">
+              <MappingFragment StoreEntitySet="NyscLoanApplication">
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="RepaymentAmount" ColumnName="RepaymentAmount" />
+                <ScalarProperty Name="MarketingChannel" ColumnName="MarketingChannel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RefNumber" ColumnName="RefNumber" />
+                <ScalarProperty Name="Title_FK" ColumnName="Title_FK" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Othernames" ColumnName="Othernames" />
+                <ScalarProperty Name="Gender_FK" ColumnName="Gender_FK" />
+                <ScalarProperty Name="MaritalStatus_FK" ColumnName="MaritalStatus_FK" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="ClosestBusStop" ColumnName="ClosestBusStop" />
+                <ScalarProperty Name="StateofResidence_FK" ColumnName="StateofResidence_FK" />
+                <ScalarProperty Name="LGA_FK" ColumnName="LGA_FK" />
+                <ScalarProperty Name="TemporaryAddress" ColumnName="TemporaryAddress" />
+                <ScalarProperty Name="TempLandmark" ColumnName="TempLandmark" />
+                <ScalarProperty Name="TempClosestBusStop" ColumnName="TempClosestBusStop" />
+                <ScalarProperty Name="TempLGA_FK" ColumnName="TempLGA_FK" />
+                <ScalarProperty Name="TempStateofResidence_FK" ColumnName="TempStateofResidence_FK" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="NyscStateofResidence_FK" ColumnName="NyscStateofResidence_FK" />
+                <ScalarProperty Name="NyscLGA_FK" ColumnName="NyscLGA_FK" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="OfficialAddress" ColumnName="OfficialAddress" />
+                <ScalarProperty Name="PassOutMonth" ColumnName="PassOutMonth" />
+                <ScalarProperty Name="CDSDay" ColumnName="CDSDay" />
+                <ScalarProperty Name="CDSGroup" ColumnName="CDSGroup" />
+                <ScalarProperty Name="NetMonthlyIncome" ColumnName="NetMonthlyIncome" />
+                <ScalarProperty Name="EMG_FullName" ColumnName="EMG_FullName" />
+                <ScalarProperty Name="EMG_Relationship" ColumnName="EMG_Relationship" />
+                <ScalarProperty Name="EMG_PhoneNumber" ColumnName="EMG_PhoneNumber" />
+                <ScalarProperty Name="EMG_EmailAddress" ColumnName="EMG_EmailAddress" />
+                <ScalarProperty Name="EMG_HomeAddress" ColumnName="EMG_HomeAddress" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="LoanTenure" ColumnName="LoanTenure" />
+                <ScalarProperty Name="ExistingLoan" ColumnName="ExistingLoan" />
+                <ScalarProperty Name="ExistingLoan_OutstandingAmount" ColumnName="ExistingLoan_OutstandingAmount" />
+                <ScalarProperty Name="ExistingLoan_NoOfMonthsLeft" ColumnName="ExistingLoan_NoOfMonthsLeft" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="BVN" ColumnName="BVN" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="NYSCApplicationStatus_FK" ColumnName="NYSCApplicationStatus_FK" />
+                <ScalarProperty Name="NyscIdCardFilePath" ColumnName="NyscIdCardFilePath" />
+                <ScalarProperty Name="STA_FilePath" ColumnName="STA_FilePath" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="LoanComment" ColumnName="LoanComment" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+                <ScalarProperty Name="LoanSerialNo" ColumnName="LoanSerialNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCLoanApprovals">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCLoanApproval">
+              <MappingFragment StoreEntitySet="NYSCLoanApproval">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
+                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ApplicationStatus_FK" ColumnName="ApplicationStatus_FK" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCLoanSetUps">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCLoanSetUp">
+              <MappingFragment StoreEntitySet="NYSCLoanSetUp">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tenure" ColumnName="Tenure" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Repayment" ColumnName="Repayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NyscMaritalStatus">
+            <EntityTypeMapping TypeName="UvlotAModel.NyscMaritalStatu">
+              <MappingFragment StoreEntitySet="NyscMaritalStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="UvlotAModel.Page">
+              <MappingFragment StoreEntitySet="Page">
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="PageDescription" ColumnName="PageDescription" />
+                <ScalarProperty Name="PageHeader" ColumnName="PageHeader" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageAuthentications">
+            <EntityTypeMapping TypeName="UvlotAModel.PageAuthentication">
+              <MappingFragment StoreEntitySet="PageAuthentication">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Page_FK" ColumnName="Page_FK" />
+                <ScalarProperty Name="Role_FK" ColumnName="Role_FK" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pageHeaders">
+            <EntityTypeMapping TypeName="UvlotAModel.pageHeader">
+              <MappingFragment StoreEntitySet="pageHeader">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="page_header" ColumnName="page_header" />
+                <ScalarProperty Name="isvisible" ColumnName="isvisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="UvlotAModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+                <ScalarProperty Name="PartnerKey" ColumnName="PartnerKey" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="TokenVal" ColumnName="TokenVal" />
+                <ScalarProperty Name="myTokenTime" ColumnName="myTokenTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentFlags">
+            <EntityTypeMapping TypeName="UvlotAModel.PaymentFlag">
+              <MappingFragment StoreEntitySet="PaymentFlag">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepaymentMethods">
+            <EntityTypeMapping TypeName="UvlotAModel.RepaymentMethod">
+              <MappingFragment StoreEntitySet="RepaymentMethod">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="UvlotAModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentLoanDetails">
+            <EntityTypeMapping TypeName="UvlotAModel.StudentLoanDetail">
+              <MappingFragment StoreEntitySet="StudentLoanDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
+                <ScalarProperty Name="MatricNumber" ColumnName="MatricNumber" />
+                <ScalarProperty Name="Institution" ColumnName="Institution" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="CourseOfStudy" ColumnName="CourseOfStudy" />
+                <ScalarProperty Name="InstitutionAddress" ColumnName="InstitutionAddress" />
+                <ScalarProperty Name="YearOfAdmission" ColumnName="YearOfAdmission" />
+                <ScalarProperty Name="YearOfExpectedCompletion" ColumnName="YearOfExpectedCompletion" />
+                <ScalarProperty Name="CurrentLevel_FK" ColumnName="CurrentLevel_FK" />
+                <ScalarProperty Name="CurrentSemester_FK" ColumnName="CurrentSemester_FK" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentRecords">
+            <EntityTypeMapping TypeName="UvlotAModel.StudentRecord">
+              <MappingFragment StoreEntitySet="StudentRecord">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Institution_FK" ColumnName="Institution_FK" />
+                <ScalarProperty Name="MatriculationNumber" ColumnName="MatriculationNumber" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Othernames" ColumnName="Othernames" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Deparment" ColumnName="Deparment" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="NoOfBorrows" ColumnName="NoOfBorrows" />
+                <ScalarProperty Name="AmountBorrowed" ColumnName="AmountBorrowed" />
+                <ScalarProperty Name="OutstandingBalance" ColumnName="OutstandingBalance" />
+                <ScalarProperty Name="CustomMessage" ColumnName="CustomMessage" />
+                <ScalarProperty Name="Registered" ColumnName="Registered" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titles">
+            <EntityTypeMapping TypeName="UvlotAModel.Title">
+              <MappingFragment StoreEntitySet="Title">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="UvlotAModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PaswordVal" ColumnName="PaswordVal" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="PinNumber" ColumnName="PinNumber" />
+                <ScalarProperty Name="Title_FK" ColumnName="Title_FK" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="EmploymentStatus_FK" ColumnName="EmploymentStatus_FK" />
+                <ScalarProperty Name="StateofResidence_FK" ColumnName="StateofResidence_FK" />
+                <ScalarProperty Name="LGA_FK" ColumnName="LGA_FK" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="MyReferralCode" ColumnName="MyReferralCode" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="ReferralLevel" ColumnName="ReferralLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="UvlotAModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="Role_FK" ColumnName="Role_FK" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanSerialNoes">
+            <EntityTypeMapping TypeName="UvlotAModel.LoanSerialNo">
+              <MappingFragment StoreEntitySet="LoanSerialNo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NYSCSerialNo" ColumnName="NYSCSerialNo" />
+                <ScalarProperty Name="PayrollSerialNo" ColumnName="PayrollSerialNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="LoanRepayment" FunctionName="UvlotAModel.Store.LoanRepayment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.LoanRepayment_Result">
+                <ScalarProperty Name="NoOFTransaction" ColumnName="NoOFTransaction" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoanTransactionbyDate" FunctionName="UvlotAModel.Store.LoanTransactionbyDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.LoanTransactionbyDate_Result">
+                <ScalarProperty Name="NoOFTransaction" ColumnName="NoOFTransaction" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdatePartner" FunctionName="UvlotAModel.Store.UpdatePartner" />
+          <EntitySetMapping Name="PatnerTransactLogs">
+            <EntityTypeMapping TypeName="UvlotAModel.PatnerTransactLog">
+              <MappingFragment StoreEntitySet="PatnerTransactLog">
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="RefNum" ColumnName="RefNum" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankAcct" ColumnName="BankAcct" />
+                <ScalarProperty Name="PatnerReference" ColumnName="PatnerReference" />
+                <ScalarProperty Name="PatnerResponse" ColumnName="PatnerResponse" />
+                <ScalarProperty Name="PatnerUrl" ColumnName="PatnerUrl" />
+                <ScalarProperty Name="PatnerCode" ColumnName="PatnerCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarketingChannels">
+            <EntityTypeMapping TypeName="UvlotAModel.MarketingChannel">
+              <MappingFragment StoreEntitySet="MarketingChannel">
+                <ScalarProperty Name="ListOrderID" ColumnName="ListOrderID" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarketingDetails">
+            <EntityTypeMapping TypeName="UvlotAModel.MarketingDetail">
+              <MappingFragment StoreEntitySet="MarketingDetails">
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="MarketingChannel_FK" ColumnName="MarketingChannel_FK" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCLoanLedgers">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCLoanLedger">
+              <MappingFragment StoreEntitySet="NYSCLoanLedger">
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="PaymentFlag" ColumnName="PaymentFlag" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCReferralLedgers">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCReferralLedger">
+              <MappingFragment StoreEntitySet="NYSCReferralLedger">
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bankolds">
+            <EntityTypeMapping TypeName="UvlotAModel.Bankold">
+              <MappingFragment StoreEntitySet="Bankold">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

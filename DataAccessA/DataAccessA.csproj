@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0433F1D-5709-40EC-8D47-BBBF349C70B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessA</RootNamespace>
+    <AssemblyName>DataAccessA</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Classes\AppLoan.cs" />
+    <Compile Include="Classes\BVNC.cs" />
+    <Compile Include="Classes\CryptographyManager.cs" />
+    <Compile Include="Classes\Helper.cs" />
+    <Compile Include="Classes\LoanApplication.cs" />
+    <Compile Include="Classes\LoanViewModel.cs" />
+    <Compile Include="Classes\Menus.cs" />
+    <Compile Include="Classes\MyUtility.cs" />
+    <Compile Include="Classes\WebLog.cs" />
+    <Compile Include="DataManager\AccomodationType.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\ApplicationStatu.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Bank.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Bankold.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\BanksManager.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\DataReader.cs" />
+    <Compile Include="DataManager\DataWriter.cs" />
+    <Compile Include="DataManager\DocUpload.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\EmployerLoanDetail.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\EmploymentStatu.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Guarantor.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Institution.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\InstitutionType.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LGA.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanApplication.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanApproval.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanInterestRate.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanLedger.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanProduct.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanRepayment_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanSerialNo.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoansLedger.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanTenure.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanTransactionbyDate_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanType.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\MaritalStatu.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\MarketingChannel.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\MarketingDetail.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\MeansOfIdentification.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NigerianState.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NYSCApplicationStatu.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NyscLoanApplication.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NYSCLoanApproval.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NYSCLoanLedger.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NYSCLoanSetUp.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NyscMaritalStatu.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NYSCReferralLedger.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Page.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\PageAuthentication.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\pageHeader.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Partner.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\PatnerTransactLog.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\PaymentFlag.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\RepaymentMethod.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Role.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\StudentLoanDetail.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\StudentRecord.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Title.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\User.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\UserRole.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\UvlotA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UvlotA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\UvlotA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\UvlotA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UvlotA.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DataManager\UvlotA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UvlotA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataManager\UvlotA.edmx.diagram">
+      <DependentUpon>UvlotA.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataManager\UvlotA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UvlotA.edmx</DependentUpon>
+      <LastGenOutput>UvlotA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataManager\UvlotA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UvlotA.edmx</DependentUpon>
+      <LastGenOutput>UvlotA.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

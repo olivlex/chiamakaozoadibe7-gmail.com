@@ -1,0 +1,1053 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="asset/img/favicon.png" type="image/gif">
+    <meta name="description" content="Cash Now Now - loans, savings, payments, agency.">
+    <meta name="keywords" content="Cash Now Now - loans, savings, payments, agency.">
+    <title>Cash Now Now</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/bootstrap.min.css")>
+
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/fontawesome-all.min.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/reset.css")>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/style.css")>
+   <!-- <link href="~/asset/css/style.css" rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/responsive.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/DashboardStyles/css/MyStyle.css")>
+
+</head>
+
+<head>
+   
+</head>
+
+<body class="js">
+    <div id="preloader"></div>
+
+
+    <!-- start logo menu area -->
+    <header class="second-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="second-logo">
+                        <a href="/"><img src=@Url.Content("/asset/img/logo.png") alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-10 menuShift">
+                    <div id="cssmenu">
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+
+                            </li>
+                            @*<li><a href="#">About us </a></li>*@
+                            <li>
+                                <a href="#">NYSC LOAN</a>
+                                <ul>
+
+                                    <li><a href="/NYSCLOAN/NYSCLoanAppForm">Apply Here</a></li>
+                                    <li><a href="@Url.Action("CheckNYSCLoan", "NYSCLOAN")">Check Loan Status</a></li>
+                                    <li><a href="@Url.Action("termsconditions", "Home")">Terms and Conditions</a></li>
+                                    <li><a href="@Url.Action("FAQ", "Home")">FAQs</a></li>
+                                </ul>
+                            </li>
+                            <li>
+
+                                <a href="#">REFERRALS</a>
+
+
+                                <ul>
+                                    <li><a href="@Url.Action("ReferralReg", "Home")">How to Register</a></li>
+                                    <li><a href="@Url.Action("HIW", "Home")">How It Works</a></li>
+                                    <li><a href="@Url.Action("ReferralTermsAndConditions", "Home")">Referral TermsAnd Conditions</a></li>
+                                    <li><a href="@Url.Action("ReferralFAQs", "Home")">Referral FAQs</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li><a href="#">Eligibility</a></li> -->
+                            <li class="referal">
+                                <a href="@Url.Action("Signup", "User")" class="btn btn-primary">Become A Referrer</a>
+                            </li>
+
+                            @*<li>
+                                <div class="col-lg-1">
+                                    <a href="#" class="btn btn-primary btn-sm"> A Referral</a>
+                                </div>
+                                <ul>*@
+
+
+
+                                    @*<li><a href="faq.html">FAQs</a></li>
+                                    <li><a href="#">How It Works</a></li>
+                                    <li><a href="@Url.Action("termsconditions", "Home")">Terms and Conditions</a></li>*@
+
+
+                                @*</ul>
+                            </li>*@
+                            <!--<li><a href="contact.html">Contact us</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+                @*<div class="col-lg-1">
+                    <a href="#" class="/User/Signin"> Login</a>
+                </div>
+                <div class="col-lg-1">
+                    <a href="#" class="/User/Signup"> Register</a>
+                </div>*@
+                @if (Session["User"] == null)
+                {
+                    <div class="col-lg-1">
+                        <a href="@Url.Action("Signin", "User")" class="btn btn-primary btn-sm"> Login</a>
+                    </div>
+                    <div class="col-lg-1">
+                        @*<a href="#" class="btn btn-primary btn-sm"> Register</a>*@
+                        <a href="@Url.Action("Signup", "User")" class="btn btn-primary btn-sm"> Register</a>
+                    </div>
+                }
+                @if (Session["User"] != null)
+                {
+                    <div class="col-lg-1">
+                        <a href=@Url.Action("ApproveLoan", "AdminA")><button class="btn btn-primary btn-sm">Dashboard</button></a>
+                    </div>
+                    <div class="col-lg-1">
+                        <a href=@Url.Action("LogOut", "User")><button class="btn btn-primary btn-sm">Logout</button></a>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </header>
+    <!-- /header -->
+    <!-- end of logo menu area -->
+    <!-- end of header area -->
+    <div class="page-header01">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center ">
+                    <h2>FAQs</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            @*<li class="breadcrumb-item"><a href="http://nysc.cashnownow.net">Home</a></li>*@
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Frequently Asked Questions</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of page header -->
+    <!-- start faq question -->
+    <div class="faq-question-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="faq-single-title">NYSC Loan</h2>
+                    <div id="accordion" class="second-accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                       	What are the requirements to apply for the loan?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <ul style="list-style-type:disc;">
+                                        <li>You must be an active NYSC corps member with at least two months remaining before your pass out date</li>
+                                        <li>Verifiable Bank Verification Number (BVN) </li>
+                                        <li>Evidence of the payment of your FG allowance into the official NYSC bank account  </li>
+                                        <li>A primary mobile number and email address </li>
+                                        <li>A verifiable permanent home address </li>
+                                        <li>Verifiable contact details for a supervisor/manager at your place of primary assignment (PPA) or a guarantor</li>
+                                       
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                       	How do I apply?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    The application process is simple and can be completed online 24/7 at http://nysc.cashnownow.net  We recommend the use of the Chrome or Microsoft Edge browsers.<br/>
+                                    Fill in the online application form and click the submit button to send.  As part of the application process you will be required to upload the following:
+                                    <ul style="list-style-type:disc;">
+                                        <li>Copy of your NYSC ID card or posting letter</li>
+                                        <li>Copy of your bank statement for your official NYSC account to demonstrate the previous deposit of the FG allowance </li>
+                                        <li>Bank Verification Number (BVN)</li>
+                                        
+
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                     How much can I qualify for? 
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    The maximum amount you are qualified for is dependent on the remaining months in your service year.  See the table below:
+                                 
+
+                                        <table>
+                                            <tr>
+                                                <th>Months remaining with NYSC</th>
+                                                <th>Max loan amount (Naira)</th>
+                                                <th>Tenure (months)</th>
+                                                <th>Monthly repayment (Naira)</th>
+                                            </tr>
+                                            <tr>
+                                                <td>11</td>
+                                                <td>100,000</td>
+                                                <td>10</td>
+                                                <td>14,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td>85,000</td>
+                                                <td>9</td>
+                                                <td>13,547</td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td>75,000</td>
+                                                <td>8</td>
+                                                <td>13,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>70,000</td>
+                                                <td>7</td>
+                                                <td>13,857</td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>60,000</td>
+                                                <td>6</td>
+                                                <td>13,567</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>50,000</td>
+                                                <td>5</td>
+                                                <td>13,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>40,000</td>
+                                                <td>4</td>
+                                                <td>12,925</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>30,000</td>
+                                                <td>3</td>
+                                                <td>12,633</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>20,000</td>
+                                                <td>2</td>
+                                                <td>12,450</td>
+                                            </tr>
+                                        </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="heading-general-1">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-1" aria-expanded="false" aria-controls="collaps-general-1">
+                                        What are the terms?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-1" class="collapse" aria-labelledby="heading-general-1" data-parent="#accordion">
+                                <div class="card-body">
+                                    Please refer to the T&C’s at http://nysc.cashnownow.net/Home/termsconditions
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="heading-general-2">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-2" aria-expanded="false" aria-controls="collaps-general-2">
+                                        How do I repay my loan?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-2" class="collapse" aria-labelledby="heading-general-2" data-parent="#accordion">
+                                <div class="card-body">
+                                    The primary repayment method is through a Remita direct debit. The monthly repayment amount will automatically be debited on the set date. Ensure that your account is funded on the set date of your debit mandate.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-3">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-3" aria-expanded="false" aria-controls="collaps-general-3">
+                                        What is Remita standing order/ direct debit?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-3" class="collapse" aria-labelledby="heading-general-3" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    Remita is an electronic payment platform that helps individuals and organizations to easily receive and make payments across all banks, from anywhere and at any time.
+                                    The Remita standing order is an irrevocable standing order enabling the beneficiary to automatically debit the account as specified on the document.  To activate a standing order, you will need to sign the document provided and submit at your local bank branch.  Activation can take up to 24 hours to be completed.
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-4">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-4" aria-expanded="false" aria-controls="collaps-general-4">
+                                        The amount is too small, how can I qualify for more?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-4" class="collapse" aria-labelledby="heading-general-4" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    To apply for a an amount larger than the standard maximum loan amount, you can apply for a separate loan using a bank statement showing a proof of your extra income as paid by your place of primary assignment (PPA).   The amount you qualify for will be determined by the amount of allowance from the PPA, tenure of the loan, and any existing loans.
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-5">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-5" aria-expanded="false" aria-controls="collaps-general-5">
+                                        How long will it take for me to get the loan if I apply today?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-5" class="collapse" aria-labelledby="heading-general-5" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    The loan disbursement happens in less than 24 hours after the Remita standing order/direct debit mandate has been activated by the applicant’s bank.
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-6">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-6" aria-expanded="false" aria-controls="collaps-general-6">
+                                        Can I repay earlier than agreed?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-6" class="collapse" aria-labelledby="heading-general-6" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    Yes. You will be required to pay the outstanding principal and interest plus 50% of any additional interest we would have earned if the loan was not repaid early.
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-8">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-8" aria-expanded="false" aria-controls="collaps-general-8">
+                                        How do I repay early?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-8" class="collapse" aria-labelledby="heading-general-8" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    Early repayment can be done by transferring or depositing the due amount to the Company’s bank account. This will be given to you by the customer care representative of the company on request. It is important to indicate your loan number when you are making payment so that the payment can be credited to your account. 
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-10">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-10" aria-expanded="false" aria-controls="collaps-general-10">
+                                      What happens if I miss a payment?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-10" class="collapse" aria-labelledby="heading-general-10" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    A five (5) day grace period is given for any late payments.  After the grace period there is a default fee equal to 2% per month (calculated daily) applied to the outstanding balance.  This fee can be automatically deducted from your account by the Company.  To make a payment simply ensure your official account is funded and the Remita will automatically debit the account accordingly.
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="card">
+                            <div class="card-header" id="heading-general-11">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-11" aria-expanded="false" aria-controls="collaps-general-11">
+                                        Do I need a collateral to get the loan?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-11" class="collapse" aria-labelledby="heading-general-11" data-parent="#accordion">
+                                <div class="card-body">
+                                    No.  The NYSC loan product does not require any collateral
+                                    @*<ul style="list-style-type:disc;">
+                                        <li>You must be a youth corps member. </li>
+                                        <li>You must have a Bank Verification Number (BVN) tied to your “allawee” bank account. </li>
+                                        <li>A primary mobile number and email address for contact purposes. </li>
+                                        <li>A verifiable home address    </li>
+
+                                    </ul>*@
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-12">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-12" aria-expanded="false" aria-controls="collaps-general-12">
+                                       What company disburses the loan?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-12" class="collapse" aria-labelledby="heading-general-12" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    The loan is disbursed by Paelyt Solutions Limited
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-13">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-13" aria-expanded="false" aria-controls="collaps-general-13">
+                                        Can I take a loan for a longer tenure?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-13" class="collapse" aria-labelledby="heading-general-13" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    The maximum tenure you can take the loan for is dependent on your official pass out date as listed on your NYSC ID card. 
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-14">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-14" aria-expanded="false" aria-controls="collaps-general-14">
+                                      	What if I leave the NYSC program, how do I repay my loan?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-14" class="collapse" aria-labelledby="heading-general-14" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    You can repay by willful transfer to our bank account which will be provided by our Customercare agent or by ensuring your official bank account is funded each month to allow for the ongoing direct debits
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-15">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-15" aria-expanded="false" aria-controls="collaps-general-15">
+                                      Can I apply from my mobile device?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-15" class="collapse" aria-labelledby="heading-general-15" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    Yes. Kindly visit our site at http://nysc.cashnownow.net
+                                    The site is mobile responsive and should work from Chrome, Edge or Google App.
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="heading-general-16">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-16" aria-expanded="false" aria-controls="collaps-general-16">
+                                        When do I need a guarantor and what are the requirements for that person?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collaps-general-16" class="collapse" aria-labelledby="heading-general-16" data-parent="#accordion">
+                                <div class="card-body">
+                                    A guarantor is needed if you are unable to provide contact details including email and phone number for your supervisor or manager at your primary place of assignment (PPA) or if your PPA is not acceptable to us.<br/>
+
+                                    Additionally, if you are yet to resume at your PPA then you must provide a guarantor for the loan.<br/>
+
+                                    The requirements for the guarantor are as follows:
+                                    <ul style="list-style-type:disc;">
+                                      <li>Must be at least 18 years of age</li>
+                                      <li>Must be a direct blood relative (i.e. father, mother, sibling, aunt or uncle)</li>
+                                     <li>Must have a bank account with a verifiable bank verification number (BVN) </li>
+                                      <li>Must be gainfully employed</li>
+
+                                     </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!--<h2 class="faq-single-title">Student Pocket Money Loan</h2>
+                                  <div id="accordion-2" class="second-accordion">
+                                      <div class="card">
+                                          <div class="card-header" id="eligibility-heading-1">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#eligibility-collaps-1" aria-expanded="true" aria-controls="eligibility-collaps-1">
+                              How do I apply for a student loan?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="eligibility-collaps-1" class="collapse show" aria-labelledby="eligibility-heading-1" data-parent="#accordion-2">
+                                              <div class="card-body">
+                                                      Our application process is available online or offline. Simply visit our website <a href="https://www.uvlot.com/payrollloans" target="_blank">www.uvlot.com/loan-form</a> or your student administration office to obtain an application form.
+                                                      Complete it and submit. Your profile will be reviewed against pre-qualification criteria and notification will be sent out communicating the outcome of your application.
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="eligibility-heading-2">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#eligibility-collaps-2" aria-expanded="false" aria-controls="eligibility-collaps-2">
+                              Which tertiary institutions are signed up to the Student Loan scheme under Paelyt?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="eligibility-collaps-2" class="collapse" aria-labelledby="eligibility-heading-2" data-parent="#accordion-2">
+                                              <div class="card-body">
+                                                      Please click on the link for the list of signed up tertiary institutions <a href="#" target="_blank">list</a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="eligibility-heading-6">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#eligibility-collaps-6" aria-expanded="false" aria-controls="eligibility-collaps-6">
+                              What are the registration requirements for a Student loan?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="eligibility-collaps-6" class="collapse" aria-labelledby="eligibility-heading-6" data-parent="#accordion-2">
+                                              <div class="card-body">
+
+                                                      <ul style="list-style-type:disc;">
+                                                          <li>Your tertiary institution must be participating in our scheme. </li>
+                                                          <li>You must be a student of the tertiary institution. </li>
+                                                          <li>You must be in good standing with your tertiary institution. </li>
+                                                          <li>You must provide all mandatory information during application. </li>
+                                                          <li>You must satisfy our other requirements.  </li>
+                                                      </ul>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="heading-general-5">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-5" aria-expanded="false" aria-controls="collaps-general-5">
+                              How long can I take the loan for?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="collaps-general-5" class="collapse" aria-labelledby="heading-general-5" data-parent="#accordion-2">
+                                              <div class="card-body">
+                                                  You have 60 days to repay your loan
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="card">
+                                              <div class="card-header" id="heading-general-6">
+                                                  <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-6" aria-expanded="false" aria-controls="collaps-general-6">
+                                  What are the charges/interest rate on the loan?
+                          </button>
+                        </h5>
+                                              </div>
+                                              <div id="collaps-general-6" class="collapse" aria-labelledby="heading-general-6" data-parent="#accordion-2">
+                                                  <div class="card-body">
+                                                          There is a flat charge as follows:
+
+                                                          <ul style="list-style-type:disc;">
+                                                              <li>₦1,000 for the ₦5,000 loan</li>
+                                                              <li>₦2,000 for the ₦10,000 loan</li>
+                                                              <li>₦3,000 for the ₦15,000 loan</li>
+                                                              <li>₦4,000 for the ₦20,000 loan</li>
+                                                          </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="card">
+                                                  <div class="card-header" id="heading-general-7">
+                                                      <h5 class="mb-0">
+                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-7" aria-expanded="false" aria-controls="collaps-general-7">
+                                      Can I use my loan for personal reasons?
+                              </button>
+                            </h5>
+                                                  </div>
+                                                  <div id="collaps-general-7" class="collapse" aria-labelledby="heading-general-7" data-parent="#accordion-2">
+                                                      <div class="card-body">
+                                                             Yes
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="card">
+                                                      <div class="card-header" id="heading-general-8">
+                                                          <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-8" aria-expanded="false" aria-controls="collaps-general-8">
+                                          The loan amount approved does not satisfy my need, can I get the loan amount increased?
+                                  </button>
+                                </h5>
+                                                      </div>
+                                                      <div id="collaps-general-8" class="collapse" aria-labelledby="heading-general-8" data-parent="#accordion-2">
+                                                          <div class="card-body">
+                                                                  We encourage all first time borrowers of our product to start with the lowest loan product and once you
+                                                                  consistently meet the terms of your loan, overtime your loan amount will increase.
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+
+                                                  <div class="card">
+                                                          <div class="card-header" id="heading-general-9">
+                                                              <h5 class="mb-0">
+                                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-9" aria-expanded="false" aria-controls="collaps-general-9">
+                                              What happens if I default on my loan?
+                                      </button>
+                                    </h5>
+                                                          </div>
+                                                          <div id="collaps-general-9" class="collapse" aria-labelledby="heading-general-9" data-parent="#accordion-2">
+                                                              <div class="card-body">
+                                                                      If you do not pay off your loan on or before the 60 day tenure, you will be liable to pay an additional monthly default charge
+                                                                      on the outstanding balance of your loan from day 61 every month until you pay off your loan. Your tertiary institution will be notified
+                                                                      and the outstanding loan will be added to your tuition invoice as an outstanding obligation.
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="card">
+                                                              <div class="card-header" id="heading-general-10">
+                                                                  <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collaps-general-10" aria-expanded="false" aria-controls="collaps-general-10">
+                                                  What do I do if I am no longer able to repay my loan?
+                                          </button>
+                                        </h5>
+                                                              </div>
+                                                              <div id="collaps-general-10" class="collapse" aria-labelledby="heading-general-10" data-parent="#accordion-2">
+                                                                  <div class="card-body">
+                                                                          It is important that you contact us immediately on 0907-333-3484 to avoid default on your loan and to discuss options available to you.
+
+
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                  </div>-->
+                    <!-- <h2 class="faq-single-title">Next FAQ Cat2</h2>
+                                  <div id="accordion-3" class="second-accordion">
+                                      <div class="card">
+                                          <div class="card-header" id="about-heading-1">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#about-collaps-1" aria-expanded="true" aria-controls="about-collaps-1">
+                        Where are you located?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="about-collaps-1" class="collapse show" aria-labelledby="about-heading-1" data-parent="#accordion-3">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="about-heading-2">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#about-collaps-2" aria-expanded="false" aria-controls="about-collaps-2">
+                        What kinds of business financing do you offer?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="about-collaps-2" class="collapse" aria-labelledby="about-heading-2" data-parent="#accordion-3">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="about-heading-6">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#about-collaps-6" aria-expanded="false" aria-controls="about-collaps-6">
+                        Do you offering refinancing ?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="about-collaps-6" class="collapse" aria-labelledby="about-heading-6" data-parent="#accordion-3">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="about-heading-5">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#about-collaps-5" aria-expanded="false" aria-controls="about-collaps-5">
+                       Can you help me if I am not an advisor?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="about-collaps-5" class="collapse" aria-labelledby="about-heading-5" data-parent="#accordion-3">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <h2 class="faq-single-title">After Approved</h2>
+                                  <div id="accordion-4" class="second-accordion">
+                                      <div class="card">
+                                          <div class="card-header" id="after-heading-1">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#after-collaps-1" aria-expanded="true" aria-controls="after-collaps-1">
+                        Where are you located?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="after-collaps-1" class="collapse show" aria-labelledby="after-heading-1" data-parent="#accordion-4">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="after-heading-2">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#after-collaps-2" aria-expanded="false" aria-controls="after-collaps-2">
+                        What kinds of business financing do you offer?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="after-collaps-2" class="collapse" aria-labelledby="after-heading-2" data-parent="#accordion-4">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="after-heading-6">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#after-collaps-6" aria-expanded="false" aria-controls="after-collaps-6">
+                        Do you offering refinancing ?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="after-collaps-6" class="collapse" aria-labelledby="after-heading-6" data-parent="#accordion-4">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <div class="card-header" id="after-heading-5">
+                                              <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#after-collaps-5" aria-expanded="false" aria-controls="after-collaps-5">
+                       Can you help me if I am not an advisor?
+                      </button>
+                    </h5>
+                                          </div>
+                                          <div id="after-collaps-5" class="collapse" aria-labelledby="after-heading-5" data-parent="#accordion-4">
+                                              <div class="card-body">
+                                                  The passages of Lorem Ipsum available but the majority ave suffer alteration embarrased the point of using Lorem sum is that it has a more-or-less normal distribution.
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of faq question -->
+    <!-- start footer area -->
+    @*<section class="footer-area footer-two section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>About Us</h4>
+                        </div>
+                        <p>
+                            With experience and knowledge uvlot wе’rе hеrе to рrоvіdе уоu wіth fіnаnсіаl ѕоlutіоnѕ fоr аll уоur lеndіng needs. Whether you are lооkіng fоr any kind of loan,
+                            оur lending tеаm wіll ,..
+                        </p>
+                        <div class="footer-two-social">
+                            <a href="#" class="fa fa-facebook-f"></a>
+                            <a href="#" class="fa fa-twitter"></a>
+                            <a href="#" class="fa fa-google-plus"></a>
+                            <a href="#" class="fa fa-pinterest"></a>
+                            <a href="#" class="fa fa-linkedin"></a>
+                            <a href="#" class="fa fa-instagram"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-2">
+                    <div class="footer-widget pages-widget">
+                        <div class="footer-title">
+                            <h4>Resources</h4>
+                        </div>
+                        <ul>
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Apply</a></li>
+                            <li><a href="#">FAQs </a></li>
+                            <li><a href="#">Contact us </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-3">
+                    <div class="footer-widget pages-widget">
+                        <div class="footer-title">
+                            <h4>Useful Links</h4>
+                        </div>
+                        <ul>
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Apply</a></li>
+                            <li><a href="#">FAQs </a></li>
+                            <li><a href="#">Contact us </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>Contact us</h4>
+                        </div>
+                        <div class="contact-widget">
+                            <ul>
+                                <li>
+                                    <div class="icon">
+                                        <img src="asset/img/map-pin.png" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>Cash Now Now 10B, Kingsley Emu Street, Lekki Phase 1, Lagos.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <img src="asset/img/envalope-2.png" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            mail@cashnownow.com
+                                            <span>reply within 2 Hours</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <img src="asset/img/phone01.png" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            +234 806 493 8136
+                                            <span>24 Hours Support </span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <section class="footer-area footer-two section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>About Us</h4>
+
+                        </div>
+
+
+
+                        <div class="footer-two-social">
+                            @*<a href="#" class="fa fa-facebook-f"></a>*@
+                            @*<a href="CashNowNow1" class="fa fa-twitter"></a>*@
+                            @*<a class="twitter-timeline" href="https://twitter.com/CashNowNow1?ref_src=twsrc%5Etfw">Tweets by CashNowNow1</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*@
+
+                            <a href="https://twitter.com/CashNowNow1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow CashNowNow1</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+                            @*<a href="https://twitter.com/intent/tweet?screen_name=CashNowNow1&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to CashNowNow1</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*@
+                            @*<a href="#" class="fa fa-google-plus"></a>
+                                <a href="#" class="fa fa-pinterest"></a>
+                                <a href="#" class="fa fa-linkedin"></a>*@
+                            <br />
+                            <a href="#" class="fa fa-instagram"></a>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-3 col-lg-2">
+                        <div class="footer-widget pages-widget">
+                            <div class="footer-title">
+                                <h4>Resources</h4>
+                            </div>
+                            <ul>
+                                <li><a href="#">How it works</a></li>
+                                <li><a href="#">Apply</a></li>
+                                <li><a href="#">FAQs </a></li>
+                                <li><a href="#">Contact us </a></li>
+                            </ul>
+                        </div>
+                    </div>*@
+                <div class="col-md-5 col-lg-3">
+                    <div class="footer-widget pages-widget">
+                        <div class="footer-title">
+                            <h4>Useful Links</h4>
+                        </div>
+                        <ul>
+                            @*<li><a href="#">How it works</a></li>*@
+                            <li><a href="@Url.Action("termsconditions", "Home")">TERMS AND CONDITIONS</a></li>
+                            <li><a href="@Url.Action("HIW", "Home")">REFERRALS</a></li>
+                            @*<li><a href="#">Contact us </a></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-title">
+                            <h4>Contact Us</h4>
+                        </div>
+                        <div class="contact-widget">
+                            <ul>
+                                @*<li>
+                                        <div class="icon">
+                                            <img src="asset/img/map-pin.png" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <p>Cash Now Now 10B, Kingsley Emu Street, Lekki Phase 1, Lagos.</p>
+                                        </div>
+                                    </li>*@
+                                <li>
+                                    <div class="icon">
+                                        <img src="@Url.Content("/asset/img/envalope-2.png")" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            Contact us at customercare@cashnownow.net for more information
+                                            <span>@*reply within 2 Hours*@</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <img src="@Url.Content("/asset/img/envalope-2.png")" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            +234 901.424.2062 or <br />
+                                            +234 806.275.0890
+                                            <span>Available from 9am to 7pm Monday to Friday </span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="copy-right-section second-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <div class="copyright-text">
+                        <p><i class="fa fa-copyright"></i> 2020 Cash Now Now. All Rights Reserved | Powered by <a href="http://www.paelyt.com" target="_blank">Paelyt Solution</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ul class="footer-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Loans</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">Contactus</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of footer area -->
+    <script src=@Url.Content("/asset/js/jquery-3.3.1.min.js")></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src=@Url.Content("/asset/js/jquery-ui.js")></script>
+    <script src=@Url.Content("/asset/js/popper.min.js")></script>
+    <script src=@Url.Content("/asset/js/bootstrap.min.js")></script>
+    <script src=@Url.Content("/asset/js/jquery.nice-select.js")></script>
+    <script src=@Url.Content("/asset/js/menumaker.js")></script>
+    <script src=@Url.Content("/asset/js/owl.carousel.min.js")></script>
+    <script src=@Url.Content("asset/js/slider.js")></script>
+    <script src=@Url.Content("/asset/js/active.js")></script>
+</body>
+
+</html>

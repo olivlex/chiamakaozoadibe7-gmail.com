@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+@model DataAccessA.Classes.LoanApplication
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestDrop</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+    <div> 
+        <div class="form-group">
+            <div class="cols-sm-10">
+                <div class="input-group fieldStyle">
+                    <span class="input-group-addon fieldBorder"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                    @*<input type="text" class="form-control fieldBorder" name="nStates" id="nStates" placeholder="RESIDENCE STATE" required />*@
+                    @Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "States", @name = "States", onchange = "GetStates();", @Class = "form-control fieldBorder" })
+                    @*@Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "Stat", @name = "Sta", onchange = "GetStates();", @Class = "form-control fieldBorder" })*@
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="cols-sm-10">
+                <div class="input-group fieldStyle">
+                    <span class="input-group-addon fieldBorder"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                    <select id="lgaList" name="lgaList" class="form-control fieldBorder" data-live-search="true" required="required" onchange="getText();">
+                        <option default data-tokens="SELECT LGA">SELECT LGA</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+
+
+   // $(document).ready(function () {
+
+        $("#States").change(function () {
+            $("#lgaList").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getLGAsByStateID","NYSCLOAN")',
+                dataType: 'json',
+                data: { id: $("#States").val() },
+                success: function (lga) {
+
+                    $.each(lga, function (i, lga) {
+                        $("#lgaList").append('<option value="'
+                                                   + lga.Value + '">'
+                                             + lga.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    // alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+//    });
+    </script>
+</body>
+
+</html>

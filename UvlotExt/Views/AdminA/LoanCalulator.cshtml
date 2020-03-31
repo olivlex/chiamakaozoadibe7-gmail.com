@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "LoanCalulator";
+    Layout = null;
+}
+@model DataAccessA.Classes.LoanViewModel
+
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            @*<h4 class="title">AllApprovedLoans</h4>*@
+            <!-- Mega Form Starts -->
+
+            <section class="section-padding contact-us-padding form-padding">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            @using (Html.BeginForm("LoanCalulator", "AdminA", FormMethod.Post, new { id = "signup" }))
+                            {
+                                <form action="#" method="post">
+
+                                    @if (TempData["ErrMsg"] != null)
+                                    {
+                                        <div id="Msgs" class="alert alert-danger">
+                                            @TempData["ErrMsg"]
+                                        </div>
+                                    }
+                                    <div class="tables">
+                                        <h2 class="title1">Loan Calulator</h2>
+                                        <div class="row list-input">
+
+
+                                            <div class="col-sm-6">
+                                                <div class="single-get-touch">
+                                                    <label class="control-label">Loan Amount<span class="color-red">:</span></label>
+                                                    @Html.TextBoxFor(model => model.LoanApplication.LoanAmount, new { placeholder = "", type = "text", required = "required", @class = "form-control margin-bottom-20" })
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="col-sm-6">
+                                                <div class="single-get-touch">
+                                                    <label class="control-label">Loan Tenure<span class="color-red">:</span></label>
+                                                    @Html.TextBoxFor(model => model.LoanApplication.LoanTenure, new { placeholder = " ", type = "text", required = "required", @class = "form-control margin-bottom-20" })
+                                                </div>
+                                            </div>
+
+
+                                            @*<div class="col-md-12 mr0">
+                                                    <div class="single-get-touch">
+                                                        <select id="InterestRate" name="InterestRate" data-live-search="true" required="required">
+                                                            <option data-tokens="Select State">Interest Rate</option>
+                                                            @foreach (var IntR in ViewBag.InterestRate)
+                                                            {
+                                                                <option id="CheckEligibility" value="@IntR.ID" data-tokens="@IntR.Name">@IntR.Name</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>*@
+
+                                            @*<div class="col-sm-6">
+                                                    <div class="single-get-touch">
+                                                        <label class="control-label">Phone Number<span class="color-red">*</span></label>
+                                                        @Html.TextBoxFor(model => model.InterestRate.InterestRate1, new { placeholder = " ", type = "text", required = "required", @class = "form-control margin-bottom-20" })
+                                                    </div>
+                                                </div>*@
+
+                                            <br />
+                                            <div class="col-md-12">
+                                                <div class="single-get-touch">
+
+                                                    <a href="#"><button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Check</button></a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <table>
+                                       
+                                        <tr>
+                                           
+@if (ViewBag.LoanCal != null )
+{
+    <td>Loan Calculator:</td>
+    <td>@ViewBag.LoanCal.ToString()</td>
+}
+                                        </tr>
+                                            
+                                    </table>
+                                </form>
+
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,1027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{86105F9B-51B3-43AE-AF1D-AE6BE60E113D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UvlotExt</RootNamespace>
+    <AssemblyName>UvlotExt</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataAccessA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DataAccessA\bin\Debug\DataAccessA.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\Institution.cs" />
+    <Compile Include="Classes\LogginHelper.cs" />
+    <Compile Include="Classes\NotificationService.cs" />
+    <Compile Include="Classes\TableObjects.cs" />
+    <Compile Include="Classes\Utility.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminAController.cs" />
+    <Compile Include="Controllers\ExcelController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NYSCLOAN\NYSCLOANController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="fonts\HelperClasses\CryptographyManager.cs" />
+    <Compile Include="fonts\HelperClasses\Enum.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="asset\css\animate.css" />
+    <Content Include="asset\css\bootstrap.min.css" />
+    <Content Include="asset\css\fontawesome-all.min.css" />
+    <Content Include="asset\css\hover.css" />
+    <Content Include="asset\css\magnific-popup.css" />
+    <Content Include="asset\css\menumaker.css" />
+    <Content Include="asset\css\nice-select.css" />
+    <Content Include="asset\css\owl.carousel.min.css" />
+    <Content Include="asset\css\Pe-icon-7-stroke.css" />
+    <Content Include="asset\css\reset.css" />
+    <Content Include="asset\css\responsive.css" />
+    <Content Include="asset\css\second-home.css" />
+    <Content Include="asset\css\style - Copy.css" />
+    <Content Include="asset\css\style.css" />
+    <Content Include="asset\css\third-home.css" />
+    <Content Include="asset\img\about.jpg" />
+    <Content Include="asset\img\agencyLoanIcon.png" />
+    <Content Include="asset\img\ApprovalImg.png" />
+    <Content Include="asset\img\articale-1.jpg" />
+    <Content Include="asset\img\articale-2.jpg" />
+    <Content Include="asset\img\articale-3.jpg" />
+    <Content Include="asset\img\articale-sm-2.jpg" />
+    <Content Include="asset\img\articale-sm.jpg" />
+    <Content Include="asset\img\brand-1.png" />
+    <Content Include="asset\img\brand-10.png" />
+    <Content Include="asset\img\brand-2.png" />
+    <Content Include="asset\img\brand-3.png" />
+    <Content Include="asset\img\brand-4.png" />
+    <Content Include="asset\img\brand-5.png" />
+    <Content Include="asset\img\brand-6.png" />
+    <Content Include="asset\img\brand-7.png" />
+    <Content Include="asset\img\brand-8.png" />
+    <Content Include="asset\img\brand-9.png" />
+    <Content Include="asset\img\bripcase.png" />
+    <Content Include="asset\img\calculate.jpg" />
+    <Content Include="asset\img\call-2.png" />
+    <Content Include="asset\img\call.png" />
+    <Content Include="asset\img\camera.png" />
+    <Content Include="asset\img\car.jpg" />
+    <Content Include="asset\img\car.png" />
+    <Content Include="asset\img\card.png" />
+    <Content Include="asset\img\ceo.png" />
+    <Content Include="asset\img\choose-1.jpg" />
+    <Content Include="asset\img\choose-2.jpg" />
+    <Content Include="asset\img\choose-3.jpg" />
+    <Content Include="asset\img\clock.png" />
+    <Content Include="asset\img\disbursement.png" />
+    <Content Include="asset\img\document.png" />
+    <Content Include="asset\img\dollar.png" />
+    <Content Include="asset\img\dreambg.jpg" />
+    <Content Include="asset\img\edom.png" />
+    <Content Include="asset\img\education.png" />
+    <Content Include="asset\img\entreLoanIcon.png" />
+    <Content Include="asset\img\entrepreneurLoanIcon.png" />
+    <Content Include="asset\img\envalope-2.png" />
+    <Content Include="asset\img\envalope-3.png" />
+    <Content Include="asset\img\envalope.png" />
+    <Content Include="asset\img\favicon.png" />
+    <Content Include="asset\img\favIconSample.png" />
+    <Content Include="asset\img\footer-logo.png" />
+    <Content Include="asset\img\get-bg.jpg" />
+    <Content Include="asset\img\get-money.png" />
+    <Content Include="asset\img\handshake.png" />
+    <Content Include="asset\img\home.png" />
+    <Content Include="asset\img\how-it-work-1.jpg" />
+    <Content Include="asset\img\how-it-work-3.jpg" />
+    <Content Include="asset\img\how-it-work-4.jpg" />
+    <Content Include="asset\img\how-it-work.jpg" />
+    <Content Include="asset\img\icon-1.png" />
+    <Content Include="asset\img\icon-2.png" />
+    <Content Include="asset\img\icon-3.png" />
+    <Content Include="asset\img\icon-4.png" />
+    <Content Include="asset\img\icon-5.png" />
+    <Content Include="asset\img\icon-6.png" />
+    <Content Include="asset\img\icon-7.png" />
+    <Content Include="asset\img\icon-8.png" />
+    <Content Include="asset\img\improvment.png" />
+    <Content Include="asset\img\interest-rate.png" />
+    <Content Include="asset\img\large-blog-1.jpg" />
+    <Content Include="asset\img\large-blog-2.jpg" />
+    <Content Include="asset\img\large-blog-3.jpg" />
+    <Content Include="asset\img\large-blog-4.jpg" />
+    <Content Include="asset\img\large-blog-5.jpg" />
+    <Content Include="asset\img\loan-range.png" />
+    <Content Include="asset\img\loan-tenure.png" />
+    <Content Include="asset\img\LoanRegImg.png" />
+    <Content Include="asset\img\logo-2.png" />
+    <Content Include="asset\img\logo.png" />
+    <Content Include="asset\img\logoUvlot.png" />
+    <Content Include="asset\img\map-pin-2.png" />
+    <Content Include="asset\img\map-pin.png" />
+    <Content Include="asset\img\map.png" />
+    <Content Include="asset\img\money.png" />
+    <Content Include="asset\img\Nwosu.png" />
+    <Content Include="asset\img\pade.png" />
+    <Content Include="asset\img\page-header-pilgrims.jpg" />
+    <Content Include="asset\img\page-header.jpg" />
+    <Content Include="asset\img\page-header01.jpg" />
+    <Content Include="asset\img\pata.png" />
+    <Content Include="asset\img\payRollLoanIcon.png" />
+    <Content Include="asset\img\pensionerLoanIcon.png" />
+    <Content Include="asset\img\phone.png" />
+    <Content Include="asset\img\phone01.png" />
+    <Content Include="asset\img\portfolio-1.jpg" />
+    <Content Include="asset\img\portfolio-10.jpg" />
+    <Content Include="asset\img\portfolio-11.jpg" />
+    <Content Include="asset\img\portfolio-2.jpg" />
+    <Content Include="asset\img\portfolio-3.jpg" />
+    <Content Include="asset\img\portfolio-4.jpg" />
+    <Content Include="asset\img\portfolio-5.jpg" />
+    <Content Include="asset\img\portfolio-6.jpg" />
+    <Content Include="asset\img\portfolio-7.jpg" />
+    <Content Include="asset\img\portfolio-8.jpg" />
+    <Content Include="asset\img\portfolio-9.jpg" />
+    <Content Include="asset\img\post-2.jpg" />
+    <Content Include="asset\img\post-3.jpg" />
+    <Content Include="asset\img\post.jpg" />
+    <Content Include="asset\img\repayment.png" />
+    <Content Include="asset\img\scall.png" />
+    <Content Include="asset\img\senvelope.png" />
+    <Content Include="asset\img\services-1.png" />
+    <Content Include="asset\img\services-car.jpg" />
+    <Content Include="asset\img\services-education.jpg" />
+    <Content Include="asset\img\services-home.jpg" />
+    <Content Include="asset\img\services-lg.jpg" />
+    <Content Include="asset\img\servicesAgency.jpg" />
+    <Content Include="asset\img\servicesbusiness.jpg" />
+    <Content Include="asset\img\servicesEntrepreneur.jpg" />
+    <Content Include="asset\img\servicesPayRoll.jpg" />
+    <Content Include="asset\img\servicesPensioner.jpg" />
+    <Content Include="asset\img\servicesStudent.jpg" />
+    <Content Include="asset\img\shap.png" />
+    <Content Include="asset\img\sign.png" />
+    <Content Include="asset\img\single-services.jpg" />
+    <Content Include="asset\img\slider-1.jpg" />
+    <Content Include="asset\img\slider-2.jpg" />
+    <Content Include="asset\img\slider-3.jpg" />
+    <Content Include="asset\img\stouch.png" />
+    <Content Include="asset\img\studentLoanIcon.png" />
+    <Content Include="asset\img\team-1.jpg" />
+    <Content Include="asset\img\team-2.jpg" />
+    <Content Include="asset\img\team-3.jpg" />
+    <Content Include="asset\img\team-4.jpg" />
+    <Content Include="asset\img\team-5.jpg" />
+    <Content Include="asset\img\team-6.jpg" />
+    <Content Include="asset\img\team-7.jpg" />
+    <Content Include="asset\img\team-8.jpg" />
+    <Content Include="asset\img\testimonial-1.jpg" />
+    <Content Include="asset\img\testimonial-2.jpg" />
+    <Content Include="asset\img\testimonial.jpg" />
+    <Content Include="asset\img\user.png" />
+    <Content Include="asset\img\vision-1.png" />
+    <Content Include="asset\img\vision-2.png" />
+    <Content Include="asset\js\active.js" />
+    <Content Include="asset\js\bootstrap.min.js" />
+    <Content Include="asset\js\calculator.js" />
+    <Content Include="asset\js\fontawesome-all.js" />
+    <Content Include="asset\js\gmap.js" />
+    <Content Include="asset\js\isotope.pkgd.min.js" />
+    <Content Include="asset\js\jquery-3.3.1.min.js" />
+    <Content Include="asset\js\jquery-3.3.1.slim.min.js" />
+    <Content Include="asset\js\jquery-ui.css" />
+    <Content Include="asset\js\jquery-ui.js" />
+    <Content Include="asset\js\jquery-ui.min.css" />
+    <Content Include="asset\js\jquery-ui.min.js" />
+    <Content Include="asset\js\jquery-ui.structure.css" />
+    <Content Include="asset\js\jquery-ui.structure.min.css" />
+    <Content Include="asset\js\jquery-ui.theme.css" />
+    <Content Include="asset\js\jquery-ui.theme.min.css" />
+    <Content Include="asset\js\jquery.loan-calculator.js" />
+    <Content Include="asset\js\jquery.magnific-popup.js" />
+    <Content Include="asset\js\jquery.nice-select.js" />
+    <Content Include="asset\js\jqueryui-1.8.24-jquery-ui.min.js" />
+    <Content Include="asset\js\jqueryui.1.8.24.css" />
+    <Content Include="asset\js\jQueryv1.8.3.js" />
+    <Content Include="asset\js\menumaker.js" />
+    <Content Include="asset\js\owl.carousel.min.js" />
+    <Content Include="asset\js\popper.min.js" />
+    <Content Include="asset\js\slider.js" />
+    <Content Include="asset\js\spin.js-2.3.2-spin.min.js" />
+    <Content Include="Controllers\Content\bootstrap.css" />
+    <Content Include="Controllers\Content\bootstrap.min.css" />
+    <Content Include="DashboardStyles\css\animate.css" />
+    <Content Include="DashboardStyles\css\bootstrap.css" />
+    <Content Include="DashboardStyles\css\custom.css" />
+    <Content Include="DashboardStyles\css\export.css" />
+    <Content Include="DashboardStyles\css\font-awesome.css" />
+    <Content Include="DashboardStyles\css\graph.css" />
+    <Content Include="DashboardStyles\css\jqcandlestick.css" />
+    <Content Include="DashboardStyles\css\monthly.css" />
+    <Content Include="DashboardStyles\css\MyStyle.css" />
+    <Content Include="DashboardStyles\css\MyTable.css" />
+    <Content Include="DashboardStyles\css\owl.carousel.css" />
+    <Content Include="DashboardStyles\css\SidebarNav.min.css" />
+    <Content Include="DashboardStyles\css\style.css" />
+    <Content Include="DashboardStyles\fonts\fontawesome-webfont.svg" />
+    <Content Include="DashboardStyles\images\2.jpg" />
+    <Content Include="DashboardStyles\images\favicon.ico" />
+    <Content Include="DashboardStyles\images\img-sprite.png" />
+    <Content Include="DashboardStyles\images\lock.png" />
+    <Content Include="DashboardStyles\images\logo.png" />
+    <Content Include="DashboardStyles\images\mail.png" />
+    <Content Include="DashboardStyles\images\search-icon.png" />
+    <Content Include="DashboardStyles\images\slider1.jpg" />
+    <Content Include="DashboardStyles\images\slider2.jpg" />
+    <Content Include="DashboardStyles\images\slider3.jpg" />
+    <Content Include="DashboardStyles\images\slider4.jpg" />
+    <Content Include="DashboardStyles\images\slider5.jpg" />
+    <Content Include="DashboardStyles\images\slider6.jpg" />
+    <Content Include="DashboardStyles\images\slider7.jpg" />
+    <Content Include="DashboardStyles\images\tick.png" />
+    <Content Include="DashboardStyles\images\user.png" />
+    <Content Include="DashboardStyles\images\weather.jpg" />
+    <Content Include="DashboardStyles\js\amcharts.js" />
+    <Content Include="DashboardStyles\js\bootstrap.js" />
+    <Content Include="DashboardStyles\js\Chart.bundle.js" />
+    <Content Include="DashboardStyles\js\Chart.js" />
+    <Content Include="DashboardStyles\js\Chart.min.js" />
+    <Content Include="DashboardStyles\js\chartinator.js" />
+    <Content Include="DashboardStyles\js\classie.js" />
+    <Content Include="DashboardStyles\js\custom.js" />
+    <Content Include="DashboardStyles\js\export.min.js" />
+    <Content Include="DashboardStyles\js\images\dragIconRoundBig.svg" />
+    <Content Include="DashboardStyles\js\images\lens.svg" />
+    <Content Include="DashboardStyles\js\index.js" />
+    <Content Include="DashboardStyles\js\index1.js" />
+    <Content Include="DashboardStyles\js\index2.js" />
+    <Content Include="DashboardStyles\js\jquery-1.11.1.min.js" />
+    <Content Include="DashboardStyles\js\jquery.flot.js" />
+    <Content Include="DashboardStyles\js\jquery.jqcandlestick.min.js" />
+    <Content Include="DashboardStyles\js\jquery.nicescroll.js" />
+    <Content Include="DashboardStyles\js\light.js" />
+    <Content Include="DashboardStyles\js\metisMenu.min.js" />
+    <Content Include="DashboardStyles\js\modernizr.custom.js" />
+    <Content Include="DashboardStyles\js\monthly.js" />
+    <Content Include="DashboardStyles\js\owl.carousel.js" />
+    <Content Include="DashboardStyles\js\pie-chart.js" />
+    <Content Include="DashboardStyles\js\scripts.js" />
+    <Content Include="DashboardStyles\js\serial.js" />
+    <Content Include="DashboardStyles\js\SidebarNav.min.js" />
+    <Content Include="DashboardStyles\js\SimpleChart.js" />
+    <Content Include="DashboardStyles\js\utils.js" />
+    <Content Include="DashboardStyles\js\validator.min.js" />
+    <Content Include="EmailNotifications\EmailNotification.html" />
+    <Content Include="EmailNotifications\NYSCWelcomeEmail.html" />
+    <Content Include="EmailNotifications\remitaformEmails.html" />
+    <Content Include="EmailNotifications\remitaformEmail.html" />
+    <Content Include="EmailNotifications\WelcomeEmailNotification.html" />
+    <Content Include="Error\Logs\ErrorLog.txt" />
+    <Content Include="faq.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Controllers\Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="DashboardStyles\fonts\fontawesome-webfont.eot" />
+    <Content Include="DashboardStyles\fonts\fontawesome-webfont.ttf" />
+    <Content Include="DashboardStyles\fonts\fontawesome-webfont.woff" />
+    <Content Include="DashboardStyles\fonts\fontawesome-webfont.woff2" />
+    <Content Include="DashboardStyles\fonts\FontAwesome.otf" />
+    <Content Include="DashboardStyles\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="DashboardStyles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="DashboardStyles\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="DashboardStyles\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\UvlotA.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\terms-conditions.html" />
+    <Content Include="UserStyles\assetold\css\animate.css" />
+    <Content Include="UserStyles\assetold\css\bootstrap.min.css" />
+    <Content Include="UserStyles\assetold\css\fontawesome-all.min.css" />
+    <Content Include="UserStyles\assetold\css\hover.css" />
+    <Content Include="UserStyles\assetold\css\magnific-popup.css" />
+    <Content Include="UserStyles\assetold\css\menumaker.css" />
+    <Content Include="UserStyles\assetold\css\nice-select.css" />
+    <Content Include="UserStyles\assetold\css\owl.carousel.min.css" />
+    <Content Include="UserStyles\assetold\css\Pe-icon-7-stroke.css" />
+    <Content Include="UserStyles\assetold\css\reset.css" />
+    <Content Include="UserStyles\assetold\css\responsive.css" />
+    <Content Include="UserStyles\assetold\css\second-home.css" />
+    <Content Include="UserStyles\assetold\css\style - Copy.css" />
+    <Content Include="UserStyles\assetold\css\style.css" />
+    <Content Include="UserStyles\assetold\css\third-home.css" />
+    <Content Include="UserStyles\assetold\fonts\fontawesome-webfont.svg" />
+    <Content Include="UserStyles\assetold\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="UserStyles\assetold\fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="UserStyles\assetold\img\about.jpg" />
+    <Content Include="UserStyles\assetold\img\articale-1.jpg" />
+    <Content Include="UserStyles\assetold\img\articale-2.jpg" />
+    <Content Include="UserStyles\assetold\img\articale-3.jpg" />
+    <Content Include="UserStyles\assetold\img\articale-sm-2.jpg" />
+    <Content Include="UserStyles\assetold\img\articale-sm.jpg" />
+    <Content Include="UserStyles\assetold\img\brand-1.png" />
+    <Content Include="UserStyles\assetold\img\brand-10.png" />
+    <Content Include="UserStyles\assetold\img\brand-2.png" />
+    <Content Include="UserStyles\assetold\img\brand-3.png" />
+    <Content Include="UserStyles\assetold\img\brand-4.png" />
+    <Content Include="UserStyles\assetold\img\brand-5.png" />
+    <Content Include="UserStyles\assetold\img\brand-6.png" />
+    <Content Include="UserStyles\assetold\img\brand-7.png" />
+    <Content Include="UserStyles\assetold\img\brand-8.png" />
+    <Content Include="UserStyles\assetold\img\brand-9.png" />
+    <Content Include="UserStyles\assetold\img\bripcase.png" />
+    <Content Include="UserStyles\assetold\img\calculate.jpg" />
+    <Content Include="UserStyles\assetold\img\call-2.png" />
+    <Content Include="UserStyles\assetold\img\call.png" />
+    <Content Include="UserStyles\assetold\img\camera.png" />
+    <Content Include="UserStyles\assetold\img\car.jpg" />
+    <Content Include="UserStyles\assetold\img\car.png" />
+    <Content Include="UserStyles\assetold\img\card.png" />
+    <Content Include="UserStyles\assetold\img\ceo.png" />
+    <Content Include="UserStyles\assetold\img\choose-1.jpg" />
+    <Content Include="UserStyles\assetold\img\choose-2.jpg" />
+    <Content Include="UserStyles\assetold\img\choose-3.jpg" />
+    <Content Include="UserStyles\assetold\img\clock.png" />
+    <Content Include="UserStyles\assetold\img\document.png" />
+    <Content Include="UserStyles\assetold\img\dollar.png" />
+    <Content Include="UserStyles\assetold\img\dreambg.jpg" />
+    <Content Include="UserStyles\assetold\img\edom.png" />
+    <Content Include="UserStyles\assetold\img\education.png" />
+    <Content Include="UserStyles\assetold\img\envalope-2.png" />
+    <Content Include="UserStyles\assetold\img\envalope-3.png" />
+    <Content Include="UserStyles\assetold\img\envalope.png" />
+    <Content Include="UserStyles\assetold\img\favicon.png" />
+    <Content Include="UserStyles\assetold\img\favIconSample.png" />
+    <Content Include="UserStyles\assetold\img\footer-logo.png" />
+    <Content Include="UserStyles\assetold\img\get-bg.jpg" />
+    <Content Include="UserStyles\assetold\img\get-money.png" />
+    <Content Include="UserStyles\assetold\img\handshake.png" />
+    <Content Include="UserStyles\assetold\img\home.png" />
+    <Content Include="UserStyles\assetold\img\how-it-work-1.jpg" />
+    <Content Include="UserStyles\assetold\img\how-it-work-3.jpg" />
+    <Content Include="UserStyles\assetold\img\how-it-work-4.jpg" />
+    <Content Include="UserStyles\assetold\img\how-it-work.jpg" />
+    <Content Include="UserStyles\assetold\img\icon-1.png" />
+    <Content Include="UserStyles\assetold\img\icon-2.png" />
+    <Content Include="UserStyles\assetold\img\icon-3.png" />
+    <Content Include="UserStyles\assetold\img\icon-4.png" />
+    <Content Include="UserStyles\assetold\img\icon-5.png" />
+    <Content Include="UserStyles\assetold\img\icon-6.png" />
+    <Content Include="UserStyles\assetold\img\icon-7.png" />
+    <Content Include="UserStyles\assetold\img\icon-8.png" />
+    <Content Include="UserStyles\assetold\img\improvment.png" />
+    <Content Include="UserStyles\assetold\img\large-blog-1.jpg" />
+    <Content Include="UserStyles\assetold\img\large-blog-2.jpg" />
+    <Content Include="UserStyles\assetold\img\large-blog-3.jpg" />
+    <Content Include="UserStyles\assetold\img\large-blog-4.jpg" />
+    <Content Include="UserStyles\assetold\img\large-blog-5.jpg" />
+    <Content Include="UserStyles\assetold\img\logo-2.png" />
+    <Content Include="UserStyles\assetold\img\logo.png" />
+    <Content Include="UserStyles\assetold\img\logoUvlot.png" />
+    <Content Include="UserStyles\assetold\img\map-pin-2.png" />
+    <Content Include="UserStyles\assetold\img\map-pin.png" />
+    <Content Include="UserStyles\assetold\img\map.png" />
+    <Content Include="UserStyles\assetold\img\money.png" />
+    <Content Include="UserStyles\assetold\img\pade.png" />
+    <Content Include="UserStyles\assetold\img\page-header.jpg" />
+    <Content Include="UserStyles\assetold\img\page-header01.jpg" />
+    <Content Include="UserStyles\assetold\img\pata.png" />
+    <Content Include="UserStyles\assetold\img\phone.png" />
+    <Content Include="UserStyles\assetold\img\portfolio-1.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-10.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-11.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-2.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-3.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-4.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-5.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-6.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-7.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-8.jpg" />
+    <Content Include="UserStyles\assetold\img\portfolio-9.jpg" />
+    <Content Include="UserStyles\assetold\img\post-2.jpg" />
+    <Content Include="UserStyles\assetold\img\post-3.jpg" />
+    <Content Include="UserStyles\assetold\img\post.jpg" />
+    <Content Include="UserStyles\assetold\img\scall.png" />
+    <Content Include="UserStyles\assetold\img\senvelope.png" />
+    <Content Include="UserStyles\assetold\img\services-1.png" />
+    <Content Include="UserStyles\assetold\img\services-car.jpg" />
+    <Content Include="UserStyles\assetold\img\services-education.jpg" />
+    <Content Include="UserStyles\assetold\img\services-home.jpg" />
+    <Content Include="UserStyles\assetold\img\services-lg.jpg" />
+    <Content Include="UserStyles\assetold\img\shap.png" />
+    <Content Include="UserStyles\assetold\img\sign.png" />
+    <Content Include="UserStyles\assetold\img\single-services.jpg" />
+    <Content Include="UserStyles\assetold\img\slider-1.jpg" />
+    <Content Include="UserStyles\assetold\img\slider-2.jpg" />
+    <Content Include="UserStyles\assetold\img\slider-3.jpg" />
+    <Content Include="UserStyles\assetold\img\stouch.png" />
+    <Content Include="UserStyles\assetold\img\team-1.jpg" />
+    <Content Include="UserStyles\assetold\img\team-2.jpg" />
+    <Content Include="UserStyles\assetold\img\team-3.jpg" />
+    <Content Include="UserStyles\assetold\img\team-4.jpg" />
+    <Content Include="UserStyles\assetold\img\team-5.jpg" />
+    <Content Include="UserStyles\assetold\img\team-6.jpg" />
+    <Content Include="UserStyles\assetold\img\team-7.jpg" />
+    <Content Include="UserStyles\assetold\img\team-8.jpg" />
+    <Content Include="UserStyles\assetold\img\testimonial-1.jpg" />
+    <Content Include="UserStyles\assetold\img\testimonial-2.jpg" />
+    <Content Include="UserStyles\assetold\img\testimonial.jpg" />
+    <Content Include="UserStyles\assetold\img\user.png" />
+    <Content Include="UserStyles\assetold\img\vision-1.png" />
+    <Content Include="UserStyles\assetold\img\vision-2.png" />
+    <Content Include="UserStyles\assetold\js\active.js" />
+    <Content Include="UserStyles\assetold\js\bootstrap.min.js" />
+    <Content Include="UserStyles\assetold\js\calculator.js" />
+    <Content Include="UserStyles\assetold\js\fontawesome-all.js" />
+    <Content Include="UserStyles\assetold\js\gmap.js" />
+    <Content Include="UserStyles\assetold\js\isotope.pkgd.min.js" />
+    <Content Include="UserStyles\assetold\js\jquery-3.3.1.min.js" />
+    <Content Include="UserStyles\assetold\js\jquery-3.3.1.slim.min.js" />
+    <Content Include="UserStyles\assetold\js\jquery-ui.js" />
+    <Content Include="UserStyles\assetold\js\jquery.loan-calculator.js" />
+    <Content Include="UserStyles\assetold\js\jquery.magnific-popup.js" />
+    <Content Include="UserStyles\assetold\js\jquery.nice-select.js" />
+    <Content Include="UserStyles\assetold\js\menumaker.js" />
+    <Content Include="UserStyles\assetold\js\owl.carousel.min.js" />
+    <Content Include="UserStyles\assetold\js\popper.min.js" />
+    <Content Include="UserStyles\assetold\js\slider.js" />
+    <Content Include="UserStyles\asset\css\animate.css" />
+    <Content Include="UserStyles\asset\css\bootstrap.min.css" />
+    <Content Include="UserStyles\asset\css\fontawesome-all.min.css" />
+    <Content Include="UserStyles\asset\css\hover.css" />
+    <Content Include="UserStyles\asset\css\magnific-popup.css" />
+    <Content Include="UserStyles\asset\css\menumaker.css" />
+    <Content Include="UserStyles\asset\css\nice-select.css" />
+    <Content Include="UserStyles\asset\css\owl.carousel.min.css" />
+    <Content Include="UserStyles\asset\css\Pe-icon-7-stroke.css" />
+    <Content Include="UserStyles\asset\css\reset.css" />
+    <Content Include="UserStyles\asset\css\responsive.css" />
+    <Content Include="UserStyles\asset\css\second-home.css" />
+    <Content Include="UserStyles\asset\css\style - Copy.css" />
+    <Content Include="UserStyles\asset\css\style.css" />
+    <Content Include="UserStyles\asset\css\third-home.css" />
+    <Content Include="UserStyles\asset\fonts\fontawesome-webfont.svg" />
+    <Content Include="UserStyles\asset\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="UserStyles\asset\fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="UserStyles\asset\img\about.jpg" />
+    <Content Include="UserStyles\asset\img\agencyLoanIcon.png" />
+    <Content Include="UserStyles\asset\img\ApprovalImg.png" />
+    <Content Include="UserStyles\asset\img\articale-1.jpg" />
+    <Content Include="UserStyles\asset\img\articale-2.jpg" />
+    <Content Include="UserStyles\asset\img\articale-3.jpg" />
+    <Content Include="UserStyles\asset\img\articale-sm-2.jpg" />
+    <Content Include="UserStyles\asset\img\articale-sm.jpg" />
+    <Content Include="UserStyles\asset\img\brand-1.png" />
+    <Content Include="UserStyles\asset\img\brand-10.png" />
+    <Content Include="UserStyles\asset\img\brand-2.png" />
+    <Content Include="UserStyles\asset\img\brand-3.png" />
+    <Content Include="UserStyles\asset\img\brand-4.png" />
+    <Content Include="UserStyles\asset\img\brand-5.png" />
+    <Content Include="UserStyles\asset\img\brand-6.png" />
+    <Content Include="UserStyles\asset\img\brand-7.png" />
+    <Content Include="UserStyles\asset\img\brand-8.png" />
+    <Content Include="UserStyles\asset\img\brand-9.png" />
+    <Content Include="UserStyles\asset\img\bripcase.png" />
+    <Content Include="UserStyles\asset\img\calculate.jpg" />
+    <Content Include="UserStyles\asset\img\call-2.png" />
+    <Content Include="UserStyles\asset\img\call.png" />
+    <Content Include="UserStyles\asset\img\camera.png" />
+    <Content Include="UserStyles\asset\img\car.jpg" />
+    <Content Include="UserStyles\asset\img\car.png" />
+    <Content Include="UserStyles\asset\img\card.png" />
+    <Content Include="UserStyles\asset\img\ceo.png" />
+    <Content Include="UserStyles\asset\img\choose-1.jpg" />
+    <Content Include="UserStyles\asset\img\choose-2.jpg" />
+    <Content Include="UserStyles\asset\img\choose-3.jpg" />
+    <Content Include="UserStyles\asset\img\clock.png" />
+    <Content Include="UserStyles\asset\img\disbursement.png" />
+    <Content Include="UserStyles\asset\img\document.png" />
+    <Content Include="UserStyles\asset\img\dollar.png" />
+    <Content Include="UserStyles\asset\img\dreambg.jpg" />
+    <Content Include="UserStyles\asset\img\edom.png" />
+    <Content Include="UserStyles\asset\img\education.png" />
+    <Content Include="UserStyles\asset\img\entreLoanIcon.png" />
+    <Content Include="UserStyles\asset\img\entrepreneurLoanIcon.png" />
+    <Content Include="UserStyles\asset\img\envalope-2.png" />
+    <Content Include="UserStyles\asset\img\envalope-3.png" />
+    <Content Include="UserStyles\asset\img\envalope.png" />
+    <Content Include="UserStyles\asset\img\favicon.png" />
+    <Content Include="UserStyles\asset\img\favIconSample.png" />
+    <Content Include="UserStyles\asset\img\footer-logo.png" />
+    <Content Include="UserStyles\asset\img\get-bg.jpg" />
+    <Content Include="UserStyles\asset\img\get-money.png" />
+    <Content Include="UserStyles\asset\img\handshake.png" />
+    <Content Include="UserStyles\asset\img\home.png" />
+    <Content Include="UserStyles\asset\img\how-it-work-1.jpg" />
+    <Content Include="UserStyles\asset\img\how-it-work-3.jpg" />
+    <Content Include="UserStyles\asset\img\how-it-work-4.jpg" />
+    <Content Include="UserStyles\asset\img\how-it-work.jpg" />
+    <Content Include="UserStyles\asset\img\icon-1.png" />
+    <Content Include="UserStyles\asset\img\icon-2.png" />
+    <Content Include="UserStyles\asset\img\icon-3.png" />
+    <Content Include="UserStyles\asset\img\icon-4.png" />
+    <Content Include="UserStyles\asset\img\icon-5.png" />
+    <Content Include="UserStyles\asset\img\icon-6.png" />
+    <Content Include="UserStyles\asset\img\icon-7.png" />
+    <Content Include="UserStyles\asset\img\icon-8.png" />
+    <Content Include="UserStyles\asset\img\improvment.png" />
+    <Content Include="UserStyles\asset\img\interest-rate.png" />
+    <Content Include="UserStyles\asset\img\large-blog-1.jpg" />
+    <Content Include="UserStyles\asset\img\large-blog-2.jpg" />
+    <Content Include="UserStyles\asset\img\large-blog-3.jpg" />
+    <Content Include="UserStyles\asset\img\large-blog-4.jpg" />
+    <Content Include="UserStyles\asset\img\large-blog-5.jpg" />
+    <Content Include="UserStyles\asset\img\loan-range.png" />
+    <Content Include="UserStyles\asset\img\loan-tenure.png" />
+    <Content Include="UserStyles\asset\img\LoanRegImg.png" />
+    <Content Include="UserStyles\asset\img\logo-2.png" />
+    <Content Include="UserStyles\asset\img\logo.png" />
+    <Content Include="UserStyles\asset\img\logoUvlot.png" />
+    <Content Include="UserStyles\asset\img\map-pin-2.png" />
+    <Content Include="UserStyles\asset\img\map-pin.png" />
+    <Content Include="UserStyles\asset\img\map.png" />
+    <Content Include="UserStyles\asset\img\money.png" />
+    <Content Include="UserStyles\asset\img\Nwosu.png" />
+    <Content Include="UserStyles\asset\img\pade.png" />
+    <Content Include="UserStyles\asset\img\page-header-pilgrims.jpg" />
+    <Content Include="UserStyles\asset\img\page-header.jpg" />
+    <Content Include="UserStyles\asset\img\page-header01.jpg" />
+    <Content Include="UserStyles\asset\img\pata.png" />
+    <Content Include="UserStyles\asset\img\payRollLoanIcon.png" />
+    <Content Include="UserStyles\asset\img\pensionerLoanIcon.png" />
+    <Content Include="UserStyles\asset\img\phone.png" />
+    <Content Include="UserStyles\asset\img\phone01.png" />
+    <Content Include="UserStyles\asset\img\portfolio-1.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-10.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-11.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-2.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-3.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-4.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-5.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-6.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-7.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-8.jpg" />
+    <Content Include="UserStyles\asset\img\portfolio-9.jpg" />
+    <Content Include="UserStyles\asset\img\post-2.jpg" />
+    <Content Include="UserStyles\asset\img\post-3.jpg" />
+    <Content Include="UserStyles\asset\img\post.jpg" />
+    <Content Include="UserStyles\asset\img\repayment.png" />
+    <Content Include="UserStyles\asset\img\scall.png" />
+    <Content Include="UserStyles\asset\img\senvelope.png" />
+    <Content Include="UserStyles\asset\img\services-1.png" />
+    <Content Include="UserStyles\asset\img\services-car.jpg" />
+    <Content Include="UserStyles\asset\img\services-education.jpg" />
+    <Content Include="UserStyles\asset\img\services-home.jpg" />
+    <Content Include="UserStyles\asset\img\services-lg.jpg" />
+    <Content Include="UserStyles\asset\img\servicesAgency.jpg" />
+    <Content Include="UserStyles\asset\img\servicesbusiness.jpg" />
+    <Content Include="UserStyles\asset\img\servicesEntrepreneur.jpg" />
+    <Content Include="UserStyles\asset\img\servicesPayRoll.jpg" />
+    <Content Include="UserStyles\asset\img\servicesPensioner.jpg" />
+    <Content Include="UserStyles\asset\img\servicesStudent.jpg" />
+    <Content Include="UserStyles\asset\img\shap.png" />
+    <Content Include="UserStyles\asset\img\sign.png" />
+    <Content Include="UserStyles\asset\img\single-services.jpg" />
+    <Content Include="UserStyles\asset\img\slider-1.jpg" />
+    <Content Include="UserStyles\asset\img\slider-2.jpg" />
+    <Content Include="UserStyles\asset\img\slider-3.jpg" />
+    <Content Include="UserStyles\asset\img\stouch.png" />
+    <Content Include="UserStyles\asset\img\studentLoanIcon.png" />
+    <Content Include="UserStyles\asset\img\team-1.jpg" />
+    <Content Include="UserStyles\asset\img\team-2.jpg" />
+    <Content Include="UserStyles\asset\img\team-3.jpg" />
+    <Content Include="UserStyles\asset\img\team-4.jpg" />
+    <Content Include="UserStyles\asset\img\team-5.jpg" />
+    <Content Include="UserStyles\asset\img\team-6.jpg" />
+    <Content Include="UserStyles\asset\img\team-7.jpg" />
+    <Content Include="UserStyles\asset\img\team-8.jpg" />
+    <Content Include="UserStyles\asset\img\testimonial-1.jpg" />
+    <Content Include="UserStyles\asset\img\testimonial-2.jpg" />
+    <Content Include="UserStyles\asset\img\testimonial.jpg" />
+    <Content Include="UserStyles\asset\img\user.png" />
+    <Content Include="UserStyles\asset\img\vision-1.png" />
+    <Content Include="UserStyles\asset\img\vision-2.png" />
+    <Content Include="UserStyles\asset\js\active.js" />
+    <Content Include="UserStyles\asset\js\bootstrap.min.js" />
+    <Content Include="UserStyles\asset\js\calculator.js" />
+    <Content Include="UserStyles\asset\js\fontawesome-all.js" />
+    <Content Include="UserStyles\asset\js\gmap.js" />
+    <Content Include="UserStyles\asset\js\isotope.pkgd.min.js" />
+    <Content Include="UserStyles\asset\js\jquery-3.3.1.min.js" />
+    <Content Include="UserStyles\asset\js\jquery-3.3.1.slim.min.js" />
+    <Content Include="UserStyles\asset\js\jquery-ui.js" />
+    <Content Include="UserStyles\asset\js\jquery.loan-calculator.js" />
+    <Content Include="UserStyles\asset\js\jquery.magnific-popup.js" />
+    <Content Include="UserStyles\asset\js\jquery.nice-select.js" />
+    <Content Include="UserStyles\asset\js\menumaker.js" />
+    <Content Include="UserStyles\asset\js\owl.carousel.min.js" />
+    <Content Include="UserStyles\asset\js\popper.min.js" />
+    <Content Include="UserStyles\asset\js\slider.js" />
+    <Content Include="UserStyles\Datatable\bootstrap.min.css" />
+    <Content Include="UserStyles\Datatable\bootstrap.min.js" />
+    <Content Include="UserStyles\Datatable\jquery-1.10.2.js" />
+    <Content Include="UserStyles\Datatable\jquery-ui.css" />
+    <Content Include="UserStyles\Datatable\jquery-ui.js" />
+    <Content Include="UserStyles\Datatable\jquery.dataTables.min.css" />
+    <Content Include="UserStyles\Datatable\jquery.dataTables.min.js" />
+    <Content Include="UserStyles\Datatable\jquery.min.js" />
+    <Content Include="UserStyles\OfferStyle\bootstrap.min.css" />
+    <Content Include="UserStyles\OfferStyle\offer-style.css" />
+    <Content Include="Views\terms-conditionsold.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Excel\ImportExcel1.cshtml" />
+    <Content Include="Views\AdminA\LoanRepayment.cshtml" />
+    <Content Include="Views\AdminA\LoanTransactionbyDate.cshtml" />
+    <Content Include="Views\AdminA\CheckAppStatus.cshtml" />
+    <Content Include="Views\AdminA\AllApprovedLoans.cshtml" />
+    <Content Include="Views\AdminA\LoanReport.cshtml" />
+    <Content Include="Views\User\Signin.cshtml" />
+    <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\AdminA\CheckEligibility.cshtml" />
+    <Content Include="Views\AdminA\CheckEligibility2.cshtml" />
+    <Content Include="Views\AdminA\CheckLoanStatus.cshtml" />
+    <Content Include="Views\AdminA\ImportExcel1.cshtml" />
+    <Content Include="Views\AdminA\LoanCalulator.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\AdminA\BVNValidation.cshtml" />
+    <Content Include="Views\AdminA\SetupMandate.cshtml" />
+    <Content Include="Views\AdminA\OTPValidation.cshtml" />
+    <Content Include="Views\AdminA\DebitInstruction.cshtml" />
+    <Content Include="Views\AdminA\DebitStatus.cshtml" />
+    <Content Include="Views\AdminA\CheckMandateStatus.cshtml" />
+    <Content Include="Views\AdminA\NYSCLoanAppForm.cshtml" />
+    <Content Include="Views\AdminA\Acknowledgement.cshtml" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\AdminA\ApproveLoanold.cshtml" />
+    <Content Include="Views\Shared\_LayoutDashboardinnerpage.cshtml" />
+    <Content Include="Views\AdminA\Approve.cshtml" />
+    <Content Include="Views\AdminA\AllNYSCLoanReporttoday.cshtml" />
+    <Content Include="Views\NYSCLOAN\NYSCLoanAppForm.cshtml" />
+    <Content Include="Views\NYSCLOAN\Acknowledgement.cshtml" />
+    <Content Include="Views\NYSCLOAN\AllNYSCLoanReport.cshtml" />
+    <Content Include="Views\NYSCLOAN\Approve.cshtml" />
+    <Content Include="Views\NYSCLOAN\ApproveLoan.cshtml" />
+    <Content Include="Views\NYSCLOAN\CheckPayrollLoan.cshtml" />
+    <Content Include="Views\AdminA\CheckNYSCLoan.cshtml" />
+    <Content Include="Views\NYSCLOAN\CheckNYSCLoan.cshtml" />
+    <Content Include="Views\AdminA\DisburseLoan.cshtml" />
+    <Content Include="Views\AdminA\Disburse.cshtml" />
+    <Content Include="Views\AdminA\AllApprovedLoan.cshtml" />
+    <Content Include="Views\AdminA\ApprovedLoan.cshtml" />
+    <Content Include="Views\NYSCLOAN\testDare.cshtml" />
+    <Content Include="UserStyles\asset\fonts\fontawesome-webfont.eot" />
+    <Content Include="UserStyles\asset\fonts\fontawesome-webfont.ttf" />
+    <Content Include="UserStyles\asset\fonts\fontawesome-webfont.woff" />
+    <Content Include="UserStyles\asset\fonts\fontawesome-webfont.woff2" />
+    <Content Include="UserStyles\asset\fonts\FontAwesome.otf" />
+    <Content Include="UserStyles\asset\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="UserStyles\asset\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="UserStyles\asset\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="UserStyles\asset\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="UserStyles\asset\fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="UserStyles\asset\fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="UserStyles\asset\fonts\Pe-icon-7-stroke.woff" />
+    <Content Include="UserStyles\assetold\fonts\fontawesome-webfont.eot" />
+    <Content Include="UserStyles\assetold\fonts\fontawesome-webfont.ttf" />
+    <Content Include="UserStyles\assetold\fonts\fontawesome-webfont.woff" />
+    <Content Include="UserStyles\assetold\fonts\fontawesome-webfont.woff2" />
+    <Content Include="UserStyles\assetold\fonts\FontAwesome.otf" />
+    <Content Include="UserStyles\assetold\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="UserStyles\assetold\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="UserStyles\assetold\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="UserStyles\assetold\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="UserStyles\assetold\fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="UserStyles\assetold\fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="UserStyles\assetold\fonts\Pe-icon-7-stroke.woff" />
+    <Content Include="Views\AdminA\Exportoexcel2.cshtml" />
+    <Content Include="Views\User\EditPassword.cshtml" />
+    <Content Include="Views\User\RecoverPassword.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\User\Signup.cshtml" />
+    <Content Include="Views\AdminA\Index.cshtml" />
+    <Content Include="Views\Home\termsconditionsold.cshtml" />
+    <Content Include="Views\Home\termsconditions.cshtml" />
+    <Content Include="Views\AdminA\SecondLevelApproval.cshtml" />
+    <Content Include="Views\AdminA\SecondApproval.cshtml" />
+    <Content Include="Views\AdminA\thirdLevelApproval.cshtml" />
+    <Content Include="Views\AdminA\ThirdApproval.cshtml" />
+    <Content Include="Views\AdminA\RecommendLoan.cshtml" />
+    <Content Include="Views\AdminA\AllApprovedSecondLevel.cshtml" />
+    <Content Include="Views\AdminA\ApprovedSecondLoan.cshtml" />
+    <Content Include="Views\AdminA\AllApprovedThirdLevel.cshtml" />
+    <Content Include="Views\AdminA\ApprovedThirdLoan.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\ReferralReg.cshtml" />
+    <Content Include="Views\Home\HIW.cshtml" />
+    <Content Include="Views\AdminA\MyReferredNYSCApplications.cshtml" />
+    <Content Include="Views\AdminA\FinalApproval.cshtml" />
+    <Content Include="Views\AdminA\FourthApproval.cshtml" />
+    <Content Include="Views\AdminA\AllApprovedFinalLevel.cshtml" />
+    <Content Include="Views\Home\ReferralFAQs.cshtml" />
+    <Content Include="Views\Home\ReferralTermsAndConditions.cshtml" />
+    <Content Include="Views\Home\TestDrop.cshtml" />
+    <Content Include="Views\AdminA\ApprovedFinalLevel.cshtml" />
+    <Content Include="Views\AdminA\RejectedApplications.cshtml" />
+    <Content Include="Views\AdminA\EditPassword.cshtml" />
+    <Content Include="Views\AdminA\AllNYSCLoanReport.cshtml" />
+    <Content Include="Views\AdminA\SpinTest.cshtml" />
+    <Content Include="Views\AdminA\ReferralRecords.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="asset\js2\" />
+    <Folder Include="Images\" />
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4264</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4264/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

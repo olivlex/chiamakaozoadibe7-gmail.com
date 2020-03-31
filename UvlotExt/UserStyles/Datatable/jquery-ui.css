@@ -1,0 +1,65 @@
+{"status":"success","message":"V-COMP","data":{"id":209975,"txRef":"20180803121142","orderRef":"URF_1533294838114_244335","flwRef":"FLWACHMOCK-1533294840250","redirectUrl":"N/A","device_fingerprint":"N/A","settlement_token":null,"cycle":"one-time","amount":20,"charged_amount":20,"appfee":0.28,"merchantfee":0,"merchantbearsfee":1,"chargeResponseCode":"00","raveRef":"RV315332948376385E63B551F8","chargeResponseMessage":"Approved. Successful.","authModelUsed":"AUTH","currency":"NGN","IP":"::ffff:10.47.227.241","narration":"Paelyt","status":"successful","modalauditid":"c4c77e29c27520bc03c4605020b1f2cf","vbvrespmessage":"N/A","authurl":"NO-URL","vbvrespcode":"N/A","acctvalrespmsg":null,"acctvalrespcode":null,"paymentType":"account","paymentPlan":null,"paymentPage":null,"paymentId":"304","fraud_status":"ok","charge_type":"normal","is_live":0,"createdAt":"2018-08-03T11:13:58.000Z","updatedAt":"2018-08-03T11:14:00.000Z","deletedAt":null,"customerId":38722,"AccountId":5577,"customer":{"id":38722,"phone":"08077755537","fullName":"Tolulope Oladipupo Tolulope Oladipupo","customertoken":null,"email":"tolutl@yahoo.com","createdAt":"2018-07-26T16:34:24.000Z","updatedAt":"2018-07-26T16:34:24.000Z","deletedAt":null,"AccountId":5577},"validateInstructions":{"valparams":[],"instruction":""}}}
+
+
+
+{"status":"success","message":"V-COMP","data":{"id":210036,"txRef":"20180803131620","orderRef":"URF_1533298640490_5817735","flwRef":"ACHG-1533298641244","redirectUrl":"N/A","device_fingerprint":"N/A","settlement_token":null,"cycle":"one-time","amount":20,"charged_amount":20,"appfee":0.28,"merchantfee":0,"merchantbearsfee":1,"chargeResponseCode":"02","raveRef":"RV31533298640035A7FC2F0D3E","chargeResponseMessage":"Pending OTP validation","authModelUsed":"AUTH","currency":"NGN","IP":"::ffff:10.6.21.161","narration":"Paelyt","status":"success-pending-validation","modalauditid":"4afd7e331502be2842bcf89b3086a878","vbvrespmessage":"N/A","authurl":"NO-URL","vbvrespcode":"N/A","acctvalrespmsg":null,"acctvalrespcode":null,"paymentType":"account","paymentPlan":null,"paymentPage":null,"paymentId":"2","fraud_status":"ok","charge_type":"normal","is_live":0,"createdAt":"2018-08-03T12:17:20.000Z","updatedAt":"2018-08-03T12:17:25.000Z","deletedAt":null,"customerId":38722,"AccountId":5577,"customer":{"id":38722,"phone":"08077755537","fullName":"Tolulope Oladipupo Tolulope Oladipupo","customertoken":null,"email":"tolutl@yahoo.com","createdAt":"2018-07-26T16:34:24.000Z","updatedAt":"2018-07-26T16:34:24.000Z","deletedAt":null,"AccountId":5577},"validateInstructions":{"valparams":["OTP"],"instruction":"Please validate with the OTP sent to your mobile or email"},"validateInstruction":"Please dial *901*4*1# to get your OTP. Enter the OTP gotten in the field below"}}
+
+ACHG-1533301223445
+
+{{
+  "status": "success",
+  "message": "V-COMP",
+  "data": {
+    "id": 210289,
+    "txRef": "20180803162934",
+    "orderRef": "URF_1533312350151_416335",
+    "flwRef": "FLW-MOCK-d5a4c99cbddee83a4b515131286c4485",
+    "redirectUrl": "http://localhost:60658/pays.aspx",
+    "device_fingerprint": "N/A",
+    "settlement_token": null,
+    "cycle": "one-time",
+    "amount": 20,
+    "charged_amount": 20,
+    "appfee": 0.28,
+    "merchantfee": 0,
+    "merchantbearsfee": 1,
+    "chargeResponseCode": "02",
+    "raveRef": "RV3153331234903194D589E831",
+    "chargeResponseMessage": "Approved. Successful",
+    "authModelUsed": "PIN",
+    "currency": "NGN",
+    "IP": "::ffff:10.178.65.194",
+    "narration": "CARD Transaction ",
+    "status": "success-pending-validation",
+    "modalauditid": "c45f1ab4b04ad433d15fab23070d4023",
+    "vbvrespmessage": "Approved. Successful",
+    "authurl": "N/A",
+    "vbvrespcode": "00",
+    "acctvalrespmsg": null,
+    "acctvalrespcode": null,
+    "paymentType": "card",
+    "paymentPlan": null,
+    "paymentPage": null,
+    "paymentId": "1174",
+    "fraud_status": "ok",
+    "charge_type": "normal",
+    "is_live": 0,
+    "createdAt": "2018-08-03T16:05:50Z",
+    "updatedAt": "2018-08-03T16:05:51Z",
+    "deletedAt": null,
+    "customerId": 38722,
+    "AccountId": 5577,
+    "customer": {
+      "id": 38722,
+      "phone": "08077755537",
+      "fullName": "Tolulope Oladipupo Tolulope Oladipupo",
+      "customertoken": null,
+      "email": "tolutl@yahoo.com",
+      "createdAt": "2018-07-26T16:34:24Z",
+      "updatedAt": "2018-07-26T16:34:24Z",
+      "deletedAt": null,
+      "AccountId": 5577
+    },
+    "customercandosubsequentnoauth": false
+  }
+}}

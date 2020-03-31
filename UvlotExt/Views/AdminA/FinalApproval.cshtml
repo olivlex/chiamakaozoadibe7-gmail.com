@@ -1,0 +1,258 @@
+﻿
+
+@{
+    ViewBag.Title = "CreateUser";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
+}
+<script type="text/javascript">
+$(document).ready(function() {
+$('table td:nth-child(6)').each(function() {
+    //alert('test');
+  let $this = $(this);
+
+  // make sure it's a number
+  if (!isNaN($this.text())) {
+
+    if (+$this.text() > 20)
+	{
+
+	    var pieces = parseFloat($this.text()).toFixed(2).split('')
+        let ii = pieces.length - 3
+        while ((ii -= 3) > 0) {
+            pieces.splice(ii, 0, ',')
+        }
+        $this.text(pieces.join(''));
+
+    }
+	else
+	{
+      $this.css('color', 'red');
+    }
+  }
+
+});
+});
+</script>
+<style>
+    .clean {
+        width: 200px;
+        height: 49px;
+        margin-top: 0px;
+        /*border-top: 10px;
+        border-right: 0px;
+        border-left: 0px;*/
+      
+       
+    }
+</style>
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            <!--<h4 class="title">Create User</h4>-->
+            <!-- Mega Form Starts -->
+            @if (TempData["Error"] != "")
+            {
+                <div id="Msgs" class="alert alert-danger">
+                    @TempData["Error"]
+                </div>
+            }
+            @if (TempData["SucMsg"] != "")
+            {
+                <div id="Msgs" class="alert alert-success">
+                    @TempData["SucMsg"]
+                </div>
+            }
+            <section class="section-padding contact-us-padding form-padding">
+                @*<div class="col-md-2">
+                        <a href=@Url.Action("Exportoexcel2", "AdminA", new { }) class="">
+                            <button type="submit" class="btn btn-default" onchange="CallChangefunc()">Export To Excel</button>
+                        </a>
+                    </div>*@
+                <div class="tables">
+                    <h2 class="title1">Final Level Approval</h2>
+                    <div class="table-responsive bs-example widget-shadow">
+                        @*<h4>Users:</h4>*@
+                        @{int i = 0;}
+                        <table id="myTable" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>AccountName</th>
+                                    <th>AccountNumber</th>
+                                    <th>PermanentAddress</th>
+                                    <th>Loan Amount (N)</th>
+                                    <th>Loan Tenure (Months)</th>
+                                    <th>Date</th>
+                                    <th>Check</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.Data == null)
+                                {
+                                    <h2>No Record Found</h2>
+                                }
+                                else
+                                {
+                                    foreach (var Loan in ViewBag.Data)
+                                    {
+                                        <tr>
+                                            <td scope="row">@(++i)</td>
+                                            <td>@Loan.Surname  @Loan.Firstname</td>
+                                            <td>@Loan.AccountName</td>
+                                            <td>@Loan.AccountNumber</td>
+                                            <td>@Loan.PermanentAddress</td>
+                                            <td>@Loan.ConvertedAmount</td>
+                                            <td>@Loan.LoanTenure</td>
+                                            <td>@Loan.ValueDate</td>
+                                            <td><input value="@Loan.LoanRefNumber+@Loan.LoanAmount" type="checkbox" name="Check" id="Check" class="sum" /></td>
+                                            <td>
+                                                @*<a onclick="return confirm('Are You Sure?')" href="@Url.Action("ApprovedLoan", "AdminA", new { Refid = @Loan.LoanRefNumber })">View</a>*@
+                                                <a @*onclick="return confirm('Are You Sure?')"*@ href="@Url.Action("FourthApproval", "AdminA", new { Refid = @Loan.LoanRefNumber })">View</a>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                }
+                            </tbody>
+                           
+                        </table>
+                    </div>
+                   
+                </div>
+             
+            </section>
+
+            <!-- // Mega Form Ends-->
+
+        </div>
+       
+    </div>
+    
+</div>
+
+   
+<input id="total" value="" style="margin-left:75%;" placeholder="TOTAL AMOUNT(&#8358;0.00)" readonly="readonly" type="text" name="total" class="clean" />
+<input type="submit" value="Disburse" onclick="alert(getCheckedCheckboxesFor('Check'));" name="btnDisburse" id="btnDisburse" style="height:49px;background-color:orange;" class="btn btn-primary" />
+
+<script>
+    $("#Check").change(function () {
+        alert('test');
+        $(".setA").prop('checked', $(this).prop("checked"));
+        alert('test 2');
+        changeval();
+    });
+
+    $(".sum").change(function () {
+        alert('test');
+        changeval();
+    });
+    var changeval = function () {
+        alert('1');
+        var totalPrice = 0;
+        alert(totalPrice);
+        var count = 0;
+        alert(count);
+        $(".sum").each(function (index) {
+
+            if (this.checked)
+            {
+                alert('checked');
+                var ddl = parseFloat(this.value.split("+").pop());
+                totalPrice += parseFloat(ddl);
+                //  totalWeight += parseFloat(this.getAttribute('Bweight'));
+                count++;
+            }
+        });
+        if (count <= 0) {
+            totalPrice = 0;
+        }
+        var tot = document.getElementById("total");
+        tot.value = totalPrice;
+        tot.value = ConvertAmount(totalPrice);
+        alert(tot.value);
+        // $("#payment-total").html(totalPrice);
+    }
+   
+    function ConvertAmount(amount) {
+
+
+        //  alert(amount);
+        x = parseFloat(amount).toFixed(2).split('');
+        //  alert(x);
+        let ii = x.length - 3
+        while ((ii -= 3) > 0) {
+            x.splice(ii, 0, ',')
+        }
+
+        x.value = x.join('');
+
+        return x.value;
+        // document.getElementById("LoansAmount").value = x.value;
+
+    }
+
+
+
+
+    function getCheckedCheckboxesFor(checkboxName) {
+        var comaseperatedIds = "";
+      
+        var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'), values = [];
+        Array.prototype.forEach.call(checkboxes, function (el) {
+            values.push(el.value);
+        });
+        if (values.length == 0) {
+            alert("Please Select A Checkbox");
+            return;
+        }
+
+
+        if (values.length != 0) {
+            var TotalSum = 0;
+
+            var invoice = document.getElementById("total");
+            comaseperatedIds = values.toString();
+
+            invoice.value = "N" + TotalSum;
+
+            $.ajax({
+
+                type: "POST",
+                url: "/AdminA/DisburseToList",
+                data: { ItemList: comaseperatedIds },
+
+                success: function (response) {
+
+                    if (JSON.stringify(response.response == "true"))
+                    {
+                        //alert(JSON.stringify(response.Data));
+                        //var impotantStuff = window.open("http://localhost:4264/AdminA/FinalApproval");
+                        impotantStuff.document.write('Refreshing ......')
+                        impotantStuff.location.href = "http://localhost:4264/AdminA/FinalApproval";
+                    }
+                    if (JSON.stringify(response.response == "false"))
+                    {
+                       
+                        alert(JSON.stringify(response.Data));
+                        window.location.href = "http://localhost:4264/Admin/DisburseLoan";
+                    }
+
+
+                }
+            });
+        }
+        //return values;
+    }
+
+
+
+
+
+function CallChangefunc(val)
+{
+    window.location.href = "/AdminA/Exportoexcel2";
+}
+</script>
