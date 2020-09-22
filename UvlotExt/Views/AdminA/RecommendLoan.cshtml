@@ -95,7 +95,7 @@ $('table td:nth-child(6)').each(function() {
                                             <td>@Loan.ReferralCode</td>
 
                                             <td>
-                                                <a  href="@Url.Action("Approve", "AdminA", new { Refid = @Loan.LoanRefNumber })">View</a>
+                                                <a class="fa fa-eye fa-lg text-success" href="@Url.Action("Approve", "AdminA", new { Refid = @Loan.LoanRefNumber })"></a>
                                             </td>
                                         </tr>
                                     }

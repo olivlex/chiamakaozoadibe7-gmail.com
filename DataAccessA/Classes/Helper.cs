@@ -189,7 +189,7 @@ namespace DataAccessA
 
         }
 
-        public BVNC BVNValidationResps(string bvnNumber)
+        public static BVNC BVNValidationResps(string bvnNumber)
         {
 
             BVNC BC = new BVNC();
@@ -229,7 +229,7 @@ namespace DataAccessA
                     BC.Phone = resps.data.phone_number;
                     BC.RegistrationDate = resps.data.registration_date;
                     BC.EnrollmentBank = resps.data.enrollment_bank == null ? "" : resps.data.enrollment_bank;
-                    BC.EnrollmentBank = _DR.GetBankCode(BC.EnrollmentBank);
+                    BC.EnrollmentBank = Helper.GetRemitaBankCodeByFlutterCode(BC.EnrollmentBank);
                     BC.EnrollmentBranch = resps.data.enrollment_branch;
                     //BC.image_base_64 = resps.data.image_base_64;
                     BC.address = resps.data.address;
@@ -254,6 +254,28 @@ namespace DataAccessA
             }
         }
 
+
+        public  string GetBankCode(string BANKNAME)
+        {
+            try
+            {
+                var Bank = (from a in uvDb.Banks
+                            where a.Name == BANKNAME
+                            select a.Code).FirstOrDefault();
+                if (Bank == null)
+                {
+
+                    return null;
+                }
+
+                return Bank;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.StackTrace);
+                return null;
+            }
+        }
 
 
 

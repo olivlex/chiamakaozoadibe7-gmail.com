@@ -70,10 +70,16 @@
     <Compile Include="Classes\Menus.cs" />
     <Compile Include="Classes\MyUtility.cs" />
     <Compile Include="Classes\WebLog.cs" />
+    <Compile Include="DataManager\AA_Sheet.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\AccomodationType.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\ApplicationStatu.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\A_OfflineApplications.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\Bank.cs">
@@ -85,8 +91,14 @@
     <Compile Include="DataManager\BanksManager.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataManager\BorroweredLoans_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\DataReader.cs" />
     <Compile Include="DataManager\DataWriter.cs" />
+    <Compile Include="DataManager\DisbursedLoans_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\DocUpload.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
@@ -94,6 +106,18 @@
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\EmploymentStatu.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\GetNYSCDefaultLoans_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\GetNYSCLoanApplicationSummary_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\GetReferralActivity_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\GetReferrals_Result.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\Guarantor.cs">
@@ -105,6 +129,9 @@
     <Compile Include="DataManager\InstitutionType.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataManager\Ledger.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\LGA.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
@@ -112,6 +139,9 @@
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\LoanApproval.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\LoanDueForDebit_Result.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\LoanInterestRate.cs">
@@ -153,7 +183,13 @@
     <Compile Include="DataManager\MeansOfIdentification.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataManager\MonthVal.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\NigerianState.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\NyscApplicationRelated_Result.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\NYSCApplicationStatu.cs">
@@ -177,6 +213,12 @@
     <Compile Include="DataManager\NYSCReferralLedger.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataManager\NYSCRelative.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\OutStandingLoan_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\Page.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
@@ -195,7 +237,22 @@
     <Compile Include="DataManager\PaymentFlag.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataManager\ReferralAgentPerformance_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Repayment.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\RepaymentMethod.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Repayment_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\RevenueEarned_Result.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\RevenueReceived_Result.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\Role.cs">
@@ -208,6 +265,9 @@
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\Title.cs">
+      <DependentUpon>UvlotA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\Top50ReferralPerformance_Result.cs">
       <DependentUpon>UvlotA.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManager\User.cs">

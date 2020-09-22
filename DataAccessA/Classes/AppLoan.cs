@@ -25,7 +25,12 @@ namespace DataAccessA.Classes
 
             public string DateOfBirth { get; set; }
 
-            public string PhoneNumber { get; set; }
+        public DateTime Enddate { get; set; }
+
+        public DateTime Startdate { get; set; }
+
+
+        public string PhoneNumber { get; set; }
 
             public string EmailAddress { get; set; }
 
@@ -92,17 +97,50 @@ namespace DataAccessA.Classes
         public string Institution { get; set; }
     }
 
-    public class AppLoanss
+    public class Top50Referral
+    {
+        public int ID { get; set; }
+        public string Surname { get; set; }
+        public string Firstname { get; set; }
+        public double Disbursedloan { get; set; }
+        public string ValueDates { get; set; }
+        public string RepaymentAmount { get; set; }
+
+        public int ActiveLoans { get; set; }
+        public int DefaultLoans { get; set; }
+
+        public double CommisionEarned { get; set; }
+        public double CommisionPaid { get; set; }
+
+        public double walletBalance { get; set; }
+
+     
+    }
+
+        public class AppLoanss
     {
         public int ID { get; set; }
         public string LoanRefNumber { get; set; }
         public int Title_FK { get; set; }
         public int NYSCApplicationStatus_FK { get; set; }
-       
+        
+             public DateTime ApplicationApprove { get; set; }
+        public DateTime APplicationDate { get; set; }
+        public string ValueDates { get; set; }
         public string Title { get; set; }
         public string Surname { get; set; }
         public string comment { get; set; }
         public string Firstname { get; set; }
+       
+       public string EMG_EmailAddress2 { get; set; }
+        public string EMG_FullName2 { get; set; }
+        public string EMG_HomeAddress2 { get; set; }
+        public string EMG_PhoneNumber2 { get; set; }
+        public string EMG_Relationship2 { get; set; }
+        public string FacebookName { get; set; }
+        public string InstagramHandle { get; set; }
+        public string TwitterHandle { get; set; }
+        public string ReferalCode { get; set; }
         public string MaritalStatus { get; set; }
         public string Othernames { get; set; }
         public string AppStat { get; set; }
@@ -144,6 +182,13 @@ namespace DataAccessA.Classes
         public Double NetMonthlyIncome { get; set; }
         public string ApplicantID { get; set; }
         public string EMG_FullName { get; set; }
+        public string PPA_Department { get; set; }
+        public string PPA_ROle { get; set; }
+        public string PPA_EmailAddress { get; set; }
+        public string PPA_PhoneNumber { get; set; }
+        public string PPA_supervisorName { get; set; }
+        public string PPA_supervisorEmail { get; set; }
+        public string PPA_supervisorPhonenumber { get; set; }
 
         public string EMG_HomeAddress { get; set; }
         public string EMG_PhoneNumber { get; set; }
@@ -176,8 +221,13 @@ namespace DataAccessA.Classes
         public string CreatedBy { get; set; }
 
         public int Recommend { get; set; }
+        public string FirstRelativeName { get; set; }
+        public string FirstRelativePhoneNumber { get; set; }
+        public string SecondRelativeName { get; set; }
+        public string SecondRelativePhoneNumber { get; set; }
+        public string RelativeRelationship_FK { get; set; }
+        public string RelativeRelationship2_FK { get; set; }
 
-      
         public double SalaryAmount { get; set; }
         public string faculty { get; set; }
         public string Department { get; set; }
@@ -201,7 +251,12 @@ namespace DataAccessA.Classes
         public string NyscIdCardFilePath { get; set; }
 
         public string STA_FilePath { get; set; }
-
+        public string NyscpassportFilePath { get; set; }
+        public string NyscCallUpLetterFilePath { get; set; }
+        public string NyscPostingLetterFllePath { get; set; }
+        public string NyscProfileDashboardFilePath { get; set; }
+        public string LetterOfundertaken { get; set; }
+        
         public string ReferralCode { get; set; }
         public string RepaymentAmount { get; set; }
 
@@ -231,6 +286,7 @@ namespace DataAccessA.Classes
         public string LoanRefNumber { get; set; }
         public string AccountNumber { get; set; }
         public string PermanentAddress { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string Firstname { get; set; }
         public string ReferralCode { get; set; }
@@ -239,6 +295,7 @@ namespace DataAccessA.Classes
         public string ValueDate { get; set; }
 
         public string Surname { get; set; }
+        public string EmailAddress { get; set; }
 
         public string RemitaLink { get; set; }
 
@@ -266,4 +323,155 @@ namespace DataAccessA.Classes
            
 
         }
+
+
+
+
+    public class ReferralDetails
+    {
+        public int ID { get; set; }
+
+
+        public int User_FK { get; set; }
+
+
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+
+        public string EmailAddress { get; set; }
+
+
+        public string UserAddress { get; set; }
+        public string ContactAddress { get; set; }
+        public string ReferralCode { get; set; }
+
+        public string MyReferralCode { get; set; }
+        public string ValueTime { get; set; }
+
+        public string PhoneNumber { get; set; }
+
     }
+
+
+
+
+
+
+
+
+
+    public class BVNRecords
+    {
+        public int ID { get; set; }
+
+
+        public string Lastname { get; set; }
+
+
+        public string Firstname { get; set; }
+
+
+        public string Othernames { get; set; }
+
+
+        public string DateOfBirth { get; set; }
+
+        public string Gender { get; set; }
+
+        public string BankName { get; set; }
+
+        public string EnrollmentBranch { get; set; }
+        public string Nationlaity { get; set; }
+
+        public string Marital_Status { get; set; }
+
+
+        public string ContactAddress { get; set; }
+
+        public int VerifiedStatus { get; set; }
+
+        public string ServiceResponse { get; set; }
+
+        public int IsVisible { get; set; }
+        public string ValueDate { get; set; }
+
+
+    }
+
+    public class loanSummary
+    {
+        public int ID { get; set; }
+        
+
+
+        public string MyDate { get; set; }
+
+        public int NoOfNewApplications { get; set; }
+
+        
+
+        public Double NewLoanAmount { get; set; }
+
+        
+
+        public int NoOfDisbursedApplications { get; set; }
+
+        public Double DisbusredAmount { get; set; }
+        
+
+
+    }
+
+    public class ReferralActivity
+    {
+        public int ID { get; set; }
+
+
+        
+
+        public string MyReferralCode { get; set; }
+
+        public string Referrer { get; set; }
+
+        
+
+        public string EmailAddress { get; set; }
+
+
+        
+
+        public int NoOfLoan { get; set; }
+        
+
+        public Double LoanAmount { get; set; }
+
+
+
+    }
+
+    public class GetNYSCDefaultLoan
+    {
+     
+
+
+
+
+        public string ReferenceNumber { get; set; }
+
+        public string FullName { get; set; }
+
+
+
+        public string StateCode { get; set; }
+
+
+
+
+        public double LoanAmount { get; set; }
+
+
+        public Double Amount { get; set; }
+
+        public string DueMonth { get; set; }
+    }
+}

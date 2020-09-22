@@ -1,10 +1,11 @@
 ﻿
 @{
-    //ViewBag.Title = "Sigin";
-    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewBag.Title = "CreateUser";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
 }
 @model DataAccessA.Classes.AppLoanss
-<div class="page-header01">
+@*<div class="page-header01">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center ">
@@ -18,7 +19,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 @*<div class="charts">
     <div class="mid-content-top charts-grids">
@@ -29,97 +30,105 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                @using (Html.BeginForm("CheckNYSCLoan", "AdminA", FormMethod.Post, new { id = "signup" }))
+    <div class="col-md-12 col-lg-10">
+        @using (Html.BeginForm("CheckNYSCLoan", "AdminA", FormMethod.Post, new { id = "signup" }))
+        {
+            <form action="#" method="post">
+
+
+                @if (TempData["ErrMsg"] != "")
                 {
-                    <form action="#" method="post">
-
-                        @if (TempData["ErrMsg"] != "")
-                        {
-                            <div id="Msgs" class="alert alert-danger">
-                                @TempData["ErrMsg"]
-                            </div>
-                        }
-
-                       @if (TempData["SucMsg"] != "")
-                {
-                            <div id="Msgs" class="alert alert-success">
-                                @TempData["SucMsg"]
-                            </div>
-                        }
-
-                        <h2 class="title1">Check Application Status</h2>
-                        <div class="row list-input">
-
-
-                            <div class="col-md-6 mr0">
-                                <div class="single-get-touch">
-                                    <input type="text" value="" required name="RefNumber" placeholder="Enter Reference Number" />
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="single-get-touch">
-                                    @* <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction"></button>*@
-                                    <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </form>
+                    <div id="Msgs" class="alert alert-danger">
+                        @TempData["ErrMsg"]
+                    </div>
                 }
-            </div>
+                @if (TempData["SucMsg"] != "")
+                {
+                    <div id="Msgs" class="alert alert-success">
+                        @TempData["SucMsg"]
+                    </div>
+                }
 
-            <br />
-            @if (Model == null)
+
+                <h2 class="title1">Check Application Status</h2>
+                <div class="row list-input">
+
+
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            <input type="text" value="" required name="RefNumber" placeholder="Enter Reference Number" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="single-get-touch">
+                            @* <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction"></button>*@
+                            <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        }
+    </div>
+
+    <br />
+    @if (Model == null)
             {
             }
             else
             {
 
-                <div class="col-sm-6 col-lg-5">
-                    <label class="control-label">Loan RefNumber<span class="color-red">*</span></label>
-                    <span>@Model.LoanRefNumber</span>
-                </div>
+        <div class="col-sm-6 col-lg-5">
+            <label class="control-label">Loan RefNumber<span class="color-red">*</span></label>
+            <span>@Model.LoanRefNumber</span>
+        </div>
                 <div class="col-sm-6 col-lg-5">
                     <label class="control-label">Surname<span class="color-red">*</span></label>
                     <span>@Model.Surname</span>
                 </div>
 
-                                <div class="col-sm-6 col-lg-5">
-                                    <label class="control-label">Firstname<span class="color-red">*</span></label>
-                                    <span>@Model.Firstname</span>
-                                </div>
                 <div class="col-sm-6 col-lg-5">
-                    <label class="control-label">DateCreated<span class="color-red">*</span></label>
-                    <span>@Model.ValueDate</span>
+                    <label class="control-label">Firstname<span class="color-red">*</span></label>
+                    <span>@Model.Firstname</span>
                 </div>
+                                <div class="col-sm-6 col-lg-5">
+                                    <label class="control-label">DateCreated<span class="color-red">*</span></label>
+                                    <span>@Model.ValueDate</span>
+                                </div>
 
                                 <div class="col-sm-6 col-lg-5">
                                     @*<div class="col-md-6 mr0">
                                         <div class="single-get-touch">*@
-                                            <label class="control-label">Email Address<span class="color-red">*</span></label>
-                                            <span>@Model.EmailAddress</span>
+                                    <label class="control-label">Email Address<span class="color-red">*</span></label>
+                                    <span>@Model.EmailAddress</span>
+                                </div>
+
+                                        <div class="col-sm-6 col-lg-5">
+                                            <label class="control-label">Application Status<span class="color-red">*</span></label>
+                                            <span>@Model.AppStat</span>
                                         </div>
 
-                                <div class="col-sm-6 col-lg-5">
-                                    <label class="control-label">Application Status<span class="color-red">*</span></label>
-                                    <span>@Model.AppStat</span>
-                                </div>
-                                
-                                <div class="col-sm-6 col-lg-5">
-                                    <label class="control-label">Loan Amount<span class="color-red">*</span></label>
-                                    <span>@Model.LoanAmount</span>
-                                </div>
+                                        <div class="col-sm-6 col-lg-5">
+                                            <label class="control-label">Loan Amount(&#8358;)<span class="color-red">*</span></label>
+                                            <span>@Model.LoanAmount</span>
+                                        </div>
 
-                                <div class="col-sm-6 col-lg-5">
-                                    <label class="control-label">Loan Tenure<span class="color-red">*</span></label>
-                                    <span>@Model.LoanTenure
-                                    </span>
-                                </div>
+                                        <div class="col-sm-6 col-lg-5">
+                                            <label class="control-label">Loan Tenure<span class="color-red">*</span></label>
+                                            <span>
+                                                @Model.LoanTenure
+                                        </span>
+                                    </div>
 
+                                    
+                                    <div class="col-sm-6 col-lg-10">
+                                        <label class="control-label">Monthly Repayment Amount(&#8358;)<span class="color-red"></span></label>
+                                        <span>@Model.RepaymentAmount</span>
+                                    </div>
+                               
             }
 
 

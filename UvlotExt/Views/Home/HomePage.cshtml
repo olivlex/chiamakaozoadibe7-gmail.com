@@ -56,7 +56,7 @@
                             <li>
                                 <a href="#">NYSC LOAN</a>
                                 <ul>
-
+                                    <li><a href="@Url.Action("NYSCLoanRequirement", "Home")">Loan Requirement</a></li>
                                     <li><a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")">Apply Here</a></li>
                                     <li><a href="@Url.Action("CheckNYSCLoan", "NYSCLOAN")">Check Loan Status</a></li>
                                     <li><a href="@Url.Action("termsconditions", "Home")">Terms and Conditions</a></li>
@@ -120,7 +120,7 @@
                 @if (Session["User"] != null)
                 {
                     <div class="col-lg-1">
-                        <a href=@Url.Action("ApproveLoan", "AdminA")><button class="btn btn-primary btn-sm">Dashboard</button></a>
+                        <a href=@Url.Action("Index", "AdminA")><button class="btn btn-primary btn-sm">Dashboard</button></a>
                     </div>
                         <div class="col-lg-1">
                             <a href=@Url.Action("LogOut", "User")><button class="btn btn-primary btn-sm">Logout</button></a>
@@ -774,6 +774,14 @@
                 }
             });
         </script>
+    <script type='text/javascript'>
+var onWebChat={ar:[], set: function(a,b){if (typeof onWebChat_==='undefined'){this.ar.
+push([a,b]);}else{onWebChat_.set(a,b);}},get:function(a){return(onWebChat_.get(a));},
+w:(function(){ var ga=document.createElement('script'); ga.type = 'text/javascript';
+ga.async=1;ga.src=('https:'==document.location.protocol?'https:':'http:') +
+'//www.onwebchat.com/clientchat/f5e06cbdbfe4fb2b0db6fa787f0b8420';var s=
+document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})()}
+    </script>
 </body>
 </html>
 

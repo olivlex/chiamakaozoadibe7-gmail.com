@@ -48,8 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataAccessA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="DataAccessA">
       <HintPath>..\DataAccessA\bin\Debug\DataAccessA.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -463,8 +462,11 @@
     <Content Include="DashboardStyles\js\SimpleChart.js" />
     <Content Include="DashboardStyles\js\utils.js" />
     <Content Include="DashboardStyles\js\validator.min.js" />
+    <Content Include="EmailNotifications\SaveWelcomeEmail.html" />
+    <Content Include="EmailNotifications\DisbursementEmail.html" />
     <Content Include="EmailNotifications\EmailNotification.html" />
     <Content Include="EmailNotifications\NYSCWelcomeEmail.html" />
+    <Content Include="EmailNotifications\ReferralWelcomeEmail.html" />
     <Content Include="EmailNotifications\remitaformEmails.html" />
     <Content Include="EmailNotifications\remitaformEmail.html" />
     <Content Include="EmailNotifications\WelcomeEmailNotification.html" />
@@ -474,9 +476,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Controllers\Content\Site.css" />
+    <Content Include="remitaformEmail.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="Views\AdminA\NYSCLoanAppFormEdit.cshtml" />
     <Content Include="WebForm1.aspx" />
     <Content Include="DashboardStyles\fonts\fontawesome-webfont.eot" />
     <Content Include="DashboardStyles\fonts\fontawesome-webfont.ttf" />
@@ -487,6 +491,7 @@
     <Content Include="DashboardStyles\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="DashboardStyles\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="DashboardStyles\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="files\NYSC Loan Attestation Letter.pdf" />
     <None Include="Properties\PublishProfiles\UvlotA.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -968,10 +973,44 @@
     <Content Include="Views\AdminA\AllNYSCLoanReport.cshtml" />
     <Content Include="Views\AdminA\SpinTest.cshtml" />
     <Content Include="Views\AdminA\ReferralRecords.cshtml" />
+    <Content Include="Views\AdminA\ComissionCashout.cshtml" />
+    <Content Include="Views\AdminA\BVNReport.cshtml" />
+    <Content Include="Views\AdminA\NYSCLoanSummary.cshtml" />
+    <Content Include="Views\AdminA\ReferralActivity.cshtml" />
+    <Content Include="Views\AdminA\ReferredApplicants.cshtml" />
+    <Content Include="Views\AdminA\ApprovalTime.cshtml" />
+    <Content Include="Views\AdminA\ApprovalTimess.cshtml" />
+    <Content Include="Views\AdminA\LoanDueForDebit.cshtml" />
+    <Content Include="Views\AdminA\To50RefferalPerformance.cshtml" />
+    <Content Include="Views\AdminA\AgentPerformance.cshtml" />
+    <Content Include="Views\AdminA\DisbursedLoansRep.cshtml" />
+    <Content Include="Views\AdminA\BorrowedLoan.cshtml" />
+    <Content Include="Views\AdminA\RegisteredApplicant.cshtml" />
+    <Content Include="Views\AdminA\DisbursedApplicantReport.cshtml" />
+    <Content Include="Views\AdminA\OutStandingLoan.cshtml" />
+    <Content Include="Views\AdminA\RevenueReceived.cshtml" />
+    <Content Include="Views\AdminA\RevenueEarned.cshtml" />
+    <Content Include="Views\AdminA\Repayment.cshtml" />
+    <Content Include="Views\AdminA\EditMyApplication.cshtml" />
+    <Content Include="Views\AdminA\NYSCLoanAppFormEditOld.cshtml" />
+    <Content Include="Views\AdminA\Acknowledgements.cshtml" />
+    <Content Include="Views\Home\NYSCLoanRequirement.cshtml" />
+    <Content Include="Views\NYSCLOAN\Save.cshtml" />
+    <Content Include="Views\AdminA\NYSCDefaultLoans.cshtml" />
+    <Content Include="Views\AdminA\SaveAcknowledgement.cshtml" />
+    <Content Include="Views\NYSCLOAN\SaveAcknowledgement.cshtml" />
+    <Content Include="Views\AdminA\Ex2Excel.cshtml" />
+    <Content Include="Views\AdminA\NYSCFileUploads.cshtml" />
+    <Content Include="Views\AdminA\FileUploadDetails.cshtml" />
+    <Content Include="Views\AdminA\SaveAcknowledgementss.cshtml" />
+    <Content Include="Views\AdminA\RegisteredReferral.cshtml" />
+    <Content Include="Views\AdminA\ReferralApplications.cshtml" />
+    <Content Include="Views\AdminA\ApplicantRelated.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="asset\js2\" />
+    <Folder Include="DownloadDll\" />
     <Folder Include="Images\" />
     <Folder Include="Image\" />
   </ItemGroup>

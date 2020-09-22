@@ -84,9 +84,9 @@ $('table td:nth-child(6)').each(function() {
                                             <td>@Loan.BankCode</td>
                                             <td>@Loan.AccountNumber</td>
                                              <td>@Loan.AccountName</td> 
-                                            <td>@LoanApp.ValueDate</td>
+                                            <td>@Loan.ValueDate</td>
                                             <td>
-                                                <a onclick="return confirm('Are You Sure?')" href="@Url.Action("Disburse", "AdminA", new { Refid = @Loan.RefNumber })">View</a>
+                                                <a class="fa fa-eye fa-lg text-success" onclick="return confirm('Are You Sure?')" href="@Url.Action("Disburse", "AdminA", new { Refid = @Loan.RefNumber })"></a>
                                             </td>
                                         </tr>
                                     }

@@ -1,0 +1,263 @@
+﻿
+@{
+    ViewBag.Title = "CreateUser";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
+}
+<script type="text/javascript">
+$(document).ready(function() {
+$('table td:nth-child(6)').each(function() {
+    //alert('test');
+  let $this = $(this);
+
+  // make sure it's a number
+  if (!isNaN($this.text())) {
+
+    if (+$this.text() > 20)
+	{
+
+	    var pieces = parseFloat($this.text()).toFixed(2).split('')
+        let ii = pieces.length - 3
+        while ((ii -= 3) > 0) {
+            pieces.splice(ii, 0, ',')
+        }
+        $this.text(pieces.join(''));
+
+    }
+	else
+	{
+      $this.css('color', 'red');
+    }
+  }
+
+});
+});
+</script>
+
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            <!--<h4 class="title">Create User</h4>-->
+            <!-- Mega Form Starts -->
+            @if (TempData["Error"] != "")
+            {
+                <div id="Msgs" class="alert alert-danger">
+                    @TempData["Error"]
+                </div>
+            }
+            @if (TempData["SucMsg"] != "")
+            {
+                <div id="Msgs" class="alert alert-success">
+                    @TempData["SucMsg"]
+                </div>
+            }
+            <section class="section-padding contact-us-padding form-padding">
+
+                <div class="tables">
+                    <h2 class="title1">KPI APPROVAL</h2>
+                    <div class="table-responsive bs-example widget-shadow">
+                        @*<h4>Users:</h4>*@
+                        <table id="myTable" class="table table-bordered">
+                            <thead>
+                                <tr>
+
+                                    <th>Kpi One(Mins)</th>
+                                    <th>Kpi Two(Mins)</th>
+                                    <th>Kpi Three(Mins)</th>
+                                    <th>kpi Four(Mins)</th>
+                                    <th>kpi five(Mins)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    string name = "";
+                                }
+                                @if (ViewBag.Data == null)
+                                {
+                                    <h2>No Record Found</h2>
+                                }
+                                else
+                                {
+                                    //foreach (var Loan in ViewBag.Data)
+                                    //{
+                                    <tr>
+
+                                        @for (int i = 0; i < ViewBag.Data.Count; i++)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                <td><span id="first">@ViewBag.Data[i];</span></td>
+                                            }
+                                            if (i == 1)
+                                            {
+
+                                                <td><span id="second">@ViewBag.Data[i]</span></td>
+                                            }
+                                            if (i == 2)
+                                            {
+
+                                                <td><span id="third">@ViewBag.Data[i]</span></td>
+                                            }
+                                            if (i == 3)
+                                            {
+
+                                                <td><span id="fourth">@ViewBag.Data[i]</span></td>
+                                            }
+                                            if (i == 4)
+                                            {
+
+                                                <td><span id="fifth">@ViewBag.Data[i]</span></td>
+                                            }
+
+
+                                        }
+                                      
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                            
+                        </table>
+                        <div class="col-md-4">
+                            <div class="single-get-touch">
+                                <td>
+                                    <a href="@Url.Action("ApprovalTime", "AdminA" )" class="btn btn-default btn-sm2 btnAction">PREVIOUS PAGE</a>
+                                </td>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </section>
+
+
+            <!-- // Mega Form Ends-->
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    function ConvertAmount(amount) {
+
+
+        //  alert(amount);
+        x = parseFloat(amount).toFixed(2).split('');
+        //  alert(x);
+        let ii = x.length - 3
+        while ((ii -= 3) > 0) {
+            x.splice(ii, 0, ',')
+        }
+
+        x.value = x.join('');
+
+        return x.value;
+        // document.getElementById("LoansAmount").value = x.value;
+
+    }
+</script>
+<script>
+        window.onload = function()
+        {
+
+
+
+        var x1 = document.getElementById('first').innerHTML;
+
+        var num = x1;
+
+        var hours = (parseFloat(num) / 60);
+
+        var rhours = Math.floor(hours);
+
+        var minutes = parseFloat(hours - rhours) * 60;
+
+        var rminutes = Math.round(minutes);
+
+        var nums =  rhours + " hour(s) and " + rminutes + " minute(s).";
+
+        document.getElementById('first').innerHTML = nums;
+
+
+
+        var x2 = document.getElementById('second').innerHTML;
+
+        var num2 = x2;
+
+        var hours2 = (parseFloat(num2) / 60);
+
+        var rhours2 = Math.floor(hours2);
+
+        var minutes2 = parseFloat(hours2 - rhours2) * 60;
+
+        var rminutes2 = Math.round(minutes2);
+
+        var nums2 = rhours2 + " hour(s) and " + rminutes2 + " minute(s).";
+
+        document.getElementById('second').innerHTML = nums2;
+
+
+        var x3 = document.getElementById('third').innerHTML;
+
+        var num3 = x3;
+
+        var hours3 = (parseFloat(num3) / 60);
+
+        var rhours3 = Math.floor(hours3);
+
+        var minutes3 = parseFloat(hours3 - rhours3) * 60;
+
+        var rminutes3 = Math.round(minutes3);
+
+        var nums3 = rhours3 + " hour(s) and " + rminutes3 + " minute(s).";
+
+        document.getElementById('third').innerHTML = nums3;
+
+
+
+        var x4 = document.getElementById('fourth').innerHTML;
+
+        var num4 = x4;
+
+        var hours4 = (parseFloat(num4) / 60);
+
+        var rhours4 = Math.floor(hours4);
+
+        var minutes4 = parseFloat(hours4 - rhours4) * 60;
+
+        var rminutes4 = Math.round(minutes4);
+
+        var nums4 = rhours4 + " hour(s) and " + rminutes4 + " minute(s).";
+
+        document.getElementById('fourth').innerHTML = nums4;
+
+
+
+
+        var x5 = document.getElementById('fifth').innerHTML;
+
+        var num5 = x5;
+
+        var hours5 = (parseFloat(num5) / 60);
+
+        var rhours5 = Math.floor(hours5);
+
+        var minutes5 = parseFloat(hours5 - rhours5) * 60;
+
+        var rminutes5 = Math.round(minutes5);
+
+        //var nums5 = num5 + " minutes = " + rhours5 + " hour(s) and " + rminutes5 + " minute(s).";
+
+        var nums5 = rhours5 + " hour(s) and " + rminutes5 + " minute(s).";
+
+        document.getElementById('fifth').innerHTML = nums5;
+
+
+
+
+
+
+
+        };
+</script>

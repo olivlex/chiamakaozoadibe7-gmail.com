@@ -39,20 +39,17 @@
 
                     <script src="js/index1.js"></script>
 
-
-
                     <div class="charts">
                         <div class="mid-content-top charts-grids">
                             <div class="middle-content">
 
-
-                                <!-- start content -->
                                 <div class="row MainRow">
                                     <h3 class="formHeader">Personal Information </h3>
                                     <br>
                                     <div class="col-md-6 ">
 
                                         <input type="text" value="@Model.ID" name="ID" style="display:none" />
+                                        <input type="text" value="@Model.LoanRefNumber" name="loanrefID" style="display:none" />
                                         <div class="complete-line">
                                             <div class="col-md-4">
                                                 <p class="sikLabelTitle">First Name:</p>
@@ -78,13 +75,20 @@
                                                 <p class="sikLabelResult">@Model.Title</p>
                                             </div>
                                         </div>
-
+                                        @*<div class="complete-line">
+                        <div class="col-md-4">
+                            <p class="sikLabelTitle">ID Num:</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="sikLabelResult">@Model.IdentficationNumber</p>
+                        </div>
+                    </div>*@
                                     </div>
                                     <div class="col-md-6 ">
 
                                         <div class="complete-line">
                                             <div class="col-md-4">
-                                                <p class="sikLabelTitle">DOD:</p>
+                                                <p class="sikLabelTitle">DOB:</p>
                                             </div>
                                             <div class="col-md-8">
                                                 <p class="sikLabelResult">@Model.DateOfBirth</p>
@@ -100,7 +104,14 @@
                                         </div>
 
 
-
+                                        @*<div class="complete-line">
+                        <div class="col-md-4">
+                            <p class="sikLabelTitle">MeansOFID:</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="sikLabelResult">@Model.MeansOfIdentifications</p>
+                        </div>
+                    </div>*@
                                         <div class="complete-line">
                                             <div class="col-md-4">
                                                 <p class="sikLabelTitle">Marital Status:</p>
@@ -181,7 +192,26 @@
                                                 <p class="sikLabelResult">@Model.StateofResidence</p>
                                             </div>
                                         </div>
+
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">FacebookHandle:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.FacebookName</p>
+                                            </div>
+                                        </div>
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">InstagramHandle:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.InstagramHandle</p>
+                                            </div>
+                                        </div>
+
                                     </div>
+
                                     <div class="col-md-6 ">
 
 
@@ -240,8 +270,20 @@
                                                 <p class="sikLabelResult">@Model.TempLGAs</p>
                                             </div>
                                         </div>
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">TwitterHandle:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.TwitterHandle</p>
+                                            </div>
+                                        </div>
 
                                     </div>
+
+
+
+
 
 
                                     <!--Comment Box Ends-->
@@ -253,108 +295,160 @@
                                 </div>
 
                                 <div class="row MainRow">
-                                    <h3 class="formHeader">NYSC Information </h3>
+                                    <h3 class="formHeader">Place Of Primary Information </h3>
                                     <br>
                                     <div class="col-md-6 ">
 
 
                                         <div class="complete-line">
                                             <div class="col-md-4">
-                                                <p class="sikLabelTitle">State Code:</p>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p class="sikLabelResult">@Model.StateCode</p>
-                                            </div>
-                                        </div>
-                                        <div class="complete-line">
-                                            <div class="col-md-4">
-                                                <p class="sikLabelTitle">Nysc State:</p>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p class="sikLabelResult">@Model.NyscStateofResidence</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="complete-line">
-                                            <div class="col-md-4">
-                                                <p class="sikLabelTitle">LGA:</p>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p class="sikLabelResult">@Model.NyscLGAs</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="complete-line">
-                                            <div class="col-md-4">
-                                                <p class="sikLabelTitle">Employer</p>
+                                                <p class="sikLabelTitle">PPA Organization:</p>
                                             </div>
                                             <div class="col-md-8">
                                                 <p class="sikLabelResult">@Model.Employer</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 ">
-
                                         <div class="complete-line">
                                             <div class="col-md-4">
-                                                <p class="sikLabelTitle">Official Address:</p>
+                                                <p class="sikLabelTitle">PPA Address:</p>
                                             </div>
                                             <div class="col-md-8">
                                                 <p class="sikLabelResult">@Model.OfficialAddress</p>
                                             </div>
                                         </div>
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">PPA Department:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.PPA_Department</p>
+                                            </div>
+                                        </div>
+
 
                                         <div class="complete-line">
                                             <div class="col-md-4">
-                                                <p class="sikLabelTitle">CDS Group:</p>
+                                                <p class="sikLabelTitle">PPA Role:</p>
                                             </div>
                                             <div class="col-md-8">
-                                                <p class="sikLabelResult">@Model.CDSGroup</p>
+                                                <p class="sikLabelResult">@Model.PPA_ROle</p>
                                             </div>
                                         </div>
 
                                         <div class="complete-line">
                                             <div class="col-md-4">
-                                                <p class="sikLabelTitle">SalaryAmount:</p>
+                                                <p class="sikLabelTitle">Organization Email:</p>
                                             </div>
                                             <div class="col-md-8">
-                                                <p class="sikLabelResult">@Model.NetMonthlyIncome</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="complete-line">
-                                            <div class="col-md-4">
-                                                <p class="sikLabelTitle">Pass Out-Month:</p>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p class="sikLabelResult">@Model.PassOutMonth</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="complete-line">
-                                            <div class="col-md-4">
-                                                <p class="sikLabelTitle">CD Day:</p>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p class="sikLabelRes
-                                                       ult">@Model.CDSDay</p>
+                                                <p class="sikLabelResult">@Model.PPA_EmailAddress</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="complete-line">
-                                        <div class="col-md-2">
-                                            <p class="sikLabelTitle">NyscIDCard Image:</p>
+                                    <div class="col-md-6 ">
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">PPA PhoneNumber:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.PPA_PhoneNumber</p>
+                                            </div>
                                         </div>
-                                        <div id="imgv" class="col-md-10">
-                                            <p class="sikLabelResult">
-                                                <img src="@Url.Content(@Model.NyscIdCardFilePath)" height="50" width="50" />
-                                            </p>
-                                            @*@Html.DisplayFor(@Model => @Model.IdentficationNumberImage)*@
+
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">Supervisor name:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.PPA_supervisorName</p>
+                                            </div>
+                                        </div>
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">Supervisor Email:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.PPA_supervisorEmail</p>
+                                            </div>
+                                        </div>
+                                        <div class="complete-line">
+                                            <div class="col-md-4">
+                                                <p class="sikLabelTitle">Supervisor PhoneNumber:</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="sikLabelResult">@Model.PPA_supervisorPhonenumber</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="dialog" style="display: none"></div>
-
                                 </div>
+                                @*<div class="col-md-6 ">
+
+
+                <div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">LGA:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.LGAs</p>
+                    </div>
+                </div>
+
+                <div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">TempAddress:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.TemporaryAddress</p>
+                    </div>
+                </div>
+
+                <div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">TempLandMark:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.TempLandmark</p>
+                    </div>
+                </div>
+
+
+                <div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">Closest Bustop:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.TempClosestBusStop</p>
+                    </div>
+                </div>
+
+
+                <div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">TempState:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.TempStateofResidence</p>
+                    </div>
+                </div>
+
+                <div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">LGA:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.TempLGAs</p>
+                    </div>
+                </div>
+                <div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">TwitterHandle:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.TwitterHandle</p>
+                    </div>
+                </div>
+
+            </div>*@
+
 
 
 
@@ -368,8 +462,159 @@
 
                             </div>
 
+
+
+
                             <div class="row MainRow">
-                                <h3 class="formHeader">Next Of Kin Information </h3>
+                                <h3 class="formHeader">NYSC Information </h3>
+                                <br>
+                                <div class="col-md-6 ">
+
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">State Code:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.StateCode</p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Nysc State:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.NyscStateofResidence</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">LGA:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.NyscLGAs</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Employer</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.Employer</p>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    @*<div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">NyscIDCard Image:</p>
+                    </div>
+                    <div id="imgv" class="col-md-8">
+                        <p class="sikLabelResult">
+                            <img src="@Url.Content(@Model.NyscIdCardFilePath)" height="50" width="50" />
+                        </p>
+
+                    </div>
+                </div>*@
+                                    @*<div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">Nyscpassport Image:</p>
+                    </div>
+                    <div id="imgv" class="col-md-8">
+                        <p class="sikLabelResult">
+                            <img src="@Url.Content(@Model.NyscpassportFilePath)" height="50" width="50" />
+                        </p>
+
+                    </div>
+                </div>*@
+                                    @*<div class="complete-line">
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">NyscDashboard Image:</p>
+                    </div>
+                    <div id="imgv" class="col-md-8">
+                        <p class="sikLabelResult">
+                            <img src="@Url.Content(@Model.NyscProfileDashboardFilePath)" height="50" width="50" />
+                        </p>
+                    </div>
+                </div>*@
+                                </div>
+
+
+                                <div class="col-md-6 ">
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Official Address:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.OfficialAddress</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">CDS Group:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.CDSGroup</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">SalaryAmount:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.NetMonthlyIncome</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Pass Out-Month:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.PassOutMonth</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">CD Day:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.CDSDay</p>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <div id="dialog" style="display: none"></div>
+
+                            </div>
+
+
+
+
+
+                            <!--Comment Box Ends-->
+                            <!--Radio button srarts-->
+
+
+
+
+
+
+                            <div class="row MainRow">
+                                <h3 class="formHeader">Emergency Contact Information </h3>
                                 <br>
                                 <div class="col-md-6 ">
 
@@ -429,6 +674,233 @@
 
                             </div>
 
+
+
+
+                            <div class="row MainRow">
+                                <h3 class="formHeader">Emergency Contact Information 2 </h3>
+                                <br>
+                                <div class="col-md-6 ">
+
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">First Name:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.EMG_FullName2</p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Relationship:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.EMG_Relationship2</p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Home Address:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.EMG_HomeAddress2</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Email Address:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.EMG_EmailAddress2</p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Phone number:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.EMG_PhoneNumber2</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <!--Comment Box Ends-->
+                                <!--Radio button srarts-->
+
+
+
+
+                            </div>
+
+                            <div class="row MainRow">
+                                <h3 class="formHeader">Contact of Relatives</h3>
+                                <br>
+                                <div class="col-md-6 ">
+
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Relative Name:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.FirstRelativeName</p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Relative PhoneNumber:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.FirstRelativePhoneNumber</p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Relative Relationship:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.RelativeRelationship_FK</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Second RelativeName:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.SecondRelativeName</p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Second Phonenumber:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.SecondRelativePhoneNumber</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Second Relative:</p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p class="sikLabelResult">@Model.RelativeRelationship2_FK</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <!--Comment Box Ends-->
+                                <!--Radio button srarts-->
+
+
+
+
+                            </div>
+
+                            <div class="row MainRow">
+                                <h3 class="formHeader">NYSC Uploads</h3>
+                                <br>
+                                <div class="col-md-6 ">
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">NyscIDCard Image:</p>
+                                        </div>
+                                        <div id="imgv" class="col-md-8">
+                                            <p class="sikLabelResult">
+                                                <img src="@Url.Content(@Model.NyscIdCardFilePath)" height="50" width="50" />
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Nyscpassport Image:</p>
+                                        </div>
+                                        <div id="imgv" class="col-md-8">
+                                            <p class="sikLabelResult">
+                                                <img src="@Url.Content(@Model.NyscpassportFilePath)" height="50" width="50" />
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">NyscDashboard Image:</p>
+                                        </div>
+                                        <div id="imgv" class="col-md-8">
+                                            <p class="sikLabelResult">
+                                                <img src="@Url.Content(@Model.NyscProfileDashboardFilePath)" height="50" width="50" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">Letter Of undertaken Image:</p>
+                                        </div>
+                                        <div id="imgv" class="col-md-8">
+                                            <p class="sikLabelResult">
+                                                <img src="@Url.Content(@Model.LetterOfundertaken)" height="50" width="50" />
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">CallUpLetter Image:</p>
+                                        </div>
+                                        <div id="imgv" class="col-md-8">
+                                            <p class="sikLabelResult">
+                                                <img src="@Url.Content(@Model.NyscCallUpLetterFilePath)" height="50" width="50" />
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">PostingLetter Image:</p>
+                                        </div>
+                                        <div id="imgv" class="col-md-8">
+                                            <p class="sikLabelResult">
+                                                <img src="@Url.Content(@Model.NyscPostingLetterFllePath)" height="50" width="50" />
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="complete-line">
+                                        <div class="col-md-4">
+                                            <p class="sikLabelTitle">StatementOfAccount Image:</p>
+                                        </div>
+                                        <div id="imgv" class="col-md-8">
+                                            <p class="sikLabelResult">
+                                                <img src="@Url.Content(@Model.STA_FilePath)" height="50" width="50" />
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--Comment Box Ends-->
+                                <!--Radio button srarts-->
+
+                            </div>
+
                             <div class="row MainRow">
                                 <h3 class="formHeader">Credit Facility Request </h3>
                                 <br>
@@ -437,7 +909,7 @@
 
                                     <div class="complete-line">
                                         <div class="col-md-4">
-                                            <p class="sikLabelTitle">Loan Amount:</p>
+                                            <p class="sikLabelTitle">Loan Amount(&#8358;):</p>
                                         </div>
                                         <div class="col-md-8">
                                             @*@Model.LoanAmount*@ <p class="sikLabelResult">@Model.ConvertedAmount</p>
@@ -445,20 +917,22 @@
                                     </div>
                                     <div class="complete-line">
                                         <div class="col-md-4">
-                                            <p class="sikLabelTitle">Loan Tenure:</p>
+                                            <p class="sikLabelTitle">Loan Tenure(months):</p>
                                         </div>
                                         <div class="col-md-8">
-                                            <p class="sikLabelResult">@Model.LoanTenure</p>
+                                            <p class="sikLabelResult">
+                                                @Model.LoanTenure
+                                            </p>
                                         </div>
                                     </div>
                                     @*<div class="complete-line">
-                                        <div class="col-md-4">
-                                            <p class="sikLabelTitle">Repayment Method:</p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p class="sikLabelResult">@Model.Repayment</p>
-                                        </div>
-                                    </div>*@
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">Repayment Method:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult">@Model.Repayment</p>
+                    </div>
+                </div>*@
                                     <div class="complete-line">
                                         <div class="col-md-4">
                                             <p class="sikLabelTitle">Any Existing Loan:</p>
@@ -471,13 +945,13 @@
                                 <div class="col-md-6 ">
 
                                     @*<div class="complete-line">
-                                        <div class="col-md-4">
-                                            <p class="sikLabelTitle">Any Existing Loan:</p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p class="sikLabelResult"></p>
-                                        </div>
-                                    </div>*@
+                    <div class="col-md-4">
+                        <p class="sikLabelTitle">Any Existing Loan:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="sikLabelResult"></p>
+                    </div>
+                </div>*@
                                     <div class="complete-line">
                                         <div class="col-md-4">
                                             <p class="sikLabelTitle">Outstanding Amount:</p>
@@ -547,17 +1021,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="complete-line">
-                                        <div class="col-md-4">
-                                            <p class="sikLabelTitle">StatementOfAccount Image:</p>
-                                        </div>
-                                        <div id="imgv" class="col-md-8">
-                                            <p class="sikLabelResult">
-                                                <img src="@Url.Content(@Model.STA_FilePath)" height="50" width="50" />
-                                            </p>
-                                            @*@Html.DisplayFor(@Model => @Model.IdentficationNumberImage)*@
-                                        </div>
-                                    </div>
+
                                     @*<div id="dialog" style="display: none"></div>*@
 
                                 </div>
@@ -583,7 +1047,7 @@
                                                 Approve
                                             </label>
                                             <label class="radio-inline">
-                                                <input name="Accept" value="5" type="radio" required>
+                                                <input name="Accept" value="7" type="radio" required>
                                                 Reject
                                             </label>
                                         </div>
@@ -607,7 +1071,7 @@
 
 
                                         <div class="form-group">
-                                           
+
 
                                             <label class="checkbox-inline">
                                                 <input type="checkbox" required>
@@ -627,7 +1091,7 @@
 
 
                                         </div>
-                                       
+
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
@@ -704,7 +1168,7 @@
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-8">
@@ -734,12 +1198,12 @@
                                 </div>
                                 <!--// Single Button Ends-->
                             </div>
-    
-    <!--// start content -->
-    </div>
 
-    </div>
-    </div>
+                                <!--// start content -->
+                            </div>
+
+                        </div>
+                    </div>
 
 </form>
 

@@ -110,7 +110,7 @@ $('table td:nth-child(6)').each(function() {
                                             <td><input value="@Loan.LoanRefNumber+@Loan.LoanAmount" type="checkbox" name="Check" id="Check" class="sum" /></td>
                                             <td>
                                                 @*<a onclick="return confirm('Are You Sure?')" href="@Url.Action("ApprovedLoan", "AdminA", new { Refid = @Loan.LoanRefNumber })">View</a>*@
-                                                <a @*onclick="return confirm('Are You Sure?')"*@ href="@Url.Action("FourthApproval", "AdminA", new { Refid = @Loan.LoanRefNumber })">View</a>
+                                                <a class="fa fa-eye fa-lg text-success" href="@Url.Action("FourthApproval", "AdminA", new { Refid = @Loan.LoanRefNumber })"></a>
                                             </td>
                                         </tr>
 

@@ -27,5 +27,7 @@ namespace DataAccessA.DataManager
         public string ValueTime { get; set; }
         public Nullable<int> IsVisible { get; set; }
         public string Audit { get; set; }
+        public Nullable<int> DefaultCount { get; set; }
+        public Nullable<double> DefaultAmount { get; set; }
     }
 }

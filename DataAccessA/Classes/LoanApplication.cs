@@ -12,8 +12,36 @@ namespace DataAccessA.Classes
         public string LoanRefNumber { get; set; }
         public int Title_FK { get; set; }
         public string ReferalCode { get; set; }
+        public string StateofResidence_FKs { get; set; }
+        public string LoanTenures { get; set; }
+        public string LGA_FKs { get; set; }
+        public string LGA_FKss { get; set; }
+
+        public string TStateofResidence_FKss { get; set; }
+        public string NStateofResidence_FKsss { get; set; }
+
+        public string LGA_FKsss { get; set; }
+        public string NyscIdCardFilePath { get; set; }
+       
+        public string NyscpassportFilePath { get; set; }
+        public string NyscPostingLetterFllePath { get; set; }
+        public string NyscCallUpLetterFilePath { get; set; }
+        public string NyscProfileDashboardFilePath { get; set; }
+        public string STA_FilePath { get; set; }
         public string Surname { get; set; }
+        public string Nyscfileimg { get; set; }
         public string Firstname { get; set; }
+        public string FacebookName { get; set; }
+        public string InstagramHandle { get; set; }
+        public string TwitterHandle { get; set; }
+        public string PPA_Department { get; set; }
+        public string PPA_ROle { get; set; }
+        public string PPA_EmailAddress { get; set; }
+        public string PPA_PhoneNumber { get; set; }
+        public string PPA_supervisorName { get; set; }
+        public string PPA_supervisorEmail { get; set; }
+        public string PPA_supervisorPhonenumber { get; set; }
+       
         public string Othernames { get; set; }
         public int Gender_FK { get; set; }
         public int MaritalStatus_FK { get; set; }
@@ -27,6 +55,7 @@ namespace DataAccessA.Classes
         public string Landmark { get; set; }
         public string ClosestBusStop { get; set; }
         public int StateofResidence_FK { get; set; }
+
         public int TempStateofResidence_FK { get; set; }
         public int NyscStateofResidence_FK { get; set; }
         public string TempLandmark { get; set; }
@@ -34,6 +63,7 @@ namespace DataAccessA.Classes
         public int LGA_FK { get; set; }
         public int TempLGA_FK { get; set; }
         public int NyscLGA_FK { get; set; }
+    
         public string StateCode { get; set; }
         public string Organization { get; set; }
         public int AccomodationType_FK { get; set; }
@@ -41,6 +71,8 @@ namespace DataAccessA.Classes
         public string PassOutMonth{ get; set; }
         public string CDSDay { get; set; }
         public string CDSGroup { get; set; }
+        
+        // public string RepaymentAmount { get; set; }
         public Double NetMonthlyIncome { get; set; }
         public string ApplicantID { get; set; }
         public string EMG_FullName { get; set; }
@@ -49,6 +81,19 @@ namespace DataAccessA.Classes
         public string EMG_PhoneNumber { get; set; }
         public string EMG_EmailAddress { get; set; }
         public string EMG_Relationship { get; set; }
+
+        public string EMG_FullName2 { get; set; }
+
+        public string EMG_HomeAddress2 { get; set; }
+        public string EMG_PhoneNumber2 { get; set; }
+        public string EMG_EmailAddress2 { get; set; }
+        public string EMG_Relationship2 { get; set; }
+        public string FirstRelativeName { get; set; }
+        public string FirstRelativePhoneNumber { get; set; }
+        public string SecondRelativeName { get; set; }
+        public string SecondRelativePhoneNumber { get; set; }
+        public string RelativeRelationship_FK { get; set; }
+        public string RelativeRelationship2_FK { get; set; }
         public string NOK_FullName { get; set; }
 
         public string NOK_Relationship { get; set; }

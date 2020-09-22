@@ -28,13 +28,15 @@ namespace DataAccessA.DataManager
                 //             where a.ReferenceNumber == user
                 //             select a).ToList();
 
-                var Loans = (from a in uvDb.NYSCReferralLedgers join b in uvDb.Users on a.User_FK equals b.ID where a.User_FK == userid
+                var Loans = (from a in uvDb.NYSCReferralLedgers
+                             join b in uvDb.Users on a.User_FK equals b.ID
+                             where a.User_FK == userid
                              select new ReferralRecords
                              {
                                  ID = a.ID,
                                  ReferralCode = a.ReferralCode,
                                  ReferenceNumber = a.ReferenceNumber,
-                                 Debit =(Double) a.Debit,
+                                 Debit = (Double)a.Debit,
                                  Credit = (Double)a.Credit,
                                  ValueDate = a.ValueDate,
                              }).OrderByDescending(x => x.ID).ToList();
@@ -52,6 +54,917 @@ namespace DataAccessA.DataManager
                 return null;
             }
         }
+
+
+
+        public List<AppLoanss> RegisteredApplicant()
+        {
+            try
+            {
+                var Loans = (from a in uvDb.NyscLoanApplications
+                             join b in uvDb.Users on a.StateCode equals b.Audit
+                             join c in uvDb.ApplicationStatus
+                               on a.NYSCApplicationStatus_FK equals c.ID
+                             where a.IsVisible == 1
+                             select new AppLoanss
+                             {
+                                 ID = a.ID,
+                                 LoanRefNumber = a.RefNumber,
+                                 Firstname = a.Firstname,
+                                 Surname = a.Surname,
+                                 EmailAddress = a.EmailAddress,
+                                 LoanAmount = (double)a.LoanAmount,
+                                 LoanTenure = (int)a.LoanTenure,
+                                 StateCode = b.Audit,
+                                 ApplicationStatus = c.Name,
+                             }).OrderByDescending(x => x.ID).ToList();
+
+
+                if (Loans == null)
+                {
+                    return null;
+                }
+                return Loans;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+
+        public List<ReferralDetails> RegisteredReferral()
+        {
+            try
+            {
+                var Loans = (from a in uvDb.Users
+                             join b in uvDb.UserRoles on a.ID equals b.User_FK
+                             
+                             where a.IsVisible == 1  
+                             select new ReferralDetails
+                             {
+                                 ID = a.ID,
+                                
+                                 Firstname = a.Firstname,
+                                 Lastname = a.Lastname,
+                                 EmailAddress = a.EmailAddress,
+                                 PhoneNumber = a.PhoneNumber,
+                                 UserAddress=a.UserAddress,
+                                 ContactAddress = a.ContactAddress,
+                                 ReferralCode = a.ReferralCode,
+                                 MyReferralCode = a.MyReferralCode,
+                               //  StateCode = a.Audit,
+                               
+                             }).OrderByDescending(x => x.ID).ToList();
+
+
+                if (Loans == null)
+                {
+                    return null;
+                }
+                return Loans;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public List<BVNRecords> Mybvndetails()
+        {
+            try
+            {
+
+
+                var Loans = (from a in uvDb.BanksManagers
+
+
+                             select new BVNRecords
+                             {
+                                 ID = a.ID,
+                                 Lastname = a.Lastname,
+                                 Firstname = a.Firstname,
+                                 Othernames = a.Othernames,
+                                 DateOfBirth = a.DateOfBirth,
+                                 Gender = a.Gender,
+                                 BankName = a.BankName,
+                                 EnrollmentBranch = a.EnrollmentBranch,
+                                 Nationlaity = a.Nationlaity,
+                                 Marital_Status = a.Marital_Status,
+                                 ContactAddress = a.ContactAddress,
+                                 VerifiedStatus = (int)a.VerifiedStatus,
+                                 ServiceResponse = a.ServiceResponse,
+                                 IsVisible = (int)a.IsVisible,
+                                 ValueDate = a.ValueDate,
+
+                             }).OrderByDescending(x => x.ID).ToList();
+
+
+                if (Loans == null)
+                {
+                    return null;
+                }
+                return Loans;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public dynamic GetNYSCLoanApplicationSummary()
+        {
+            try
+            {
+                var Apploan = uvDb.GetNYSCLoanApplicationSummary().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public dynamic GetReferrals(int AppStatFk)
+        {
+            try
+            {
+
+                var Apploan = uvDb.GetReferrals(AppStatFk).ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            //catch (Exception ex)
+            //{
+            //    WebLog.Log(ex.Message.ToString());
+            //    return null;
+            //}
+            catch (DbEntityValidationException dbEx)
+            {
+                var sb = new StringBuilder();
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        sb.AppendLine(string.Format("Property: {0} Error: {1}",
+                        validationError.PropertyName, validationError.ErrorMessage));
+                    }
+                }
+                throw new Exception(sb.ToString(), dbEx);
+            }
+
+            }
+
+        public dynamic GetReferralActivity()
+        {
+            try
+            {
+                var Apploan = uvDb.GetReferralActivity().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+      
+        public dynamic GetNYSCDefaultLoans()
+        {
+            try
+            {
+                var Apploan = uvDb.GetNYSCDefaultLoans().Distinct().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+
+        public dynamic LoanDueForDebits(DateTime DOB)
+        {
+            try
+            {
+                var Apploan = uvDb.LoanDueForDebit(DOB).ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public dynamic ApplicantTRelated(DateTime DOB, DateTime DOBs)
+        {
+            try
+            {
+                var Apploan = uvDb.NyscApplicationRelated(DOB, DOBs).ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+        public dynamic OutStandingLoans(DateTime DOB)
+        {
+            try
+            {
+                var Apploan = uvDb.OutStandingLoan(DOB).Distinct().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+
+        }
+
+        public dynamic Repayment(DateTime DOB, DateTime DOBS)
+        {
+            try
+            {
+                var Apploan = uvDb.Repayment(DOB, DOBS).Distinct().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public dynamic RevenueReceived(DateTime DOB)
+        {
+            try
+            {
+                var Apploan = uvDb.RevenueReceived(DOB).Distinct().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public dynamic RevenueEarned(DateTime DOB)
+        {
+            try
+            {
+                var Apploan = uvDb.RevenueEarned(DOB).Distinct().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+        public List<AppLoanss> GetReferredApp(string Refid)
+        {
+            try
+
+            {
+                var Apploan = (from a in uvDb.NyscLoanApplications
+                                   //join b in uvDb.NyscLoanApplications on a.MyReferralCode equals b.ReferralCode
+                               join C in uvDb.LGAs on a.NyscLGA_FK equals C.ID
+                               join d in uvDb.NigerianStates on a.NyscStateofResidence_FK equals d.ID
+                               where a.ReferralCode == Refid
+                               select new AppLoanss
+                               {
+                                   ID = a.ID,
+
+                                   ReferralCode = a.ReferralCode,
+
+                                   LoanRefNumber = a.RefNumber,
+
+                                   StateCode = a.StateCode,
+
+                                   Firstname = a.Firstname,
+                                   Surname = a.Surname,
+
+                                   LoanAmount = a.LoanAmount.Value,
+
+                                   LoanTenure = a.LoanTenure.Value,
+
+                                   NyscStateofResidence = d.Name,
+
+                                   NyscLGAs = C.Name,
+
+
+                               }).OrderByDescending(x => x.ID).ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+        public List<double> GetKpiInMinutes(int Refid)
+        {
+
+            DateTime TD = DateTime.Now;
+            double TimeDiffx = 0;
+            double kpi = 0;
+            try
+            {
+
+                List<double> KpiMinutes = new List<double>();
+
+                var Rec = (from a in uvDb.NyscLoanApplications
+                           join b in uvDb.NYSCLoanApprovals on a.ID equals b.LoanApplication_FK
+
+                           where a.ID == Refid
+                           select new AppLoanss
+                           {
+                               LoanRefNumber = a.RefNumber,
+
+                               APplicationDate = (DateTime)a.DateCreated,
+                               ApplicationApprove = (DateTime)b.DateCreated
+
+                           }).ToList();
+
+
+
+                if (Rec.Count > 0)
+                {
+                    var Count = Rec.Count;
+                    var AppDate = Rec.Select(x => x.APplicationDate).FirstOrDefault();
+                    for (var i = 0; i <= Rec.Count; i++)
+                    {
+                        var TimeDiff = Rec.Select(x => x.ApplicationApprove).ElementAt(i);
+                        if (i + 1 == Count)
+                        {
+                            return KpiMinutes;
+                        }
+                        else
+                        {
+                            if (i == 0)
+                            {
+                                TD = Rec.Select(x => x.ApplicationApprove).FirstOrDefault();
+                                TimeDiffx = TD.Subtract(AppDate).TotalMinutes;
+                                kpi = Convert.ToInt16(TimeDiffx);
+                                KpiMinutes.Add(kpi);
+                            }
+                            TD = Rec.Select(x => x.ApplicationApprove).ElementAt(i + 1);
+                            TimeDiffx = TD.Subtract(TimeDiff).TotalMinutes;
+                            kpi = Convert.ToInt16(TimeDiffx);
+                            KpiMinutes.Add(kpi);
+                        }
+
+                    }
+                }
+                //if (Rec.Count > 0)
+                //{
+                //    var Count = Rec.Count;
+                //    var AppDate = Rec.Select(x => x.APplicationDate).FirstOrDefault();
+                //    for (var i = 0; i <= Rec.Count; i++)
+                //    {
+                //        var TimeDiff = Rec.Select(x => x.ApplicationApprove).ElementAt(i);
+                //        if (i + 1 >= Count)
+                //        {
+                //            return KpiMinutes;
+                //        }
+
+                //        if (Count != Count - 1)
+                //        {
+                //            if (i == 0)
+                //            {
+                //                var TD = Rec.Select(x => x.ApplicationApprove).ElementAt(i);
+                //                var TimeDiffx = TD.Subtract(AppDate).TotalMinutes;
+                //                double kpi = Convert.ToInt16(TimeDiffx);
+                //                KpiMinutes.Add(kpi);
+                //            }
+                //            else
+                //            {
+                //                var TD = Rec.Select(x => x.ApplicationApprove).ElementAt(i + 1);
+                //                var TimeDiffx = TD.Subtract(TimeDiff).TotalMinutes;
+                //                double kpi = Convert.ToInt16(TimeDiffx);
+
+                //                KpiMinutes.Add(kpi);
+                //            }
+                //        }
+
+                //if (Rec.Count > 0)
+                //{
+                //    var Count = Rec.Count;
+                //    var AppDate = Rec.Select(x => x.APplicationDate).FirstOrDefault();
+                //    for (var i = 0; i <= Rec.Count; i++)
+                //    {
+                //        var TimeDiff = Rec.Select(x => x.ApplicationApprove).ElementAt(i);
+                //        if (i + 1 >= Count)
+                //        {
+                //            return KpiMinutes;
+                //        }
+                //        if (Count != Count - 1)
+                //        {
+                //            var TD = Rec.Select(x => x.ApplicationApprove).ElementAt(i + 1);
+                //            var TimeDiffx = TD.Subtract(TimeDiff).TotalMinutes;
+                //            double kpi = Convert.ToInt16(TimeDiffx);
+
+                //            KpiMinutes.Add(kpi);
+                //        }
+
+                //    }
+                //}
+
+
+                return KpiMinutes;
+            }
+
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public dynamic Top50ReferralPerformance()
+        {
+            try
+            {
+                var Apploan = uvDb.Top50ReferralPerformance().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+        public dynamic ReferralAgentPerformance()
+        {
+            try
+            {
+                var Apploan = uvDb.ReferralAgentPerformance().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public dynamic DisbursedLoans()
+        {
+            try
+            {
+                var Apploan = uvDb.DisbursedLoans().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public dynamic BorrowedLoan()
+        {
+            try
+            {
+                var Apploan = uvDb.BorroweredLoans().ToList();
+
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+        //public List<Top50Referral> Top50ReferralPerformance()
+        //{
+        //    try
+
+        //    {
+        //        var Apploan = (from a in uvDb.NyscLoanApplications
+
+        //                       join b in uvDb.NYSCLoanLedgers on a.ID equals b.LoanApplication_FK
+        //                       join c in uvDb.UserRoles on
+        //                       where a.ID == b.LoanApplication_FK
+        //                       select new Top50Referral
+        //                       {
+        //                           ID = a.ID,
+
+
+        //                           Surname = a.Surname,
+
+        //                           Firstname = a.Firstname,
+        //                           Disbursedloan = a.Surname,
+        //                           LoanTenure = a.LoanTenure.Value,
+        //                           LoanAmount = a.LoanAmount.Value,
+
+        //                           ValueDate = a.ValueDate,
+
+        //                           ValueDates = b.ValueDate,
+
+
+
+
+        //                       }).OrderByDescending(x => x.ID).ToList();
+
+        //        if (Apploan == null)
+        //        {
+
+        //            return null;
+        //        }
+
+        //        return Apploan;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message.ToString());
+        //        return null;
+        //    }
+        //}
+
+        //public List<AppLoanss> GetKPITime()
+        //{
+        //    try
+
+        //    {
+        //        var Apploan = (from a in uvDb.NyscLoanApplications
+
+        //                       join b in uvDb.NYSCLoanApprovals on a.ID equals b.LoanApplication_FK
+
+        //                       where a.ID == b.LoanApplication_FK && a.IsVisible == 1
+        //                       select new AppLoanss
+        //                       {
+        //                           ID = a.ID,
+
+
+        //                           LoanRefNumber = a.RefNumber,
+
+        //                           Firstname = a.Firstname,
+        //                           Surname = a.Surname,
+        //                           LoanTenure = a.LoanTenure.Value,
+        //                           LoanAmount = a.LoanAmount.Value,
+
+        //                           ValueDate = a.ValueDate,
+
+        //                           ValueDates = b.ValueDate,
+
+
+
+        //                           //}).distinct(X=>x.LoanRefNum).ToList()
+        //                       }).OrderByDescending(x => x.ID).ToList();
+
+        //        if (Apploan == null)
+        //        {
+
+        //            return null;
+        //        }
+
+        //        return Apploan;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message.ToString());
+        //        return null;
+        //    }
+        //}
+
+
+
+
+        public List<NyscLoanApplication> GetKPITime()
+        {
+            try
+
+            {
+                var Apploan = (from a in uvDb.NyscLoanApplications where a.IsVisible == 1 && a.NYSCApplicationStatus_FK != 6 && a.NYSCApplicationStatus_FK != 7
+                               && a.NYSCApplicationStatus_FK != 8 && a.NYSCApplicationStatus_FK != 11 && a.NYSCApplicationStatus_FK != null && a.Audit == null
+
+                               select a).Distinct().ToList();
+
+              
+                if (Apploan == null)
+                {
+
+                    return null;
+                }
+
+                return Apploan;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        //public List<AppLoanss> GetKPITime()
+        //{
+        //    try
+
+        //    {
+        //        var Apploan = (from a in uvDb.NyscLoanApplications
+
+        //                       join b in uvDb.NYSCLoanApprovals on a.ID equals b.LoanApplication_FK
+
+        //                       where a.ID == b.LoanApplication_FK && a.IsVisible == 1 && a.Audit != "OfflineRecords"
+        //                       select new AppLoanss
+        //                       {
+        //                           ID = a.ID,
+
+
+        //                           LoanRefNumber = a.RefNumber,
+
+        //                           Firstname = a.Firstname,
+        //                           Surname = a.Surname,
+        //                           LoanTenure = a.LoanTenure.Value,
+        //                           LoanAmount = a.LoanAmount.Value,
+
+        //                           ValueDate = a.ValueDate,
+
+        //                           ValueDates = b.ValueDate,
+
+
+
+
+        //                       }).Distinct().ToList();
+
+        //        if (Apploan == null)
+        //        {
+
+        //            return null;
+        //        }
+
+        //        return Apploan;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message.ToString());
+        //        return null;
+        //    }
+        //}
+        public List<NYSCReferralLedger> getCommisioRecords(int userid)
+        {
+            try
+            {
+
+                var recoreds = (from a in uvDb.NYSCReferralLedgers where a.User_FK == userid select a).ToList();
+
+                var newRec = (from a in uvDb.NYSCReferralLedgers
+                              group a by a.ID into g
+                              where g.Sum(s => s.Credit) - g.Sum(s => s.Debit) > 0
+                              from NYSCReferralLedger in g
+                              select NYSCReferralLedger);
+
+                // var Credit = recoreds.Where(q => q.Credit != 0).Select(x => x.Credit).Count();
+
+                // var DebitSum = recoreds.Sum(x => x.Debit);
+
+                if (recoreds == null)
+                {
+                    return null;
+                }
+
+                return recoreds.ToList();
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+        public List<NYSCReferralLedger> getCommisioRecordsExact(int userfk, int Num)
+        {
+            try
+            {
+
+                var recoreds = (from a in uvDb.NYSCReferralLedgers where a.User_FK == userfk && a.Debit == 0 select a).OrderBy(a => a.ID).ToList().Take(Num);
+
+
+
+                if (recoreds == null)
+                {
+                    return null;
+                }
+
+                return recoreds.ToList();
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public int UpdateNYSCLoanReferalLeder(List<NYSCReferralLedger> Ln, double mode, double div)
+        {
+            try
+            {
+                NYSCReferralLedger NL = new NYSCReferralLedger();
+                var bn = 0;
+                int nb = Ln.Count;
+                for (var c = 0; c < nb; c++)
+                {
+                    int cv = Ln[c].ID;
+                    var original = (from a in uvDb.NYSCReferralLedgers where a.ID == cv select a).SingleOrDefault();
+
+                    if (c + 1 == div && mode != 0)
+                    {
+                        original.Debit = mode;
+                    }
+
+                    else
+                    {
+                        original.Debit = Ln[c].Credit;
+                    }
+                    uvDb.SaveChanges();
+
+                    bn = original.ID;
+                }
+
+                if (div > Ln.Count)
+                {
+
+                    NL.User_FK = Ln[0].User_FK;
+                    NL.Debit = mode;
+                    NL.Credit = 0;
+                    NL.TrnDate = null;
+                    uvDb.NYSCReferralLedgers.Add(NL);
+                    uvDb.SaveChanges();
+
+                }
+
+                return bn;
+
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return 0;
+            }
+        }
+
 
         //Public List<apploan> Referrals(Int32 userid)
         //{
@@ -249,7 +1162,7 @@ namespace DataAccessA.DataManager
             {
                 var results = (from p in uvDb.Pages
                                join pa in uvDb.PageAuthentications on p.PageName equals pa.PageName
-                               // join ph in uvDb.pageHeaders on p.pageHeader equals ph.id
+                               join ph in uvDb.pageHeaders on p.PageHeader equals ph.id
                                join r in uvDb.Roles on pa.Role_FK equals r.RoleId
 
                                where rol.Contains(r.RoleName)
@@ -257,7 +1170,7 @@ namespace DataAccessA.DataManager
                                {
                                    pageName = pa.PageName,
                                    roleid = (int)pa.Role_FK,
-                                   //pageheader = ph.page_header,
+                                   pageheader = ph.page_header,
                                    pageurl = p.PageUrl,
 
                                }).Distinct();
@@ -297,7 +1210,7 @@ namespace DataAccessA.DataManager
         {
             try
             {
-                var users = (from a in uvDb.Users where a.EmailAddress == email  select a).FirstOrDefault();
+                var users = (from a in uvDb.Users where a.EmailAddress == email select a).FirstOrDefault();
 
                 if (users == null)
                 {
@@ -341,7 +1254,7 @@ namespace DataAccessA.DataManager
         //}
         //To be treated
 
-        public List<ExcelList> NYSCApplications( string userEmail)
+        public List<ExcelList> NYSCApplications(string userEmail)
 
         {
             try
@@ -403,33 +1316,33 @@ namespace DataAccessA.DataManager
                              join b in uvDb.NigerianStates on a.NyscStateofResidence_FK equals b.ID
                              join c in uvDb.NYSCApplicationStatus on a.NYSCApplicationStatus_FK equals c.ID
                              join d in uvDb.PatnerTransactLogs on a.RefNumber equals d.RefNum
-                             where a.NYSCApplicationStatus_FK== AppStatFk && a.IsVisible == 1
+                             where a.NYSCApplicationStatus_FK == AppStatFk && a.IsVisible == 1
                              select new ExcelList
                              {
                                  ID = a.ID,
                                  ApplicationStatus = c.Name,
                                  AccountName = a.AccountName,
-                                
+
                                  //ReferralCode = a.MyReferralCode,
-                                
+
                                  LoanRefNumber = a.RefNumber,
-                                 
+
                                  AccountNumber = a.AccountNumber,
-                                 
+
                                  PermanentAddress = a.PermanentAddress,
-                               
+
                                  Firstname = a.Firstname,
 
                                  LoanAmount = a.LoanAmount.Value,
 
                                  LoanTenure = a.LoanTenure.Value,
-                                
+
                                  ValueDate = a.ValueDate,
-                                
+
                                  Surname = a.Surname,
 
                                  RemitaLink = string.IsNullOrEmpty(d.PatnerUrl) ? "none" : d.PatnerUrl,
-                                
+
 
                              }).OrderByDescending(x => x.ID).ToList();
 
@@ -457,14 +1370,14 @@ namespace DataAccessA.DataManager
                 var Loans = (from a in uvDb.NyscLoanApplications
                              join b in uvDb.NigerianStates on a.NyscStateofResidence_FK equals b.ID
                              join c in uvDb.NYSCApplicationStatus on a.NYSCApplicationStatus_FK equals c.ID
-                            // join d in uvDb.PatnerTransactLogs on a.RefNumber equals d.RefNum
+
                              where a.NYSCApplicationStatus_FK == AppStatFk && a.IsVisible == 1
                              select new ExcelList
                              {
                                  ID = a.ID,
                                  ApplicationStatus = c.Name,
                                  AccountName = a.AccountName,
-
+                                 EmailAddress = a.EmailAddress,
                                  //ReferralCode = a.MyReferralCode,
 
                                  LoanRefNumber = a.RefNumber,
@@ -472,7 +1385,7 @@ namespace DataAccessA.DataManager
                                  AccountNumber = a.AccountNumber,
 
                                  PermanentAddress = a.PermanentAddress,
-
+                                 PhoneNumber = a.PhoneNumber,
                                  Firstname = a.Firstname,
 
                                  LoanAmount = a.LoanAmount.Value,
@@ -483,7 +1396,7 @@ namespace DataAccessA.DataManager
 
                                  Surname = a.Surname,
 
-                                // RemitaLink = string.IsNullOrEmpty(d.PatnerUrl) ? "none" : d.PatnerUrl,
+                                 // RemitaLink = string.IsNullOrEmpty(d.PatnerUrl) ? "none" : d.PatnerUrl,
 
 
                              }).OrderByDescending(x => x.ID).ToList();
@@ -502,7 +1415,7 @@ namespace DataAccessA.DataManager
         }
 
 
-        public List<ExcelList> ApproveLoansRemFlu(int AppStatFk,string PatnerCode)
+        public List<ExcelList> ApproveLoansRemFlu(int AppStatFk, string PatnerCode)
 
         {
             try
@@ -560,24 +1473,357 @@ namespace DataAccessA.DataManager
             {
                 var Loans = (from a in uvDb.NyscLoanApplications
                              join b in uvDb.NigerianStates on a.NyscStateofResidence_FK equals b.ID
-                             join c in uvDb.Banks on a.BankCode equals c.Code
+                          
+
+
+                            
+
+                             join c in uvDb.Titles on a.Title_FK equals c.ID
+                             join d in uvDb.MaritalStatus on a.MaritalStatus_FK equals d.ID
+
+                             join f in uvDb.NigerianStates on a.StateofResidence_FK equals f.ID
+                             join g in uvDb.NigerianStates on a.TempStateofResidence_FK equals g.ID
+                             join h in uvDb.NigerianStates on a.NyscStateofResidence_FK equals h.ID
+                             join i in uvDb.LGAs on a.LGA_FK equals i.ID
+                             join j in uvDb.LGAs on a.TempLGA_FK equals j.ID
+                             join k in uvDb.LGAs on a.NyscLGA_FK equals k.ID
+
+                             join l in uvDb.Banks on a.BankCode equals l.Code
                              
+
+
+
                              where a.NYSCApplicationStatus_FK == AppstatFk && a.IsVisible == 1
+                             select new AppLoanss
+                           
+                              {
+                                  ID = a.ID,
+                                 
+                                  AccountName = a.AccountName,
+                                  Title = c.Name,
+                                  StateofResidence = f.Name,
+                                  StateCode = a.StateCode,
+                                  ApplicationStatus_FK = AppstatFk,
+                                  NYSCApplicationStatus_FK = AppstatFk,
+                                  TempStateofResidence = g.Name,
+                                  NyscStateofResidence = h.Name,
+                                  LGAs = i.Name,
+                                  Gender = a.Gender_FK == 1 ? "Male" : "Female",
+                                  LoanRefNumber = a.RefNumber,
+                                  MaritalStatus = d.Name,
+                                 
+                                  NetMonthlyIncome = a.NetMonthlyIncome.Value,
+                                  AccountNumber = a.AccountNumber,
+                                 
+                                  BankCode = l.Name,
+                                  bankcodes = l.Code,
+                                  BVN = a.BVN,
+                                  ClosestBusStop = a.ClosestBusStop,
+                                  PermanentAddress = a.PermanentAddress,
+                                  DateOfBirth = a.DateOfBirth,
+                                  EmailAddress = a.EmailAddress,
+                                  ExistingLoan = a.ExistingLoan.HasValue ? a.ExistingLoan.Value : false,
+                                  ExistingLoan_NoOfMonthsLeft = a.ExistingLoan_NoOfMonthsLeft.Value,
+                                  ExistingLoan_OutstandingAmount = a.ExistingLoan_OutstandingAmount.Value > 0 ? a.ExistingLoan_OutstandingAmount.Value : 0,
+                                  Firstname = a.Firstname,
+                                 
+                                  LoanAmount = a.LoanAmount.Value,
+                                 
+                                  LoanTenure = a.LoanTenure.Value,
+                                  EMG_EmailAddress = a.EMG_EmailAddress,
+                                  EMG_FullName = a.EMG_FullName,
+                                  EMG_HomeAddress = a.EMG_HomeAddress,
+                                  EMG_PhoneNumber = a.EMG_PhoneNumber,
+                                  EMG_Relationship = a.EMG_Relationship,
+                                  EMG_EmailAddress2 = a.EMG_EmailAddress2,
+                                  EMG_FullName2 = a.EMG_FullName2,
+                                  EMG_HomeAddress2 = a.EMG_HomeAddress2,
+                                  EMG_PhoneNumber2 = a.EMG_PhoneNumber2,
+                                  EMG_Relationship2 = a.EMG_Relationship2,
+                                  TemporaryAddress = a.TemporaryAddress,
+                                  TempClosestBusStop = a.TempClosestBusStop,
+                                  TempLandmark = a.TempLandmark,
+                                  PhoneNumber = a.PhoneNumber,
+                                  ValueDate = a.ValueDate,
+                                  ValueTime = a.ValueTime,
+                                  Landmark = a.Landmark,
+                                  Othernames = a.Othernames,
+                                  Surname = a.Surname,
+                                  TempLGAs = j.Name,
+                                  NyscLGAs = k.Name,
+                                  PassOutMonth = a.PassOutMonth,
+                                  OfficialAddress = a.OfficialAddress,
+                                  Employer = a.Employer,
+                                  CDSDay = a.CDSDay,
+                                  CDSGroup = a.CDSGroup,
+                                  SalaryAmount = (double)a.NetMonthlyIncome,
+
+
+                                  PPA_Department = a.PPA_Department,
+                                  PPA_EmailAddress = a.PPA_EmailAddress,
+                                  PPA_PhoneNumber = a.PPA_PhoneNumber,
+                                  PPA_ROle = a.PPA_ROle,
+                                  PPA_supervisorEmail = a.PPA_supervisorEmail,
+                                  PPA_supervisorName = a.PPA_supervisorName,
+                                  PPA_supervisorPhonenumber = a.PPA_supervisorPhonenumber,
+
+                                  FacebookName = a.FacebookName,
+                                  TwitterHandle = a.TwitterHandle,
+                                  InstagramHandle = a.InstagramHandle,
+                                  NyscIdCardFilePath = a.NyscIdCardFilePath,
+                                  STA_FilePath = a.STA_FilePath,
+                                  NyscpassportFilePath = a.NyscpassportFilePath,
+                                  NyscCallUpLetterFilePath = a.NyscCallUpLetterFilePath,
+                                  NyscPostingLetterFllePath = a.NyscPostingLetterFllePath,
+                                  NyscProfileDashboardFilePath = a.NyscProfileDashboardFilePath,
+                                  LetterOfundertaken = a.LetterOfundertaken,
+                                  ReferralCode = a.ReferralCode,
+                                  RelativeRelationship2_FK = a.RelativeRelationship2_FK,
+                                  RelativeRelationship_FK = a.RelativeRelationship_FK,
+                                  SecondRelativeName = a.SecondRelativeName,
+                                  SecondRelativePhoneNumber = a.SecondRelativePhoneNumber,
+                                  FirstRelativeName = a.FirstRelativeName,
+                                  FirstRelativePhoneNumber = a.FirstRelativePhoneNumber,
+
+                              }).OrderByDescending(x => x.ID).ToList();
+
+
+                if (Loans == null)
+                {
+                    return null;
+                }
+                return Loans;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+        public List<AppLoanss> ApproveLoansss(int AppstatFk, string userEmail)
+        {
+            try
+            {
+                var Loans = (from a in uvDb.NyscLoanApplications
+                             //join b in uvDb.NigerianStates on a.NyscStateofResidence_FK equals b.ID
+
+                             //join c in uvDb.Titles on a.Title_FK equals c.ID
+                             //join d in uvDb.MaritalStatus on a.MaritalStatus_FK equals d.ID
+
+                             //join f in uvDb.NigerianStates on a.StateofResidence_FK equals f.ID
+                             //join g in uvDb.NigerianStates on a.TempStateofResidence_FK equals g.ID
+                             //join h in uvDb.NigerianStates on a.NyscStateofResidence_FK equals h.ID
+                             //join i in uvDb.LGAs on a.LGA_FK equals i.ID
+                             //join j in uvDb.LGAs on a.TempLGA_FK equals j.ID
+                             //join k in uvDb.LGAs on a.NyscLGA_FK equals k.ID
+
+                             //join l in uvDb.Banks on a.BankCode equals l.Code
+
+                             //where a.NYSCApplicationStatus_FK == AppstatFk && a.IsVisible == 1
+                             where a.NYSCApplicationStatus_FK == AppstatFk && a.IsVisible == 1 && a.EmailAddress == userEmail
+
+                             select new AppLoanss
+
+                             {
+                                 ID = a.ID,
+                                 MaritalStatus = a.MaritalStatus_FK.ToString(),
+                                 // Title = c.Name,
+                                 Title = a.Title_FK.ToString(),
+                                 Othernames = a.Othernames,
+                                 Surname = a.Surname,
+                                 Firstname = a.Firstname,
+                                 DateOfBirth = a.DateOfBirth,
+                                 Gender = a.Gender_FK == 1 ? "Male" : "Female",
+                                 EmailAddress= a.EmailAddress,
+                                 PhoneNumber = a.PhoneNumber,
+
+
+
+
+
+
+
+
+                                 AccountName = a.AccountName,
+                               
+                                 StateofResidence = a.StateofResidence_FK.ToString(),
+                                 StateCode = a.StateCode,
+                                 ApplicationStatus_FK = AppstatFk,
+                                 NYSCApplicationStatus_FK = AppstatFk,
+                                 TempStateofResidence = a.TempStateofResidence_FK.ToString(),
+                                 //NyscStateofResidence = h.Name,
+                                 LGAs = a.LGA_FK.ToString(),
+                              
+                                 LoanRefNumber = a.RefNumber,
+                          
+
+                                 NetMonthlyIncome = a.NetMonthlyIncome.Value,
+                                 AccountNumber = a.AccountNumber,
+
+                                 //BankCode = l.Name,
+                                 //bankcodes = l.Code,
+                                 BVN = a.BVN,
+                                 ClosestBusStop = a.ClosestBusStop,
+                                 PermanentAddress = a.PermanentAddress,
+                                 
+                                
+                                 ExistingLoan = a.ExistingLoan.HasValue ? a.ExistingLoan.Value : false,
+                                 ExistingLoan_NoOfMonthsLeft = a.ExistingLoan_NoOfMonthsLeft.Value,
+                                 ExistingLoan_OutstandingAmount = a.ExistingLoan_OutstandingAmount.Value > 0 ? a.ExistingLoan_OutstandingAmount.Value : 0,
+                       
+
+                                // LoanAmount = a.LoanAmount.Value,
+                                 IsVisible = 1,
+                                // LoanTenure = a.LoanTenure.Value,
+                                 EMG_EmailAddress = a.EMG_EmailAddress,
+                                 EMG_FullName = a.EMG_FullName,
+                                 EMG_HomeAddress = a.EMG_HomeAddress,
+                                 EMG_PhoneNumber = a.EMG_PhoneNumber,
+                                 EMG_Relationship = a.EMG_Relationship,
+                                 EMG_EmailAddress2 = a.EMG_EmailAddress2,
+                                 EMG_FullName2 = a.EMG_FullName2,
+                                 EMG_HomeAddress2 = a.EMG_HomeAddress2,
+                                 EMG_PhoneNumber2 = a.EMG_PhoneNumber2,
+                                 EMG_Relationship2 = a.EMG_Relationship2,
+                                 TemporaryAddress = a.TemporaryAddress,
+                                 TempClosestBusStop = a.TempClosestBusStop,
+                                 TempLandmark = a.TempLandmark,
+                               
+                                 ValueDate = a.ValueDate,
+                                 ValueTime = a.ValueTime,
+                                 Landmark = a.Landmark,
+                             
+                                 TempLGAs = a.TempLGA_FK.ToString(),
+                                // NyscLGAs = k.Name,
+                                 PassOutMonth = a.PassOutMonth,
+                                 OfficialAddress = a.OfficialAddress,
+                                 Employer = a.Employer,
+                                 CDSDay = a.CDSDay,
+                                 CDSGroup = a.CDSGroup,
+                                 //SalaryAmount = (double)a.NetMonthlyIncome,
+
+
+                                 PPA_Department = a.PPA_Department,
+                                 PPA_EmailAddress = a.PPA_EmailAddress,
+                                 PPA_PhoneNumber = a.PPA_PhoneNumber,
+                                 PPA_ROle = a.PPA_ROle,
+                                 PPA_supervisorEmail = a.PPA_supervisorEmail,
+                                 PPA_supervisorName = a.PPA_supervisorName,
+                                 PPA_supervisorPhonenumber = a.PPA_supervisorPhonenumber,
+
+                                 FacebookName = a.FacebookName,
+                                 TwitterHandle = a.TwitterHandle,
+                                 InstagramHandle = a.InstagramHandle,
+                                 NyscIdCardFilePath = a.NyscIdCardFilePath,
+                                 STA_FilePath = a.STA_FilePath,
+                                 //NyscpassportFilePath = a.NyscpassportFilePath,
+                                 //NyscCallUpLetterFilePath = a.NyscCallUpLetterFilePath,
+                                 //NyscPostingLetterFllePath = a.NyscPostingLetterFllePath,
+                                 //NyscProfileDashboardFilePath = a.NyscProfileDashboardFilePath,
+                                 //LetterOfundertaken = a.LetterOfundertaken,
+                                 ReferralCode = a.ReferralCode,
+                                 //RelativeRelationship2_FK = a.RelativeRelationship2_FK,
+                                 //RelativeRelationship_FK = a.RelativeRelationship_FK,
+                                 SecondRelativeName = a.SecondRelativeName,
+                                 SecondRelativePhoneNumber = a.SecondRelativePhoneNumber,
+                                 //FirstRelativeName = a.FirstRelativeName,
+                                 //FirstRelativePhoneNumber = a.FirstRelativePhoneNumber,
+
+                             }).OrderByDescending(x => x.ID).ToList();
+
+
+                if (Loans == null)
+                {
+                    return null;
+                }
+                return Loans;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public NyscLoanApplication GetRefid(string Refid)
+        {
+            try
+            {
+
+                var resp = (from a in uvDb.NyscLoanApplications where a.RefNumber == Refid select a).FirstOrDefault();
+
+                   if (resp == null)
+                    {
+                        return null;
+                    }
+                    else
+
+                        return resp;
+
+
+                }
+           
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public List<AppLoanss> EditApprovedLoans(int AppstatFk, string userEmail)
+        {
+            try
+            {
+                var Loans = (from a in uvDb.NyscLoanApplications
+                             join b in uvDb.NigerianStates on a.NyscStateofResidence_FK equals b.ID
+                             join c in uvDb.Banks on a.BankCode equals c.Code
+                             join d in uvDb.Titles on a.Title_FK equals d.ID
+                             join f in uvDb.NigerianStates on a.StateofResidence_FK equals f.ID
+                             join g in uvDb.NigerianStates on a.TempStateofResidence_FK equals g.ID
+                             join h in uvDb.NigerianStates on a.NyscStateofResidence_FK equals h.ID
+                             join j in uvDb.LGAs on a.TempLGA_FK equals j.ID
+                             join k in uvDb.LGAs on a.NyscLGA_FK equals k.ID
+                             join m in uvDb.LGAs on a.LGA_FK equals m.ID
+
+                             //join l in uvDb.NYSCRelatives on a.RelativeRelationship_FK equals l.ID
+
+                             where a.NYSCApplicationStatus_FK == AppstatFk && a.IsVisible == 1 && a.EmailAddress == userEmail
+                           
                              select new AppLoanss
                              {
                                  ID = a.ID,
                                  ApplicationStatus = b.Name,
                                  AccountName = a.AccountName,
-                                 //Title = c.Name,
+                                 Title = d.Name,
                                  StateofResidence = b.Name,
                                  StateCode = a.StateCode,
 
-                                 //TempStateofResidence = f.Name,
+                                 TempStateofResidence = f.Name,
                                  NyscStateofResidence = b.Name,
-                                 //LGAs = j.Name,
-                                 //Gender = a.Gender_FK == 1 ? "Male" : "Female",
+                                 LGAs = m.Name,
+                                 
+                                 Gender = a.Gender_FK == 1 ? "Male" : "Female",
                                  LoanRefNumber = a.RefNumber,
-                                 //MaritalStatus = d.Name,
+                                 MaritalStatus = d.Name,
 
                                  NetMonthlyIncome = a.NetMonthlyIncome.Value,
                                  AccountNumber = a.AccountNumber,
@@ -594,13 +1840,24 @@ namespace DataAccessA.DataManager
                                  Firstname = a.Firstname,
 
                                  LoanAmount = a.LoanAmount.Value,
-                                 
+                                 PPA_Department = a.PPA_Department,
+                                 PPA_supervisorPhonenumber = a.PPA_supervisorPhonenumber,
+                                 PPA_supervisorName = a.PPA_supervisorName,
+                                 PPA_supervisorEmail = a.PPA_supervisorEmail,
+                                 PPA_ROle = a.PPA_ROle,
+                                 PPA_PhoneNumber = a.PPA_PhoneNumber,
+                                 PPA_EmailAddress=a.PPA_EmailAddress,
                                  LoanTenure = a.LoanTenure.Value,
                                  EMG_EmailAddress = a.EMG_EmailAddress,
                                  EMG_FullName = a.EMG_FullName,
                                  EMG_HomeAddress = a.EMG_HomeAddress,
                                  EMG_PhoneNumber = a.EMG_PhoneNumber,
                                  EMG_Relationship = a.EMG_Relationship,
+                                 EMG_EmailAddress2 = a.EMG_EmailAddress2,
+                                 EMG_FullName2 = a.EMG_FullName2,
+                                 EMG_HomeAddress2 = a.EMG_HomeAddress2,
+                                 EMG_PhoneNumber2 = a.EMG_PhoneNumber2,
+                                 EMG_Relationship2 = a.EMG_Relationship2,
                                  TemporaryAddress = a.TemporaryAddress,
                                  TempClosestBusStop = a.TempClosestBusStop,
                                  TempLandmark = a.TempLandmark,
@@ -610,14 +1867,28 @@ namespace DataAccessA.DataManager
                                  Landmark = a.Landmark,
                                  Othernames = a.Othernames,
                                  Surname = a.Surname,
-                                 //TempLGAs = j.Name,
-                                 //NyscLGAs = k.Name,
-                                 PassOutMonth = a.PassOutMonth,
+                                TempLGAs = j.Name,
+                                 NyscLGAs = k.Name,
+                                PassOutMonth = a.PassOutMonth,
                                  OfficialAddress = a.OfficialAddress,
                                  Employer = a.Employer,
                                  CDSDay = a.CDSDay,
                                  CDSGroup = a.CDSGroup,
                                  SalaryAmount = (double)a.NetMonthlyIncome,
+                                 InstagramHandle = a.InstagramHandle,
+                                 FacebookName = a.FacebookName,
+                                 TwitterHandle= a.TwitterHandle,
+                                 NyscCallUpLetterFilePath = a.NyscCallUpLetterFilePath,
+                                 NyscIdCardFilePath = a.NyscIdCardFilePath,
+                                 NyscpassportFilePath = a.NyscpassportFilePath,
+                                 NyscPostingLetterFllePath = a.NyscPostingLetterFllePath,
+                                 NyscProfileDashboardFilePath = a.NyscProfileDashboardFilePath,
+                                 FirstRelativeName = a.FirstRelativeName,
+                                 FirstRelativePhoneNumber = a.FirstRelativePhoneNumber,
+                                  SecondRelativeName = a.SecondRelativeName,
+                                    SecondRelativePhoneNumber = a.SecondRelativePhoneNumber,
+                                 RelativeRelationship2_FK = a.RelativeRelationship2_FK,
+                                 RelativeRelationship_FK = a.RelativeRelationship_FK,
 
                              }).OrderByDescending(x => x.ID).ToList();
 
@@ -738,6 +2009,10 @@ namespace DataAccessA.DataManager
         //    }
         //}
 
+
+
+
+
         public List<NyscLoanApplication> DisburseLoan(int AppstatFk)
         {
             try
@@ -791,7 +2066,7 @@ namespace DataAccessA.DataManager
         {
             try
             {
-               
+
                 uvDb.MarketingDetails.Add(MC);
                 uvDb.SaveChanges();
                 return MC.ID;
@@ -821,11 +2096,19 @@ namespace DataAccessA.DataManager
 
 
 
+
+
         public List<NYSCLoanSetUp> GetTenureByPassoutMonth(int Tenure)
         {
             try
             {
-                var LoanTenures = (from a in uvDb.NYSCLoanSetUps where a.Tenure <= Tenure select a).OrderByDescending(x => x.ID).ToList();
+                int myTenure = 0;
+                // var localtime = MyUtility.getCurrentLocalDateTime();
+                var localtime = DateTime.Now;
+                int _today = Convert.ToUInt16(localtime.ToString("dd"));
+                //myTenure = _today > 22 ? Tenure - 1 : myTenure;
+                myTenure = _today > 22 ? Tenure - 1 : Tenure;
+                var LoanTenures = (from a in uvDb.NYSCLoanSetUps where a.Tenure <= myTenure select a).OrderByDescending(x => x.ID).ToList();
 
                 if (LoanTenures == null)
                 {
@@ -839,6 +2122,25 @@ namespace DataAccessA.DataManager
                 return null;
             }
         }
+
+        //public List<NYSCLoanSetUp> GetTenureByPassoutMonth(int Tenure)
+        //{
+        //    try
+        //    {
+        //        var LoanTenures = (from a in uvDb.NYSCLoanSetUps where a.Tenure <= Tenure select a).OrderByDescending(x => x.ID).ToList();
+
+        //        if (LoanTenures == null)
+        //        {
+        //            return null;
+        //        }
+        //        return LoanTenures;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message.ToString());
+        //        return null;
+        //    }
+        //}
 
 
         public int insertIntoNYSCReferralLedger(NYSCReferralLedger RL)
@@ -873,7 +2175,7 @@ namespace DataAccessA.DataManager
         {
             try
             {
-              
+
 
                 uvDb.NYSCLoanLedgers.Add(NL);
                 uvDb.SaveChanges();
@@ -888,10 +2190,10 @@ namespace DataAccessA.DataManager
 
         public PatnerTransactLog insertintoTransactLog(PatnerTransactLog PTL)
         {
-            
+
             try
             {
-              
+
                 //var valid = (from a in uvDb.PartnersTransLogs where a.RefNum == PTL.RefNum select a).FirstOrDefault();
 
                 //if (valid == null)
@@ -946,6 +2248,239 @@ namespace DataAccessA.DataManager
 
         }
 
+
+
+        public int UpdateNyscLoanApplications(DataAccessA.DataManager.NyscLoanApplication Apploans)
+        {
+            try
+            {
+                var resp = (from a in uvDb.NyscLoanApplications where a.ID == Apploans.ID select a).FirstOrDefault();
+
+                if (resp.ID != 0)
+                {
+                    resp.NYSCApplicationStatus_FK = Apploans.NYSCApplicationStatus_FK;
+                    resp.ID = Apploans.ID;
+                    resp.AccountNumber = Apploans.AccountNumber;
+                    resp.AccountName = Apploans.AccountName;
+                    resp.Firstname = Apploans.Firstname;
+                    resp.Othernames = Apploans.Othernames;
+                    resp.NYSCApplicationStatus_FK = 1;
+                    resp.NyscIdCardFilePath = Apploans.NyscIdCardFilePath;
+                    resp.STA_FilePath = Apploans.STA_FilePath;
+                    resp.NyscpassportFilePath = Apploans.NyscIdCardFilePath;
+                    resp.NyscCallUpLetterFilePath = Apploans.NyscCallUpLetterFilePath;
+                    resp.NyscPostingLetterFllePath = Apploans.NyscPostingLetterFllePath;
+                    resp.NyscProfileDashboardFilePath = Apploans.NyscProfileDashboardFilePath;
+                    resp.FacebookName = Apploans.FacebookName;
+                    resp.InstagramHandle = Apploans.InstagramHandle;
+                    resp.TwitterHandle = Apploans.TwitterHandle;
+                    resp.RepaymentAmount = Apploans.RepaymentAmount;
+                    // resp.RefNumber = Apploans.RefNumber;
+                    resp.Gender_FK = Apploans.Gender_FK;//Convert.ToInt32(form["selectGender"]),
+                    resp.MaritalStatus_FK = Apploans.MaritalStatus_FK;//Convert.ToInt16(form["Marital"]),
+                    resp.Surname = Apploans.Surname;
+                    //CreatedBy = Convert.ToString(userid),
+                    resp.DateOfBirth = Convert.ToString(Apploans.DateOfBirth);
+                    resp.Title_FK = Apploans.Title_FK;//Convert.ToInt32(form["Titles"]),
+                    resp.PhoneNumber = Apploans.PhoneNumber;
+                    resp.EmailAddress = Apploans.EmailAddress;
+                    resp.PermanentAddress = Apploans.PermanentAddress;
+                    resp.Landmark = Apploans.Landmark;
+                    resp.ClosestBusStop = Apploans.ClosestBusStop;
+                    resp.LGA_FK = Apploans.LGA_FK;
+                    resp.TempLGA_FK = Apploans.TempLGA_FK;
+                    resp.NyscLGA_FK = Apploans.NyscLGA_FK;
+
+                    //resp.LGA_FK = Convert.ToInt16(form["lgaList"]);
+                    //resp.TempLGA_FK = Convert.ToInt16(form["lgaLists"]);
+                    //resp.NyscLGA_FK = Convert.ToInt16(form["lgaListsss"]);
+                    resp.StateofResidence_FK = Apploans.StateofResidence_FK;////Convert.ToInt32(form["States"]),
+                    resp.TempStateofResidence_FK = Apploans.TempStateofResidence_FK;//Convert.ToInt32(form["States"]),
+                    resp.NyscStateofResidence_FK = Apploans.NyscStateofResidence_FK;//Convert.ToInt32(form["States"]),
+                    resp.TemporaryAddress = Apploans.TemporaryAddress;
+                    resp.OfficialAddress = Apploans.OfficialAddress;
+                    resp.StateCode = Apploans.StateCode;
+                    resp.Employer = Apploans.Employer;
+                    resp.PassOutMonth = Apploans.PassOutMonth;
+                    resp.CDSDay = Apploans.CDSDay;
+                    resp.TempLandmark = Apploans.TempLandmark;
+                    resp.TempClosestBusStop = Apploans.TempClosestBusStop;
+                    resp.ReferralCode = Apploans.ReferralCode;
+                    resp.BVN = Apploans.BVN;
+                    resp.CDSGroup = Apploans.CDSGroup;
+                    resp.NetMonthlyIncome = Convert.ToDouble(Apploans.NetMonthlyIncome);
+                    resp.EMG_EmailAddress = Apploans.EMG_EmailAddress;
+                    resp.EMG_FullName = Apploans.EMG_FullName;
+                    resp.EMG_HomeAddress = Apploans.EMG_HomeAddress;
+                    resp.EMG_PhoneNumber = Apploans.EMG_PhoneNumber;
+                    resp.EMG_Relationship = Apploans.EMG_Relationship;
+                    resp.EMG_EmailAddress2 = Apploans.EMG_EmailAddress2;
+                    resp.EMG_FullName2 = Apploans.EMG_FullName2;
+                    resp.EMG_HomeAddress2 = Apploans.EMG_HomeAddress2;
+                    resp.EMG_PhoneNumber2 = Apploans.EMG_PhoneNumber2;
+                    resp.EMG_Relationship2 = Apploans.EMG_Relationship2;
+                    resp.PPA_Department = Apploans.PPA_Department;
+                    resp.PPA_EmailAddress = Apploans.PPA_EmailAddress;
+                    resp.PPA_PhoneNumber = Apploans.PPA_PhoneNumber;
+                    resp.PPA_ROle = Apploans.PPA_ROle;
+                    resp.PPA_supervisorEmail = Apploans.PPA_supervisorEmail;
+                    resp.PPA_supervisorName = Apploans.PPA_supervisorName;
+                    resp.PPA_supervisorPhonenumber = Apploans.PPA_supervisorPhonenumber;
+                    resp.FirstRelativeName = Apploans.FirstRelativeName;
+                    resp.FirstRelativePhoneNumber = Apploans.FirstRelativePhoneNumber;
+                    resp.RelativeRelationship2_FK = Apploans.RelativeRelationship2_FK;
+                    resp.SecondRelativeName = Apploans.SecondRelativeName;
+                    resp.SecondRelativePhoneNumber = Apploans.SecondRelativePhoneNumber;
+                    resp.RelativeRelationship_FK = Apploans.RelativeRelationship_FK;
+                    resp.LoanAmount = Convert.ToDouble(Apploans.LoanAmount);
+                    resp.LoanTenure = Apploans.LoanTenure;
+                    resp.ExistingLoan = Apploans.ExistingLoan;
+                    resp.LoanComment = Apploans.LoanComment;
+                    resp.ExistingLoan_NoOfMonthsLeft = Convert.ToInt16(Apploans.ExistingLoan_NoOfMonthsLeft);
+                    resp.ExistingLoan_OutstandingAmount = Apploans.ExistingLoan_OutstandingAmount;
+                    resp.BankCode = Helper.GetRemitaBankCodeByFlutterCode(Apploans.BankCode);
+                    resp.IsVisible = 1;
+                    resp.DateCreated = MyUtility.getCurrentLocalDateTime();
+                    resp.DateModified = MyUtility.getCurrentLocalDateTime();
+                    //ValueDate = MyUtility.getCurrentLocalDateTime().ToString("yyyy/MM/dd"),
+                    resp.ValueDate = MyUtility.getCurrentLocalDateTime().ToString("dddd, dd MMMM yyyy");
+                    resp.ValueTime = MyUtility.getCurrentLocalDateTime().ToString("H:mmss");
+                    resp.MarketingChannel = Apploans.MarketingChannel.ToString();
+                    // uvDb.NyscLoanApplications.Add(Apploans);
+                    uvDb.SaveChanges();
+                }
+                return Apploans.ID;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return 0;
+            }
+        }
+
+
+        public string UpdateNyscfiles(DataAccessA.Classes.AppLoanss Apploans)
+        {
+            try
+            {
+                var resp = (from a in uvDb.NyscLoanApplications where a.RefNumber == Apploans.LoanRefNumber select a).FirstOrDefault();
+                if (resp.RefNumber != null)
+                {
+                    //resp.NyscIdCardFilePath = Apploans.NyscIdCardFilePath;
+                    //resp.STA_FilePath = Apploans.STA_FilePath;
+                    resp.NyscpassportFilePath = Apploans.NyscpassportFilePath;
+                    resp.NyscCallUpLetterFilePath = Apploans.NyscCallUpLetterFilePath;
+                    resp.NyscPostingLetterFllePath = Apploans.NyscPostingLetterFllePath;
+                    resp.NyscProfileDashboardFilePath = Apploans.NyscProfileDashboardFilePath;
+                    resp.LetterOfundertaken = Apploans.LetterOfundertaken;
+
+                    uvDb.SaveChanges();
+                }
+                return resp.RefNumber;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+               
+            }
+        }
+
+
+
+
+        //public string UpdateNyscfiles(DataAccessA.DataManager.NyscLoanApplication Apploans)
+        //{
+        //    try
+        //    {
+        //        var resp = (from a in uvDb.NyscLoanApplications where a.RefNumber == Apploans.RefNumber select a).FirstOrDefault();
+
+        //        if (resp.ID != null)
+        //        {
+        //            resp.NYSCApplicationStatus_FK = Apploans.NYSCApplicationStatus_FK;
+        //            resp.ID = Apploans.ID;
+        //            resp.AccountNumber = Apploans.AccountNumber;
+        //            resp.AccountName = Apploans.AccountName;
+        //            resp.Firstname = Apploans.Firstname;
+        //            resp.Othernames = Apploans.Othernames;
+        //            resp.NYSCApplicationStatus_FK = 1;
+        //            resp.NyscIdCardFilePath = Apploans.NyscIdCardFilePath;
+        //            resp.STA_FilePath = Apploans.STA_FilePath;
+        //            resp.NyscpassportFilePath = Apploans.NyscIdCardFilePath;
+        //            resp.NyscCallUpLetterFilePath = Apploans.NyscCallUpLetterFilePath;
+        //            resp.NyscPostingLetterFllePath = Apploans.NyscPostingLetterFllePath;
+        //            resp.NyscProfileDashboardFilePath = Apploans.NyscProfileDashboardFilePath;
+        //            resp.FacebookName = Apploans.FacebookName;
+        //            resp.InstagramHandle = Apploans.InstagramHandle;
+        //            resp.TwitterHandle = Apploans.TwitterHandle;
+        //            resp.RepaymentAmount = Apploans.RepaymentAmount;
+        //            // resp.RefNumber = Apploans.RefNumber;
+        //            resp.Gender_FK = Apploans.Gender_FK;//Convert.ToInt32(form["selectGender"]),
+        //            resp.MaritalStatus_FK = Apploans.MaritalStatus_FK;//Convert.ToInt16(form["Marital"]),
+        //            resp.Surname = Apploans.Surname;
+        //            //CreatedBy = Convert.ToString(userid),
+        //            resp.DateOfBirth = Convert.ToString(Apploans.DateOfBirth);
+        //            resp.Title_FK = Apploans.Title_FK;//Convert.ToInt32(form["Titles"]),
+        //            resp.PhoneNumber = Apploans.PhoneNumber;
+        //            resp.EmailAddress = Apploans.EmailAddress;
+        //            resp.PermanentAddress = Apploans.PermanentAddress;
+        //            resp.Landmark = Apploans.Landmark;
+        //            resp.ClosestBusStop = Apploans.ClosestBusStop;
+        //            resp.LGA_FK = Apploans.LGA_FK;
+        //            resp.TempLGA_FK = Apploans.TempLGA_FK;
+        //            resp.NyscLGA_FK = Apploans.NyscLGA_FK;
+
+        //            //resp.LGA_FK = Convert.ToInt16(form["lgaList"]);
+        //            //resp.TempLGA_FK = Convert.ToInt16(form["lgaLists"]);
+        //            //resp.NyscLGA_FK = Convert.ToInt16(form["lgaListsss"]);
+        //            resp.StateofResidence_FK = Apploans.StateofResidence_FK;////Convert.ToInt32(form["States"]),
+        //            resp.TempStateofResidence_FK = Apploans.TempStateofResidence_FK;//Convert.ToInt32(form["States"]),
+        //            resp.NyscStateofResidence_FK = Apploans.NyscStateofResidence_FK;//Convert.ToInt32(form["States"]),
+        //            resp.TemporaryAddress = Apploans.TemporaryAddress;
+        //            resp.OfficialAddress = Apploans.OfficialAddress;
+        //            resp.StateCode = Apploans.StateCode;
+        //            resp.Employer = Apploans.Employer;
+        //            resp.PassOutMonth = Apploans.PassOutMonth;
+        //            resp.CDSDay = Apploans.CDSDay;
+        //            resp.TempLandmark = Apploans.TempLandmark;
+        //            resp.TempClosestBusStop = Apploans.TempClosestBusStop;
+        //            resp.ReferralCode = Apploans.ReferralCode;
+        //            resp.BVN = Apploans.BVN;
+        //            resp.CDSGroup = Apploans.CDSGroup;
+        //            resp.NetMonthlyIncome = Convert.ToDouble(Apploans.NetMonthlyIncome);
+        //            resp.EMG_EmailAddress = Apploans.EMG_EmailAddress;
+        //            resp.EMG_FullName = Apploans.EMG_FullName;
+        //            resp.EMG_HomeAddress = Apploans.EMG_HomeAddress;
+        //            resp.EMG_PhoneNumber = Apploans.EMG_PhoneNumber;
+        //            resp.EMG_Relationship = Apploans.EMG_Relationship;
+        //            resp.LoanAmount = Convert.ToDouble(Apploans.LoanAmount);
+        //            resp.LoanTenure = Apploans.LoanTenure;
+        //            resp.ExistingLoan = Apploans.ExistingLoan;
+        //            resp.LoanComment = Apploans.LoanComment;
+        //            resp.ExistingLoan_NoOfMonthsLeft = Convert.ToInt16(Apploans.ExistingLoan_NoOfMonthsLeft);
+        //            resp.ExistingLoan_OutstandingAmount = Apploans.ExistingLoan_OutstandingAmount;
+        //            resp.BankCode = Helper.GetRemitaBankCodeByFlutterCode(Apploans.BankCode);
+        //            resp.IsVisible = 1;
+        //            resp.DateCreated = MyUtility.getCurrentLocalDateTime();
+        //            resp.DateModified = MyUtility.getCurrentLocalDateTime();
+        //            //ValueDate = MyUtility.getCurrentLocalDateTime().ToString("yyyy/MM/dd"),
+        //            resp.ValueDate = MyUtility.getCurrentLocalDateTime().ToString("dddd, dd MMMM yyyy");
+        //            resp.ValueTime = MyUtility.getCurrentLocalDateTime().ToString("H:mmss");
+        //            resp.MarketingChannel = Apploans.MarketingChannel.ToString();
+        //            // uvDb.NyscLoanApplications.Add(Apploans);
+        //            uvDb.SaveChanges();
+        //        }
+        //        return Apploans.RefNumber;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message.ToString());
+        //        return null;
+        //    }
+        //}
+
+
+
         public string UpdateNyscLoanApplication(DataAccessA.Classes.AppLoanss Apploans)
         {
             try
@@ -975,7 +2510,7 @@ namespace DataAccessA.DataManager
                 var sObj = uvDb.LoanSerialNoes.FirstOrDefault();
                 if (sObj != null)
                 {
-                    serialNo = Convert.ToInt16( sObj.NYSCSerialNo) +1;
+                    serialNo = Convert.ToInt16(sObj.NYSCSerialNo) + 1;
                 }
 
 
@@ -984,7 +2519,7 @@ namespace DataAccessA.DataManager
                 {
                     serialNumb = "00000" + serialNo.ToString();
                 }
-                else if(serialNo.ToString().Length == 2)
+                else if (serialNo.ToString().Length == 2)
                 {
                     serialNumb = "0000" + serialNo.ToString();
                 }
@@ -1000,9 +2535,9 @@ namespace DataAccessA.DataManager
                 {
                     serialNumb = "0" + serialNo.ToString();
                 }
-                else 
+                else
                 {
-                    serialNumb =  serialNo.ToString();
+                    serialNumb = serialNo.ToString();
                 }
                 var resp = (from a in uvDb.NyscLoanApplications where a.ID == Apploans.ID select a).FirstOrDefault();
 
@@ -1078,7 +2613,7 @@ equals b.ID
                                 comment = a.Comment,
                                 commentBy = b.EmailAddress,
                                 ValueDate = a.ValueDate
-                             }).OrderByDescending(x => x.ValueDate).ToList();
+                            }).OrderByDescending(x => x.ValueDate).ToList();
 
                 if (comments == null)
                 {
@@ -1093,6 +2628,9 @@ equals b.ID
                 return null;
             }
         }
+
+
+
         public AppLoanss GetNYSCLoanApplication(string LoanID, int AppstatFk)
         {
             try
@@ -1101,14 +2639,14 @@ equals b.ID
 
                                join c in uvDb.Titles on a.Title_FK equals c.ID
                                join d in uvDb.MaritalStatus on a.MaritalStatus_FK equals d.ID
-                               //join e in uvDb.MeansOfIdentifications on a.MeansOfID_FK equals e.ID
+                               
                                join f in uvDb.NigerianStates on a.StateofResidence_FK equals f.ID
                                join g in uvDb.NigerianStates on a.TempStateofResidence_FK equals g.ID
                                join h in uvDb.NigerianStates on a.NyscStateofResidence_FK equals h.ID
                                join i in uvDb.LGAs on a.LGA_FK equals i.ID
                                join j in uvDb.LGAs on a.TempLGA_FK equals j.ID
                                join k in uvDb.LGAs on a.NyscLGA_FK equals k.ID
-                               //join h in uvDb.LoanProducts on a.LoanProduct_FK equals h.LoanType_FK
+                              
                                join l in uvDb.Banks on a.BankCode equals l.Code
 
                                // join m in uvDb.LoanApprovals on a.ID equals m.LoanApplication_FK
@@ -1159,6 +2697,11 @@ equals b.ID
                                    EMG_HomeAddress = a.EMG_HomeAddress,
                                    EMG_PhoneNumber = a.EMG_PhoneNumber,
                                    EMG_Relationship = a.EMG_Relationship,
+                                   EMG_EmailAddress2 = a.EMG_EmailAddress2,
+                                   EMG_FullName2 = a.EMG_FullName2,
+                                   EMG_HomeAddress2 = a.EMG_HomeAddress2,
+                                   EMG_PhoneNumber2 = a.EMG_PhoneNumber2,
+                                   EMG_Relationship2 = a.EMG_Relationship2,
                                    TemporaryAddress = a.TemporaryAddress,
                                    TempClosestBusStop = a.TempClosestBusStop,
                                    TempLandmark = a.TempLandmark,
@@ -1177,14 +2720,33 @@ equals b.ID
                                    CDSGroup = a.CDSGroup,
                                    SalaryAmount = (double)a.NetMonthlyIncome,
 
-                                   //Occupation = m.Occupation,
-                                   // Department = m.Department,
-                                   //  Repayment = x.Name,
-                                   //LoanComment = m.Comment,                                   //EmployeeStatus = es.Name,
+                                  
+                                   PPA_Department = a.PPA_Department,
+                                   PPA_EmailAddress= a.PPA_EmailAddress,
+                                   PPA_PhoneNumber =a.PPA_PhoneNumber,
+                                   PPA_ROle =a.PPA_ROle,
+                                   PPA_supervisorEmail=a.PPA_supervisorEmail,
+                                   PPA_supervisorName=a.PPA_supervisorName,
+                                   PPA_supervisorPhonenumber=a.PPA_supervisorPhonenumber,
+                                   
+                                   FacebookName = a.FacebookName,
+                                   TwitterHandle = a.TwitterHandle,
+                                   InstagramHandle = a.InstagramHandle,
                                    NyscIdCardFilePath = a.NyscIdCardFilePath,
                                    STA_FilePath = a.STA_FilePath,
+                                   NyscpassportFilePath = a.NyscpassportFilePath,
+                                   NyscCallUpLetterFilePath = a.NyscCallUpLetterFilePath,
+                                   NyscPostingLetterFllePath = a.NyscPostingLetterFllePath,
+                                   NyscProfileDashboardFilePath = a.NyscProfileDashboardFilePath,
+                                   LetterOfundertaken = a.LetterOfundertaken,
                                    ReferralCode = a.ReferralCode,
-
+                                   RelativeRelationship2_FK = a.RelativeRelationship2_FK,
+                                   RelativeRelationship_FK =a.RelativeRelationship_FK,
+                                   SecondRelativeName= a.SecondRelativeName,
+                                   SecondRelativePhoneNumber=a.SecondRelativePhoneNumber,
+                                   FirstRelativeName =a.FirstRelativeName,
+                                   FirstRelativePhoneNumber = a.FirstRelativePhoneNumber,
+                                   
                                }).FirstOrDefault();
 
                 if (AppLoan == null)
@@ -1197,34 +2759,34 @@ equals b.ID
 
             }
             catch (Exception ex)
-             {
+            {
                 WebLog.Log(ex.Message.ToString());
                 return null;
             }
         }
 
 
-        //public dynamic LoanTransactionbyDate(DateTime to, DateTime from)
-        //{
-        //    try
-        //    {
-        //        var Apploan = uvDb.LoanTransactionbyDate(from, to).ToList();
+        public dynamic LoanTransactionbyDate(DateTime to, DateTime from)
+        {
+            try
+            {
+                var Apploan = uvDb.LoanTransactionbyDate(from, to).ToList();
 
-        //        if (Apploan == null)
-        //        {
+                if (Apploan == null)
+                {
 
-        //            return null;
-        //        }
+                    return null;
+                }
 
-        //        return Apploan;
+                return Apploan;
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        WebLog.Log(ex.Message.ToString());
-        //        return null;
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
 
 
         public LoanInterestRate GetInterestRate(int tenure)
@@ -1323,7 +2885,7 @@ equals b.ID
                                    Title = c.Name,
                                    StateofResidence = f.Name,
                                    StateCode = a.StateCode,
-
+                                   RepaymentAmount = a.LoanTenure.ToString(),
                                    TempStateofResidence = g.Name,
                                    NyscStateofResidence = h.Name,
                                    LGAs = g.Name,
@@ -1331,7 +2893,7 @@ equals b.ID
                                    LoanRefNumber = a.RefNumber,
                                    MaritalStatus = d.Name,
                                    //LoanProduct = h.LoanProduct1,
-                                   AppStat = e.Name,                                  
+                                   AppStat = e.Name,
                                    AccountNumber = a.AccountNumber,
                                    // ApplicantID = a.ApplicantID,
                                    BankCode = l.Name,
@@ -1868,7 +3430,7 @@ equals b.ID
             try
             {
                 var LoanApp = (from a in uvDb.NyscLoanApplications
-                               join b in uvDb.ApplicationStatus
+                               join b in uvDb.NYSCApplicationStatus
                                on a.NYSCApplicationStatus_FK equals b.ID
                                join c in uvDb.Titles on a.Title_FK equals c.ID
                                join d in uvDb.MaritalStatus on a.MaritalStatus_FK equals d.ID
@@ -1905,9 +3467,9 @@ equals b.ID
                                    PermanentAddress = a.PermanentAddress,
                                    DateOfBirth = a.DateOfBirth,
                                    EmailAddress = a.EmailAddress,
-                                   ExistingLoan = a.ExistingLoan.HasValue ? a.ExistingLoan.Value : false,
-                                   ExistingLoan_NoOfMonthsLeft = a.ExistingLoan_NoOfMonthsLeft.Value,
-                                   ExistingLoan_OutstandingAmount = a.ExistingLoan_OutstandingAmount.Value > 0 ? a.ExistingLoan_OutstandingAmount.Value : 0,
+                                  // ExistingLoan = a.ExistingLoan.HasValue ? a.ExistingLoan.Value : false,
+                                 //  ExistingLoan_NoOfMonthsLeft = a.ExistingLoan_NoOfMonthsLeft.Value,
+                                   //ExistingLoan_OutstandingAmount = a.ExistingLoan_OutstandingAmount.Value > 0 ? a.ExistingLoan_OutstandingAmount.Value : 0,
                                    Firstname = a.Firstname,
 
                                    LoanAmount = a.LoanAmount.Value,
@@ -2030,7 +3592,7 @@ equals b.ID
 
 
 
-        public string GetBankCode(string BANKNAME)
+        public  string GetBankCode(string BANKNAME)
         {
             try
             {
@@ -2212,7 +3774,7 @@ equals b.ID
                 }
                 return Services;
             }
-             catch (Exception ex)
+            catch (Exception ex)
             {
                 WebLog.Log(ex.Message);
                 return null;
@@ -2243,6 +3805,25 @@ equals b.ID
             try
             {
                 var Services = (from a in uvDb.MaritalStatus select a).OrderBy(a => a.ID).ToList().Take(3);
+
+                if (Services == null)
+                {
+                    return null;
+                }
+                return Services.ToList();
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message);
+                return null;
+            }
+        }
+
+        public List<NYSCRelative> GetRelative()
+        {
+            try
+            {
+                var Services = (from a in uvDb.NYSCRelatives select a).OrderBy(a => a.ID).ToList()/*.Take(7)*/;
 
                 if (Services == null)
                 {
@@ -2407,7 +3988,7 @@ equals b.ID
             {
                 WebLog.Log("am new here " + username);
                 var Loggedin = (from a in uvDb.Users
-                                where a.EmailAddress == username  && a.PaswordVal == password
+                                where a.EmailAddress == username && a.PaswordVal == password
                                 select a).FirstOrDefault();
 
                 if (Loggedin != null)
@@ -2422,9 +4003,9 @@ equals b.ID
             catch (Exception dbEx)
             {
                 WebLog.Log(dbEx.Message.ToString());
-             
+
                 return false;
-                
+
 
             }
             //catch (DbEntityValidationException ex)
@@ -2454,6 +4035,51 @@ equals b.ID
                 return false;
             }
         }
+
+        public AppLoanss LoanDetailss(int Refid)
+        {
+            try
+            {
+                var LoanDetails = (from a in uvDb.NyscLoanApplications
+                                   join c in uvDb.NYSCApplicationStatus on
+a.NYSCApplicationStatus_FK equals c.ID
+                                   where a.ID == Refid
+
+                                   select new AppLoanss
+                                   {
+                                       ID = a.ID,
+                                       //LoanRefNumber = a.RefNumber,
+                                       Firstname = a.Firstname,
+                                       Surname = a.Surname,
+                                       Othernames = a.Othernames,
+                                       LoanTenure = (int)a.LoanTenure,
+                                       LoanAmount = (double)a.LoanAmount,
+                                       ApplicationStatus = c.Name,
+                                       PhoneNumber = a.PhoneNumber,
+                                       EmailAddress = a.EmailAddress,
+                                       RepaymentAmount = a.LoanTenure.ToString(),
+                                       ValueDate = a.ValueDate,
+                                       LoanTenureStr = a.LoanTenure + " months",
+                                       CDSDay = a.CDSDay
+                                   }).FirstOrDefault();
+
+                if (LoanDetails == null)
+                {
+                    return null;
+                }
+
+                return LoanDetails;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+
 
 
 
@@ -2499,3 +4125,4 @@ a.NYSCApplicationStatus_FK equals c.ID
         }
     }
 }
+

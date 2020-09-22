@@ -34,7 +34,18 @@
                 @using (Html.BeginForm("Acknowledgement", "AdminA", FormMethod.Get))
                 {
                     <form action="#" method="post">
-
+                        @if (TempData["Error"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-danger">
+                                @TempData["Error"]
+                            </div>
+                        }
+                        @if (TempData["SucMsg"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-success">
+                                @TempData["SucMsg"]
+                            </div>
+                        }
 
                         <div class="row list-input">
                             <div class="col-md-12 col-lg-12 formHeaderBg">

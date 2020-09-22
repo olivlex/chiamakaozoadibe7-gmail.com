@@ -88,7 +88,7 @@ $('table td:nth-child(6)').each(function() {
                                            
                                            
                                             <td>
-                                                <a onclick="return confirm('Are You Sure?')" href="@Url.Action("Approve", "AdminA", new { Refid = @Loan.LoanRefNumber })">View</a>
+                                                <a class="fa fa-eye fa-lg text-success" onclick="return confirm('Are You Sure?')" href="@Url.Action("Approve", "AdminA", new { Refid = @Loan.LoanRefNumber })"></a>
                                             </td>
                                         </tr>
                                     }

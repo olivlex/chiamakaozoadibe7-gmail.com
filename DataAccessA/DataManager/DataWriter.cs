@@ -64,6 +64,24 @@ namespace DataAccessA.DataManager
 
         }
 
+
+        public int SaveApplication(NyscLoanApplication NyscLA)
+        {
+            try
+            {
+
+                uvDb.NyscLoanApplications.Add(NyscLA);
+                uvDb.SaveChanges();
+                return NyscLA.ID;
+
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message);
+                return 0;
+            }
+
+        }
         public int insertRemita(PatnerTransactLog PL)
         {
 

@@ -1,0 +1,1537 @@
+﻿
+@{
+    Layout = null;
+}
+@model DataAccessA.DataManager.NyscLoanApplication
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href=@Url.Content("/asset/img/favicon.png") type="image/gif">
+    <meta name="description" content="Cash Now Now - loans, savings, payments, agency.">
+    <meta name="keywords" content="Cash Now Now - loans, savings, payments, agency.">
+    <title>Cash Now Now</title>
+
+
+
+
+
+
+
+
+    @*<script type="text/javascript">
+        $(function () {
+            // This will make every element with the class "date-picker" into a DatePicker element
+            $('.date-picker').datepicker();
+        })
+        </script>*@
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/bootstrap.min.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/fontawesome-all.min.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/reset.css")>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/style.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/responsive.css")>
+    <script type='text/javascript' src=@Url.Content("/asset/js/jquery-2.2.3.min.js")></script>
+    <script type='text/javascript' src=@Url.Content("/js2/jquery-ui.css")></script>
+    <script type='text/javascript' src=@Url.Content("/js2/jquery-ui.js")></script>
+    @*<link href="/js2/jquery-ui.css" rel="stylesheet">*@
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/DashboardStyles/css/MyStyle.css")>
+
+
+
+    @*<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>
+        $(document).ready(function () {
+            $("#DOB").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-80:+0",
+                onSelect: function () {
+                    console.log('s');
+                },
+                onChangeMonthYear: function () {
+                    console.log('o');
+                }
+            });
+        });
+
+        </script>*@
+
+
+
+
+    @*@section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+
+            @Scripts.Render("~/bundles/jqueryui")
+            @Styles.Render("~/Content/themes/base/css")
+
+            <script type="text/javascript">
+            $(document).ready(function () {
+                $("#Dob").datepicker({
+                    changeMonth: true,
+                    changeYear: true
+                });
+            });
+            </script>
+        }*@
+
+    <style>
+        #dialog img {
+            height: 550px;
+            width: 500px;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+<body class="js">
+    <div id="preloader"></div>
+    <!-- start logo menu area -->
+    <header class="second-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="second-logo">
+                        <a href="/"><img src=@Url.Content("/asset/img/logo.png") alt=""></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-10 menuShift">
+                    <div id="cssmenu">
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+
+                            </li>
+
+                            <li>
+                                <a href="#">NYSC LOAN</a>
+                                <ul>
+
+                                    <li><a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")">Apply Here</a></li>
+                                    <li><a href="@Url.Action("CheckNYSCLoan", "NYSCLOAN")">Check Loan Status</a></li>
+                                    <li><a href="@Url.Action("termsconditions", "Home")">Terms and Conditions</a></li>
+
+                                    <li><a href="@Url.Action("FAQ", "Home")">FAQs</a></li>
+                                    @*<li><a href="@Url.Action("CheckNYSCLoan", "NYSCLOAN")">Check Loan Status</a></li>*@
+
+                                    @*<li><a href="car-loan.html">Car Loan</a></li>
+                                        <li><a href="home-loan.html">Home Loan</a></li>*@
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">REFERRALS</a>
+                                <ul>
+
+                                    <li><a href="@Url.Action("ReferralReg", "Home")">How to Register</a></li>
+                                    <li><a href="@Url.Action("HIW", "Home")">How It Works</a></li>
+                                    <li><a href="@Url.Action("ReferralTermsAndConditions", "Home")">Referral TermsAnd Conditions</a></li>
+                                    <li><a href="@Url.Action("ReferralFAQs", "Home")">Referral FAQs</a></li>
+
+                                </ul>
+                            </li>
+                            <!-- <li><a href="#">Eligibility</a></li> -->
+                            <li class="referal">
+                                <a href="@Url.Action("Signup", "User")" class="btn btn-primary">Become A Referrer</a>
+                            </li>
+
+                            @*<li>
+                                <div class="col-lg-1">
+                                    <a href="#" class="btn btn-primary btn-sm"> A Referral</a>
+                                </div>
+                                <ul>
+
+
+
+
+                                    <li><a href="#">How It Works</a></li>*@
+                            @*<li><a href="apply-now.html">T&C</a></li>*@
+
+
+                            @*</ul>
+                                </li>*@
+                            @*<li><a href="contact.html">Contact us</a></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <a href="@Url.Action("Signin", "User")" class="btn btn-primary btn-sm"> Login</a>
+                </div>
+                <div class="col-lg-1">
+                    <a href="@Url.Action("Signup", "User")" class="btn btn-primary btn-sm"> Register</a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- /header -->
+    <!-- end of logo menu area -->
+    <!-- end of header area -->
+    <div class="page-header01">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center ">
+                    <h2>Apply Now</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="#">Apply Now</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of page header -->
+    <section class="section-padding contact-us-padding form-padding">
+        <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10">
+            @using (Html.BeginForm("NYSCLoanAppFormEdit", "AdminA", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+
+                <form action="#" method="post">
+
+                    @if (TempData["Error"] != "")
+                    {
+                        <div id="Msgs" class="alert alert-danger">
+                            @TempData["Error"]
+                        </div>
+                    }
+                    @if (TempData["SucMsg"] != "")
+                    {
+                        <div id="Msgs" class="alert alert-success">
+                            @TempData["SucMsg"]
+                        </div>
+                    }
+                    <div class="row list-input">
+                        <div class="col-md-12 col-lg-12 formHeaderBg">
+                            <h3 class="formHeader">Personal Information </h3>
+                        </div>
+
+                        <input type="text" value="@Model.ID" name="ID" style="display:none" />
+
+
+                      
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.DropDownListFor(model => model.Title_FK, (SelectList)ViewData["nTitles"], "TITLE", new { @id = "Titles", @required = "required", name = "Titles", Title = "SELECT TITLE" })
+                                @*</select>*@
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 right">
+                            <div class="single-get-touch">
+
+                                @Html.DropDownListFor(model => model.MaritalStatus_FK, (SelectList)ViewData["nMarital"], "MARITAL STATUS", new { @id = "Marital", @required = "required", @name = "Marital", Title = "SELECT MARITAL STATUS" })
+                                @*</select>*@
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.Surname, new { placeholder = "LAST NAME*", required = "required", Title = "SELECT SURNAME" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 right">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.Firstname, new { placeholder = "FIRST NAME*", required = "required", Title = "SELECT FIRST NAME" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.Othernames, new { placeholder = "MIDDLE NAME*", required = "required", Title = "SELECT OTHER NAMES" })
+                            </div>
+                        </div>
+                        @*<div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.DateOfBirth, new { placeholder = "DATE OF BIRTH*", required = "required", id= "DOB", })
+                                </div>
+                            </div>*@
+                        <div class="col-md-6 right">
+
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.DateOfBirth, new { placeholder = "DATE OF BIRTH (DD/MM/YYYY)*", id = "SelectedDate", required = "required", @readonly = "true", Title = "SELECT DATE OF BIRTH" })
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                               
+                                @Html.DropDownListFor(model => model.Gender_FK, (SelectList)ViewData["nGender"], "GENDER", new { @id = "selectGender", @name = "selectGender", Title = "SELECT GENDER" })
+                            </div>
+                        </div>
+
+                     
+
+                        <div class="col-md-12 col-lg-12 formHeaderBg">
+                            <h3 class="formHeader">Contact Information </h3>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.EmailAddress, new { placeholder = "PERSONAL EMAIL", required = "required", @type = "email", Title = "SELECT PEERSONAL EMAIL ADDRESS" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.PhoneNumber, new { placeholder = "PHONE NUMBER", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT PHONE NUMBER" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.PermanentAddress, new { placeholder = "PERMANENT HOME ADDRESS", required = "required", Title = "SELECT PERMANENT HOME ADDRESS" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.Landmark, new
+                           {
+                               placeholder = "LANDMARK*",
+                               Title = "SELECT LANDMARK" @*required = "required"*@ })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "States", @name = "States", onchange = "call('States')", Title = "SELECT RESIDENCE STATE" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                <select id="lgaList" name="lgaList" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" required Title="SELECT LGA" @*required="required"*@ onchange="getText();">
+                                    <option default data-tokens="SELECT LGA">SELECT LGA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.ClosestBusStop, new
+                           {
+                               placeholder = "CLOSEST BUS STOP*",
+                               Title = "SELECT CLOSEST BUS STOP"  @*required = "required"*@ })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.TemporaryAddress, new { placeholder = "CURRENT HOME ADDRESS", required = "required", Title = "SELECT CURRENT HOME ADDRESS" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.TempLandmark, new
+                           {
+                               placeholder = "LANDMARK*",
+                               Title = "SELECT TEMPORARY LANDMARK"  @*required = "required"*@ })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @Html.DropDownListFor(model => model.TempStateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "Statess", @name = "States", Title = "SELECT TEMPORARY STATE OF RESIDENCE" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                <select id="lgaLists" name="lgaLists" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" Title="SELECT TEMPORARY LGA" required @*required="required"*@ onchange="getText();">
+                                    <option default data-tokens="SELECT LGA">SELECT LGA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.TempClosestBusStop, new
+                           {
+                               placeholder = "CLOSEST BUS STOP*",
+                               Title = "SELECT TEMPORARY CLOSEST BUS-BUS"  @*required = "required"*@ })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.FacebookName, new
+                           {
+                               placeholder = "FACEBOOK HANDLE*",
+                               Title = "SELECT FACE BOOK HANDLE", /*required = "required"*/
+                           })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.TwitterHandle, new
+                           {
+                               placeholder = "TWITTER HANDLE*",
+                               Title = "SELECT TWITTER HANDLE", /*required = "required"*/
+                           })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.InstagramHandle, new
+                           {
+                               placeholder = "INSTAGRAM HANDLE*",
+                               Title = "SELECT INSTAGRAM HANDLE", /*required = "required"*/
+                           })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 col-lg-12 formHeaderBg">
+                            <h3 class="formHeader">Place of primary Assignment Information </h3>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.Employer, new { placeholder = "PPA ORGANIZATION", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT ORGANIZATION" })
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.OfficialAddress, new { placeholder = "PPA ADDRESS", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT ADDRESS" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+
+                                @Html.TextBoxFor(model => model.PPA_Department, new { placeholder = "PPA DEPARTMENT", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT DEPARTMENT" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.PPA_ROle, new { placeholder = "PPA ROLE", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT ROLE" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+
+                                @Html.TextBoxFor(model => model.PPA_EmailAddress, new
+                           {
+                               placeholder = "PPA ORGANIZATION EMAIL ADDRESS", @*required = "required",*@ Title = "SELECT PLACE OF PRIMARY ASSIGNMENT EMAIL ADDRESS"
+                           })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.PPA_PhoneNumber, new { placeholder = "PPA ORGANIZATION PHONE NUMBER", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT PLACE OF PRIMARY ADDRESS PHONE NUMBER" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+
+                                @Html.TextBoxFor(model => model.PPA_supervisorName, new { placeholder = "PPA SUPERVISOR NAME", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT SUPERVISOR NAME" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.PPA_supervisorEmail, new { placeholder = "PPA SUPERVISOR EMAIL ADDRESS", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT SUPERVISOR EMAIL ADDRESS" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.PPA_supervisorPhonenumber, new { placeholder = "PPA SUPERVISOR PHONE NUMBER", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT SUPERVISOR PHONE NUMBER" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12 col-lg-12 formHeaderBg">
+                            <h3 class="formHeader">NYSC Information </h3>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.StateCode, new { placeholder = "STATE CODE", required = "required", Title = "SELECT STATE CODE" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @Html.DropDownListFor(model => model.NyscStateofResidence_FK, (SelectList)ViewData["nStates"], "DEPLOYMENT STATE*", new { @id = "Statesss", @name = "States", required = "required", Title = "SELECT DEPLOYMENT STATE" })
+                                @*<input type="text" name="States" id="Statesss" (SelectList)ViewData["nStates"] placeholder="DEPLOYMENT STATE" required="required" ;" Title="SELECT DEPLOYMENT STATE">*@
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                <select id="lgaListsss" name="lgaListsss" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" required="required" Title="SELECT NYSC LGA" onchange="getText();">
+                                    <option default data-tokens="SELECT LGA">SELECT LGA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+
+                                @Html.TextBoxFor(model => model.Employer, new { placeholder = "PLACE OF PRIMARY ASSIGNMENT", required = "required", Title = "SELECT STATE OF PRIMARY ASSIGNMENT" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.OfficialAddress, new { placeholder = "OFFICE ADDRESS", required = "required", Title = "SELECT PLACE OF PRIMARY ADDRESS" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+
+                                @*@Html.DropDownListFor(model => model.PassOutMonth, (SelectList)ViewData["nPassOutMonths"], "PASS OUT MONTH", new { @id = "selectMonths", @name = "selectMonths",
+                                    required = "required" })*@
+                                @Html.TextBoxFor(model => model.PassOutMonth, new { placeholder = "EXPECTED NYSC PASS OUT DATE*", id = "SelectedDates", @readonly = "true", required = "required", onblur = "PassOutValidation()", Title = "SELECT EXPECTED PASSOUT DATE" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+
+                                @Html.TextBoxFor(model => model.CDSGroup, new { placeholder = "CD GROUP", required = "required", Title = "SELECT CD GROUP" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+                                @Html.DropDownListFor(model => model.CDSDay, (SelectList)ViewData["nCDDays"], "CD DAY", new { @id = "selectDays", @name = "selectDays", required = "required", Title = "SELECT CDs DAY" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                <input type="text" name="netMonthlyIncome" placeholder="NET MONTHLY INCOME" required onkeypress="return isNumber(event);" onfocus="ConvertAmount(this.value);" ondrop="return isNumber(event);" Title="SELECT NET MONTHLY INCOME" onblur="PassOutValidation();" onpaste="return isNumber(event);">
+                            </div>
+                        </div>
+                      
+                        <div class="col-md-12 col-lg-12 formHeaderBg">
+                            <h3 class="formHeader">Emergency Contact</h3>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.EMG_FullName, new { placeholder = "FULL NAME*", required = "required", Title = "SELECT EMERGENCY CONTACT FULL NAME" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.EMG_Relationship, new { placeholder = "RELATIONSHIP*", required = "required", Title = "SELECT EMERGENCY CONTACT RELATIONSHIP" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.EMG_HomeAddress, new { placeholder = "HOME ADDRESS*", required = "required", Title = "SELECT EMERGENCY CONTACT HOME ADDRESS" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-get-touch">
+                                @Html.TextBoxFor(model => model.EMG_EmailAddress, new
+                           {
+                               placeholder = "EMAIL ADDRESS*",
+                               Title = "SELECT EMERGENCY CONTACT EMAIL ADDRESS", @*required = "required",*@ @type = "email"
+                           })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mr0">
+                            <div class="single-get-touch">
+                                @*<input type="text" name="nokHomeAddress" placeholder="HOME ADDRESS" required>*@
+                                @Html.TextBoxFor(model => model.EMG_PhoneNumber, new { placeholder = "PHONE NUMBER*", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT EMERGENCY CONTACT PHONE NUMBER" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.EMG_FullName2, new { placeholder = "FULL NAME*", required = "required", Title = "SELECT EMERGENCY CONTACT FULL NAME" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.EMG_Relationship2, new { placeholder = "RELATIONSHIP*", required = "required", Title = "SELECT EMERGENCY CONTACT RELATIONSHIP" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.EMG_HomeAddress2, new { placeholder = "HOME ADDRESS*", required = "required", Title = "SELECT EMERGENCY CONTACT HOME ADDRESS" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.EMG_EmailAddress2, new
+                       {
+                           placeholder = "EMAIL ADDRESS*",
+                           Title = "SELECT EMERGENCY CONTACT EMAIL ADDRESS", @*required = "required",*@ @type = "email"
+                       })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @*<input type="text" name="nokHomeAddress" placeholder="HOME ADDRESS" required>*@
+                            @Html.TextBoxFor(model => model.EMG_PhoneNumber2, new { placeholder = "PHONE NUMBER*", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT EMERGENCY CONTACT PHONE NUMBER" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-12 formHeaderBg">
+                        <h3 class="formHeader">Contact of Relatives</h3>
+                    </div>
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.FirstRelativeName, new { placeholder = "FULL NAME*", required = "required", Title = "SELECT RELATIVE FULL NAME" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.FirstRelativePhoneNumber, new { placeholder = "PHONE NUMBER*", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT  RELATIVE PHONE NUMBER" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+
+                            @Html.DropDownListFor(model => model.RelativeRelationship_FK, (SelectList)ViewData["nRelative"], "RELATIVE RELATIONSHIP", new { @id = "Relative", @required = "required", @name = "Relative", Title = "SELECT RELATIVE RELATIONSHIP" })
+                            @*</select>*@
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.SecondRelativeName, new { placeholder = "FULL NAME*", required = "required", Title = "SELECT SECOND RELATIVE FULL NAME" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.SecondRelativePhoneNumber, new { placeholder = "PHONE NUMBER*", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT SECOND RELATIVE PHONE NUMBER" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 right">
+                        <div class="single-get-touch">
+
+                            @Html.DropDownListFor(model => model.RelativeRelationship2_FK, (SelectList)ViewData["nRelative"], "RELATIVE RELATIONSHIP", new { @id = "Relative", @required = "required", @name = "Relative", Title = "SELECT SECOND RELATIVE RELATIONSHIP" })
+                            @*</select>*@
+
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-12 col-lg-12 formHeaderBg">
+                        <h3 class="formHeader">Loan Details</h3>
+                    </div>
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            <select id="LoanTenure" name="LoanTenure" required="required" Title="SELECT LOAN TENURE" @*onchange="CheckIfQualifyForLoan()"*@ onchange="GetTenure()">
+                                <option data-tokens="Select Operator"></option>
+
+                            </select>
+                            @*@Html.DropDownListFor(model => model.LoanTenure, (SelectList)ViewData["nLoanTenure"], "LOAN TENURE*", new { @id = "Tenure", @required = "required", @name = "Tenure" ,onchange = "CheckIfQualifyForLoan()", onblur = "ValidatePassoutMonth()" })*@
+                        </div>
+
+                        <span id="QualifyAfterExist"></span>
+                        <span id="Qualfy"></span>
+
+                    </div>
+
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.LoanAmount, new { placeholder = "LOAN AMOUNT*", required = "required", @readonly = "true", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", @id = "LA", Title = "SELECT LOAN AMOUNT" })
+                        </div>
+                    </div>
+
+                    <table id="TB" style="display:none" class="table table-bordered table-condensed table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Max Loan Amount</th>
+                                <th>Month Remaining</th>
+                                <th>Monthly Repayment</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+
+
+                    <div class="col-md-12">
+                        <div class="single-get-check">
+                            Any Existing Loan
+                            <label class="radiobox">
+                                Yes
+                                <input type="radio" name="ExtLoan" value="Yes" required>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radiobox">
+                                No
+                                <input type="radio" name="ExtLoan" value="No" required>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 mr0" id="ExistingLoan0">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.ExistingLoan_OutstandingAmount, new
+                       { @*@Value = "0",*@ placeholder = "OUTSTANDING AMOUNT*",
+                           id = "ExistLA",
+                           onkeypress = "return isNumber(event);",
+                           ondrop = "return isNumber(event);",
+                           onpaste = "return isNumber(event);",
+                           onkeyup = "CheckIfQualifyForLoanAfterExistingLoan();",
+                           autocomplete = "off",
+                           Title = "SELECT OUTSTANDING AMOUNT"
+                       })
+                        </div>
+                        <span id="QualifyAfterExist"></span>
+                    </div>
+                    <div class="col-md-6" id="ExistingLoan1">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.ExistingLoan_NoOfMonthsLeft, new { placeholder = "HOW MANY MONTH(S) LEFT*", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", Title = "SELECT EXISTING NUMBER OF MONTHS LEFT" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6  mr0" id="ExistingLoan2">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.RepaymentAmount, new { placeholder = "REPAYMENT AMOUNT*", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", Title = "SELECT REPAYMENT AMOUNT" })
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 formHeaderBg">
+                        <h3 class="formHeader">Bank Information(Must Be NYSC Allowance Account) </h3>
+                    </div>
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @Html.DropDownListFor(model => model.BankCode, (SelectList)ViewData["nBanks"], "BANK*", new { @id = "Bank", @required = "required", @name = "Bank", onchange = "VerifyAccountNumber()", Title = "SELECT BANK NAME" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.AccountNumber, new { placeholder = "ACCOUNT NUMBER*", maxlength = 10, required = "required", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", onblur = "VerifyAccountNumber();", @id = "AccountNumber", Title = "SELECT ACCOUNT NUMBER" })
+                        </div>
+                        <span id="Qualify"></span>
+                    </div>
+
+                    <div class="col-md-6 mr0">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.AccountName, new { placeholder = "ACCOUNT NAME*", required = "required", @name = "account_nam", @id = "account_nam", @readonly = "true", Title = "SELECT ACCOUNT NAME" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.BVN, new { placeholder = "BANK VERIFICATION NUMBER (BVN)*", required = "required", maxlength = 11, minlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT BVN NUMBER" })
+                        </div>
+                    </div>
+                    <div class="col-md-3 mr0">
+                        <div class="single-get-touch">
+                            <label>Upload Bank Statement </label>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-6">
+                        <div class="single-get-touch">
+                            @Html.TextBoxFor(model => model.ReferralCode, new { placeholder = "Referral Code", @readonly = "true", @name = "Referral", Title = "REFERRAL CODE" })
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 formHeaderBg">
+                        <h3 class="formHeader"> How did you hear about CashNowNow?<br></h3>
+                    </div>
+                    <br>
+
+                    <div class="row" style="margin-left:2px;">
+                        <div class="col-md-7">
+                            @foreach (var n in ViewBag.channel)
+                            {   <label class="checkbox-inline" for="@n.Name">
+
+                                <input type="checkbox" id="@n.ID" name="checkboxName" value="@n.Name?@n.ID">
+                                @n.Name
+                            </label>
+                            }
+                            <br />
+                        </div>
+                    </div>
+
+
+                    <div id="dialog" style="display: none"></div>
+
+                    <div class="col-md-12">
+                        <div class="single-get-check">
+                            <label class="checkbox">
+                                @*<a href="/terms-conditions.html" target="_blank">*@
+                                <a href="@Url.Action("termsconditions", "Home")" target="_blank">
+                                    <input type="checkbox" name="Terms" required>
+                                    Accept Terms & Condition
+                                </a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-get-touch">
+                            <a href="#"> <button type="submit" name="submit" id="btnSubmit" class="btn btn-default btn-sm2 btnAction">SUBMIT APPLICATION</button></a>
+                        </div>
+                    </div>
+
+
+
+                </form>
+            }
+            </div>
+
+        </div>
+    </div>
+    </section>
+    <!-- start footer area -->
+    @*<section class="footer-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <div class="footer-title">
+                                <!-- <img src="asset/img/footer-logo.png" alt="" /> -->
+                                <img src="asset/img/logo.png" alt="" />
+                            </div>
+                            <p>With experience and knowledge uvlot wе’rе hеrе to рrоvіdе уоu wіth fіnаnсіаl ѕоlutіоnѕ fоr аll уоur lеndіng needs. Whether you are lооkіng fоr any kind of loan, оur lending tеаm wіll explain lеndіng орtіоnѕ to уоu іn a ѕtrаіghtfоrwаrd mаnnеr.</p>
+                            <div class="mail">
+                                <span>Any Queries:</span>support@cashnownow.com
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-2">
+                        <div class="footer-widget pages-widget">
+                            <div class="footer-title">
+                                <h4>Solutions</h4>
+                            </div>
+                            <ul>
+                                <li><a href="#">Personal Loan</a></li>
+                                <li><a href="#">Car Loan</a></li>
+                                <li><a href="#">Home Loan</a></li>
+                                <li><a href="#">Education Loan</a></li>
+                                <li><a href="#">Business Loan </a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-3">
+                        <div class="footer-widget recent-post">
+                            <div class="footer-title">
+                                <h4>Loan Tips</h4>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        Loan blabla This book is a treatise on theory
+                                        of ethics very popular.
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        loan Be cites of the word in classical
+                                        literature to discove.
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <div class="footer-title">
+                                <h4>Newsletter</h4>
+                            </div>
+                            <div class="form-widget">
+                                <p>Subscribe to our newsletter and get latest news related to cash now now its loans,credits,perday loan,interates rate.</p>
+                                <form action="#" method="get">
+                                    <div class="newsletter">
+                                        <label for="envalope" class="fa fa-envelope"></label>
+                                        <input id="envalope" type="email" name="email" placeholder="Email address">
+                                    </div>
+                                    <button type="submit" class="button btn btn-default btn-lg">Subscribe +</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    <div class="copy-right-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <div class="copyright-text">
+                        <p><i class="fa fa-copyright"></i> 2019 Cash Now Now. All Rights Reserved | Powered by <a href="http://www.paelyt.com" target="_blank">Paelyt Solution</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="footer-nave">
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square"></i></a>
+                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-square"></i></a>
+                        <a href="#"><i class="fa fa-vimeo-square"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of footer area -->
+    <script src=@Url.Content("/asset/js/jquery-3.3.1.min.js")></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src=@Url.Content("/asset/js/jquery-ui.js")></script>
+    <script src=@Url.Content("/asset/js/popper.min.js")></script>
+    <script src=@Url.Content("/asset/js/bootstrap.min.js")></script>
+    <script src=@Url.Content("/asset/js/jquery.nice-select.js")></script>
+    <script src=@Url.Content("/asset/js/menumaker.js")></script>
+    <script src=@Url.Content("/asset/js/owl.carousel.min.js")></script>
+    <script src=@Url.Content("/asset/js/slider.js")></script>
+    <script src=@Url.Content("/asset/js/active.js")></script>
+    <script src=@Url.Content("/asset/js/jquery-2.2.3.min.js")></script>
+    <script type='text/javascript' src=@Url.Content("/asset/js/jquery-2.2.3.min.js")></script>
+    <script src=@Url.Content("/Scripts/jquery-1.10.2.min.js")></script>
+
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#States").change(function () {
+            $("#lgaList").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getLGAsByStateID","NYSCLOAN")',
+                dataType: 'json',
+                data: { id: $("#States").val() },
+                success: function (lga) {
+
+                    $.each(lga, function (i, lga) {
+                        $("#lgaList").append('<option value="'
+                                                   + lga.Value + '">'
+                                             + lga.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                   // alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+
+
+
+        $(document).ready(function () {
+
+            $("#Statess").change(function () {
+                $("#lgaLists").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getLGAsByStateID", "NYSCLOAN")',
+                    dataType: 'json',
+                    data: { id: $("#Statess").val() },
+                    success: function (lga) {
+
+                        $.each(lga, function (i, lga) {
+                            $("#lgaLists").append('<option value="'
+                                                       + lga.Value + '">'
+                                                 + lga.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                       // alert('Failed.' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+
+
+        $(document).ready(function () {
+
+            $("#Statesss").change(function () {
+                $("#lgaListsss").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getLGAsByStateID", "NYSCLOAN")',
+                    dataType: 'json',
+                    data: { id: $("#Statesss").val() },
+                    success: function (lga) {
+
+                        $.each(lga, function (i, lga) {
+                            $("#lgaListsss").append('<option value="'
+                                                       + lga.Value + '">'
+                                                 + lga.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                height: 600,
+                width: 600,
+                title: "Zoomed Image"
+            });
+            $("#imgv img").click(function () {
+                $('#dialog').html('');
+                $('#dialog').append($(this).clone());
+                $('#dialog').dialog('open');
+            });
+        });
+    </script>
+    <script>
+    function VerifyAccountNumber()
+       {
+        //alert("Enter");
+        var BankCode = $("#Bank").val();
+        var AccountNumber = $("#AccountNumber").val();
+        var message = $("#Qualify");
+        message.html("");
+        var account_name = document.getElementById("account_nam");
+        alert(BankCode);
+        //alert(AccountNumber);
+        if (BankCode == null || BankCode == "NaN" || BankCode == "")
+        {
+            account_name.value = "Invalid Account Details";
+            document.getElementById("btnSubmit").disabled = true;
+            message.html("Please Select Bank");
+            message.css("color", "red");
+            //alert("resr");
+
+            return;
+        }
+        if (AccountNumber == "" || AccountNumber == "NaN" || AccountNumber == "NaN")
+        {
+            account_name.value = "Invalid Account Details";
+            document.getElementById("btnSubmit").disabled = true;
+             message.html("Please Enter Valid Account Number");
+             message.css("color", "red");
+            return;
+        }
+        if (AccountNumber.length < 10) {
+
+            message.html("Account Number must be 10 Digits.");
+            message.css("color", "red");
+            account_name.value = "Invalid Account Details";
+            document.getElementById("btnSubmit").disabled = true;
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/NYSCLOAN/VerifyAccountNumber",
+            data: "{Account:'" + BankCode + '&' + AccountNumber + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+
+            success: function (resp)
+            {
+               // account_name.value = "";
+
+                if(JSON.stringify(resp.dt.responseMsg == "success"))
+                {
+                    var sup = JSON.stringify(resp.dt.account_name);
+
+                    var acctname = sup.substring(1).slice(0, -1)
+                    //alert("acctName"+ acctname);
+
+                    account_name.value = acctname;
+                    document.getElementById("btnSubmit").disabled = false;
+                    return;
+                }
+               if(JSON.stringify(resp.dt.responseMsg == "error"))
+               {
+                    account_name.style.color = "Red";
+                    account_name.value = "Invalid Account Details";
+                    document.getElementById("btnSubmit").disabled = true;
+                    return;
+               }
+           }
+        });
+
+    };
+    function GetTenure()
+    {
+
+        var Tenure = $("#LoanTenure").val();
+        //alert(Tenure);
+
+        var Amount = document.getElementById('LA');
+       // var repayment = document.getElementById('repayment');
+
+
+
+        $.ajax({
+            type: "POST",
+            url: "/NYSCLOAN/GetAmount",
+            data: "{Datas:'" + Tenure + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+
+            success: function (resp) {
+               // alert('resp' + JSON.stringify(resp.respMSg));
+
+                if (JSON.stringify(resp.respMSg) == "true") {
+
+                    Amount.value = ConvertAmount(JSON.stringify(resp.TotalAmounyt));
+                 //   repayment.value = JSON.stringify(resp.RepaymentAmount);
+                    }
+
+                    // alert(JSON.stringify(resp.Loanrec));
+
+                    // alert(resp.Data.Amount(resp.Data.Amount));
+
+                   // Amount.value = ConvertAmount(Amount.value);
+
+                }
+
+
+
+
+        });
+
+
+
+
+    };
+    function PassOutValidation() {
+        //alert("Enter");
+        var PassoutMonth = $("#SelectedDates").val();
+        //var Tenure = $("#Tenure").val();
+        var message = $("#Qualfy");
+        message.html("");
+     // var  foo = document.getElementById('TB');
+
+      //  var textcontrol = document.getElementById("LA");
+        // var Table = document.getElementById("TB");
+        foo = document.getElementById('TB');
+        foo.innerHTML = "";
+        $.ajax({
+            type: "POST",
+            url: "/NYSCLOAN/PassOutValidation",
+            data: "{Data:'" + PassoutMonth + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+
+            success: function (resp) {
+                //  alert('resp' + resp.Success);
+               // alert(JSON.stringify(resp));
+
+                //foo = document.getElementById('TB');
+                //foo.style.display = 'none';
+                //message.html();
+               // ClearMessage();
+                if (resp.Success == "true")
+                {
+                     //alert('Entered');
+                    $("#LoanTenure").empty();
+                    $("#LoanTenure").prepend("<option value='' selected='selected'>Select Tenure</option>");
+
+                    for (var i = 0; i < resp.Data.length; i++) {
+                        $("#LoanTenure").append('<option value="' + resp.Data[i].Tenure + '">' + resp.Data[i].Tenure + '</option>');
+
+                    }
+
+
+                    message.css("color", "green");
+
+                   // alert('pass')
+
+                    var tr; var th
+                    tr = $('<tr />');
+                    tr.append("<td>" + "Loan Amount(&#8358;)" + "</td>");
+                    tr.append("<td>" + "Tenure" + "</td>");
+                    tr.append("<td>" + "Monthly Repayment Amount(&#8358;)" + "</td>");
+                    $('table').append(tr);
+                    for (var i = 0; i < resp.Data.length; i++) {
+                        tr = $('<tr />');
+                        tr.append("<td style='text-align:center'>" + ConvertAmount(JSON.stringify(resp.Data[i].Amount)) + "</td>");
+                        tr.append("<td style='text-align:center'>" + JSON.stringify(resp.Data[i].Tenure) +' months'+ "</td>");
+                        tr.append("<td style='text-align:center'>" + ConvertAmount(JSON.stringify(resp.Data[i].Repayment)) + "</td>");
+                        $('table').append(tr);
+                    }
+                  //  textcontrol.value = JSON.stringify(resp.Data.Amount);
+
+                    foo.style.display = 'block';
+                    foo.setAttribute("class", "table table-bordered table-condensed table-hover table-striped");
+                    message.html();
+                    return;
+                }
+                //if (JSON.stringify(resp.response) == "false")
+                //{
+                //    foo.html("");
+                //    message.css("color", "red");
+                //    message.html(JSON.stringify(resp.Data));
+
+                //}
+
+
+            }
+
+        });
+
+    };
+
+    function ConvertAmount(amount) {
+
+
+      //  alert(amount);
+        x = parseFloat(amount).toFixed(2).split('');
+      //  alert(x);
+        let ii = x.length - 3
+        while ((ii -= 3) > 0) {
+            x.splice(ii, 0, ',')
+        }
+
+        x.value = x.join('');
+
+        return x.value;
+       // document.getElementById("LoansAmount").value = x.value;
+
+    }
+
+
+    function ValidatePassoutMonth() {
+        //alert("Enter");
+        var PassoutMonth = $("#SelectedDates").val();
+        var Tenure = $("#Tenure").val();
+        var message = $("#Qualfy");
+        message.html("");
+
+        //if (BankCode == null || BankCode == "NaN" || BankCode == "") {
+        //    account_name.value = "Invalid Account Details";
+        //    document.getElementById("btnSubmit").disabled = true;
+        //    message.html("Please Select Bank");
+        //    message.css("color", "red");
+        //    //alert("resr");
+
+        //    return;
+        //}
+        //if (AccountNumber == "" || AccountNumber == "NaN" || AccountNumber == "NaN") {
+        //    account_name.value = "Invalid Account Details";
+        //    document.getElementById("btnSubmit").disabled = true;
+        //    message.html("Please Enter Valid Account Number");
+        //    message.css("color", "red");
+        //    return;
+        //}
+        //if (AccountNumber.length < 10) {
+
+        //    message.html("Account Number must be 10 Digits.");
+        //    message.css("color", "red");
+        //    account_name.value = "Invalid Account Details";
+        //    document.getElementById("btnSubmit").disabled = true;
+        //    return;
+        //}
+
+        $.ajax({
+            type: "POST",
+            url: "/NYSCLOAN/ValidatePassoutMonth",
+            data: "{Data:'" + PassoutMonth + '&' + Tenure +"'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+
+            success: function (resp)
+            {
+               // alert('resp' + resp);
+                if (resp == "0") {
+                    //alert('correct');
+                    //alert(resp);
+                    //alert(JSON.stringify(resp));
+                    //message.html("Correct");
+                    //message.css("color", "green");
+                    document.getElementById("btnSubmit").disabled = false;
+                    resp = "";
+                    return;
+                }
+                else if (resp != "0") {
+                    //alert('wroong');
+                    //alert(resp);
+
+                    message.html("Tenure Does Not Match With Pass Out Month");
+                    message.css("color", "red");
+                    var foo = $("#TB");
+                    foo = document.getElementById('TB');
+                    foo.html("");
+                    document.getElementById("btnSubmit").disabled = true;
+                    resp = "";
+                    return;
+                }
+            }
+        });
+
+    };
+    </script>
+
+    <script>
+    $("#ExistingLoan0").hide();
+    $("#ExistingLoan1").hide();
+    $("#ExistingLoan2").hide();
+    $("input[name='ExtLoan']").on("change", function () {
+      if ($(this).val() == "Yes") {
+          $("#ExistingLoan0").show();
+          $("#ExistingLoan1").show();
+          $("#ExistingLoan2").show();
+      }
+      else if ($(this).val() == "No")
+      {
+          $("#ExistingLoan0").hide();
+          $("#ExistingLoan1").hide();
+          $("#ExistingLoan2").hide();
+      }
+  });
+    </script>
+
+
+    @*<script>
+            var LoanAmount = function (tenure) {
+                var Amount
+                if (tenure == 12) {
+
+                }
+
+            }
+
+        </script>*@
+
+    <script type="text/javascript">
+        //function isNumber(ev) {
+        //  //  alert('test');
+        //if (ev.type === "paste" || ev.type === "drop") {
+        //    var textContent = (ev.type === "paste" ? ev.clipboardData : ev.dataTransfer).getData('text');
+        //    return !isNaN(textContent) && textContent.indexOf(".") === -1;
+        //} else if (ev.type === "keydown") {
+        //    if (ev.ctrlKey || ev.metaKey) {
+        //        return true
+        //    };
+        //    var keysToAllow = [8, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
+        //    return keysToAllow.indexOf(ev.keyCode) > -1;
+        //} else {
+        //    return true
+        //}
+        //}
+
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script>
+    function CheckIfQualifyForLoan()
+    {
+    var Tenure = $("#Tenure").val();
+    //alert(Tenure);
+    var message = $("#QualifyAfterExist");
+   // var message = $("#Qualify");
+    var foo = $("#TB");
+    //var LoanAmt = $("#LA");
+    var textcontrol = document.getElementById("LA");
+    //textcontrol.value = "Arun";
+    //alert(LoanAmt);
+    message.html("");
+    foo.html("");
+    //  foo.html("");
+    //alert("resr1");
+    if (Tenure == "NaN" || Tenure == "")
+    {
+    //alert("resr2");
+    document.getElementById("Tenure").focus = true;
+    message.html("Please Enter Tenure");
+    message.css("color", "red");
+    return;
+    }
+    $.ajax({
+    type: "POST",
+    url: "/NYSCLOAN/GetLoanParam",
+    data: "{Tenure:'" + Tenure + "'}",
+    contentType: "application/json; charset=utf-8",
+    //dataType: "html",
+    dataType: 'json',
+    //contentType: false,
+
+
+    success: function (resp)
+    {
+    //var message = $("#Qualify");
+       // alert(JSON.stringify(resp.response));
+        if (JSON.stringify(resp.response) == "true")
+    {
+
+   // alert(JSON.stringify(resp.Loanrec));
+    message.css("color", "green");
+    //message.html(JSON.stringify(resp.Data));
+    var tr; var th
+    foo = document.getElementById('TB');
+    tr = $('<tr />');
+    tr.append("<th>" + "Loan Amount" + "</th>");
+    tr.append("<th>" + "Loan Tenure" + "</th>");
+    tr.append("<th>" + "Monthly Repayment Amount" + "</th>");
+    $('table').append(tr);
+    //alert('oneb');
+
+    //    alert('one');
+        //alert(JSON.stringify(resp.Loanrec))
+        //alert(JSON.stringify(resp.Loanrec.Amount))
+    tr = $('<tr />');
+    tr.append("<td>" + JSON.stringify(resp.Loanrec.Amount) + "</td>");
+    tr.append("<td>" + JSON.stringify(resp.Loanrec.Tenure) + "</td>");
+    tr.append("<td>" + JSON.stringify(resp.Loanrec.Repayment) + "</td>");
+    $('table').append(tr);
+
+    textcontrol.value = JSON.stringify(resp.Loanrec.Amount);
+
+    foo.style.display = 'block';
+    foo.setAttribute("class", "table table-bordered table-condensed table-hover table-striped");
+    message.html();
+
+    }
+    if (JSON.stringify(resp.response) == "false")
+    {
+    foo.html("");
+    message.css("color", "red");
+    message.html(JSON.stringify(resp.Data));
+
+    }
+
+
+    }
+    });
+
+    };
+
+    function ClearMessage() {
+    $("#message").html("");
+    };
+
+
+    function styleMsg() {
+    message.css("color", "red");
+    }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+        //$('.datepicker').datepicker({changeYear: true, yearRange : 'c-65:c+10'});
+            $("#SelectedDate").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                yearRange: 'c-65:c',
+                //showOn: 'button',
+                //buttonImageOnly: true,
+                //buttonImage: '/images/calendar.gif'
+            });
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+        //$('.datepicker').datepicker({changeYear: true, yearRange : 'c-65:c+10'});
+            $("#SelectedDates").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                yearRange: 'c-65:c+10',
+
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript" src="@Url.Content("/asset/js/spin.js-2.3.2-spin.min.js")"></script>
+    <script type="text/javascript">
+    $(function () {
+    $("#btnSubmit").click(function () {
+        spinlib()
+    });
+    });
+    </script>
+    <script>
+    function spinlib()
+    {
+    $("#loading").fadeIn();
+    var opts =
+    {
+    lines: 12, // The number of lines to draw
+    length: 7, // The length of each line
+    width: 4, // The line thickness
+    radius: 10, // The radius of the inner circle
+    color: '#000', // #rgb or #rrggbb
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    // shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+
+    top: '51%', // Top position relative to parent
+    left: '51%', // Left position relative to parent
+    shadow: '0 0 1px transparent',
+    };
+    var target = document.getElementById('loading');
+    var spinner = new Spinner(opts).spin;
+    }
+    </script>
+</body>
+
+</html>

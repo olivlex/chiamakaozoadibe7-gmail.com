@@ -1,0 +1,365 @@
+﻿
+
+@{
+    ViewBag.Title = "CreateUser";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
+}
+@model DataAccessA.Classes.AppLoans
+
+
+@*<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">*@
+
+<link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/bootstrap.min.css")>
+<link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/fontawesome-all.min.css")>
+<link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/reset.css")>
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/style.css")>
+<link rel="stylesheet" type="text/css" href=@Url.Content("/asset/css/responsive.css")>
+<script type='text/javascript' src=@Url.Content("/asset/js/jquery-2.2.3.min.js")></script>
+<script type='text/javascript' src=@Url.Content("/js2/jquery-ui.css")></script>
+<script type='text/javascript' src=@Url.Content("/js2/jquery-ui.js")></script>
+@*<link href="/js2/jquery-ui.css" rel="stylesheet">*@
+<link rel="stylesheet" type="text/css" href=@Url.Content("/DashboardStyles/css/MyStyle.css")>
+<script type="text/javascript">
+$(document).ready(function() {
+$('table td:nth-child(6)').each(function() {
+    //alert('test');
+  let $this = $(this);
+
+  // make sure it's a number
+  if (!isNaN($this.text())) {
+
+    if (+$this.text() > 20)
+	{
+
+	    var pieces = parseFloat($this.text()).toFixed(2).split('')
+        let ii = pieces.length - 3
+        while ((ii -= 3) > 0) {
+            pieces.splice(ii, 0, ',')
+        }
+        $this.text(pieces.join(''));
+
+    }
+	else
+	{
+      $this.css('color', 'red');
+    }
+  }
+
+});
+});
+</script>
+<style>
+    .clean {
+        width: 200px;
+        height: 49px;
+        margin-top: 0px;
+        /*border-top: 10px;
+        border-right: 0px;
+        border-left: 0px;*/
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+<script type="text/javascript">
+        $(function () {
+        //$('.datepicker').datepicker({changeYear: true, yearRange : 'c-65:c+10'});
+            $("#SelectedDates").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                yearRange: 'c-65:c+10',
+
+            });
+        });
+</script>
+
+
+<section class="section-padding contact-us-padding form-padding">
+   
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                @using (Html.BeginForm("Repayment", "AdminA", FormMethod.Post, new { id = "signup" }))
+                {
+                    <form action="#" method="post">
+
+                        @if (TempData["Error"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-danger">
+                                @TempData["Error"]
+                            </div>
+                        }
+                        @if (TempData["SucMsg"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-success">
+                                @TempData["SucMsg"]
+                            </div>
+                        }
+                        <h2 class="title1">REPAYMENT</h2>
+                        <div class="row list-input">
+
+                           
+                            @*<div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        <input type="text" value="" required name="RefNumber" placeholder="Enter Reference Number" />
+                                    </div2>
+                                </div>*@
+
+                            <div class="col-md-4 mr0">
+
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.Startdate, new { placeholder = "SELECT STARTDATE DATE (DD/MM/YYYY)*", id = "SelectedDates", required = "required", @readonly = "true", Title = "SELECT DATE OF BIRTH" })
+
+                                </div>
+                            </div>
+
+
+                            @*<div class="col-md-6 mr0">
+
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.Enddate, new { placeholder = "SELECT ENDDATE DATE (DD/MM/YYYY)*", id = "SelectedDate", required = "required", @readonly = "true", Title = "SELECT DATE OF BIRTH" })
+
+                                </div>
+                            </div>*@
+                            <div class="col-md-12">
+                                <div class="single-get-touch">
+                                    @* <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction"></button>*@
+                                    <a href="#"> <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
+                                    @*<a href=@Url.Action("ExportToEx4", "AdminA", new { }) class=""></a>*@
+
+                                        @*<button type="submit" class="btn btn-default btn-sm2 btnAction" onchange="CallChangefunc()">Export To Excel</button>*@
+                                        @*<div class="col-md-2">
+                <a href=@Url.Action("ExportToEx4", "AdminA", new { }) class="">
+
+
+                </a>
+            </div>*@
+</div>
+                            </div>
+                           
+                        </div>
+                      
+                    </form>
+                    
+                    <div class="tables">
+
+                        <div class="table-responsive bs-example widget-shadow">
+                            @*<h4>Users:</h4>*@
+                            @{int i = 0;}
+                            <table id="myTable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+
+                                        <th>NO</th>
+                                        <th>ID</th>
+                                        <th>REPAYMENT AMOUNT(&#8358;)</th>
+                                        <th>PAYMENT DATE</th>
+
+                                        <th>REPAYMENT RATE</th>
+                                        <th>AVERAGE</th>
+                                       
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.Data == null)
+                                    {
+                                        <h2>No Record Found</h2>
+                                    }
+                                    else
+                                    {
+                                        foreach (var Loan in ViewBag.Data)
+                                        {
+                                            <tr>
+                                                <td scope="row">@(++i)</td>
+
+                                                <td>@Loan.Number</td>
+                                                <td>@Loan.RepaymentAmount</td>
+                                                <td>@Loan.PayDate</td>
+                                                <td>@Loan.RepaymentRate</td>
+                                                <td>@Loan.average</td>
+                                              
+                                                
+                                                @*<td>
+                                                        <a href="@Url.Action("ReferredApplicants", "AdminA", new { Refid = @Loan.MyReferralCode })">View</a>
+                                                    </td>*@
+                                            </tr>
+                                        }
+                                    }
+                                    
+                                </tbody>
+                                
+                            </table>
+                            <div class="col-md-2">
+                                <a href=@Url.Action("ExportToEx4", "AdminA", new { }) class="">
+                                    <button type="submit" class="btn btn-default btn-sm2 btnAction" onchange="CallChangefunc()">Export To Excel</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                   
+                                }
+               
+            </div>
+
+            <br />
+
+            
+            @*<input id="total" value="" style="margin-left:40%;" placeholder="TOTAL AMOUNT(&#8358;0.00)" readonly="readonly" type="text" name="total" class="clean" />*@
+        </div>
+        
+    </div>
+    
+</section>
+
+
+
+<!-- // Mega Form Ends-->
+@*</div>
+    </div>
+    </div>*@
+
+@*<input type="submit" value="Disburse" onclick="alert(getCheckedCheckboxesFor('Check'));" name="btnDisburse" id="btnDisburse" style="height:49px;background-color:orange;" class="btn btn-primary" />*@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+<script type="text/javascript">
+        $(function () {
+        //$('.datepicker').datepicker({changeYear: true, yearRange : 'c-65:c+10'});
+            $("#SelectedDate").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                yearRange: 'c-65:c',
+                //showOn: 'button',
+                //buttonImageOnly: true,
+                //buttonImage: '/images/calendar.gif'
+            });
+        });
+</script>
+
+<script>
+    $("#Check").change(function () {
+        //alert('test');
+        $(".setA").prop('checked', $(this).prop("checked"));
+        //alert('test 2');
+        changeval();
+    });
+
+    $(".sum").change(function () {
+        //alert('test');
+        changeval();
+    });
+    var changeval = function () {
+       // alert('1');
+        var totalPrice = 0;
+        //alert(totalPrice);
+        var count = 0;
+        //alert(count);
+        $(".sum").each(function (index) {
+
+            if (this.checked)
+            {
+                //alert('checked');
+                var ddl = parseFloat(this.value.split("+").pop());
+                totalPrice += parseFloat(ddl);
+                //  totalWeight += parseFloat(this.getAttribute('Bweight'));
+                count++;
+            }
+        });
+        if (count <= 0) {
+            totalPrice = 0;
+        }
+        var tot = document.getElementById("total");
+        tot.value = totalPrice;
+        tot.value = Credit(totalPrice);
+        //alert(tot.value);
+        // $("#payment-total").html(totalPrice);
+    }
+
+    function Credit(amount) {
+
+
+        //  alert(amount);
+        x = parseFloat(amount).toFixed(2).split('');
+        //  alert(x);
+        let ii = x.length - 3
+        while ((ii -= 3) > 0) {
+            x.splice(ii, 0, ',')
+        }
+
+        x.value = x.join('');
+
+        return x.value;
+        // document.getElementById("LoansAmount").value = x.value;
+
+    }
+
+
+
+
+    function getCheckedCheckboxesFor(checkboxName) {
+        var comaseperatedIds = "";
+
+        var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'), values = [];
+        Array.prototype.forEach.call(checkboxes, function (el) {
+            values.push(el.value);
+        });
+        if (values.length == 0) {
+           // alert("Please Select A Checkbox");
+            return;
+        }
+
+
+        if (values.length != 0) {
+            var TotalSum = 0;
+
+            var invoice = document.getElementById("total");
+            comaseperatedIds = values.toString();
+
+            invoice.value = "N" + TotalSum;
+
+            $.ajax({
+
+                type: "POST",
+                url: "/AdminA/DisburseToList",
+                data: { ItemList: comaseperatedIds },
+
+                success: function (response) {
+
+                    if (JSON.stringify(response.response == "true"))
+                    {
+                        //alert(JSON.stringify(response.Data));
+                        //var impotantStuff = window.open("http://localhost:4264/AdminA/LoanDueForDebit");
+                        impotantStuff.document.write('Refreshing ......')
+                        impotantStuff.location.href = "http://localhost:4264/AdminA/LoanDueForDebit";
+                    }
+                    if (JSON.stringify(response.response == "false"))
+                    {
+
+                        alert(JSON.stringify(response.Data));
+                        window.location.href = "http://localhost:4264/Admin/DisburseLoan";
+                    }
+
+
+                }
+            });
+        }
+        //return values;
+    }
+
+
+
+
+
+function CallChangefunc(val)
+{
+    window.location.href = "/AdminA/ExportToEx4";
+}
+</script>
+
+

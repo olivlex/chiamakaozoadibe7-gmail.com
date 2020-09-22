@@ -93,10 +93,10 @@ $('table td:nth-child(6)').each(function() {
                                             <td>@Loan.PermanentAddress</td>
                                             <td>@Loan.LoanAmount</td>
                                             <td>@Loan.LoanTenure</td>
-                                            <td><a target="_blank" href="@Loan.RemitaLink">view</a></td>
+                                            <td><a class="fa fa-eye fa-lg text-success" target="_blank" href="@Loan.RemitaLink"></a></td>
                                             <td>@Loan.ValueDate</td>
                                             <td>
-                                                <a onclick="return confirm('Are You Sure?')" href="@Url.Action("ApprovedLoan", "AdminA", new { Refid = @Loan.LoanRefNumber })">View</a>
+                                                <a class="fa fa-eye fa-lg text-success" onclick="return confirm('Are You Sure?')" href="@Url.Action("ApprovedLoan", "AdminA", new { Refid = @Loan.LoanRefNumber })"></a>
                                             </td>
                                         </tr>
                                     }

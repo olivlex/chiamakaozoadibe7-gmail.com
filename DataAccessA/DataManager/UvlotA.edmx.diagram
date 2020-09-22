@@ -4,54 +4,60 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2cfd4238b9034d27b9680709c8dd9625" Name="Diagram1">
+      <Diagram DiagramId="b45c07cc4fdd4dcc9e5cbb2b1ebb1047" Name="Diagram1">
         <EntityTypeShape EntityType="UvlotAModel.AccomodationType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UvlotAModel.ApplicationStatu" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UvlotAModel.Bank" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.BanksManager" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.DocUpload" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Bankold" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.BanksManager" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.DocUpload" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UvlotAModel.EmployerLoanDetail" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UvlotAModel.EmploymentStatu" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.Guarantor" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.Institution" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.InstitutionType" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LGA" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanApplication" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanApproval" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanInterestRate" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanLedger" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanProduct" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoansLedger" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanTenure" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanType" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.MaritalStatu" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.MeansOfIdentification" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.NigerianState" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.NYSCApplicationStatu" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.NyscLoanApplication" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.NYSCLoanApproval" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.NYSCLoanSetUp" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.NyscMaritalStatu" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Guarantor" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Institution" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.InstitutionType" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LGA" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanApplication" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanApproval" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanInterestRate" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanLedger" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanProduct" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoansLedger" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanTenure" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanType" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.MaritalStatu" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.MarketingChannel" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.MarketingDetail" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.MeansOfIdentification" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.MonthVal" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NigerianState" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NYSCApplicationStatu" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NyscLoanApplication" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NYSCLoanApproval" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NYSCLoanLedger" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NYSCLoanSetUp" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NyscMaritalStatu" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NYSCReferralLedger" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.NYSCRelative" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UvlotAModel.Page" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.PageAuthentication" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.PageAuthentication" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UvlotAModel.pageHeader" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.Partner" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.PaymentFlag" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.RepaymentMethod" Width="1.5" PointX="10.75" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.Role" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.StudentLoanDetail" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.StudentRecord" Width="1.5" PointX="2.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.Title" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.User" Width="1.5" PointX="18.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.UserRole" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UvlotAModel.LoanSerialNo" Width="1.5" PointX="18.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Partner" Width="1.5" PointX="6.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.PatnerTransactLog" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.PaymentFlag" Width="1.5" PointX="14.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.RepaymentMethod" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Role" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.StudentLoanDetail" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.StudentRecord" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Title" Width="1.5" PointX="18.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.User" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.UserRole" Width="1.5" PointX="8.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.A_OfflineApplications" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.AA_Sheet" Width="1.5" PointX="20.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Ledger" Width="1.5" PointX="14.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.LoanSerialNo" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UvlotAModel.Repayment" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
         <AssociationConnector Association="UvlotAModel.FK_Page_Page" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="UvlotAModel.PatnerTransactLog" Width="1.5" PointX="15.375" PointY="19.75" />
-        <EntityTypeShape EntityType="UvlotAModel.MarketingChannel" Width="1.5" PointX="17.375" PointY="19.75" />
-        <EntityTypeShape EntityType="UvlotAModel.MarketingDetail" Width="1.5" PointX="19.375" PointY="19.75" />
-        <EntityTypeShape EntityType="UvlotAModel.NYSCLoanLedger" Width="1.5" PointX="11.375" PointY="20.75" />
-        <EntityTypeShape EntityType="UvlotAModel.NYSCReferralLedger" Width="1.5" PointX="21.375" PointY="0.75" />
-        <EntityTypeShape EntityType="UvlotAModel.Bankold" Width="1.5" PointX="21.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

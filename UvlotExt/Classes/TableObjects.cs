@@ -16,6 +16,7 @@ namespace UvlotExt.Classes
             public int Title_FK { get; set; }
             public string Surname { get; set; }
             public string Firstname { get; set; }
+            public string ReferalCode { get; set; }
             public string Othernames { get; set; }
             public int Gender_FK { get; set; }
             public int MaritalStatus_FK { get; set; }

@@ -109,7 +109,7 @@
                             <li>
                                 <a href="#">NYSC LOAN</a>
                                 <ul>
-
+                                    <li><a href="@Url.Action("NYSCLoanRequirement", "Home")">Loan Requirement</a></li>
                                     <li><a href="@Url.Action("NYSCLoanAppForm", "NYSCLOAN")">Apply Here</a></li>
                                     <li><a href="@Url.Action("CheckNYSCLoan", "NYSCLOAN")">Check Loan Status</a></li>
                                     <li><a href="@Url.Action("termsconditions", "Home")">Terms and Conditions</a></li>
@@ -210,14 +210,49 @@
 
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
-                                       
-                                        @Html.DropDownListFor(model => model.Title_FK, (SelectList)ViewData["nTitles"], "TITLE", new { @id = "Titles", @required = "required", name = "Titles" ,  Title = "SELECT TITLE"  })
+
+                                        @Html.DropDownListFor(model => model.Title_FK, (SelectList)ViewData["nTitles"], "TITLE", new { @id = "Titles", @required = "required", name = "Titles", Title = "SELECT TITLE" })
                                         @*</select>*@
 
                                     </div>
                                 </div>
 
+                              
                                 <div class="col-md-6 right">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.Surname, new { placeholder = "LAST NAME*", id = "Surname", required = "required", Title = "SELECT SURNAME" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.Firstname, new { placeholder = "FIRST NAME*", id = "Firstname", required = "required", Title = "SELECT FIRST NAME" })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 right">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.Othernames, new { placeholder = "MIDDLE NAME*", id = "Othernames", required = "required", Title = "SELECT OTHER NAMES" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mr0">
+
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.DateOfBirth, new { placeholder = "DATE OF BIRTH (DD/MM/YYYY)*", id = "SelectedDate", required = "required", @readonly = "true", Title = "SELECT DATE OF BIRTH" })
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 right">
+                                    <div class="single-get-touch">
+
+                                        @Html.DropDownListFor(model => model.Gender_FK, (SelectList)ViewData["nGender"], "GENDER", new { @id = "selectGender", required = "required", @name = "selectGender", Title = "SELECT GENDER" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
 
                                         @Html.DropDownListFor(model => model.MaritalStatus_FK, (SelectList)ViewData["nMarital"], "MARITAL STATUS", new { @id = "Marital", @required = "required", @name = "Marital", Title = "SELECT MARITAL STATUS" })
@@ -227,67 +262,6 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 mr0">
-                                    <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.Surname, new { placeholder = "LAST NAME*", required = "required", Title = "SELECT SURNAME" })
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 right">
-                                    <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.Firstname, new { placeholder = "FIRST NAME*", required = "required", Title = "SELECT FIRST NAME" })
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mr0">
-                                    <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.Othernames, new { placeholder = "MIDDLE NAME*", required = "required", Title = "SELECT OTHER NAMES" })
-                                    </div>
-                                </div>
-                                @*<div class="col-md-6 mr0">
-                <div class="single-get-touch">
-                    @Html.TextBoxFor(model => model.DateOfBirth, new { placeholder = "DATE OF BIRTH*", required = "required", id= "DOB", })
-                </div>
-            </div>*@
-                                <div class="col-md-6 right">
-
-                                    <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.DateOfBirth, new { placeholder = "DATE OF BIRTH (DD/MM/YYYY)*", id = "SelectedDate", required = "required", @readonly = "true", Title = "SELECT DATE OF BIRTH" })
-
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6 mr0">
-                                    <div class="single-get-touch">
-                                        @*<select name="selectGender" required>
-                        <option value="Select Title">SELECT GENDER</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                    </select>*@
-                                        @Html.DropDownListFor(model => model.Gender_FK, (SelectList)ViewData["nGender"], "GENDER", new { @id = "selectGender", @name = "selectGender", Title = "SELECT GENDER" })
-                                    </div>
-                                </div>
-
-                                @*<div class="col-md-6 mr0">
-                <div class="single-get-touch">
-                    <select id="meansOfID" name="meansOfID" data-live-search="true" required="required">
-                        <option data-tokens="Select MeansOfID">MEANS OF IDENTIFICATION</option>
-                        @foreach (var nMeansOfID in ViewBag.nMeansOfIDs)
-                        {
-                            <option id="meansOfIDs" value="@nMeansOfID.ID" data-tokens="@nMeansOfID.Name">@nMeansOfID.Name</option>
-                        }
-                    </select>
-                </div>
-            </div>*@
-
-
-                                @*<div class="col-md-6">
-                <div class="single-get-touch">
-                    <input type="text" name="idNumber" placeholder="IDENTIFICATION NUMBER" required>
-                    @Html.TextBoxFor(model => model.IdentficationNumber, new { placeholder = "IDENTIFICATION NUMBER" })
-                </div>
-            </div>*@
 
 
                                 <div class="col-md-12 col-lg-12 formHeaderBg">
@@ -296,17 +270,17 @@
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
 
-                                        @Html.TextBoxFor(model => model.EmailAddress, new { placeholder = "PERSONAL EMAIL", required = "required", @type = "email", Title = "SELECT PEERSONAL EMAIL ADDRESS" })
+                                        @Html.TextBoxFor(model => model.EmailAddress, new { placeholder = "PERSONAL EMAIL", id = "EmailAddress", required = "required", @type = "email", Title = "SELECT PEERSONAL EMAIL ADDRESS" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.PhoneNumber, new { placeholder = "PHONE NUMBER", required = "required", maxlength = 11,  onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT PHONE NUMBER" })
+                                        @Html.TextBoxFor(model => model.PhoneNumber, new { placeholder = "PHONE NUMBER", id = "PhoneNumber", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT PHONE NUMBER" })
                                     </div>
                                 </div>
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.PermanentAddress, new { placeholder = "PERMANENT HOME ADDRESS", required = "required", Title = "SELECT PERMANENT HOME ADDRESS" })
+                                        @Html.TextBoxFor(model => model.PermanentAddress, new { placeholder = "PERMANENT HOME ADDRESS", id = "PermanentAddress", required = "required", Title = "SELECT PERMANENT HOME ADDRESS" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -314,19 +288,22 @@
                                         @Html.TextBoxFor(model => model.Landmark, new
                                    {
                                        placeholder = "LANDMARK*",
-                                   Title = "SELECT LANDMARK" @*required = "required"*@ })
+                                       id = "Landmark",
+                                       Title = "SELECT LANDMARK" @*required = "required"*@ })
                                     </div>
                                 </div>
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
 
-                                        @Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "States", @name = "States", onchange = "call('States')", Title = "SELECT RESIDENCE STATE" })
+                                        @Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "States", @name = "States", required="required",onchange = "call('States')",
+                                       Title = "SELECT RESIDENCE STATE"
+                                   })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
 
-                                        <select id="lgaList" name="lgaList" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" required  Title = "SELECT LGA"  @*required="required"*@ onchange="getText();">
+                                        <select id="lgaList" name="lgaList" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" required Title="SELECT LGA" @*required="required"*@ onchange="getText();">
                                             <option default data-tokens="SELECT LGA">SELECT LGA</option>
                                         </select>
                                     </div>
@@ -337,12 +314,12 @@
                                         @Html.TextBoxFor(model => model.ClosestBusStop, new
                                    {
                                        placeholder = "CLOSEST BUS STOP*",
-                                       Title = "SELECT CLOSEST BUS STOP"  @*required = "required"*@ })
+                                       Title = "SELECT CLOSEST BUS STOP" , id = "ClosestBusStop", required = "required" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.TemporaryAddress, new { placeholder = "CURRENT HOME ADDRESS", required = "required", Title = "SELECT CURRENT HOME ADDRESS" })
+                                        @Html.TextBoxFor(model => model.TemporaryAddress, new { placeholder = "CURRENT HOME ADDRESS", id = "TemporaryAddress", required = "required", Title = "SELECT CURRENT HOME ADDRESS" })
                                     </div>
                                 </div>
                                 <div class="col-md-6 mr0">
@@ -350,19 +327,20 @@
                                         @Html.TextBoxFor(model => model.TempLandmark, new
                                    {
                                        placeholder = "LANDMARK*",
-                                       Title = "SELECT TEMPORARY LANDMARK"  @*required = "required"*@ })
+                                       Title = "SELECT TEMPORARY LANDMARK" ,
+                                       id = "TempLandmark", required = "required" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
-                                       
+
                                         @Html.DropDownListFor(model => model.TempStateofResidence_FK, (SelectList)ViewData["nStates"], "RESIDENCE STATE*", new { @id = "Statess", @name = "States", Title = "SELECT TEMPORARY STATE OF RESIDENCE" })
                                     </div>
                                 </div>
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
 
-                                        <select id="lgaLists" name="lgaLists" class="sikSelect" data-live-search="true" placeholder="SELECT LGA"  Title = "SELECT TEMPORARY LGA"  required @*required="required"*@ onchange="getText();">
+                                        <select id="lgaLists" name="lgaLists" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" Title="SELECT TEMPORARY LGA" required @*required="required"*@ onchange="getText();">
                                             <option default data-tokens="SELECT LGA">SELECT LGA</option>
                                         </select>
                                     </div>
@@ -373,19 +351,116 @@
                                         @Html.TextBoxFor(model => model.TempClosestBusStop, new
                                    {
                                        placeholder = "CLOSEST BUS STOP*",
-                                       Title = "SELECT TEMPORARY CLOSEST BUS-BUS"  @*required = "required"*@ })
+                                       Title = "SELECT TEMPORARY CLOSEST BUS-BUS" ,
+                                       id = "TempClosestBusStop", @*required = "required"*@ })
                                     </div>
                                 </div>
-                
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+
+                                        @Html.TextBoxFor(model => model.FacebookName, new
+                                   { placeholder = "FACEBOOK HANDLE", id = "FacebookName", Title = "SELECT FACE BOOK HANDLE", /*required = "required"*/ })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+
+                                        @Html.TextBoxFor(model => model.TwitterHandle, new
+                                   { placeholder = "TWITTER HANDLE",  Title = "SELECT TWITTER HANDLE", id = "TwitterHandle",/* required = "required" */})
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+
+                                        @Html.TextBoxFor(model => model.InstagramHandle, new
+                                   { placeholder = "INSTAGRAM HANDLE", id = "InstagramHandle", Title = "SELECT INSTAGRAM HANDLE", /*required = "required"*/ })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-lg-12 formHeaderBg">
+                                    <h3 class="formHeader">Place of primary Assignment Information </h3>
+                                </div>
+                          
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.Employer, new { placeholder = "PPA ORGANIZATION*", id = "Employer", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT ORGANIZATION" })
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.OfficialAddress, new { placeholder = "PPA ADDRESS*", id = "OfficialAddress", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT ADDRESS" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+
+
+                                    @Html.TextBoxFor(model => model.PPA_Department, new { placeholder = "PPA DEPARTMENT*", id = "PPA_Department", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT DEPARTMENT" })
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+
+                                    @Html.TextBoxFor(model => model.PPA_ROle, new { placeholder = "PPA ROLE*", required = "required", id = "PPA_ROle", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT ROLE" })
+                                </div>
+                            </div>
+                               
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+
+
+                                    @Html.TextBoxFor(model => model.PPA_EmailAddress, new { placeholder = "PPA ORGANIZATION EMAIL ADDRESS",
+                                   id = "PPA_EmailAddress", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT EMAIL ADDRESS"
+                               })
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+
+                                    @Html.TextBoxFor(model => model.PPA_PhoneNumber, new { placeholder = "PPA ORGANIZATION PHONE NUMBER*", id = "PPA_PhoneNumber", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT PLACE OF PRIMARY ADDRESS PHONE NUMBER" })
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+
+
+                                    @Html.TextBoxFor(model => model.PPA_supervisorName, new { placeholder = "PPA SUPERVISOR NAME*", id = "PPA_supervisorName", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT SUPERVISOR NAME" })
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+
+                                    @Html.TextBoxFor(model => model.PPA_supervisorEmail, new { placeholder = "PPA SUPERVISOR EMAIL ADDRESS*", id = "PPA_supervisorEmail", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT SUPERVISOR EMAIL ADDRESS" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                 @Html.TextBoxFor(model => model.PPA_supervisorPhonenumber, new { placeholder = "PPA SUPERVISOR PHONE NUMBER*", id = "PPA_supervisorPhonenumber", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", required = "required", Title = "SELECT PLACE OF PRIMARY ASSIGNMENT SUPERVISOR PHONE NUMBER" })
+                                </div>
+                            </div>
+
 
                                 <div class="col-md-12 col-lg-12 formHeaderBg">
                                     <h3 class="formHeader">NYSC Information </h3>
                                 </div>
-                                
+
                                 <div class="col-md-6 mr0">
 
                                     <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.StateCode, new { placeholder = "STATE CODE", required = "required", Title = "SELECT STATE CODE" })
+                                        @Html.TextBoxFor(model => model.StateCode, new { placeholder = "STATE CODE*", id = "StateCode", required = "required", Title = "SELECT STATE CODE" })
                                     </div>
                                 </div>
 
@@ -398,328 +473,428 @@
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
 
-                                        <select id="lgaListsss" name="lgaListsss" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" required="required"  Title = "SELECT NYSC LGA"  onchange="getText();">
+                                        <select id="lgaListsss" name="lgaListsss" class="sikSelect" data-live-search="true" placeholder="SELECT LGA" required="required" Title="SELECT NYSC LGA" onchange="getText();">
                                             <option default data-tokens="SELECT LGA">SELECT LGA</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="single-get-touch">
-
-                                       
-                                                @Html.TextBoxFor(model => model.Employer, new { placeholder = "PLACE OF PRIMARY ASSIGNMENT", required = "required", Title = "SELECT STATE OF PRIMARY ASSIGNMENT" })
-                                            </div>
-                                        </div>
-
-                                <div class="col-md-6 mr0">
-                                    <div class="single-get-touch">
-
-                                        @Html.TextBoxFor(model => model.OfficialAddress, new { placeholder = "OFFICE ADDRESS", required = "required" , Title = "SELECT PLACE OF PRIMARY ADDRESS" })
-                                    </div>
-                                </div>
+                                
 
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
 
-                                        @*@Html.DropDownListFor(model => model.PassOutMonth, (SelectList)ViewData["nPassOutMonths"], "PASS OUT MONTH", new { @id = "selectMonths", @name = "selectMonths",
-                                        required = "required" })*@
+                                        
                                         @Html.TextBoxFor(model => model.PassOutMonth, new { placeholder = "EXPECTED NYSC PASS OUT DATE*", id = "SelectedDates", @readonly = "true", required = "required", onblur = "PassOutValidation()", Title = "SELECT EXPECTED PASSOUT DATE" })
                                     </div>
                                 </div>
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
 
-                                        @Html.TextBoxFor(model => model.CDSGroup, new { placeholder = "CD GROUP", required = "required", Title = "SELECT CD GROUP" })
+                                        @Html.TextBoxFor(model => model.CDSGroup, new { placeholder = "CD GROUP*", id = "CDSGroup", required = "required", Title = "SELECT CD GROUP" })
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
-                                        @Html.DropDownListFor(model => model.CDSDay, (SelectList)ViewData["nCDDays"], "CD DAY", new { @id = "selectDays", @name = "selectDays", required = "required", Title = "SELECT CDs DAY" })
+                                        @Html.DropDownListFor(model => model.CDSDay, (SelectList)ViewData["nCDDays"], "CD DAY*", new { @id = "selectDays", @name = "selectDays", required = "required", Title = "SELECT CDs DAY" })
                                     </div>
                                 </div>
-                                      
 
 
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
-                                        <input type="text" name="netMonthlyIncome" placeholder="NET MONTHLY INCOME" required  onkeypress="return isNumber(event);"  onfocus="ConvertAmount(this.value);" ondrop="return isNumber(event);"  Title = "SELECT NET MONTHLY INCOME" onblur="PassOutValidation();" onpaste="return isNumber(event);">
+                                        <input type="text" name="netMonthlyIncome"  id = "netMonthlyIncome" placeholder="NET MONTHLY INCOME*" required onkeypress="return isNumber(event);" onfocus="ConvertAmount(this.value);" ondrop="return isNumber(event);" Title="SELECT NET MONTHLY INCOME" onblur="PassOutValidation();" onpaste="return isNumber(event);">
                                     </div>
                                 </div>
+
+
                                 <div class="col-md-2">
                                     <div class="single-get-touch">
 
                                         <label>Upload Nysc ID </label>
                                     </div>
                                 </div>
-                                        <div class="col-md-4">
-                                            <div class="single-get-touch">
-
-                                                @*@Html.TextBoxFor(model => model.IdentficationNumberImage, new { placeholder = "upload image", type = "file" , @name="PostedFile" })*@
-                                                <input type="file" placeholder="Upload NYSC ID" name="NyscIDCard" required  Title = "UPLOAD NYSC ID-CARD"  />
-                                            </div>
-                                        </div>
+                                <div class="col-md-4">
+                                    <div class="single-get-touch">
 
 
-                                        <div class="col-md-12 col-lg-12 formHeaderBg">
-                                            <h3 class="formHeader">Emergency Contact</h3>
-                                        </div>
-                                        <div class="col-md-6 mr0">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.EMG_FullName, new { placeholder = "FULL NAME*", required = "required", Title = "SELECT EMERGENCY CONTACT FULL NAME" })
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.EMG_Relationship, new { placeholder = "RELATIONSHIP*", required = "required", Title = "SELECT EMERGENCY CONTACT RELATIONSHIP" })
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mr0">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.EMG_HomeAddress, new { placeholder = "HOME ADDRESS*", required = "required", Title = "SELECT EMERGENCY CONTACT HOME ADDRESS" })
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.EMG_EmailAddress, new
-                                           {
-                                               placeholder = "EMAIL ADDRESS*",
-                                               Title = "SELECT EMERGENCY CONTACT EMAIL ADDRESS", @*required = "required",*@ @type = "email"
+                                        <input type="file" id="NyscIDCard" placeholder="Upload NYSC ID*" name="NyscIDCard" required onchange="ValidateSize(this)" Title="UPLOAD NYSC ID-CARD" />
+                                    </div>
+                                </div>
+                                @*<div class="col-md-2">
+                                    <div class="single-get-touch">
+
+                                        <label>Upload Nysc ID </label>
+                                    </div>
+                                </div>*@
+                                @*<div class="col-md-4">
+                                    <div class="single-get-touch">
+
+                                        
+                                        <input type="file"  id="file" placeholder="Upload NYSC ID" name="NyscIDCard" required Title="UPLOAD NYSC ID-CARD" />
+                                    </div>
+                                </div>*@
+
+                                @*<div class="col-md-2 mr0">
+                                    <div class="single-get-touch">
+
+                                        <label>Upload Nysc Passport </label>
+                                    </div>
+                                </div>*@
+                                @*<div class="col-md-4 mr0">
+                                    <div class="single-get-touch">
+
+                                       
+                                        <input type="file"  id="file" placeholder="UPLOAD NYSC PASSPORT" name="NyscPassport" required Title="UPLOAD NYSC PASSPORT" />
+                                    </div>
+                                </div>*@
+
+                                @*<div class="col-md-2">
+                                    <div class="single-get-touch">
+
+                                        <label>Upload Nysc Posting Letter</label>
+                                    </div>
+                                </div>*@
+                                @*<div class="col-md-4">
+                                    <div class="single-get-touch">
+
+                                       
+                                        <input type="file"  id="file" placeholder="UPLOAD NYSC POSTING LETTER" name="NyscPostingLetter" required Title="UPLOAD NYSC POSTING LETTER" />
+                                    </div>
+                                </div>*@
+
+                                @*<div class="col-md-2 mr0">
+                                    <div class="single-get-touch">
+
+                                        <label>Upload Nysc Call-Up Letter </label>
+                                    </div>
+                                </div>*@
+                                @*<div class="col-md-4 mr0">
+                                    <div class="single-get-touch">
+
+                                       
+                                        <input type="file" id="file" placeholder="UPLOAD NYSC CALL-UP LETTER" name="NyscCallUpLetter" required Title="UPLOAD NYSC CALL-UP LETTER" />
+                                    </div>
+                                </div>*@
+                                @*<div class="col-md-2">
+                                    <div class="single-get-touch">
+
+                                        <label>Upload ScreenShot from Nysc Profile Dashboard</label>
+                                    </div>
+                                </div>*@
+                                @*<div class="col-md-4">
+                                    <div class="single-get-touch">
+
+                                       
+                                        <input type="file"   id="file" placeholder="UPLOAD SCREENSHOT OF DASHBOARD" name="NyscProfileDashboard" required Title="UPLOAD SCREENSHOT OF DASHBOARD" />
+                                    </div>
+                                </div>*@
+
+
+                                <div class="col-md-12 col-lg-12 formHeaderBg">
+                                    <h3 class="formHeader">Emergency Contact 1</h3>
+                                </div>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.EMG_FullName, new { placeholder = "FULL NAME*", id = "EMG_FullName",  required = "required", Title = "SELECT EMERGENCY CONTACT FULL NAME" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.EMG_Relationship, new { placeholder = "RELATIONSHIP*", id = "EMG_Relationship", required = "required", Title = "SELECT EMERGENCY CONTACT RELATIONSHIP" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.EMG_HomeAddress, new { placeholder = "HOME ADDRESS*", id = "EMG_HomeAddress", required = "required", Title = "SELECT EMERGENCY CONTACT HOME ADDRESS" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.EMG_EmailAddress, new
+                                   {
+                                       placeholder = "EMAIL ADDRESS*",
+                                       Title = "SELECT EMERGENCY CONTACT EMAIL ADDRESS",
+                                       id = "EMG_EmailAddress", @*required = "required",*@ @type = "email"
                                    })
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
 
-                                        <div class="col-md-6 mr0">
-                                            <div class="single-get-touch">
-                                                @*<input type="text" name="nokHomeAddress" placeholder="HOME ADDRESS" required>*@
-                                                @Html.TextBoxFor(model => model.EMG_PhoneNumber, new { placeholder = "PHONE NUMBER*", required = "required", onkeypress = "return isNumber(event);" , onfocus = "ConvertAmount(this.value);", ondrop = "return isNumber(event);" ,onblur = "PassOutValidation();", onpaste = "return isNumber(event);" , Title = "SELECT EMERGENCY CONTACT PHONE NUMBER" })
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12 col-lg-12 formHeaderBg">
-                                            <h3 class="formHeader">Loan Details</h3>
-                                        </div>
-                                        <div class="col-md-6 mr0">
-                                            <div class="single-get-touch">
-                                                <select id="LoanTenure" name="LoanTenure" required="required" Title = "SELECT LOAN TENURE"  @*onchange="CheckIfQualifyForLoan()"*@ onchange="GetTenure()">
-                                                    <option data-tokens="Select Operator"></option>
-
-                                                </select>
-                                                @*@Html.DropDownListFor(model => model.LoanTenure, (SelectList)ViewData["nLoanTenure"], "LOAN TENURE*", new { @id = "Tenure", @required = "required", @name = "Tenure" ,onchange = "CheckIfQualifyForLoan()", onblur = "ValidatePassoutMonth()" })*@
-                                            </div>
-
-                                            <span id="QualifyAfterExist"></span>
-                                            <span id="Qualfy"></span>
-
-                                        </div>
-
-                                        <div class="col-md-6 mr0">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.LoanAmount, new { placeholder = "LOAN AMOUNT*", required = "required", @readonly="true", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);",   onpaste = "return isNumber(event);", @id = "LA", Title = "SELECT LOAN AMOUNT" })
-                                            </div>
-                                        </div>
-
-                                        <table id="TB" style="display:none" class="table table-bordered table-condensed table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Max Loan Amount</th>
-                                                    <th>Month Remaining</th>
-                                                    <th>Monthly Repayment</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @*<input type="text" name="nokHomeAddress" placeholder="HOME ADDRESS" required>*@
+                                        @Html.TextBoxFor(model => model.EMG_PhoneNumber, new { placeholder = "PHONE NUMBER*", id = "EMG_PhoneNumber", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);",Title = "SELECT EMERGENCY CONTACT PHONE NUMBER" })
+                                    </div>
+                                </div>
 
 
 
-                                        <div class="col-md-12">
-                                            <div class="single-get-check">
-                                                Any Existing Loan
-                                                <label class="radiobox">
-                                                    Yes
-                                                    <input type="radio" name="ExtLoan" value="Yes" required>
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radiobox">
-                                                    No
-                                                    <input type="radio" name="ExtLoan" value="No" required>
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
+                            <div class="col-md-12 col-lg-12 formHeaderBg">
+                                <h3 class="formHeader">Emergency Contact 2</h3>
+                            </div>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.EMG_FullName2, new { placeholder = "FULL NAME*", id = "EMG_FullName2", required = "required", Title = "SELECT EMERGENCY CONTACT FULL NAME" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.EMG_Relationship2, new { placeholder = "RELATIONSHIP*", id = "EMG_Relationship2", required = "required", Title = "SELECT EMERGENCY CONTACT RELATIONSHIP" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.EMG_HomeAddress2, new { placeholder = "HOME ADDRESS*", id = "EMG_HomeAddress2", required = "required", Title = "SELECT EMERGENCY CONTACT HOME ADDRESS" })
+                                </div>
+                            </div>
+                           <div class="col-md-6">
+                                <div class="single-get-touch">
+                                    @Html.TextBoxFor(model => model.EMG_EmailAddress2, new
+                               {
+                                   placeholder = "EMAIL ADDRESS*",
+                                   Title = "SELECT EMERGENCY CONTACT EMAIL ADDRESS",
+                                   id = "EMG_EmailAddress2", @type = "email"
+                                   })
+                                </div>
+                            </div>
+
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                     
+                                        @Html.TextBoxFor(model => model.EMG_PhoneNumber2, new { placeholder = "PHONE NUMBER*", id = "EMG_PhoneNumber2", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT EMERGENCY CONTACT PHONE NUMBER" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 formHeaderBg">
+                                    <h3 class="formHeader">Contact of Relatives</h3>
+                                </div>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.FirstRelativeName, new { placeholder = "FULL NAME*", id = "FirstRelativeName", required = "required", Title = "SELECT RELATIVE FULL NAME" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.FirstRelativePhoneNumber, new { placeholder = "PHONE NUMBER*", id = "FirstRelativePhoneNumber", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT  RELATIVE PHONE NUMBER" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+
+                                        @Html.DropDownListFor(model => model.RelativeRelationship_FK, (SelectList)ViewData["nRelative"], "RELATIVE RELATIONSHIP", new { @id = "Relative", @required = "required", @name = "Relative", Title = "SELECT RELATIVE RELATIONSHIP" })
+                                  
 
 
-                                        <div class="col-md-6 mr0" id="ExistingLoan0">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.ExistingLoan_OutstandingAmount, new
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.SecondRelativeName, new { placeholder = "FULL NAME*", id = "SecondRelativeName", required = "required", Title = "SELECT SECOND RELATIVE FULL NAME" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.SecondRelativePhoneNumber, new { placeholder = "PHONE NUMBER*", id = "SecondRelativePhoneNumber", required = "required", maxlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT SECOND RELATIVE PHONE NUMBER" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 right">
+                                    <div class="single-get-touch">
+
+                                        @Html.DropDownListFor(model => model.RelativeRelationship2_FK, (SelectList)ViewData["nRelative"], "RELATIVE RELATIONSHIP", new { @id = "Relative", @required = "required", @name = "Relative", Title = "SELECT SECOND RELATIVE RELATIONSHIP" })
+                                     
+
+                                     
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-lg-12 formHeaderBg">
+                                    <h3 class="formHeader">Loan Details</h3>
+                                </div>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        <select id="LoanTenure" name="LoanTenure"  required="required" Title="SELECT LOAN TENURE" @*onchange="CheckIfQualifyForLoan()"*@ onchange="GetTenure()">
+                                            <option data-tokens="Select Operator"></option>
+
+                                        </select>
+                                       
+                                    </div>
+
+                                    <span id="QualifyAfterExist"></span>
+                                    <span id="Qualfy"></span>
+
+                                </div>
+
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.LoanAmount, new { placeholder = "LOAN AMOUNT*", required = "required", @readonly = "true", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", @id = "LA", Title = "SELECT LOAN AMOUNT" })
+                                    </div>
+                                </div>
+
+                                <table id="TB" style="display:none" class="table table-bordered table-condensed table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Max Loan Amount</th>
+                                            <th>Month Remaining</th>
+                                            <th>Monthly Repayment</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+
+
+
+                                <div class="col-md-12">
+                                    <div class="single-get-check">
+                                        Any Existing Loan
+                                        <label class="radiobox">
+                                            Yes
+                                            <input type="radio" id="ExtLoan" name="ExtLoan" value="Yes" required>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radiobox">
+                                            No
+                                            <input type="radio" id="ExtLoan" name="ExtLoan" value="No" required>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 mr0" id="ExistingLoan0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.ExistingLoan_OutstandingAmount, new
                                    { @*@Value = "0",*@ placeholder = "OUTSTANDING AMOUNT*",
-                                               id = "ExistLA",
-                                               onkeypress = "return isNumber(event);",
-                                               ondrop = "return isNumber(event);",
-                                               onpaste = "return isNumber(event);",
-                                               onkeyup = "CheckIfQualifyForLoanAfterExistingLoan();",
-                                               autocomplete = "off",
-                                               Title = "SELECT OUTSTANDING AMOUNT"
-                                           })
-                                            </div>
-                                            <span id="QualifyAfterExist"></span>
-                                        </div>
-                                        <div class="col-md-6" id="ExistingLoan1">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.ExistingLoan_NoOfMonthsLeft, new { placeholder = "HOW MANY MONTH(S) LEFT*", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", Title = "SELECT EXISTING NUMBER OF MONTHS LEFT" })
-                                            </div>
-                                        </div>
+                                       id = "ExistLA",
+                                       onkeypress = "return isNumber(event);",
+                                       ondrop = "return isNumber(event);",
+                                       onpaste = "return isNumber(event);",
+                                       onkeyup = "CheckIfQualifyForLoanAfterExistingLoan();",
+                                       autocomplete = "off",
+                                       Title = "SELECT OUTSTANDING AMOUNT"
+                                   })
+                                    </div>
+                                    <span id="QualifyAfterExist"></span>
+                                </div>
+                                <div class="col-md-6" id="ExistingLoan1">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.ExistingLoan_NoOfMonthsLeft, new { placeholder = "HOW MANY MONTH(S) LEFT*", id = "ExistingLoan_NoOfMonthsLeft", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", Title = "SELECT EXISTING NUMBER OF MONTHS LEFT" })
+                                    </div>
+                                </div>
 
                                 <div class="col-md-6  mr0" id="ExistingLoan2">
                                     <div class="single-get-touch">
-                                        @Html.TextBoxFor(model => model.RepaymentAmount, new { placeholder = "REPAYMENT AMOUNT*", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", Title = "SELECT REPAYMENT AMOUNT" })
+                                        @Html.TextBoxFor(model => model.RepaymentAmount, new { placeholder = "REPAYMENT AMOUNT*", onkeypress = "return isNumber(event);", id = "RepaymentAmount", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", Title = "SELECT REPAYMENT AMOUNT" })
                                     </div>
                                 </div>
-                                        <div class="col-md-12 col-lg-12 formHeaderBg">
-                                            <h3 class="formHeader">Bank Information(Must Be NYSC Allowance Account) </h3>
-                                        </div>
-                                        <div class="col-md-6 mr0">
-                                            <div class="single-get-touch">
-                                               @Html.DropDownListFor(model => model.BankCode, (SelectList)ViewData["nBanks"], "BANK*", new { @id = "Bank", @required = "required", @name = "Bank", onchange = "VerifyAccountNumber()", Title = "SELECT BANK NAME" })
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.AccountNumber, new { placeholder = "ACCOUNT NUMBER*", maxlength = 10, required = "required", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", onblur = "VerifyAccountNumber();", @id = "AccountNumber", Title = "SELECT ACCOUNT NUMBER" })
-                                            </div>
-                                            <span id="Qualify"></span>
-                                        </div>
-
-                                        <div class="col-md-6 mr0">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.AccountName, new { placeholder = "ACCOUNT NAME*", required = "required", @name = "account_nam", @id = "account_nam", @readonly = "true", Title = "SELECT ACCOUNT NAME" })
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.BVN, new { placeholder = "BANK VERIFICATION NUMBER (BVN)*", required = "required", maxlength = 11, minlength = 11, onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", Title = "SELECT BVN NUMBER" })
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mr0">
-                                            <div class="single-get-touch">
-                                                <label>Upload Bank Statement </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mr0">
-                                            <div class="single-get-touch">
-                                                @*@Html.TextBoxFor(model => model.IdentficationNumberImage, new { placeholder = "upload image", type = "file" , @name="PostedFile" })*@
-                                                @*<input type="file" placeholder="Upload Bank Statement*" required, Title = "UPLOAD BANK STATEMENT" name="StatementOfAccount" required />*@
-                                                <input type="file" placeholder="Upload Bank Statement" name="StatementOfAccount" required Title="UPLOAD BANK STATEMENT" />
-
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-get-touch">
-                                                @Html.TextBoxFor(model => model.ReferalCode, new { placeholder = "Referral Code", @readonly = "true", @name = "Referral", Title = "REFERRAL CODE" })
-                                                @*<input type="text" placeholder="Referral Code" required, name="Referral"  />*@
-                                            </div>
-                                        </div>
-                                    <div class="col-md-12 col-lg-12 formHeaderBg">
-                                        <h3 class="formHeader"> How did you hear about CashNowNow?<br></h3>
+                                <div class="col-md-12 col-lg-12 formHeaderBg">
+                                    <h3 class="formHeader">Bank Information(Must Be NYSC Allowance Account) </h3>
+                                </div>
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.DropDownListFor(model => model.BankCode, (SelectList)ViewData["nBanks"], "BANK*", new { @id = "Bank", @required = "required", @name = "Bank", onchange = "VerifyAccountNumber()", Title = "SELECT BANK NAME" })
                                     </div>
-                                    <br>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.AccountNumber, new { placeholder = "ACCOUNT NUMBER*",  maxlength = 10, required = "required", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", onblur = "VerifyAccountNumber();", @id = "AccountNumber", Title = "SELECT ACCOUNT NUMBER" })
+                                    </div>
+                                    <span id="Qualify"></span>
+                                </div>
+
+                                <div class="col-md-6 mr0">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.AccountName, new { placeholder = "ACCOUNT NAME*", required = "required", @name = "account_nam", @id = "account_nam", @readonly = "true", Title = "SELECT ACCOUNT NAME" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+
+                                        @Html.TextBoxFor(model => model.BVN, new { placeholder = "BANK VERIFICATION NUMBER (BVN)*", id = "Bvn", maxlength = 11, minlength = 11, required = "required", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", onfocusout = "ValidateBvn()", Title = "SELECT BVN NUMBER" })
+                                    </div>
+                                    <span id="Qualifys"></span>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="single-get-touch">
+                                        <label>Upload Bank Statement </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="single-get-touch">
+
+                                        <input type="file" placeholder="Upload Bank Statement"  id="StatementOfAccount" name="StatementOfAccount" onchange="ValidateSize(this)" required Title="UPLOAD BANK STATEMENT" />
+
+
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="single-get-touch">
+                                        @Html.TextBoxFor(model => model.ReferalCode, new { placeholder = "Referral Code", id = "ReferalCode", @readonly = "true", @name = "Referral", Title = "REFERRAL CODE" })
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 formHeaderBg">
+                                    <h3 class="formHeader"> How did you hear about CashNowNow?<br></h3>
+                                </div>
+                                <br>
 
                                 <div class="row" style="margin-left:2px;">
                                     <div class="col-md-7">
                                         @foreach (var n in ViewBag.channel)
                                         {   <label class="checkbox-inline" for="@n.Name">
-                                               
-                                            <input type="checkbox" id="@n.ID" name="checkboxName" value="@n.Name?@n.ID" >
+
+                                            <input type="checkbox" id="@n.ID" name="checkboxName" value="@n.Name?@n.ID">
                                             @n.Name
                                         </label>
                                         }
                                         <br />
-                                        </div>
                                     </div>
+                                </div>
 
-                                @*<div class="row">
-                                    <div class="col-md-7">
-
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox">
-                                            Google
+                            
+                                <div class="col-md-12">
+                                    <div class="single-get-check">
+                                        <label class="checkbox">
+                                            @*<a href="/terms-conditions.html" target="_blank">*@
+                                            <a href="@Url.Action("termsconditions", "Home")" target="_blank">
+                                                <input type="checkbox" id="Terms" name="Terms" required>
+                                                Accept Terms & Condition
+                                            </a>
                                         </label>
-                                        <br />
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox">
-                                           
-                                            NYSC Facebook Group
-
-                                        </label>
-                                        <br />
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox">
-                                            NYSC Instagram Group
-                                        </label>
-                                        <br />
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox">
-                                            WhatsApp
-                                        </label>
-                                        <br />
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox">
-                                            Instagram
-                                        </label>
-                                        <br />
                                     </div>
-                                    <div class="col-md-5">
+                                </div>
+                                @*<div class="col-md-12">
+                        <div class="single-get-touch">
+                             <a href="#"> <button type="submit" name="submit" id="btnSubmit" class="btn btn-default btn-sm2 btnAction">Apply Now</button></a>
+                    </div>
+                    </div>
+
+            <div class="col-md-12">
+                <div class="single-get-touch">
+                    <a href="#"> <button type="submit" name="submit" id="btnSubmit" class="btn btn-default btn-sm2 btnAction"  new { @Flag = 1 } >Save</button></a>
+                </div>
+            </div>*@
+                                <div class="col-md-8">
+                                    <div class="single-get-touch">
                                        
-                                          <div class="form-group">
-                                           <label class="checkbox-inline">
-                                                <input type="checkbox">
-                                                Facebook
-                                            </label>
-                                            <br />
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox">
-                                                Flyer
-                                            </label>
-                                            <br />
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox">
-                                                Word of Mouth
-                                            </label>
-                                            <br />
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox">
-                                                Referrer
-                                            </label>
-                                            <br />
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox">
-                                                Other
-                                            </label>
-                                            <br />
-                                            </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                            </div>
-                                            </div>*@
-                                            <div class="col-md-12">
-                                            <div class="single-get-check">
-                                            <label class="checkbox">
-                                                    @*<a href="/terms-conditions.html" target="_blank">*@
-                                                    <a href="@Url.Action("termsconditions", "Home")" target="_blank">
-                                                    <input type="checkbox" name="Terms" required>
-                                                     Accept Terms & Condition
-                                                    </a>
-                                                </label>
-                                                </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="single-get-touch">
-                                                 <a href="#"> <button type="submit" name="submit" id="btnSubmit" class="btn btn-default btn-sm2 btnAction">Apply Now</button></a>
-                                        </div>
-                                        </div>
-                                        </div>
-                        </form>
+                                        <button type="button" value="save" name="Save" id="btnSave" class="btn btn-default btn-sm2 btnAction">Save and Continue</button>
+
+                                        @*<input name="submit" type="submit" class="btn btn-default btn-sm2 btnAction" id="submit" value="save" />*@
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="single-get-touch">
+                                       
+                                        <input name="submit" type="submit" class="btn btn-default btn-sm2 btnAction" id="process" value="Apply-Now" />
+                                    </div>
+                                </div>
+</form>
                     }
                 </div>
             </div>
@@ -922,7 +1097,7 @@
         var message = $("#Qualify");
         message.html("");
         var account_name = document.getElementById("account_nam");
-        alert(BankCode);
+        //alert(BankCode);
         //alert(AccountNumber);
         if (BankCode == null || BankCode == "NaN" || BankCode == "")
         {
@@ -1196,6 +1371,151 @@
     };
     </script>
 
+
+    @*<script>
+        function ValidateBvn() {
+            var txtBvn = $("#Bvn").val()
+            alert(txtBvn);
+            $.ajax({
+                type: "POST",
+
+                url: "/NYSCLOAN/BVNValidation",
+
+                data: "{Bvn:'" + txtBvn + "'}",
+
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+                success: function (response)
+
+                {
+                    alert(JSON.stringify(response));
+                
+                    {
+
+                        if (JSON.stringify(response.respcode === "00"))
+                        {
+
+                            alert('amaka');
+                        }
+
+                    }
+                }
+                } )
+
+    };
+    </script>*@
+
+    <script>
+        function ValidateBvn() {
+            var txtBvn = $("#Bvn").val()
+           // alert(txtBvn);
+            var message = $("#Qualifys");
+            var RepmtMethod = document.getElementById("Qualifys");
+            $.ajax({
+                type: "POST",
+
+                url: "/NYSCLOAN/BVNValidation",
+
+                data: "{Bvn:'" + txtBvn + "'}",
+
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+                success: function (response)
+                {
+                       
+                        var sup = JSON.stringify(response.BC.respCode);
+
+                        var acctname = sup.substring(1).slice(0, -1)
+                      
+                        if (acctname == "00")
+                        {
+                            document.getElementById("process").disabled = false;
+                            //alert('amaka');
+
+                            //message.css("color", "green");
+                            //message.html(JSON.stringify(response.BC.FirstNAme) + JSON.stringify(response.BC.MiddleName) + JSON.stringify(response.BC.LastName));
+                            
+   // alert('amaka');
+
+    message.css("color", "green");
+    var firstname = JSON.stringify(response.BC.FirstNAme);
+    firstname = firstname.substring(1).slice(0, -1)
+    var secondname = JSON.stringify(response.BC.MiddleName);
+    secondname = secondname.substring(1).slice(0, -1)
+    var lastname = JSON.stringify(response.BC.LastName)
+    lastname = lastname.substring(1).slice(0, -1)
+    message.html(firstname + " " + " " + secondname + " "+ " " + lastname);
+                            return;
+                        }
+                        else if (acctname == "0091")
+                        {
+                            alert('Error');
+                            message.css("color", "Red");
+                            message.html(JSON.stringify(response.BC.errormessage));
+                            document.getElementById("process").disabled = true;
+                            return;
+                        }
+
+
+                }
+                })
+
+    };
+    </script>
+
+
+
+
+
+    @*<script>
+        function ValidateBvn() {
+            var txtBvn = $("#Bvn").val()
+           // alert(txtBvn);
+            var message = $("#Qualifys");
+            var RepmtMethod = document.getElementById("Qualifys");
+            $.ajax({
+                type: "POST",
+
+                url: "/NYSCLOAN/BVNValidation",
+
+                data: "{Bvn:'" + txtBvn + "'}",
+        
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+                success: function (response)
+
+                {
+                    alert(response);
+                    alert(JSON.stringify(response.BC.respCode));
+
+                    {
+
+                        if (JSON.stringify(response.BC.respCode === "00"))
+                        {
+
+
+                            alert('amaka');
+
+
+                            message.css("color", "green");
+
+                            message.html(
+
+                            JSON.stringify(response.BC.FirstNAme) + JSON.stringify(response.BC.LastName) +
+
+                            JSON.stringify(response.BC.MiddleName));
+							return;
+                        }
+
+                    }
+                }
+                } )
+
+    };
+    </script>*@
     <script>
     $("#ExistingLoan0").hide();
     $("#ExistingLoan1").hide();
@@ -1216,16 +1536,19 @@
     </script>
 
 
-    @*<script>
-        var LoanAmount = function (tenure) {
-            var Amount 
-            if (tenure == 12) {
 
-            }
+    <script type="text/javascript">
+    var uploadField = document.getElementById("file");
 
-        }
-        
-    </script>*@
+    uploadField.onchange = function() {
+    if(this.files[0].size > 307200){
+    alert("File is too big!");
+    this.value = "";
+    };
+    };
+    </script>
+
+
 
     <script type="text/javascript">
         //function isNumber(ev) {
@@ -1372,10 +1695,8 @@
             $("#SelectedDates").datepicker({
                 changeYear: true,
                 changeMonth: true,
-                yearRange: 'c-65:c',
-                //showOn: 'button',
-                //buttonImageOnly: true,
-                //buttonImage: '/images/calendar.gif'
+                yearRange: 'c-65:c+10',
+                
             });
         });
     </script>
@@ -1411,6 +1732,408 @@
     };
     var target = document.getElementById('loading');
     var spinner = new Spinner(opts).spin;
+    }
+    </script>
+    <script>
+
+      function disableControls() {
+          //alert('Testb');
+
+          $("input[id = 'Employer']").prop('disabled', true);
+          $("input[id = 'OfficialAddress']").prop('disabled', true);
+          $("input[id = 'PPA_ROle']").prop('disabled', true);
+          $("input[id='PPA_Department']").prop('disabled', true);
+          $("input[id = 'PPA_EmailAddress']").prop('disabled', true);
+          $("input[id='PPA_PhoneNumber']").prop('disabled', true);
+          $("input[id='PPA_supervisorName']").prop('disabled', true);
+          $("input[id='PPA_supervisorEmail']").prop('disabled', true);
+          $("input[id='PPA_supervisorPhonenumber']").prop('disabled', true);
+          $("input[id='StateCode']").prop('disabled', true);
+          $("#Statesss").prop('disabled', true);
+          $("#lgaListsss").prop('disabled', true);
+          $("input[id='SelectedDates']").prop('disabled', true);
+          $("input[id='CDSGroup']").prop('disabled', true);
+          $("#selectDays").prop('disabled', true);
+          $("input[id='netMonthlyIncome']").prop('disabled', true);
+          $("input[id='EMG_FullName']").prop('disabled', true);
+          $("input[id='EMG_Relationship']").prop('disabled', true);
+          $("input[id='EMG_HomeAddress']").prop('disabled', true);
+          $("input[id='EMG_EmailAddress']").prop('disabled', true);
+          $("input[id='EMG_PhoneNumber']").prop('disabled', true);
+          $("input[id='EMG_FullName2']").prop('disabled', true);
+          $("input[id='EMG_Relationship2']").prop('disabled', true);
+          $("input[id='EMG_HomeAddress2']").prop('disabled', true);
+          $("input[id='EMG_EmailAddress2']").prop('disabled', true);
+          $("input[id='EMG_PhoneNumber2']").prop('disabled', true);
+          $("input[id='FirstRelativeName']").prop('disabled', true);
+          $("input[id='FirstRelativePhoneNumber']").prop('disabled', true);
+          $("#Relative").prop('disabled', true);
+          $("input[id='SecondRelativeName']").prop('disabled', true);
+          $("input[id='SecondRelativePhoneNumber']").prop('disabled', true);
+          $("#LoanTenure").prop('disabled', true);
+          $("#LA").prop('disabled', true);
+          $("#QualifyAfterExist").prop('disabled', true);
+          $("#Qualfy").prop('disabled', true);
+          $("#TB").prop('disabled', true);
+          $("#ExtLoan").prop('disabled', true);
+          $("input[id='ExistingLoan0']").prop('disabled', true);
+          $("input[id='ExistingLoan1']").prop('disabled', true);
+
+          $("input[id='ExistingLoan2']").prop('disabled', true);
+          $("#Bank").prop('disabled', true);
+          $("input[id='AccountNumber']").prop('disabled', true);
+          $("input[id='BVN']").prop('disabled', true);
+
+          $("input[id='StatementOfAccount']").prop('disabled', true);
+          $("input[id='NyscIDCard']").prop('disabled', true);
+
+
+          $("input[id='ReferalCode']").prop('disabled', true);
+          $("#ID").prop('disabled', true);
+          $("#Terms").prop('disabled', true);
+
+
+      }
+      //SaveApplication
+      $(function () {
+          $("#btnSave").click(function () {
+             // alert('Testing');
+              disableControls();
+              //alert('After');
+              var Titles = $("#Titles").val();
+              //alert(Titles);
+              var Marital = $("#Marital").val();
+             // alert(Marital);
+              var Surname = $("#Surname").val();
+              //alert(Surname);
+              var Firstname = $("#Firstname").val();
+              //alert(Firstname);
+              var Othernames = $("#Othernames").val();
+             // alert(Othernames);
+              var DOB = $("#SelectedDate").val();
+              //alert(DOB);
+              var Gender = $("#selectGender").val();
+              //alert(Gender);
+              var EmailAddress = $("#EmailAddress").val();
+             // alert(EmailAddress);
+              var PhoneNumber = $("#PhoneNumber").val();
+             // alert(PhoneNumber);
+
+              var PermanentAddress = $("#PermanentAddress").val();
+             // alert(PermanentAddress);
+
+              var Landmark = $("#Landmark").val();
+             // alert(Landmark);
+              var StateofResidence = $("#States").val();
+             // alert(StateofResidence);
+              var ResidenceLGA = $("#lgaList").val();
+             // alert(ResidenceLGA);
+              var TempClosestBusStop = $("#TempClosestBusStop").val(); AccountName
+             // alert(TempClosestBusStop);
+              var TemporaryAddress = $("#TemporaryAddress").val();
+             // alert(TemporaryAddress);
+              var TempLandmark = $("#TempLandmark").val();
+             // alert(TempLandmark);
+              var TempStateofResidence = $("#Statess").val();
+              //alert(PermanentAddress);
+              var TempLGA = $("#lgaLists").val();
+            //  alert(TempLGA);
+              var ClosestBusStop = $("#ClosestBusStop").val();
+            //  alert(ClosestBusStop);
+              var FacebookName = $("#FacebookName").val();
+              //alert(FacebookName);
+              var InstagramHandle = $("#InstagramHandle").val();
+             // alert(InstagramHandle);
+              var TwitterHandle = $("#TwitterHandle").val();
+            //  alert(TwitterHandle);
+
+
+
+
+              var Employer = $("#Employer").val();
+             // alert(Employer);
+              var OfficialAddress = $("#OfficialAddress").val();
+              var PPA_ROle = $("#PPA_ROle").val();
+              var PPA_Department = $("#PPA_Department").val();
+            //  alert(PPA_Department);
+              var PPA_EmailAddress = $("#PPA_EmailAddress").val();
+              var PPA_PhoneNumber = $("#PPA_PhoneNumber").val();
+              var PPA_supervisorName = $("#PPA_supervisorName").val();
+              var PPA_supervisorEmail = $("#PPA_supervisorEmail").val();
+              var PPA_supervisorPhonenumber = $("#PPA_supervisorPhonenumber").val();
+              var StateCode = $("#StateCode").val();
+              var NYSCState = $("#Statesss").val();
+              var NYSCLGA = $("#lgaListsss").val();
+              var PassoutDate = $("#SelectedDates").val();
+              var CDSGroup = $("#CDSGroup").val();
+              var CDSDays = $("#selectDays").val();
+              var netMonthlyIncome = $("#netMonthlyIncome").val();
+              var EMG_FullName = $("#EMG_FullName").val();
+              var EMG_Relationship = $("#EMG_Relationship").val();
+              var EMG_HomeAddress = $("#EMG_HomeAddress").val();
+              var EMG_EmailAddress = $("#EMG_EmailAddress").val();
+              var EMG_PhoneNumber = $("#EMG_PhoneNumber").val();
+              var EMG_FullName2 = $("#EMG_FullName2").val();
+              var EMG_Relationship2 = $("#EMG_Relationship2").val();
+              var EMG_HomeAddress2 = $("#EMG_HomeAddress2").val();
+              var EMG_EmailAddress2 = $("#EMG_EmailAddress2").val();
+              var EMG_PhoneNumber2 = $("#EMG_PhoneNumber2").val();
+              var FirstRelativeName = $("#FirstRelativeName").val();
+              var FirstRelativePhoneNumber = $("#FirstRelativePhoneNumber").val();
+              var Relative = $("#Relative").val();
+              var SecondRelativeName = $("#SecondRelativeName").val();
+              var SecondRelativePhoneNumber = $("#SecondRelativePhoneNumber").val();
+              var LoanTenure = $("#LoanTenure").val();
+              var LoanAmount = $("#LA").val();
+              var QualifyAfterExist = $("#QualifyAfterExist").val();
+              var Qualfy = $("#Qualfy").val();
+              var TB = $("#TB").val();
+              var ExtLoan = $("#ExtLoan").val();
+              var ExistingLoan0 = $("#ExistingLoan0").val();
+              var ExistingLoan1 = $("#ExistingLoan1").val();
+              var Bank = $("#Bank").val();
+              var AccountNumber = $("#AccountNumber").val();
+              var AccountName = $("#account_nam").val();
+              var BVN = $("#BVN").val(); 
+              var StatementOfAccount = $("#StatementOfAccount").val();
+              var NYSCIdCard = $("#NyscIDCard").val();
+              var ReferalCode = $("#ReferalCode").val();
+              var MarketingChannel = $("#ID").val();
+              var Terms = $("#Terms").val();
+
+              var lApObjs =
+               {
+                   Title_FK: Titles,
+                   MaritalStatus_FK: Marital,
+                   Surname: Surname,
+                   Firstname : Firstname,
+                   Othernames: Othernames,
+                   DateOfBirth: DOB,
+                   Gender_FK: Gender,
+                   EmailAddress: EmailAddress,
+                   PhoneNumber: PhoneNumber,
+                   PermanentAddress: PermanentAddress,
+                   Landmark: Landmark,
+                   StateofResidence_FK: StateofResidence,
+                   LGA_FK: ResidenceLGA,
+                   TempClosestBusStop: TempClosestBusStop,
+                  TemporaryAddress: TemporaryAddress,
+                  TempLandmark: TempLandmark,
+                  TempStateofResidence_FK: TempStateofResidence,
+                  TempLGA_FK: TempLGA,
+                   ClosestBusStop: ClosestBusStop,
+                   FacebookName:FacebookName,
+                   InstagramHandle: InstagramHandle,
+                   TwitterHandle: TwitterHandle,
+                   Employer: Employer,
+
+                   OfficialAddress: OfficialAddress,
+                   PPA_ROle: PPA_ROle,
+                   PPA_Department: PPA_Department,
+                   PPA_EmailAddress: PPA_EmailAddress,
+                   PPA_PhoneNumber: PPA_PhoneNumber,
+                   PPA_supervisorName: PPA_supervisorName,
+                   PPA_supervisorEmail: PPA_supervisorEmail,
+                   PPA_supervisorPhonenumber: PPA_supervisorPhonenumber,
+                   StateCode: StateCode,    
+                   NyscStateofResidence_FK: NYSCState,
+                   NyscLGA_FK: NYSCLGA,
+                   PassOutMonth: PassoutDate,
+                   CDSGroup: CDSGroup,
+                   CDSDay: CDSDays,
+                   NetMonthlyIncome: netMonthlyIncome,
+                   EMG_FullName: EMG_FullName,
+                   EMG_Relationship :EMG_Relationship,
+                   EMG_EmailAddress :EMG_EmailAddress,
+                   EMG_HomeAddress: EMG_HomeAddress,
+                   EMG_PhoneNumber: EMG_PhoneNumber,
+                   EMG_FullName2: EMG_FullName2,
+                   EMG_Relationship2: EMG_Relationship2,
+                   EMG_HomeAddress2: EMG_HomeAddress2,
+                   EMG_EmailAddress2: EMG_EmailAddress2,
+
+                   EMG_PhoneNumber2: EMG_PhoneNumber2,
+                   FirstRelativeName: FirstRelativeName,
+                   FirstRelativePhoneNumber: FirstRelativePhoneNumber,
+                   RelativeRelationship_FK: Relative,
+                   RelativeRelationship2_FK: Relative,
+                   SecondRelativeName: SecondRelativeName,
+                   SecondRelativePhoneNumber: SecondRelativePhoneNumber,
+                   LoanTenure: LoanTenure,
+                   LoanAmount: LoanAmount,
+                   ExistingLoan_OutstandingAmount: ExistingLoan0,
+                   ExistingLoan_NoOfMonthsLeft: ExistingLoan1,
+                   BankCode: Bank,
+                   AccountNumber: AccountNumber,
+                   AccountName: AccountName,
+                   BVN: BVN,
+                   NyscIdCardFilePath:StatementOfAccount,
+                   STA_FilePath:NYSCIdCard,
+                   ReferralCode: ReferalCode,
+                   MarketingChannel: MarketingChannel,
+                   
+                   
+
+               };
+              //alert('test2');
+              //alert(JSON.stringify(lApObjs));
+              $.ajax({
+                  type: "POST",
+                  url: "/NYSCLOAN/SaveApplication",
+                  data: JSON.stringify(lApObjs),
+                  contentType: "application/json; charset=utf-8",
+                  //data: JSON.stringify({ lApObjs: lApObjs }),
+                  ////data: JSON.stringify({ lApObj: LoanApp }),    
+                  //contentType: "application/json",
+                  dataType: "json",
+
+                  success: function (response) {
+                     // alert(JSON.stringify(response));
+                      //alert('Testint 2');
+                      if (JSON.stringify(response === "true")) {
+                          SaveImage();
+                          SaveImages();
+                          // window.location.href = "https://nysc.cashnownow.net/NYSCLOAN/SaveAcknowledgement"
+                          //var impotantStuff = window.open("https://nysc.cashnownow.net/NYSCLOAN/Message");
+                          //impotantStuff.document.write('Loading Acknowledgment ......')
+                         // impotantStuff.location.href = " https://nysc.cashnownow.net/NYSCLOAN/SaveAcknowledgement?refid=" + JSON.stringify(response.Refid);
+                          var impotantStuff = window.open("http://localhost:4264/NYSCLOAN/Message");
+                          //impotantStuff.document.write('Loading Acknowledgment ......')
+                          impotantStuff.location.href = "http://localhost:4264/NYSCLOAN/SaveAcknowledgement?refid=" + JSON.stringify(response.Refid);
+                      }
+                      if (response == "true") {
+
+                          document.getElementById("btnSubmit").disabled = true;
+                      }
+                      else {
+
+                      }
+                  }
+              });
+
+          });
+      });
+
+
+    </script>
+
+    <script>
+        function SaveImage(){
+            $(document).ready(function(){
+               // $('#btnUpload').click(function () {
+               // alert('Entered');
+                    // Checking whether FormData is available in browser
+                    if (window.FormData !== undefined) {
+
+                        var fileUpload = $("#NyscIDCard").get(0);
+                        var files = fileUpload.files;
+
+                        // Create FormData object
+                        var fileData = new FormData();
+
+                        // Looping over all files and add it to FormData object
+                        for (var i = 0; i < files.length; i++) {
+                            fileData.append(files[i].name, files[i]);
+                        }
+
+                        // Adding one more key to FormData object
+                        fileData.append('username', 'Manas');
+
+                        $.ajax({
+                            url: '/NYSCLOAN/UploadFiles',
+                            type: "POST",
+                            contentType: false, // Not to set any content header
+                            processData: false, // Not to process data
+                            data: fileData,
+                            success: function (result) {
+                                //  alert(result);
+                              /*  var impotantStuff = window.open("https://nysc.cashnownow.net/NYSCLOAN/Message");
+                                impotantStuff.document.write('Loading Acknowledgment ......')
+                                impotantStuff.location.href = " https://nysc.cashnownow.net/NYSCLOAN/SaveAcknowledgement?refid=" + JSON.stringify(response.Refid);*/
+                                var impotantStuff = window.open("http://localhost:4312/NYSCLOAN/Message");
+                                //impotantStuff.document.write('Loading Acknowledgment ......')
+                                impotantStuff.location.href = "http://localhost:4312/NYSCLOAN/SaveAcknowledgement?refid=" + JSON.stringify(response.Refid);
+                            },
+                            error: function (err) {
+                                alert(err.statusText);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        alert("FormData is not supported.");
+                    }
+               // });
+            });
+        }
+    </script>
+
+    <script>
+        function SaveImages(){
+            $(document).ready(function(){
+               // $('#btnUpload').click(function () {
+               // alert('Entered');
+                    // Checking whether FormData is available in browser
+                    if (window.FormData !== undefined) {
+
+                        var fileUpload = $("#StatementOfAccount").get(0);
+                        var files = fileUpload.files;
+
+                        // Create FormData object
+                        var fileData = new FormData();
+
+                        // Looping over all files and add it to FormData object
+                        for (var i = 0; i < files.length; i++) {
+                            fileData.append(files[i].name, files[i]);
+                        }
+
+                        // Adding one more key to FormData object
+                        fileData.append('username', 'Manas');
+
+                        $.ajax({
+                            url: '/NYSCLOAN/UploadFiles',
+                            type: "POST",
+                            contentType: false, // Not to set any content header
+                            processData: false, // Not to process data
+                            data: fileData,
+                            success: function (result) {
+                                //  alert(result);
+                              /*  var impotantStuff = window.open("https://nysc.cashnownow.net/NYSCLOAN/Message");
+                                impotantStuff.document.write('Loading Acknowledgment ......')
+                                impotantStuff.location.href = " https://nysc.cashnownow.net/NYSCLOAN/SaveAcknowledgement?refid=" + JSON.stringify(response.Refid);*/
+                                var impotantStuff = window.open("http://localhost:4312/NYSCLOAN/Message");
+                                //impotantStuff.document.write('Loading Acknowledgment ......')
+                                impotantStuff.location.href = "http://localhost:4312/NYSCLOAN/SaveAcknowledgement?refid=" + JSON.stringify(response.Refid);
+                            },
+                            error: function (err) {
+                                alert(err.statusText);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        alert("FormData is not supported.");
+                    }
+               // });
+            });
+        }
+    </script>
+
+    <script>
+function ValidateSize(file) {
+        var FileSize = file.files[0].size/1024; // in MB
+		alert('File Size is' + FileSize);
+		//if (FileSize > 1) {
+		if (FileSize > 1024) {
+            alert('File size exceeds 1 MB');
+            document.getElementById("process").disabled = true;
+		  //document.getElementById(file).value= null;
+            return
+        } else
+		{
+            document.getElementById("process").disabled = false;
+            return
+        }
     }
     </script>
 </body>

@@ -1,0 +1,301 @@
+﻿
+@{
+    ViewBag.Title = "CreateUser";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
+}
+
+<link href=@Url.Content("/DashboardStyles/css/MyTable.css") rel="stylesheet">
+<script type="text/javascript">
+$(document).ready(function() {
+    $('table td:nth-child(7),table td:nth-child(8)').each(function () {
+    //alert('test');
+  let $this = $(this);
+
+  // make sure it's a number
+  if (!isNaN($this.text())) {
+
+    if (+$this.text() > 20)
+	{
+
+	    var pieces = parseFloat($this.text()).toFixed(2).split('')
+        let ii = pieces.length - 3
+        while ((ii -= 3) > 0) {
+            pieces.splice(ii, 0, ',')
+        }
+        $this.text(pieces.join(''));
+
+    }
+	else
+	{
+      $this.css('color', 'red');
+    }
+  }
+
+});
+});
+</script>
+@model UvlotExt.Classes.TableObjects.LoanApplication
+<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">
+            <section class="section-padding contact-us-padding form-padding">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            @using (Html.BeginForm("ComissionCashout", "AdminA"))
+                            {
+                                <div class="col-md-12 col-lg-10">
+
+
+                                    @*<input type="text" id="txt" name="txt" readonly="readonly" />*@
+                                    <form action="#" method="post">
+
+                                        @if (TempData["ErrMsg"] != "")
+                                        {
+                                            <div id="Msgs" class="" style="color:red">
+
+                                                @TempData["ErrMsg"]
+                                            </div>
+                                        }
+                                        @if (TempData["SucMsg"] != "")
+                                        {
+                                            <div id="Msgs" class="" style="color:green">
+
+                                                @TempData["SucMsg"]
+                                            </div>
+                                        }
+
+                                        <div class="row list-input">
+                                            <div class="col-md-12 col-lg-12 formHeaderBg">
+                                                <h3 class="formHeader">Cash Out</h3>
+                                            </div>
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    @*@Html.DropDownListFor(model => model.Institution_FK, new SelectList(ViewBag.listInstitution, "ID", "Name"))*@
+                                                    <input type="text" name="TotAmt" id="TotAmt" value="@ViewBag.Balance" placeholder="Total Amount" required readonly="true" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    @*@Html.DropDownListFor(model => model.Institution_FK, new SelectList(ViewBag.listInstitution, "ID", "Name"))*@
+                                                    <input type="text" name="Amt" id="Amt" value="" placeholder="Enter Amount" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    @*@Html.DropDownListFor(model => model.LoanTenure, new SelectList(ViewBag.listInterestRate, "ID", "LoanTenure"))*@
+                                                    @Html.DropDownListFor(model => model.BankCode, (SelectList)ViewData["nBanks"], "BANK*", new { @id = "Bank", @required = "required", @name = "Bank", onchange = "VerifyAccountNumber()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    @*@Html.TextBoxFor(model => model.InterestRate, new { placeholder = "Interest Rate*", required = "required" })*@
+                                                    @*<input type="text" name="AcctNum" id="AcctNum" placeholder="Account Number" required />*@
+                                                    @Html.TextBoxFor(model => model.AccountNumber, new { @id = "AccountNumber", placeholder = "ACCOUNT NUMBER*", minlength = 10, maxlength = 10, required = "required", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", onblur = "VerifyAccountNumber();" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mr0">
+                                                <div class="single-get-touch">
+                                                    @*@Html.TextBoxFor(model => model.InterestRate, new { placeholder = "Interest Rate*", required = "required" })*@
+                                                    @*<input type="text" name="AcctName" id="AcctName" placeholder="Account Name" required readonly="true" />*@
+                                                    @Html.TextBoxFor(model => model.AccountName, new { placeholder = "ACCOUNT NAME*", required = "required", @id = "account_nam", @readonly = "true" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6" style="margin-left:-15px;">
+                                            <div class="single-get-touch">
+                                                @*@<input type="submit" name="InterestRate" class="btn btn-default btn-sm2 btnAction" value="Cash Out" />*@
+                                                <button onclick="return confirm('Are You Sure?')" class="button-two button-proceed"><span>Proceed</span></button>
+                                            </div>
+                                        </div>
+
+                                        @*<div class="col-md-6 mr0">
+                                            <div class="single-get-touch">
+                                                <input type="submit" name="InterestRate" class="btn btn-default btn-sm2 btnAction" value="Cash Out" />
+                                            </div>
+                                        </div>*@
+
+                                    </form>
+
+                                </div>
+
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+
+        <!--<h4 class="title">Create User</h4>-->
+        <!-- Mega Form Starts -->
+        @*@if (TempData["Error"] != "")
+            {
+                <div id="Msgs" class="alert alert-danger">
+                    @TempData["Error"]
+                </div>
+            }
+            @if (TempData["SucMsg"] != "")
+            {
+                <div id="Msgs" class="alert alert-success">
+                    @TempData["SucMsg"]
+                </div>
+            }*@
+        @*<section class="section-padding contact-us-padding form-padding">
+                <div class="tables">
+                    <h2 class="title1">Comission Cashout</h2>
+                    <div class="table-responsive bs-example widget-shadow">
+
+                        @{int i = 0;}
+                        <table id="myTable" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Reference Number</th>
+                                    <th>Date</th>
+                                    <th>Debit</th>
+                                    <th>Credit</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.Records == null)
+                                {
+                                    <h2>No Record Found</h2>
+                                }
+                                else
+                                {
+                                    foreach (var Loan in ViewBag.Records)
+                                    {
+                                        <tr>
+                                            <td scope="row">@(++i)</td>
+                                            <td>@Loan.RefNumber</td>
+                                            <td>@Loan.trnDate</td>
+                                            <td>@Loan.Debit</td>
+                                            <td>@Loan.Credit</td>
+
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-4">
+                        Total Cashout Amount :
+                     </div>
+                    <div class="col-md-4">
+                        <span id="TotAmt">
+                            @ViewBag.Balance
+                        </span>
+                      <input type="text" style="display:none" value="@ViewBag.Balance" id="cash" name="cash" />
+
+                    </div>
+
+                    <div class="col-md-4">
+                       <input type="submit" class="btn btn-primary"  value="Cashout" name="Cashout" />
+                    </div>
+
+                    </div>
+            </section>*@
+
+        <!-- // Mega Form Ends-->
+    </div>
+
+</div>
+
+<script>
+
+    window.onload = function()
+  {
+
+        var x = document.getElementById('TotAmt').value;
+       // alert('entered0');
+       // alert(x);
+       x = parseFloat(x).toFixed(2).split('')
+           let ii = x.length - 3
+           while ((ii -= 3) > 0)
+           {
+                x.splice(ii, 0, ',')
+            }
+            x.value = x.join('');
+          document.getElementById('TotAmt').value = x.value;
+};
+</script>
+<script>
+    function VerifyAccountNumber()
+       {
+
+        var BankCode = $("#Bank").val();
+        var AccountNumber = $("#AccountNumber").val();
+        var message = $("#Qualifys");
+        message.html("");
+        var account_name = document.getElementById("account_nam");
+
+        if (BankCode == null || BankCode == "NaN" || BankCode == "")
+        {
+            account_name.value = "Invalid Account Details";
+            document.getElementById("btnSubmit").disabled = true;
+            message.html("Please Select Bank");
+            message.css("color", "red");
+
+            return;
+        }
+        if (AccountNumber == "" || AccountNumber == "NaN" || AccountNumber == "NaN")
+        {
+            account_name.value = "Invalid Account Details";
+            document.getElementById("btnSubmit").disabled = true;
+             message.html("Please Enter Valid Account Number");
+             message.css("color", "red");
+            return;
+        }
+        if (AccountNumber.length < 10) {
+
+            message.html("Account Number must be 10 Digits.");
+            message.css("color", "red");
+            account_name.value = "Invalid Account Details";
+            document.getElementById("btnSubmit").disabled = true;
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/NYSCLOAN/VerifyAccountNumber",
+            data: "{Account:'" + BankCode + '&' + AccountNumber + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+
+            success: function (resp)
+            {
+               // account_name.value = "";
+
+                if(JSON.stringify(resp.dt.responseMsg == "success"))
+                {
+                    var sup = JSON.stringify(resp.dt.account_name);
+
+                    var acctname = sup.substring(1).slice(0, -1)
+                    //alert("acctName"+ acctname);
+
+                    account_name.value = acctname;
+                    document.getElementById("btnSubmit").disabled = false;
+                    return;
+                }
+               if(JSON.stringify(resp.dt.responseMsg == "error"))
+               {
+                    account_name.style.color = "Red";
+                    account_name.value = "Invalid Account Details";
+                    document.getElementById("btnSubmit").disabled = true;
+                    return;
+               }
+           }
+        });
+
+    };
+</script>

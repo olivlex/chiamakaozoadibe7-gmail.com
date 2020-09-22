@@ -81,6 +81,17 @@ namespace UvlotExt.Controllers
             return View();
         }
 
+        
+        [HttpGet]
+        public ActionResult NYSCLoanRequirement()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+
+
         [HttpGet]
         public ActionResult TestDrop()
         {

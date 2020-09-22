@@ -4,7 +4,129 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UvlotAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="UvlotAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uvlot.dbo.A_OfflineApplications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="A_OfflineApplications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="255" />
+          <Property Name="OtherNames" Type="nvarchar" MaxLength="255" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="BankVerificationNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mobilenumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="PersonalEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="PermanentAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="Landmark" Type="nvarchar" MaxLength="255" />
+          <Property Name="Closestbuststop" Type="nvarchar" MaxLength="255" />
+          <Property Name="LGA" Type="nvarchar" MaxLength="255" />
+          <Property Name="LGA_FK" Type="int" />
+          <Property Name="Stateofresidence" Type="nvarchar" MaxLength="255" />
+          <Property Name="StateOfResidence_FK" Type="int" />
+          <Property Name="TemporaryAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempLandmark" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempClosestBuststop" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempLGA" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempLGA_FK" Type="int" />
+          <Property Name="TempState" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempState_FK" Type="int" />
+          <Property Name="StateCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscState" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscState_FK" Type="int" />
+          <Property Name="NyscLGA" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscLGA_FK" Type="int" />
+          <Property Name="NyscEmployer" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscExpectedPassoutdate" Type="datetime" />
+          <Property Name="NyscCDSDay" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscCDsGroup" Type="nvarchar" MaxLength="255" />
+          <Property Name="Netmonthlyincome" Type="float" />
+          <Property Name="EmergencyContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactRelationship" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactHomeaddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactPhonenumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactEmailAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="LoanAmount" Type="float" />
+          <Property Name="Tenure" Type="float" />
+          <Property Name="Monthsleft" Type="float" />
+          <Property Name="DefaultMonthsowed" Type="float" />
+          <Property Name="RepaymentAmount" Type="float" />
+          <Property Name="Anyexistingloan" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExistingLoanOutstandingAmount" Type="float" />
+          <Property Name="ExistingLoanMonthsLeft" Type="float" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="255" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ApplicationDate" Type="datetime" />
+          <Property Name="DateDisbursed" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uvlot.dbo.AA_Sheet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AA_Sheet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="First Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="255" />
+          <Property Name="Other Names" Type="nvarchar" MaxLength="255" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="255" />
+          <Property Name="Marital Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Date Of Birth" Type="datetime" />
+          <Property Name="Bank Verification Number" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mobile number" Type="nvarchar" MaxLength="255" />
+          <Property Name="Personal Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Permanent Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Landmark" Type="nvarchar" MaxLength="255" />
+          <Property Name="Closest bust stop" Type="nvarchar" MaxLength="255" />
+          <Property Name="LGA" Type="nvarchar" MaxLength="255" />
+          <Property Name="State of residence" Type="nvarchar" MaxLength="255" />
+          <Property Name="Temporary Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempLandmark" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempClosest Bust stop" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempLGA" Type="nvarchar" MaxLength="255" />
+          <Property Name="TempState" Type="nvarchar" MaxLength="255" />
+          <Property Name="State Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscState" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscLGA" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscEmployer" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscExpected Pass out date" Type="datetime" />
+          <Property Name="NyscCDS Day" Type="nvarchar" MaxLength="255" />
+          <Property Name="NyscCDs Group" Type="nvarchar" MaxLength="255" />
+          <Property Name="Net monthly income" Type="float" />
+          <Property Name="EmergencyContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactRelationship" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactHome address" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactPhone number" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactEmail Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Loan Amount" Type="float" />
+          <Property Name="Tenure" Type="float" />
+          <Property Name="Months left" Type="float" />
+          <Property Name="Default Months owed" Type="float" />
+          <Property Name="Repayment Amount" Type="float" />
+          <Property Name="Any existing loan" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExistingLoanOutstanding Amount" Type="float" />
+          <Property Name="ExistingLoanMonths Left" Type="float" />
+          <Property Name="Bank Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Account Number" Type="nvarchar" MaxLength="255" />
+          <Property Name="Account Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Application Date" Type="datetime" />
+          <Property Name="Date Disbursed" Type="datetime" />
+          <Property Name="F49" Type="nvarchar" MaxLength="255" />
+          <Property Name="F50" Type="nvarchar" MaxLength="255" />
+          <Property Name="F51" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="AccomodationType">
           <Key>
             <PropertyRef Name="Name" />
@@ -149,6 +271,24 @@
           <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
           <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uvlot.dbo.Ledger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RepaymentDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="RepaymentFlag" Type="tinyint" />
+          <Property Name="LoanReference" Type="nvarchar" MaxLength="255" />
+          <Property Name="LedgerFlag" Type="int" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DefaultCount" Type="int" />
+          <Property Name="DefaultAmount" Type="float" />
         </EntityType>
         <EntityType Name="LGA">
           <Key>
@@ -367,6 +507,16 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="IsVisible" Type="int" />
         </EntityType>
+        <EntityType Name="MonthVal">
+          <Key>
+            <PropertyRef Name="MonthValue" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MonthName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MonthValue" Type="int" Nullable="false" />
+          <Property Name="MonthValStr" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
+        </EntityType>
         <EntityType Name="NigerianState">
           <Key>
             <PropertyRef Name="Name" />
@@ -419,6 +569,13 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="NyscLGA_FK" Type="int" />
           <Property Name="Employer" Type="nvarchar" MaxLength="150" />
           <Property Name="OfficialAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="PPA_Department" Type="nvarchar" MaxLength="150" />
+          <Property Name="PPA_ROle" Type="nvarchar" MaxLength="150" />
+          <Property Name="PPA_EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="PPA_PhoneNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="PPA_supervisorName" Type="nvarchar" MaxLength="150" />
+          <Property Name="PPA_supervisorEmail" Type="nvarchar" MaxLength="150" />
+          <Property Name="PPA_supervisorPhonenumber" Type="nvarchar" MaxLength="150" />
           <Property Name="PassOutMonth" Type="nvarchar" MaxLength="150" />
           <Property Name="CDSDay" Type="nvarchar" MaxLength="150" />
           <Property Name="CDSGroup" Type="nvarchar" MaxLength="150" />
@@ -428,6 +585,17 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="EMG_PhoneNumber" Type="nvarchar" MaxLength="150" />
           <Property Name="EMG_EmailAddress" Type="nvarchar" MaxLength="150" />
           <Property Name="EMG_HomeAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="EMG_FullName2" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMG_HomeAddress2" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMG_PhoneNumber2" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMG_EmailAddress2" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMG_Relationship2" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstRelativeName" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirstRelativePhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondRelativeName" Type="nvarchar" MaxLength="150" />
+          <Property Name="SecondRelativePhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelativeRelationship_FK" Type="nvarchar" MaxLength="150" />
+          <Property Name="RelativeRelationship2_FK" Type="nvarchar" MaxLength="150" />
           <Property Name="LoanAmount" Type="float" />
           <Property Name="LoanTenure" Type="int" />
           <Property Name="ExistingLoan" Type="bit" />
@@ -447,6 +615,14 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="STA_FilePath" Type="nvarchar(max)" />
           <Property Name="ReferralCode" Type="nvarchar" MaxLength="50" />
           <Property Name="LoanComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="NyscpassportFilePath" Type="nvarchar(max)" />
+          <Property Name="NyscPostingLetterFllePath" Type="nvarchar(max)" />
+          <Property Name="NyscCallUpLetterFilePath" Type="nvarchar(max)" />
+          <Property Name="NyscProfileDashboardFilePath" Type="nvarchar(max)" />
+          <Property Name="LetterOfundertaken" Type="nvarchar(max)" />
+          <Property Name="FacebookName" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstagramHandle" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwitterHandle" Type="nvarchar" MaxLength="50" />
           <Property Name="IsVisible" Type="int" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerNo" Type="nvarchar" MaxLength="50" />
@@ -485,6 +661,8 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
           <Property Name="IsVisible" Type="int" />
           <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+          <Property Name="DefaultCount" Type="int" />
+          <Property Name="DefaultAmount" Type="float" />
         </EntityType>
         <EntityType Name="NYSCLoanSetUp">
           <Key>
@@ -520,6 +698,15 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="ValueTime" Type="nvarchar" MaxLength="50" />
           <Property Name="IsVisible" Type="int" />
           <Property Name="Audit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NYSCRelative">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisible" Type="int" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -571,6 +758,17 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="TokenVal" Type="nvarchar" MaxLength="250" />
           <Property Name="myTokenTime" Type="float" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Uvlot.dbo.PatnerResponse' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PatnerResponse">
+          <Property Name="id" Type="int" />
+          <Property Name="TransactionType" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="PatnerResponse" Type="varchar(max)" />
+          <Property Name="PartnerUrl" Type="nvarchar(max)" />
+          <Property Name="cols1" Type="nvarchar" MaxLength="50" />
+          <Property Name="cols2" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
         <EntityType Name="PatnerTransactLog">
           <Key>
             <PropertyRef Name="ID" />
@@ -603,6 +801,19 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="IsVisible" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uvlot.dbo.Repayments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Repayments">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Reference" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="LedgerFlag" Type="int" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -721,6 +932,17 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BorroweredLoans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DisbursedLoans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNYSCDefaultLoans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNYSCLoanApplicationSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetReferralActivity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetReferrals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LoanDueForDebit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="LoanRepayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="startDate" Type="date" Mode="In" />
           <Parameter Name="EndDate" Type="date" Mode="In" />
@@ -729,6 +951,25 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Parameter Name="startDate" Type="date" Mode="In" />
           <Parameter Name="EndDate" Type="date" Mode="In" />
         </Function>
+        <Function Name="NyscApplicationRelated" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="OutStandingLoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ReferralAgentPerformance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Repayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="RevenueEarned" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="RevenueReceived" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Top50ReferralPerformance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UpdatePartner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="myTimer" Type="float" Mode="In" />
           <Parameter Name="myTokenVal" Type="nvarchar" Mode="In" />
@@ -760,6 +1001,7 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySet Name="MarketingChannel" EntityType="Self.MarketingChannel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarketingDetails" EntityType="Self.MarketingDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MeansOfIdentification" EntityType="Self.MeansOfIdentification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonthVal" EntityType="Self.MonthVal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NigerianState" EntityType="Self.NigerianState" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NYSCApplicationStatus" EntityType="Self.NYSCApplicationStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NyscLoanApplication" EntityType="Self.NyscLoanApplication" Schema="dbo" store:Type="Tables" />
@@ -768,6 +1010,7 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySet Name="NYSCLoanSetUp" EntityType="Self.NYSCLoanSetUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NyscMaritalStatus" EntityType="Self.NyscMaritalStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NYSCReferralLedger" EntityType="Self.NYSCReferralLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NYSCRelative" EntityType="Self.NYSCRelative" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PageAuthentication" EntityType="Self.PageAuthentication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pageHeader" EntityType="Self.pageHeader" Schema="dbo" store:Type="Tables" />
@@ -781,6 +1024,136 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySet Name="Title" EntityType="Self.Title" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_OfflineApplications" EntityType="Self.A_OfflineApplications" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [A_OfflineApplications].[ID] AS [ID], 
+    [A_OfflineApplications].[Number] AS [Number], 
+    [A_OfflineApplications].[Title] AS [Title], 
+    [A_OfflineApplications].[FirstName] AS [FirstName], 
+    [A_OfflineApplications].[Surname] AS [Surname], 
+    [A_OfflineApplications].[OtherNames] AS [OtherNames], 
+    [A_OfflineApplications].[Gender] AS [Gender], 
+    [A_OfflineApplications].[MaritalStatus] AS [MaritalStatus], 
+    [A_OfflineApplications].[DateOfBirth] AS [DateOfBirth], 
+    [A_OfflineApplications].[BankVerificationNumber] AS [BankVerificationNumber], 
+    [A_OfflineApplications].[Mobilenumber] AS [Mobilenumber], 
+    [A_OfflineApplications].[PersonalEmail] AS [PersonalEmail], 
+    [A_OfflineApplications].[PermanentAddress] AS [PermanentAddress], 
+    [A_OfflineApplications].[Landmark] AS [Landmark], 
+    [A_OfflineApplications].[Closestbuststop] AS [Closestbuststop], 
+    [A_OfflineApplications].[LGA] AS [LGA], 
+    [A_OfflineApplications].[LGA_FK] AS [LGA_FK], 
+    [A_OfflineApplications].[Stateofresidence] AS [Stateofresidence], 
+    [A_OfflineApplications].[StateOfResidence_FK] AS [StateOfResidence_FK], 
+    [A_OfflineApplications].[TemporaryAddress] AS [TemporaryAddress], 
+    [A_OfflineApplications].[TempLandmark] AS [TempLandmark], 
+    [A_OfflineApplications].[TempClosestBuststop] AS [TempClosestBuststop], 
+    [A_OfflineApplications].[TempLGA] AS [TempLGA], 
+    [A_OfflineApplications].[TempLGA_FK] AS [TempLGA_FK], 
+    [A_OfflineApplications].[TempState] AS [TempState], 
+    [A_OfflineApplications].[TempState_FK] AS [TempState_FK], 
+    [A_OfflineApplications].[StateCode] AS [StateCode], 
+    [A_OfflineApplications].[NyscState] AS [NyscState], 
+    [A_OfflineApplications].[NyscState_FK] AS [NyscState_FK], 
+    [A_OfflineApplications].[NyscLGA] AS [NyscLGA], 
+    [A_OfflineApplications].[NyscLGA_FK] AS [NyscLGA_FK], 
+    [A_OfflineApplications].[NyscEmployer] AS [NyscEmployer], 
+    [A_OfflineApplications].[NyscAddress] AS [NyscAddress], 
+    [A_OfflineApplications].[NyscExpectedPassoutdate] AS [NyscExpectedPassoutdate], 
+    [A_OfflineApplications].[NyscCDSDay] AS [NyscCDSDay], 
+    [A_OfflineApplications].[NyscCDsGroup] AS [NyscCDsGroup], 
+    [A_OfflineApplications].[Netmonthlyincome] AS [Netmonthlyincome], 
+    [A_OfflineApplications].[EmergencyContactName] AS [EmergencyContactName], 
+    [A_OfflineApplications].[EmergencyContactRelationship] AS [EmergencyContactRelationship], 
+    [A_OfflineApplications].[EmergencyContactHomeaddress] AS [EmergencyContactHomeaddress], 
+    [A_OfflineApplications].[EmergencyContactPhonenumber] AS [EmergencyContactPhonenumber], 
+    [A_OfflineApplications].[EmergencyContactEmailAddress] AS [EmergencyContactEmailAddress], 
+    [A_OfflineApplications].[LoanAmount] AS [LoanAmount], 
+    [A_OfflineApplications].[Tenure] AS [Tenure], 
+    [A_OfflineApplications].[Monthsleft] AS [Monthsleft], 
+    [A_OfflineApplications].[DefaultMonthsowed] AS [DefaultMonthsowed], 
+    [A_OfflineApplications].[RepaymentAmount] AS [RepaymentAmount], 
+    [A_OfflineApplications].[Anyexistingloan] AS [Anyexistingloan], 
+    [A_OfflineApplications].[ExistingLoanOutstandingAmount] AS [ExistingLoanOutstandingAmount], 
+    [A_OfflineApplications].[ExistingLoanMonthsLeft] AS [ExistingLoanMonthsLeft], 
+    [A_OfflineApplications].[BankName] AS [BankName], 
+    [A_OfflineApplications].[BankCode] AS [BankCode], 
+    [A_OfflineApplications].[AccountNumber] AS [AccountNumber], 
+    [A_OfflineApplications].[AccountName] AS [AccountName], 
+    [A_OfflineApplications].[ApplicationDate] AS [ApplicationDate], 
+    [A_OfflineApplications].[DateDisbursed] AS [DateDisbursed]
+    FROM [dbo].[A_OfflineApplications] AS [A_OfflineApplications]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AA_Sheet" EntityType="Self.AA_Sheet" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AA_Sheet].[ID] AS [ID], 
+    [AA_Sheet].[Number] AS [Number], 
+    [AA_Sheet].[Title] AS [Title], 
+    [AA_Sheet].[First Name] AS [First Name], 
+    [AA_Sheet].[Surname] AS [Surname], 
+    [AA_Sheet].[Other Names] AS [Other Names], 
+    [AA_Sheet].[Gender] AS [Gender], 
+    [AA_Sheet].[Marital Status] AS [Marital Status], 
+    [AA_Sheet].[Date Of Birth] AS [Date Of Birth], 
+    [AA_Sheet].[Bank Verification Number] AS [Bank Verification Number], 
+    [AA_Sheet].[Mobile number] AS [Mobile number], 
+    [AA_Sheet].[Personal Email] AS [Personal Email], 
+    [AA_Sheet].[Permanent Address] AS [Permanent Address], 
+    [AA_Sheet].[Landmark] AS [Landmark], 
+    [AA_Sheet].[Closest bust stop] AS [Closest bust stop], 
+    [AA_Sheet].[LGA] AS [LGA], 
+    [AA_Sheet].[State of residence] AS [State of residence], 
+    [AA_Sheet].[Temporary Address] AS [Temporary Address], 
+    [AA_Sheet].[TempLandmark] AS [TempLandmark], 
+    [AA_Sheet].[TempClosest Bust stop] AS [TempClosest Bust stop], 
+    [AA_Sheet].[TempLGA] AS [TempLGA], 
+    [AA_Sheet].[TempState] AS [TempState], 
+    [AA_Sheet].[State Code] AS [State Code], 
+    [AA_Sheet].[NyscState] AS [NyscState], 
+    [AA_Sheet].[NyscLGA] AS [NyscLGA], 
+    [AA_Sheet].[NyscEmployer] AS [NyscEmployer], 
+    [AA_Sheet].[NyscAddress] AS [NyscAddress], 
+    [AA_Sheet].[NyscExpected Pass out date] AS [NyscExpected Pass out date], 
+    [AA_Sheet].[NyscCDS Day] AS [NyscCDS Day], 
+    [AA_Sheet].[NyscCDs Group] AS [NyscCDs Group], 
+    [AA_Sheet].[Net monthly income] AS [Net monthly income], 
+    [AA_Sheet].[EmergencyContactName] AS [EmergencyContactName], 
+    [AA_Sheet].[EmergencyContactRelationship] AS [EmergencyContactRelationship], 
+    [AA_Sheet].[EmergencyContactHome address] AS [EmergencyContactHome address], 
+    [AA_Sheet].[EmergencyContactPhone number] AS [EmergencyContactPhone number], 
+    [AA_Sheet].[EmergencyContactEmail Address] AS [EmergencyContactEmail Address], 
+    [AA_Sheet].[Loan Amount] AS [Loan Amount], 
+    [AA_Sheet].[Tenure] AS [Tenure], 
+    [AA_Sheet].[Months left] AS [Months left], 
+    [AA_Sheet].[Default Months owed] AS [Default Months owed], 
+    [AA_Sheet].[Repayment Amount] AS [Repayment Amount], 
+    [AA_Sheet].[Any existing loan] AS [Any existing loan], 
+    [AA_Sheet].[ExistingLoanOutstanding Amount] AS [ExistingLoanOutstanding Amount], 
+    [AA_Sheet].[ExistingLoanMonths Left] AS [ExistingLoanMonths Left], 
+    [AA_Sheet].[Bank Name] AS [Bank Name], 
+    [AA_Sheet].[Account Number] AS [Account Number], 
+    [AA_Sheet].[Account Name] AS [Account Name], 
+    [AA_Sheet].[Application Date] AS [Application Date], 
+    [AA_Sheet].[Date Disbursed] AS [Date Disbursed], 
+    [AA_Sheet].[F49] AS [F49], 
+    [AA_Sheet].[F50] AS [F50], 
+    [AA_Sheet].[F51] AS [F51]
+    FROM [dbo].[AA_Sheet] AS [AA_Sheet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ledger" EntityType="Self.Ledger" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ledger].[ID] AS [ID], 
+    [Ledger].[RepaymentDate] AS [RepaymentDate], 
+    [Ledger].[Debit] AS [Debit], 
+    [Ledger].[Credit] AS [Credit], 
+    [Ledger].[RepaymentFlag] AS [RepaymentFlag], 
+    [Ledger].[LoanReference] AS [LoanReference], 
+    [Ledger].[LedgerFlag] AS [LedgerFlag], 
+    [Ledger].[Created] AS [Created], 
+    [Ledger].[DefaultCount] AS [DefaultCount], 
+    [Ledger].[DefaultAmount] AS [DefaultAmount]
+    FROM [dbo].[Ledger] AS [Ledger]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="LoanSerialNo" EntityType="Self.LoanSerialNo" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [LoanSerialNo].[ID] AS [ID], 
@@ -788,12 +1161,22 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
     [LoanSerialNo].[PayrollSerialNo] AS [PayrollSerialNo]
     FROM [dbo].[LoanSerialNo] AS [LoanSerialNo]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Repayments" EntityType="Self.Repayments" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Repayments].[ID] AS [ID], 
+    [Repayments].[Reference] AS [Reference], 
+    [Repayments].[Amount] AS [Amount], 
+    [Repayments].[LedgerFlag] AS [LedgerFlag], 
+    [Repayments].[Created] AS [Created]
+    FROM [dbo].[Repayments] AS [Repayments]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Page_Page" Association="Self.FK_Page_Page">
             <End Role="pageHeader" EntitySet="pageHeader" />
             <End Role="Page" EntitySet="Page" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UvlotAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -819,12 +1202,21 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Key>
             <PropertyRef Name="Name" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="Name" Type="String" MaxLength="225" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Code" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
           <Property Name="FlutterWaveBankCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bankold">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BanksManager">
           <Key>
@@ -1109,6 +1501,28 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsVisible" Type="Int32" />
         </EntityType>
+        <EntityType Name="MarketingChannel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="ListOrderID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MarketingDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_FK" Type="Int32" />
+          <Property Name="MarketingChannel_FK" Type="Int32" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="MeansOfIdentification">
           <Key>
             <PropertyRef Name="Name" />
@@ -1116,6 +1530,16 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MonthVal">
+          <Key>
+            <PropertyRef Name="MonthValue" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MonthName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MonthValue" Type="Int32" Nullable="false" />
+          <Property Name="MonthValStr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsVisible" Type="Int32" />
         </EntityType>
         <EntityType Name="NigerianState">
@@ -1170,6 +1594,13 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="NyscLGA_FK" Type="Int32" />
           <Property Name="Employer" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="OfficialAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PPA_Department" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PPA_ROle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PPA_EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PPA_PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PPA_supervisorName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PPA_supervisorEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PPA_supervisorPhonenumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="PassOutMonth" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CDSDay" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CDSGroup" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
@@ -1179,6 +1610,17 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="EMG_PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="EMG_EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="EMG_HomeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_FullName2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_HomeAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_PhoneNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_EmailAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMG_Relationship2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstRelativeName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirstRelativePhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondRelativeName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SecondRelativePhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelativeRelationship_FK" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="RelativeRelationship2_FK" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="LoanAmount" Type="Double" />
           <Property Name="LoanTenure" Type="Int32" />
           <Property Name="ExistingLoan" Type="Boolean" />
@@ -1188,6 +1630,7 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AccountName" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
           <Property Name="BVN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarketingChannel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateCreated" Type="DateTime" Precision="3" />
@@ -1197,11 +1640,18 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="STA_FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LoanComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NyscpassportFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NyscPostingLetterFllePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NyscCallUpLetterFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NyscProfileDashboardFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LetterOfundertaken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstagramHandle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterHandle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsVisible" Type="Int32" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LoanSerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MarketingChannel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RepaymentAmount" Type="Double" />
           <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -1218,6 +1668,26 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateCreated" Type="DateTime" Precision="3" />
           <Property Name="IsVisible" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NYSCLoanLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanApplication_FK" Type="Int32" />
+          <Property Name="TrnDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="PaymentFlag" Type="Int32" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultCount" Type="Int32" />
+          <Property Name="DefaultAmount" Type="Double" />
         </EntityType>
         <EntityType Name="NYSCLoanSetUp">
           <Key>
@@ -1237,6 +1707,31 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsVisible" Type="Int32" />
           <Property Name="Flag" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NYSCReferralLedger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_FK" Type="Int32" />
+          <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrnDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NYSCRelative">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Int32" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -1289,6 +1784,22 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="ContactAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="TokenVal" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="myTokenTime" Type="Double" />
+        </EntityType>
+        <EntityType Name="PatnerTransactLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatnerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatnerUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PatnerResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PatnerReference" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BankAcct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RefNum" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+          <Property Name="ValueTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PaymentFlag">
           <Key>
@@ -1412,6 +1923,140 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="IsVisible" Type="Int32" />
           <Property Name="ValueDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="A_OfflineApplications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OtherNames" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="BankVerificationNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mobilenumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Landmark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Closestbuststop" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LGA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LGA_FK" Type="Int32" />
+          <Property Name="Stateofresidence" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StateOfResidence_FK" Type="Int32" />
+          <Property Name="TemporaryAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempLandmark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempClosestBuststop" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempLGA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempLGA_FK" Type="Int32" />
+          <Property Name="TempState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempState_FK" Type="Int32" />
+          <Property Name="StateCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscState_FK" Type="Int32" />
+          <Property Name="NyscLGA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscLGA_FK" Type="Int32" />
+          <Property Name="NyscEmployer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscExpectedPassoutdate" Type="DateTime" Precision="3" />
+          <Property Name="NyscCDSDay" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscCDsGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Netmonthlyincome" Type="Double" />
+          <Property Name="EmergencyContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactRelationship" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactHomeaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactPhonenumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactEmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LoanAmount" Type="Double" />
+          <Property Name="Tenure" Type="Double" />
+          <Property Name="Monthsleft" Type="Double" />
+          <Property Name="DefaultMonthsowed" Type="Double" />
+          <Property Name="RepaymentAmount" Type="Double" />
+          <Property Name="Anyexistingloan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ExistingLoanOutstandingAmount" Type="Double" />
+          <Property Name="ExistingLoanMonthsLeft" Type="Double" />
+          <Property Name="BankName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AccountName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationDate" Type="DateTime" Precision="3" />
+          <Property Name="DateDisbursed" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AA_Sheet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="First_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Names" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Birth" Type="DateTime" Precision="3" />
+          <Property Name="Bank_Verification_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Personal_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Permanent_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Landmark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Closest_bust_stop" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LGA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="State_of_residence" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Temporary_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempLandmark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempClosest_Bust_stop" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempLGA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="State_Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscLGA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscEmployer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscExpected_Pass_out_date" Type="DateTime" Precision="3" />
+          <Property Name="NyscCDS_Day" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NyscCDs_Group" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Net_monthly_income" Type="Double" />
+          <Property Name="EmergencyContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactRelationship" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactHome_address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactPhone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactEmail_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Loan_Amount" Type="Double" />
+          <Property Name="Tenure" Type="Double" />
+          <Property Name="Months_left" Type="Double" />
+          <Property Name="Default_Months_owed" Type="Double" />
+          <Property Name="Repayment_Amount" Type="Double" />
+          <Property Name="Any_existing_loan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ExistingLoanOutstanding_Amount" Type="Double" />
+          <Property Name="ExistingLoanMonths_Left" Type="Double" />
+          <Property Name="Bank_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Application_Date" Type="DateTime" Precision="3" />
+          <Property Name="Date_Disbursed" Type="DateTime" Precision="3" />
+          <Property Name="F49" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="F50" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="F51" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RepaymentDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="RepaymentFlag" Type="Byte" />
+          <Property Name="LoanReference" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerFlag" Type="Int32" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DefaultCount" Type="Int32" />
+          <Property Name="DefaultAmount" Type="Double" />
+        </EntityType>
         <EntityType Name="LoanSerialNo">
           <Key>
             <PropertyRef Name="ID" />
@@ -1419,6 +2064,17 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NYSCSerialNo" Type="Int32" />
           <Property Name="PayrollSerialNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Repayment">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="LedgerFlag" Type="Int32" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Page_Page">
           <End Role="pageHeader" Type="Self.pageHeader" Multiplicity="0..1" />
@@ -1436,6 +2092,7 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySet Name="AccomodationTypes" EntityType="Self.AccomodationType" />
           <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatu" />
           <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Bankolds" EntityType="Self.Bankold" />
           <EntitySet Name="BanksManagers" EntityType="Self.BanksManager" />
           <EntitySet Name="DocUploads" EntityType="Self.DocUpload" />
           <EntitySet Name="EmployerLoanDetails" EntityType="Self.EmployerLoanDetail" />
@@ -1453,17 +2110,24 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySet Name="LoanTenures" EntityType="Self.LoanTenure" />
           <EntitySet Name="LoanTypes" EntityType="Self.LoanType" />
           <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatu" />
+          <EntitySet Name="MarketingChannels" EntityType="Self.MarketingChannel" />
+          <EntitySet Name="MarketingDetails" EntityType="Self.MarketingDetail" />
           <EntitySet Name="MeansOfIdentifications" EntityType="Self.MeansOfIdentification" />
+          <EntitySet Name="MonthVals" EntityType="Self.MonthVal" />
           <EntitySet Name="NigerianStates" EntityType="Self.NigerianState" />
           <EntitySet Name="NYSCApplicationStatus" EntityType="Self.NYSCApplicationStatu" />
           <EntitySet Name="NyscLoanApplications" EntityType="Self.NyscLoanApplication" />
           <EntitySet Name="NYSCLoanApprovals" EntityType="Self.NYSCLoanApproval" />
+          <EntitySet Name="NYSCLoanLedgers" EntityType="Self.NYSCLoanLedger" />
           <EntitySet Name="NYSCLoanSetUps" EntityType="Self.NYSCLoanSetUp" />
           <EntitySet Name="NyscMaritalStatus" EntityType="Self.NyscMaritalStatu" />
+          <EntitySet Name="NYSCReferralLedgers" EntityType="Self.NYSCReferralLedger" />
+          <EntitySet Name="NYSCRelatives" EntityType="Self.NYSCRelative" />
           <EntitySet Name="Pages" EntityType="Self.Page" />
           <EntitySet Name="PageAuthentications" EntityType="Self.PageAuthentication" />
           <EntitySet Name="pageHeaders" EntityType="Self.pageHeader" />
           <EntitySet Name="Partners" EntityType="Self.Partner" />
+          <EntitySet Name="PatnerTransactLogs" EntityType="Self.PatnerTransactLog" />
           <EntitySet Name="PaymentFlags" EntityType="Self.PaymentFlag" />
           <EntitySet Name="RepaymentMethods" EntityType="Self.RepaymentMethod" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
@@ -1472,11 +2136,26 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySet Name="Titles" EntityType="Self.Title" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="A_OfflineApplications" EntityType="Self.A_OfflineApplications" />
+          <EntitySet Name="AA_Sheet" EntityType="Self.AA_Sheet" />
+          <EntitySet Name="Ledgers" EntityType="Self.Ledger" />
           <EntitySet Name="LoanSerialNoes" EntityType="Self.LoanSerialNo" />
+          <EntitySet Name="Repayments" EntityType="Self.Repayment" />
           <AssociationSet Name="FK_Page_Page" Association="Self.FK_Page_Page">
             <End Role="pageHeader" EntitySet="pageHeaders" />
             <End Role="Page" EntitySet="Pages" />
           </AssociationSet>
+          <FunctionImport Name="BorroweredLoans" ReturnType="Collection(UvlotAModel.BorroweredLoans_Result)" />
+          <FunctionImport Name="DisbursedLoans" ReturnType="Collection(UvlotAModel.DisbursedLoans_Result)" />
+          <FunctionImport Name="GetNYSCDefaultLoans" ReturnType="Collection(UvlotAModel.GetNYSCDefaultLoans_Result)" />
+          <FunctionImport Name="GetNYSCLoanApplicationSummary" ReturnType="Collection(UvlotAModel.GetNYSCLoanApplicationSummary_Result)" />
+          <FunctionImport Name="GetReferralActivity" ReturnType="Collection(UvlotAModel.GetReferralActivity_Result)" />
+          <FunctionImport Name="GetReferrals" ReturnType="Collection(UvlotAModel.GetReferrals_Result)">
+            <Parameter Name="RoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LoanDueForDebit" ReturnType="Collection(UvlotAModel.LoanDueForDebit_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="LoanRepayment" ReturnType="Collection(UvlotAModel.LoanRepayment_Result)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
@@ -1485,19 +2164,104 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="NyscApplicationRelated" ReturnType="Collection(UvlotAModel.NyscApplicationRelated_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="OutStandingLoan" ReturnType="Collection(UvlotAModel.OutStandingLoan_Result)">
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ReferralAgentPerformance" ReturnType="Collection(UvlotAModel.ReferralAgentPerformance_Result)" />
+          <FunctionImport Name="Repayment" ReturnType="Collection(UvlotAModel.Repayment_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="RevenueEarned" ReturnType="Collection(UvlotAModel.RevenueEarned_Result)">
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="RevenueReceived" ReturnType="Collection(UvlotAModel.RevenueReceived_Result)">
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Top50ReferralPerformance" ReturnType="Collection(UvlotAModel.Top50ReferralPerformance_Result)" />
           <FunctionImport Name="UpdatePartner">
             <Parameter Name="myTimer" Mode="In" Type="Double" />
             <Parameter Name="myTokenVal" Mode="In" Type="String" />
             <Parameter Name="partnerID" Mode="In" Type="String" />
             <Parameter Name="RecID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="PatnerTransactLogs" EntityType="UvlotAModel.PatnerTransactLog" />
-          <EntitySet Name="MarketingChannels" EntityType="UvlotAModel.MarketingChannel" />
-          <EntitySet Name="MarketingDetails" EntityType="UvlotAModel.MarketingDetail" />
-          <EntitySet Name="NYSCLoanLedgers" EntityType="UvlotAModel.NYSCLoanLedger" />
-          <EntitySet Name="NYSCReferralLedgers" EntityType="UvlotAModel.NYSCReferralLedger" />
-          <EntitySet Name="Bankolds" EntityType="UvlotAModel.Bankold" />
         </EntityContainer>
+        <ComplexType Name="BorroweredLoans_Result">
+          <Property Type="Int32" Name="NumOFBorrowers" Nullable="true" />
+          <Property Type="Double" Name="BorrowedAmount" Nullable="true" />
+          <Property Type="String" Name="ChannelOfBorrow" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="ChannelOfPayback" Nullable="false" MaxLength="11" />
+        </ComplexType>
+        <ComplexType Name="DisbursedLoans_Result">
+          <Property Type="Int32" Name="NoOfLoansGivenOut" Nullable="true" />
+          <Property Type="Double" Name="TotalAmountGivenOut" Nullable="true" />
+          <Property Type="Int32" Name="NumberOfActiveLoan" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetNYSCDefaultLoans_Result">
+          <Property Type="String" Name="ReferenceNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="452" />
+          <Property Type="String" Name="StateCode" Nullable="true" MaxLength="250" />
+          <Property Type="Double" Name="LoanAmount" Nullable="true" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="String" Name="DueMonth" Nullable="true" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="GetNYSCLoanApplicationSummary_Result">
+          <Property Type="String" Name="MyDate" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="NoOfNewApplications" Nullable="true" />
+          <Property Type="Double" Name="NewLoanAmount" Nullable="true" />
+          <Property Type="Int32" Name="NoOfDisbursedApplications" Nullable="true" />
+          <Property Type="Double" Name="DisbusredAmount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetReferralActivity_Result">
+          <Property Type="String" Name="MyReferralCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Referrer" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="NoOfLoan" Nullable="true" />
+          <Property Type="Double" Name="LoanAmount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetReferrals_Result">
+          <Property Type="String" Name="Firstname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Lastname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PaswordVal" Nullable="true" />
+          <Property Type="String" Name="UserAddress" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ResetPassword" Nullable="true" />
+          <Property Type="DateTime" Name="ValueDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IsVisible" Nullable="true" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PinNumber" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Title_FK" Nullable="true" />
+          <Property Type="Int32" Name="GenderID" Nullable="true" />
+          <Property Type="Int32" Name="EmploymentStatus_FK" Nullable="true" />
+          <Property Type="Int32" Name="StateofResidence_FK" Nullable="true" />
+          <Property Type="Int32" Name="LGA_FK" Nullable="true" />
+          <Property Type="String" Name="DateOfBirth" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Audit" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ReferralLevel" Nullable="true" />
+          <Property Type="String" Name="ContactAddress" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MyReferralCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ReferralCode" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IsVisible1" Nullable="true" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="Role_FK" Nullable="false" />
+          <Property Type="Int32" Name="User_FK" Nullable="false" />
+          <Property Type="DateTime" Name="ValueDate1" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="LoanDueForDebit_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RefNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Firstname" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Othernames" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="LoanTenure" Nullable="true" />
+          <Property Type="Double" Name="Credit" Nullable="true" />
+          <Property Type="DateTime" Name="DueDate" Nullable="true" Precision="23" />
+        </ComplexType>
         <ComplexType Name="LoanRepayment_Result">
           <Property Type="Int32" Name="NoOFTransaction" Nullable="true" />
           <Property Type="DateTime" Name="DateCreated" Nullable="true" />
@@ -1508,87 +2272,71 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <Property Type="DateTime" Name="DateCreated" Nullable="true" />
           <Property Type="Double" Name="LoanAmount" Nullable="true" />
         </ComplexType>
-        <EntityType Name="PatnerTransactLog">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatnerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PatnerUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PatnerResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PatnerReference" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="BankAcct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RefNum" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DateCreated" Type="DateTime" Precision="3" />
-          <Property Name="ValueDate" Type="DateTime" Precision="3" />
-          <Property Name="ValueTime" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="MarketingChannel">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsVisible" Type="Int32" />
-          <Property Name="ListOrderID" Type="Int32" />
-        </EntityType>
-        <EntityType Name="MarketingDetail">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_FK" Type="Int32" />
-          <Property Name="MarketingChannel_FK" Type="Int32" />
-          <Property Name="IsVisible" Type="Int32" />
-          <Property Name="DateCreated" Type="DateTime" Precision="3" />
-          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="NYSCLoanLedger">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoanApplication_FK" Type="Int32" />
-          <Property Name="TrnDate" Type="DateTime" Precision="3" />
-          <Property Name="ReferenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Debit" Type="Double" />
-          <Property Name="Credit" Type="Double" />
-          <Property Name="PaymentFlag" Type="Int32" />
-          <Property Name="DueDate" Type="DateTime" Precision="3" />
-          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
-          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsVisible" Type="Int32" />
-          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="NYSCReferralLedger">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="User_FK" Type="Int32" />
-          <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TrnDate" Type="DateTime" Precision="3" />
-          <Property Name="ReferenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Debit" Type="Double" />
-          <Property Name="Credit" Type="Double" />
-          <Property Name="ValueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ValueTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsVisible" Type="Int32" />
-          <Property Name="Audit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Bankold">
-          <Key>
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
+        <ComplexType Name="NyscApplicationRelated_Result">
+          <Property Type="String" Name="Fullname" Nullable="true" MaxLength="301" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="RefNumber" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="ApplicationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ContactAddress" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="LoanAmount" Nullable="true" />
+          <Property Type="Int32" Name="LoanTenure" Nullable="true" />
+          <Property Type="String" Name="LoanStatus" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="OutStandingLoan_Result">
+          <Property Type="String" Name="OutstandingNumberOfRepayment" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DueDate" Nullable="true" />
+          <Property Type="Double" Name="OutstandingAmount" Nullable="true" />
+          <Property Type="Double" Name="OutstandingInterest" Nullable="true" />
+          <Property Type="Double" Name="PrincipalPerMonth" Nullable="true" />
+          <Property Type="Double" Name="AdminFee" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ReferralAgentPerformance_Result">
+          <Property Type="String" Name="SignupDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActiveRAS" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="RegisteredRAS" Nullable="true" />
+          <Property Type="Double" Name="NOOFNEWAPPLICATIONS" Nullable="true" />
+          <Property Type="Double" Name="NEWAPPAMTOUNT" Nullable="true" />
+          <Property Type="Double" Name="NOOFDISBURSEMENT" Nullable="true" />
+          <Property Type="Double" Name="NEWDISBURSEMENTAMOUNT" Nullable="true" />
+          <Property Type="Double" Name="NewREPAYMENT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Repayment_Result">
+          <Property Type="Int32" Name="Number" Nullable="true" />
+          <Property Type="Double" Name="RepaymentAmount" Nullable="true" />
+          <Property Type="DateTime" Name="PayDate" Nullable="true" />
+          <Property Type="String" Name="RepaymentRate" Nullable="false" MaxLength="1" />
+          <Property Type="Double" Name="average" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RevenueEarned_Result">
+          <Property Type="String" Name="NumberOfRepayment" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="RevenueEarned" Nullable="true" />
+          <Property Type="DateTime" Name="DueDate" Nullable="true" />
+          <Property Type="Double" Name="InterestRevenue" Nullable="true" />
+          <Property Type="Double" Name="DefaultFee" Nullable="true" />
+          <Property Type="Double" Name="AdminFee" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RevenueReceived_Result">
+          <Property Type="String" Name="NumberOfRepayment" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="RevenueEarned" Nullable="true" />
+          <Property Type="DateTime" Name="DueDate" Nullable="true" />
+          <Property Type="Double" Name="InterestRevenue" Nullable="true" />
+          <Property Type="String" Name="DefaultFee" Nullable="false" MaxLength="1" />
+          <Property Type="Double" Name="AdminFee" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Top50ReferralPerformance_Result">
+          <Property Type="String" Name="SignupDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AgentName" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="DisbusrseAmount" Nullable="true" />
+          <Property Type="Double" Name="RepayAmount" Nullable="true" />
+          <Property Type="Int32" Name="NoOfActiveLoans" Nullable="true" />
+          <Property Type="Int32" Name="NoOfDefaultLoan" Nullable="true" />
+          <Property Type="Double" Name="CommissionEarnd" Nullable="true" />
+          <Property Type="Double" Name="CommissionPaid" Nullable="true" />
+          <Property Type="Double" Name="WalletBalance" Nullable="true" />
+          <Property Type="Int32" Name="Userid" Nullable="true" />
+          <Property Type="String" Name="referralCode" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1618,8 +2366,18 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySetMapping Name="Banks">
             <EntityTypeMapping TypeName="UvlotAModel.Bank">
               <MappingFragment StoreEntitySet="Bank">
-                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="FlutterWaveBankCode" ColumnName="FlutterWaveBankCode" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bankolds">
+            <EntityTypeMapping TypeName="UvlotAModel.Bankold">
+              <MappingFragment StoreEntitySet="Bankold">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1926,12 +2684,47 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MarketingChannels">
+            <EntityTypeMapping TypeName="UvlotAModel.MarketingChannel">
+              <MappingFragment StoreEntitySet="MarketingChannel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ListOrderID" ColumnName="ListOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarketingDetails">
+            <EntityTypeMapping TypeName="UvlotAModel.MarketingDetail">
+              <MappingFragment StoreEntitySet="MarketingDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="MarketingChannel_FK" ColumnName="MarketingChannel_FK" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MeansOfIdentifications">
             <EntityTypeMapping TypeName="UvlotAModel.MeansOfIdentification">
               <MappingFragment StoreEntitySet="MeansOfIdentification">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonthVals">
+            <EntityTypeMapping TypeName="UvlotAModel.MonthVal">
+              <MappingFragment StoreEntitySet="MonthVal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+                <ScalarProperty Name="MonthValue" ColumnName="MonthValue" />
+                <ScalarProperty Name="MonthValStr" ColumnName="MonthValStr" />
                 <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1962,9 +2755,6 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
           <EntitySetMapping Name="NyscLoanApplications">
             <EntityTypeMapping TypeName="UvlotAModel.NyscLoanApplication">
               <MappingFragment StoreEntitySet="NyscLoanApplication">
-                <ScalarProperty Name="Audit" ColumnName="Audit" />
-                <ScalarProperty Name="RepaymentAmount" ColumnName="RepaymentAmount" />
-                <ScalarProperty Name="MarketingChannel" ColumnName="MarketingChannel" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="RefNumber" ColumnName="RefNumber" />
                 <ScalarProperty Name="Title_FK" ColumnName="Title_FK" />
@@ -1992,6 +2782,13 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
                 <ScalarProperty Name="NyscLGA_FK" ColumnName="NyscLGA_FK" />
                 <ScalarProperty Name="Employer" ColumnName="Employer" />
                 <ScalarProperty Name="OfficialAddress" ColumnName="OfficialAddress" />
+                <ScalarProperty Name="PPA_Department" ColumnName="PPA_Department" />
+                <ScalarProperty Name="PPA_ROle" ColumnName="PPA_ROle" />
+                <ScalarProperty Name="PPA_EmailAddress" ColumnName="PPA_EmailAddress" />
+                <ScalarProperty Name="PPA_PhoneNumber" ColumnName="PPA_PhoneNumber" />
+                <ScalarProperty Name="PPA_supervisorName" ColumnName="PPA_supervisorName" />
+                <ScalarProperty Name="PPA_supervisorEmail" ColumnName="PPA_supervisorEmail" />
+                <ScalarProperty Name="PPA_supervisorPhonenumber" ColumnName="PPA_supervisorPhonenumber" />
                 <ScalarProperty Name="PassOutMonth" ColumnName="PassOutMonth" />
                 <ScalarProperty Name="CDSDay" ColumnName="CDSDay" />
                 <ScalarProperty Name="CDSGroup" ColumnName="CDSGroup" />
@@ -2001,6 +2798,17 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
                 <ScalarProperty Name="EMG_PhoneNumber" ColumnName="EMG_PhoneNumber" />
                 <ScalarProperty Name="EMG_EmailAddress" ColumnName="EMG_EmailAddress" />
                 <ScalarProperty Name="EMG_HomeAddress" ColumnName="EMG_HomeAddress" />
+                <ScalarProperty Name="EMG_FullName2" ColumnName="EMG_FullName2" />
+                <ScalarProperty Name="EMG_HomeAddress2" ColumnName="EMG_HomeAddress2" />
+                <ScalarProperty Name="EMG_PhoneNumber2" ColumnName="EMG_PhoneNumber2" />
+                <ScalarProperty Name="EMG_EmailAddress2" ColumnName="EMG_EmailAddress2" />
+                <ScalarProperty Name="EMG_Relationship2" ColumnName="EMG_Relationship2" />
+                <ScalarProperty Name="FirstRelativeName" ColumnName="FirstRelativeName" />
+                <ScalarProperty Name="FirstRelativePhoneNumber" ColumnName="FirstRelativePhoneNumber" />
+                <ScalarProperty Name="SecondRelativeName" ColumnName="SecondRelativeName" />
+                <ScalarProperty Name="SecondRelativePhoneNumber" ColumnName="SecondRelativePhoneNumber" />
+                <ScalarProperty Name="RelativeRelationship_FK" ColumnName="RelativeRelationship_FK" />
+                <ScalarProperty Name="RelativeRelationship2_FK" ColumnName="RelativeRelationship2_FK" />
                 <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
                 <ScalarProperty Name="LoanTenure" ColumnName="LoanTenure" />
                 <ScalarProperty Name="ExistingLoan" ColumnName="ExistingLoan" />
@@ -2010,6 +2818,7 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
                 <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
                 <ScalarProperty Name="AccountName" ColumnName="AccountName" />
                 <ScalarProperty Name="BVN" ColumnName="BVN" />
+                <ScalarProperty Name="MarketingChannel" ColumnName="MarketingChannel" />
                 <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
                 <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
@@ -2019,10 +2828,20 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
                 <ScalarProperty Name="STA_FilePath" ColumnName="STA_FilePath" />
                 <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
                 <ScalarProperty Name="LoanComment" ColumnName="LoanComment" />
+                <ScalarProperty Name="NyscpassportFilePath" ColumnName="NyscpassportFilePath" />
+                <ScalarProperty Name="NyscPostingLetterFllePath" ColumnName="NyscPostingLetterFllePath" />
+                <ScalarProperty Name="NyscCallUpLetterFilePath" ColumnName="NyscCallUpLetterFilePath" />
+                <ScalarProperty Name="NyscProfileDashboardFilePath" ColumnName="NyscProfileDashboardFilePath" />
+                <ScalarProperty Name="LetterOfundertaken" ColumnName="LetterOfundertaken" />
+                <ScalarProperty Name="FacebookName" ColumnName="FacebookName" />
+                <ScalarProperty Name="InstagramHandle" ColumnName="InstagramHandle" />
+                <ScalarProperty Name="TwitterHandle" ColumnName="TwitterHandle" />
                 <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
                 <ScalarProperty Name="LoanSerialNo" ColumnName="LoanSerialNo" />
+                <ScalarProperty Name="RepaymentAmount" ColumnName="RepaymentAmount" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2038,6 +2857,27 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
                 <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCLoanLedgers">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCLoanLedger">
+              <MappingFragment StoreEntitySet="NYSCLoanLedger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="PaymentFlag" ColumnName="PaymentFlag" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="DefaultCount" ColumnName="DefaultCount" />
+                <ScalarProperty Name="DefaultAmount" ColumnName="DefaultAmount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2059,6 +2899,33 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
                 <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCReferralLedgers">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCReferralLedger">
+              <MappingFragment StoreEntitySet="NYSCReferralLedger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NYSCRelatives">
+            <EntityTypeMapping TypeName="UvlotAModel.NYSCRelative">
+              <MappingFragment StoreEntitySet="NYSCRelative">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2112,6 +2979,23 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
                 <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
                 <ScalarProperty Name="TokenVal" ColumnName="TokenVal" />
                 <ScalarProperty Name="myTokenTime" ColumnName="myTokenTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatnerTransactLogs">
+            <EntityTypeMapping TypeName="UvlotAModel.PatnerTransactLog">
+              <MappingFragment StoreEntitySet="PatnerTransactLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatnerCode" ColumnName="PatnerCode" />
+                <ScalarProperty Name="PatnerUrl" ColumnName="PatnerUrl" />
+                <ScalarProperty Name="PatnerResponse" ColumnName="PatnerResponse" />
+                <ScalarProperty Name="PatnerReference" ColumnName="PatnerReference" />
+                <ScalarProperty Name="BankAcct" ColumnName="BankAcct" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="RefNum" ColumnName="RefNum" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2243,6 +3127,142 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="A_OfflineApplications">
+            <EntityTypeMapping TypeName="UvlotAModel.A_OfflineApplications">
+              <MappingFragment StoreEntitySet="A_OfflineApplications">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="OtherNames" ColumnName="OtherNames" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="BankVerificationNumber" ColumnName="BankVerificationNumber" />
+                <ScalarProperty Name="Mobilenumber" ColumnName="Mobilenumber" />
+                <ScalarProperty Name="PersonalEmail" ColumnName="PersonalEmail" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="Closestbuststop" ColumnName="Closestbuststop" />
+                <ScalarProperty Name="LGA" ColumnName="LGA" />
+                <ScalarProperty Name="LGA_FK" ColumnName="LGA_FK" />
+                <ScalarProperty Name="Stateofresidence" ColumnName="Stateofresidence" />
+                <ScalarProperty Name="StateOfResidence_FK" ColumnName="StateOfResidence_FK" />
+                <ScalarProperty Name="TemporaryAddress" ColumnName="TemporaryAddress" />
+                <ScalarProperty Name="TempLandmark" ColumnName="TempLandmark" />
+                <ScalarProperty Name="TempClosestBuststop" ColumnName="TempClosestBuststop" />
+                <ScalarProperty Name="TempLGA" ColumnName="TempLGA" />
+                <ScalarProperty Name="TempLGA_FK" ColumnName="TempLGA_FK" />
+                <ScalarProperty Name="TempState" ColumnName="TempState" />
+                <ScalarProperty Name="TempState_FK" ColumnName="TempState_FK" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="NyscState" ColumnName="NyscState" />
+                <ScalarProperty Name="NyscState_FK" ColumnName="NyscState_FK" />
+                <ScalarProperty Name="NyscLGA" ColumnName="NyscLGA" />
+                <ScalarProperty Name="NyscLGA_FK" ColumnName="NyscLGA_FK" />
+                <ScalarProperty Name="NyscEmployer" ColumnName="NyscEmployer" />
+                <ScalarProperty Name="NyscAddress" ColumnName="NyscAddress" />
+                <ScalarProperty Name="NyscExpectedPassoutdate" ColumnName="NyscExpectedPassoutdate" />
+                <ScalarProperty Name="NyscCDSDay" ColumnName="NyscCDSDay" />
+                <ScalarProperty Name="NyscCDsGroup" ColumnName="NyscCDsGroup" />
+                <ScalarProperty Name="Netmonthlyincome" ColumnName="Netmonthlyincome" />
+                <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+                <ScalarProperty Name="EmergencyContactRelationship" ColumnName="EmergencyContactRelationship" />
+                <ScalarProperty Name="EmergencyContactHomeaddress" ColumnName="EmergencyContactHomeaddress" />
+                <ScalarProperty Name="EmergencyContactPhonenumber" ColumnName="EmergencyContactPhonenumber" />
+                <ScalarProperty Name="EmergencyContactEmailAddress" ColumnName="EmergencyContactEmailAddress" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="Tenure" ColumnName="Tenure" />
+                <ScalarProperty Name="Monthsleft" ColumnName="Monthsleft" />
+                <ScalarProperty Name="DefaultMonthsowed" ColumnName="DefaultMonthsowed" />
+                <ScalarProperty Name="RepaymentAmount" ColumnName="RepaymentAmount" />
+                <ScalarProperty Name="Anyexistingloan" ColumnName="Anyexistingloan" />
+                <ScalarProperty Name="ExistingLoanOutstandingAmount" ColumnName="ExistingLoanOutstandingAmount" />
+                <ScalarProperty Name="ExistingLoanMonthsLeft" ColumnName="ExistingLoanMonthsLeft" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+                <ScalarProperty Name="DateDisbursed" ColumnName="DateDisbursed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AA_Sheet">
+            <EntityTypeMapping TypeName="UvlotAModel.AA_Sheet">
+              <MappingFragment StoreEntitySet="AA_Sheet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Other_Names" ColumnName="Other Names" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital Status" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date Of Birth" />
+                <ScalarProperty Name="Bank_Verification_Number" ColumnName="Bank Verification Number" />
+                <ScalarProperty Name="Mobile_number" ColumnName="Mobile number" />
+                <ScalarProperty Name="Personal_Email" ColumnName="Personal Email" />
+                <ScalarProperty Name="Permanent_Address" ColumnName="Permanent Address" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="Closest_bust_stop" ColumnName="Closest bust stop" />
+                <ScalarProperty Name="LGA" ColumnName="LGA" />
+                <ScalarProperty Name="State_of_residence" ColumnName="State of residence" />
+                <ScalarProperty Name="Temporary_Address" ColumnName="Temporary Address" />
+                <ScalarProperty Name="TempLandmark" ColumnName="TempLandmark" />
+                <ScalarProperty Name="TempClosest_Bust_stop" ColumnName="TempClosest Bust stop" />
+                <ScalarProperty Name="TempLGA" ColumnName="TempLGA" />
+                <ScalarProperty Name="TempState" ColumnName="TempState" />
+                <ScalarProperty Name="State_Code" ColumnName="State Code" />
+                <ScalarProperty Name="NyscState" ColumnName="NyscState" />
+                <ScalarProperty Name="NyscLGA" ColumnName="NyscLGA" />
+                <ScalarProperty Name="NyscEmployer" ColumnName="NyscEmployer" />
+                <ScalarProperty Name="NyscAddress" ColumnName="NyscAddress" />
+                <ScalarProperty Name="NyscExpected_Pass_out_date" ColumnName="NyscExpected Pass out date" />
+                <ScalarProperty Name="NyscCDS_Day" ColumnName="NyscCDS Day" />
+                <ScalarProperty Name="NyscCDs_Group" ColumnName="NyscCDs Group" />
+                <ScalarProperty Name="Net_monthly_income" ColumnName="Net monthly income" />
+                <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+                <ScalarProperty Name="EmergencyContactRelationship" ColumnName="EmergencyContactRelationship" />
+                <ScalarProperty Name="EmergencyContactHome_address" ColumnName="EmergencyContactHome address" />
+                <ScalarProperty Name="EmergencyContactPhone_number" ColumnName="EmergencyContactPhone number" />
+                <ScalarProperty Name="EmergencyContactEmail_Address" ColumnName="EmergencyContactEmail Address" />
+                <ScalarProperty Name="Loan_Amount" ColumnName="Loan Amount" />
+                <ScalarProperty Name="Tenure" ColumnName="Tenure" />
+                <ScalarProperty Name="Months_left" ColumnName="Months left" />
+                <ScalarProperty Name="Default_Months_owed" ColumnName="Default Months owed" />
+                <ScalarProperty Name="Repayment_Amount" ColumnName="Repayment Amount" />
+                <ScalarProperty Name="Any_existing_loan" ColumnName="Any existing loan" />
+                <ScalarProperty Name="ExistingLoanOutstanding_Amount" ColumnName="ExistingLoanOutstanding Amount" />
+                <ScalarProperty Name="ExistingLoanMonths_Left" ColumnName="ExistingLoanMonths Left" />
+                <ScalarProperty Name="Bank_Name" ColumnName="Bank Name" />
+                <ScalarProperty Name="Account_Number" ColumnName="Account Number" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Application_Date" ColumnName="Application Date" />
+                <ScalarProperty Name="Date_Disbursed" ColumnName="Date Disbursed" />
+                <ScalarProperty Name="F49" ColumnName="F49" />
+                <ScalarProperty Name="F50" ColumnName="F50" />
+                <ScalarProperty Name="F51" ColumnName="F51" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ledgers">
+            <EntityTypeMapping TypeName="UvlotAModel.Ledger">
+              <MappingFragment StoreEntitySet="Ledger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RepaymentDate" ColumnName="RepaymentDate" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="RepaymentFlag" ColumnName="RepaymentFlag" />
+                <ScalarProperty Name="LoanReference" ColumnName="LoanReference" />
+                <ScalarProperty Name="LedgerFlag" ColumnName="LedgerFlag" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="DefaultCount" ColumnName="DefaultCount" />
+                <ScalarProperty Name="DefaultAmount" ColumnName="DefaultAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="LoanSerialNoes">
             <EntityTypeMapping TypeName="UvlotAModel.LoanSerialNo">
               <MappingFragment StoreEntitySet="LoanSerialNo">
@@ -2252,6 +3272,117 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Repayments">
+            <EntityTypeMapping TypeName="UvlotAModel.Repayment">
+              <MappingFragment StoreEntitySet="Repayments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LedgerFlag" ColumnName="LedgerFlag" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BorroweredLoans" FunctionName="UvlotAModel.Store.BorroweredLoans">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.BorroweredLoans_Result">
+                <ScalarProperty Name="NumOFBorrowers" ColumnName="NumOFBorrowers" />
+                <ScalarProperty Name="BorrowedAmount" ColumnName="BorrowedAmount" />
+                <ScalarProperty Name="ChannelOfBorrow" ColumnName="ChannelOfBorrow" />
+                <ScalarProperty Name="ChannelOfPayback" ColumnName="ChannelOfPayback" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DisbursedLoans" FunctionName="UvlotAModel.Store.DisbursedLoans">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.DisbursedLoans_Result">
+                <ScalarProperty Name="NoOfLoansGivenOut" ColumnName="NoOfLoansGivenOut" />
+                <ScalarProperty Name="TotalAmountGivenOut" ColumnName="TotalAmountGivenOut" />
+                <ScalarProperty Name="NumberOfActiveLoan" ColumnName="NumberOfActiveLoan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNYSCDefaultLoans" FunctionName="UvlotAModel.Store.GetNYSCDefaultLoans">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.GetNYSCDefaultLoans_Result">
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DueMonth" ColumnName="DueMonth" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNYSCLoanApplicationSummary" FunctionName="UvlotAModel.Store.GetNYSCLoanApplicationSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.GetNYSCLoanApplicationSummary_Result">
+                <ScalarProperty Name="MyDate" ColumnName="MyDate" />
+                <ScalarProperty Name="NoOfNewApplications" ColumnName="NoOfNewApplications" />
+                <ScalarProperty Name="NewLoanAmount" ColumnName="NewLoanAmount" />
+                <ScalarProperty Name="NoOfDisbursedApplications" ColumnName="NoOfDisbursedApplications" />
+                <ScalarProperty Name="DisbusredAmount" ColumnName="DisbusredAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetReferralActivity" FunctionName="UvlotAModel.Store.GetReferralActivity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.GetReferralActivity_Result">
+                <ScalarProperty Name="MyReferralCode" ColumnName="MyReferralCode" />
+                <ScalarProperty Name="Referrer" ColumnName="Referrer" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="NoOfLoan" ColumnName="NoOfLoan" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetReferrals" FunctionName="UvlotAModel.Store.GetReferrals">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.GetReferrals_Result">
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PaswordVal" ColumnName="PaswordVal" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="PinNumber" ColumnName="PinNumber" />
+                <ScalarProperty Name="Title_FK" ColumnName="Title_FK" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="EmploymentStatus_FK" ColumnName="EmploymentStatus_FK" />
+                <ScalarProperty Name="StateofResidence_FK" ColumnName="StateofResidence_FK" />
+                <ScalarProperty Name="LGA_FK" ColumnName="LGA_FK" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+                <ScalarProperty Name="ReferralLevel" ColumnName="ReferralLevel" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="MyReferralCode" ColumnName="MyReferralCode" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="IsVisible1" ColumnName="IsVisible1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Role_FK" ColumnName="Role_FK" />
+                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
+                <ScalarProperty Name="ValueDate1" ColumnName="ValueDate1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoanDueForDebit" FunctionName="UvlotAModel.Store.LoanDueForDebit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.LoanDueForDebit_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RefNumber" ColumnName="RefNumber" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Othernames" ColumnName="Othernames" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="LoanTenure" ColumnName="LoanTenure" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="LoanRepayment" FunctionName="UvlotAModel.Store.LoanRepayment">
             <ResultMapping>
               <ComplexTypeMapping TypeName="UvlotAModel.LoanRepayment_Result">
@@ -2270,94 +3401,100 @@ warning 6002: The table/view 'Uvlot.dbo.LoanSerialNo' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UpdatePartner" FunctionName="UvlotAModel.Store.UpdatePartner" />
-          <EntitySetMapping Name="PatnerTransactLogs">
-            <EntityTypeMapping TypeName="UvlotAModel.PatnerTransactLog">
-              <MappingFragment StoreEntitySet="PatnerTransactLog">
-                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
-                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="RefNum" ColumnName="RefNum" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="BankAcct" ColumnName="BankAcct" />
-                <ScalarProperty Name="PatnerReference" ColumnName="PatnerReference" />
-                <ScalarProperty Name="PatnerResponse" ColumnName="PatnerResponse" />
-                <ScalarProperty Name="PatnerUrl" ColumnName="PatnerUrl" />
-                <ScalarProperty Name="PatnerCode" ColumnName="PatnerCode" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MarketingChannels">
-            <EntityTypeMapping TypeName="UvlotAModel.MarketingChannel">
-              <MappingFragment StoreEntitySet="MarketingChannel">
-                <ScalarProperty Name="ListOrderID" ColumnName="ListOrderID" />
-                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MarketingDetails">
-            <EntityTypeMapping TypeName="UvlotAModel.MarketingDetail">
-              <MappingFragment StoreEntitySet="MarketingDetails">
-                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
-                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-                <ScalarProperty Name="MarketingChannel_FK" ColumnName="MarketingChannel_FK" />
-                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NYSCLoanLedgers">
-            <EntityTypeMapping TypeName="UvlotAModel.NYSCLoanLedger">
-              <MappingFragment StoreEntitySet="NYSCLoanLedger">
-                <ScalarProperty Name="Audit" ColumnName="Audit" />
-                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
-                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <FunctionImportMapping FunctionImportName="NyscApplicationRelated" FunctionName="UvlotAModel.Store.NyscApplicationRelated">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.NyscApplicationRelated_Result">
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="RefNumber" ColumnName="RefNumber" />
+                <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="LoanTenure" ColumnName="LoanTenure" />
+                <ScalarProperty Name="LoanStatus" ColumnName="LoanStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OutStandingLoan" FunctionName="UvlotAModel.Store.OutStandingLoan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.OutStandingLoan_Result">
+                <ScalarProperty Name="OutstandingNumberOfRepayment" ColumnName="OutstandingNumberOfRepayment" />
                 <ScalarProperty Name="DueDate" ColumnName="DueDate" />
-                <ScalarProperty Name="PaymentFlag" ColumnName="PaymentFlag" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="Debit" ColumnName="Debit" />
-                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
-                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
-                <ScalarProperty Name="LoanApplication_FK" ColumnName="LoanApplication_FK" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NYSCReferralLedgers">
-            <EntityTypeMapping TypeName="UvlotAModel.NYSCReferralLedger">
-              <MappingFragment StoreEntitySet="NYSCReferralLedger">
-                <ScalarProperty Name="Audit" ColumnName="Audit" />
-                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-                <ScalarProperty Name="ValueTime" ColumnName="ValueTime" />
-                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="Debit" ColumnName="Debit" />
-                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
-                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
-                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
-                <ScalarProperty Name="User_FK" ColumnName="User_FK" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Bankolds">
-            <EntityTypeMapping TypeName="UvlotAModel.Bankold">
-              <MappingFragment StoreEntitySet="Bankold">
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="OutstandingAmount" ColumnName="OutstandingAmount" />
+                <ScalarProperty Name="OutstandingInterest" ColumnName="OutstandingInterest" />
+                <ScalarProperty Name="PrincipalPerMonth" ColumnName="PrincipalPerMonth" />
+                <ScalarProperty Name="AdminFee" ColumnName="AdminFee" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReferralAgentPerformance" FunctionName="UvlotAModel.Store.ReferralAgentPerformance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.ReferralAgentPerformance_Result">
+                <ScalarProperty Name="SignupDate" ColumnName="SignupDate" />
+                <ScalarProperty Name="ActiveRAS" ColumnName="ActiveRAS" />
+                <ScalarProperty Name="RegisteredRAS" ColumnName="RegisteredRAS" />
+                <ScalarProperty Name="NOOFNEWAPPLICATIONS" ColumnName="NOOFNEWAPPLICATIONS" />
+                <ScalarProperty Name="NEWAPPAMTOUNT" ColumnName="NEWAPPAMTOUNT" />
+                <ScalarProperty Name="NOOFDISBURSEMENT" ColumnName="NOOFDISBURSEMENT" />
+                <ScalarProperty Name="NEWDISBURSEMENTAMOUNT" ColumnName="NEWDISBURSEMENTAMOUNT" />
+                <ScalarProperty Name="NewREPAYMENT" ColumnName="NewREPAYMENT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Repayment" FunctionName="UvlotAModel.Store.Repayment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.Repayment_Result">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="RepaymentAmount" ColumnName="RepaymentAmount" />
+                <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+                <ScalarProperty Name="RepaymentRate" ColumnName="RepaymentRate" />
+                <ScalarProperty Name="average" ColumnName="average" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RevenueEarned" FunctionName="UvlotAModel.Store.RevenueEarned">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.RevenueEarned_Result">
+                <ScalarProperty Name="NumberOfRepayment" ColumnName="NumberOfRepayment" />
+                <ScalarProperty Name="RevenueEarned" ColumnName="RevenueEarned" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="InterestRevenue" ColumnName="InterestRevenue" />
+                <ScalarProperty Name="DefaultFee" ColumnName="DefaultFee" />
+                <ScalarProperty Name="AdminFee" ColumnName="AdminFee" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RevenueReceived" FunctionName="UvlotAModel.Store.RevenueReceived">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.RevenueReceived_Result">
+                <ScalarProperty Name="NumberOfRepayment" ColumnName="NumberOfRepayment" />
+                <ScalarProperty Name="RevenueEarned" ColumnName="RevenueEarned" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="InterestRevenue" ColumnName="InterestRevenue" />
+                <ScalarProperty Name="DefaultFee" ColumnName="DefaultFee" />
+                <ScalarProperty Name="AdminFee" ColumnName="AdminFee" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Top50ReferralPerformance" FunctionName="UvlotAModel.Store.Top50ReferralPerformance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UvlotAModel.Top50ReferralPerformance_Result">
+                <ScalarProperty Name="SignupDate" ColumnName="SignupDate" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="DisbusrseAmount" ColumnName="DisbusrseAmount" />
+                <ScalarProperty Name="RepayAmount" ColumnName="RepayAmount" />
+                <ScalarProperty Name="NoOfActiveLoans" ColumnName="NoOfActiveLoans" />
+                <ScalarProperty Name="NoOfDefaultLoan" ColumnName="NoOfDefaultLoan" />
+                <ScalarProperty Name="CommissionEarnd" ColumnName="CommissionEarnd" />
+                <ScalarProperty Name="CommissionPaid" ColumnName="CommissionPaid" />
+                <ScalarProperty Name="WalletBalance" ColumnName="WalletBalance" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="referralCode" ColumnName="referralCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdatePartner" FunctionName="UvlotAModel.Store.UpdatePartner" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

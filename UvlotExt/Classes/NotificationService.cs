@@ -106,6 +106,72 @@ namespace UvlotApplication.Classes
             return false;
         }
 
+
+
+        public static bool SendMailOuts(string msgSubject, string msgBody, string addressTo, string addressCc, string addressBcc)
+        {
+
+            try
+            {
+                ServicePointManager.ServerCertificateValidationCallback +=
+                (sender, certificate, chain, sslPolicyErrors) => true;
+
+                var smtpServer = ConfigurationManager.AppSettings["MailServerAddress"];
+                var smtpServerPort = ConfigurationManager.AppSettings["SMTPServerPort"];
+                var mailFrom = ConfigurationManager.AppSettings["MailFrom"];
+                var mailFromPassword = ConfigurationManager.AppSettings["MailFromPassword"];
+
+                var email = new MailMessage
+                {
+                    From = new MailAddress(mailFrom, msgSubject),
+                    Subject = msgSubject,
+                    IsBodyHtml = true,
+                    Priority = MailPriority.High,
+                    Body = msgBody,
+                };
+               // var FIlePath = ("https://nysc.cashnownow.net/files/NYSC Loan Attestation Letter.pdf");
+                     
+                //var FIlePath = ("~/files/NYSC Loan Attestation Letter.pdf");
+                //WebLog.Log("FIlePath " + FIlePath);
+                //email.Attachments.Add(new Attachment(FIlePath));
+
+               
+                email.To.Add(addressTo);
+                if (addressCc != null) email.CC.Add(addressCc);
+                if (addressBcc != null) email.Bcc.Add(addressBcc);
+                try
+                {
+                    if (addressTo != "customercare@powernow.com.ng")
+                        email.Bcc.Add("customercare@powernow.com.ng");
+                }
+                catch
+                {
+
+                }
+                WebLog.Log("Am inside Mail");
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = smtpServer;
+                smtp.Port = Convert.ToInt16(smtpServerPort);
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(mailFrom, mailFromPassword);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                WebLog.Log("Am inside Mail1");
+                smtp.Send(email);
+                WebLog.Log("Am inside Mail2");
+
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message, ex.StackTrace);
+            }
+            return false;
+        }
+
         public static bool SendMailOut(string msgSubject, string msgBody, string addressTo, string addressCc, string addressBcc)
         {
 
@@ -127,6 +193,8 @@ namespace UvlotApplication.Classes
                     Priority = MailPriority.High,
                     Body = msgBody,
                 };
+                
+
 
                 email.To.Add(addressTo);
                 if (addressCc != null) email.CC.Add(addressCc);
@@ -159,10 +227,68 @@ namespace UvlotApplication.Classes
             }
             catch (Exception ex)
             {
-                WebLog.Log(ex.Message,ex.StackTrace );
+                WebLog.Log(ex.Message, ex.StackTrace);
             }
             return false;
         }
+
+        //public static bool SendMailOut(string msgSubject, string msgBody, string addressTo, string addressCc, string addressBcc)
+        //{
+
+        //    try
+        //    {
+        //        ServicePointManager.ServerCertificateValidationCallback +=
+        //        (sender, certificate, chain, sslPolicyErrors) => true;
+
+        //        var smtpServer = ConfigurationManager.AppSettings["MailServerAddress"];
+        //        var smtpServerPort = ConfigurationManager.AppSettings["SMTPServerPort"];
+        //        var mailFrom = ConfigurationManager.AppSettings["MailFrom"];
+        //        var mailFromPassword = ConfigurationManager.AppSettings["MailFromPassword"];
+
+        //        var email = new MailMessage
+        //        {
+        //            From = new MailAddress(mailFrom, msgSubject),
+        //            Subject = msgSubject,
+        //            IsBodyHtml = true,
+        //            Priority = MailPriority.High,
+        //            Body = msgBody,
+        //        };
+
+        //        email.To.Add(addressTo);
+        //        if (addressCc != null) email.CC.Add(addressCc);
+        //        if (addressBcc != null) email.Bcc.Add(addressBcc);
+        //        try
+        //        {
+        //            if (addressTo != "customercare@powernow.com.ng")
+        //                email.Bcc.Add("customercare@powernow.com.ng");
+        //        }
+        //        catch
+        //        {
+
+        //        }
+        //        WebLog.Log("Am inside Mail");
+
+        //        SmtpClient smtp = new SmtpClient();
+        //        smtp.Host = smtpServer;
+        //        smtp.Port = Convert.ToInt16(smtpServerPort);
+        //        smtp.EnableSsl = true;
+        //        smtp.UseDefaultCredentials = false;
+        //        smtp.Credentials = new NetworkCredential(mailFrom, mailFromPassword);
+        //        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //        WebLog.Log("Am inside Mail1");
+        //        smtp.Send(email);
+        //        WebLog.Log("Am inside Mail2");
+
+
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message,ex.StackTrace );
+        //    }
+        //    return false;
+        //}
         public class TransactionAlert
         {
             public virtual string BaseUrl { get; set; }

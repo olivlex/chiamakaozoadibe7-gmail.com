@@ -49,7 +49,7 @@ namespace UvlotApp.Controllers
               
             }
             int val = 0;
-            ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", val);
+             ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", val);
 
           
             ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", val);
@@ -76,7 +76,7 @@ namespace UvlotApp.Controllers
                 WebLog.Log(" user.PaswordVal  " + user.PaswordVal);
                 var valid = _DR.loggedIn(user.EmailAddress, EncrypPassword);
                 WebLog.Log("Valid1" + valid);
-                if (valid == true)
+              if (valid == true)
                 {
                     WebLog.Log("Valid2" + valid);
                     if (user.EmailAddress != null)
@@ -86,6 +86,7 @@ namespace UvlotApp.Controllers
                         Session["User"] = Session["id"];
                         WebLog.Log("Am here");
                        
+
                         return RedirectToAction("Index", "AdminA");
                     }
                     else
@@ -209,7 +210,8 @@ namespace UvlotApp.Controllers
                 // Users.Lastname = Convert.ToString(form["lname"]);
                 Users.PhoneNumber = Convert.ToString(form["phone"]);
                 Users.UserAddress = Convert.ToString(form["address"]);
-                
+                Users.ValueDate = MyUtility.getCurrentLocalDateTime();
+                //Users.ValueDate = MyUtility.getCurrentLocalDateTime("dddd, dd MMMM yyyy");
                 Users.ReferralCode = Convert.ToString(form["ReferralCode"]);
                 Users.StateofResidence_FK = lApObj.StateofResidence_FK;
                 Users.LGA_FK = Convert.ToInt16(form["lgaList"]);
@@ -270,15 +272,14 @@ namespace UvlotApp.Controllers
                                 //NyscLoanApplication Apllicant
                                 CreateUserRole(Users,Refid);
                             }
+
                            
-                         
-                           
-                           /*  UserRole UserRoles = new UserRole();
-                            UserRoles.User_FK = Users.ID;
-                            UserRoles.Role_FK = Convert.ToInt16(ConfigurationManager.AppSettings["NYSCAgentRole"]);
-                            UserRoles.IsVisible = 1;
-                            _DM.InsertUserRoles(UserRoles);*/
-                          
+                            /*  UserRole UserRoles = new UserRole();
+                             UserRoles.User_FK = Users.ID;
+                             UserRoles.Role_FK = Convert.ToInt16(ConfigurationManager.AppSettings["NYSCAgentRole"]);
+                             UserRoles.IsVisible = 1;
+                             _DM.InsertUserRoles(UserRoles);*/
+
                             SendEmail(Users, rpassword);
                             // var referralcode = _DR.GetReferralCode(Userid);
                             return RedirectToAction("index", "AdminA");
@@ -296,6 +297,7 @@ namespace UvlotApp.Controllers
         }
 
 
+       
         public int CreateUserRole(User users,int flag)
         {
             try

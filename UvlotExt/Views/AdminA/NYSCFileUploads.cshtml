@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Recommend";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardinnerpage.cshtml";
+}
+
+@*@model DataAccessA.Classes.LoanApplication*@
+   @model DataAccessA.Classes.AppLoanss
+<div class="page-header01">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center ">
+                <h2>NYSC FILE UPLOADS</h2>
+                @*<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Application Status</li>
+                    </ol>
+                </nav>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="charts">
+    <div class="mid-content-top charts-grids">
+        <div class="middle-content">*@
+
+
+<section class="section-padding contact-us-padding form-padding">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                @*@using (Html.BeginForm("NYSCFileUploads", "AdminA", FormMethod.Post, new { id = "signup" }))*@
+                    @using (Html.BeginForm("NYSCFileUploads", "AdminA", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                    <form action="#" method="post">
+
+                        @if (TempData["ErrMsg"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-danger">
+                                @TempData["ErrMsg"]
+                            </div>
+                        }
+                        @if (TempData["SucMsg"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-success">
+                                @TempData["SucMsg"]
+                            </div>
+                        }
+                        <input type="text" value="@Model.LoanRefNumber" name="loanrefID" style="display:none" />
+                        
+                        @*<h2 class="title1"> File Uploads </h2>*@
+                        <div class="row list-input">
+
+                            @*<div class="col-md-2">
+            <div class="single-get-touch">
+
+                <label>Upload Nysc ID </label>
+            </div>
+        </div>
+                            <div class="col-md-4">
+            <div class="single-get-touch">
+
+
+                <input type="file"  id="file" placeholder="Upload NYSC ID" name="NyscIDCard" required onchange="ValidateSize(this)" Title="UPLOAD NYSC ID-CARD" />
+            </div>
+        </div>*@
+
+                            <div class="col-md-2 mr0">
+            <div class="single-get-touch">
+
+                <label>Upload Nysc Passport </label>
+            </div>
+        </div>
+                            <div class="col-md-4 mr0">
+            <div class="single-get-touch">
+
+
+                <input type="file"  id="file" placeholder="UPLOAD NYSC PASSPORT" name="NyscPassport" onchange="ValidateSize(this)" required Title="UPLOAD NYSC PASSPORT" />
+            </div>
+        </div>
+
+                            <div class="col-md-2">
+            <div class="single-get-touch">
+
+                <label>Upload Nysc Posting Letter</label>
+            </div>
+        </div>
+                            <div class="col-md-4">
+            <div class="single-get-touch">
+
+
+                <input type="file"  id="file" placeholder="UPLOAD NYSC POSTING LETTER" name="NyscPostingLetter" onchange="ValidateSize(this)" required Title="UPLOAD NYSC POSTING LETTER" />
+            </div>
+        </div>
+
+                            <div class="col-md-2 mr0">
+            <div class="single-get-touch">
+
+                <label>Upload Nysc Call-Up Letter </label>
+            </div>
+        </div>
+                            <div class="col-md-4 mr0">
+            <div class="single-get-touch">
+
+
+                <input type="file" id="file" placeholder="UPLOAD NYSC CALL-UP LETTER" name="NyscCallUpLetter" onchange="ValidateSize(this)" required Title="UPLOAD NYSC CALL-UP LETTER" />
+            </div>
+        </div>
+                            <div class="col-md-2">
+            <div class="single-get-touch">
+
+                <label>Upload Nysc Profile Dashboard</label>
+            </div>
+        </div>
+                            <div class="col-md-4">
+            <div class="single-get-touch">
+
+
+                <input type="file"   id="file" placeholder="UPLOAD SCREENSHOT OF DASHBOARD" name="NyscProfileDashboard" onchange="ValidateSize(this)" required Title="UPLOAD SCREENSHOT OF DASHBOARD" />
+            </div>
+        </div>
+
+
+                            @*<div class="col-md-2">
+                                <div class="single-get-touch">
+                                    <label>Upload Bank Statement </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="single-get-touch">
+
+                                    <input type="file" placeholder="Upload Bank Statement" name="StatementOfAccount" onchange="ValidateSize(this)" required Title="UPLOAD BANK STATEMENT" />
+
+
+                                </div>
+                            </div>*@
+
+
+                            <div class="col-md-2">
+                                <div class="single-get-touch">
+                                    <label>Attestation Letter</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="single-get-touch">
+
+                                    <input type="file" placeholder="Letter Of undertaken" name="LetterOfundertaken" onchange="ValidateSize(this)" required Title="UPLOAD LETTER OF UNDERTAKEN" />
+
+
+                                </div>
+                            </div>
+                            
+
+                            <div class="col-md-12">
+                                <div class="single-get-touch">
+                                    @* <button type="submit" name="submit" class="btn btn-default btn-sm2 btnAction"></button>*@
+                                    <a href="#"> <button type="submit" id ="process" name="submit" class="btn btn-default btn-sm2 btnAction">Proceed</button></a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                }
+            </div>
+
+           
+        </div>
+    </div>
+</section>
+<script>
+function ValidateSize(file) {
+        var FileSize = file.files[0].size/1024; // in MB
+		alert('File Size is' + FileSize);
+		//if (FileSize > 1) {
+		if (FileSize > 1024) {
+            alert('File size exceeds 1 MB');
+            document.getElementById("process").disabled = true;
+		  //document.getElementById(file).value= null;
+            return
+        } else
+		{
+            document.getElementById("process").disabled = false;
+            return
+        }
+    }
+</script>
+
+
+
+

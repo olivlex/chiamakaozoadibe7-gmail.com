@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\PAELYT SOLUTION 6\Documents\Visual Studio 2015\Projects\UvlotExt\UvlotExt\DataAccessA\DataManager\UvlotA.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\PAELYT SOLUTION 6\Documents\Visual Studio 2015\Projects\NYSC Loan Portal\UvlotExt\DataAccessA\DataManager\UvlotA.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

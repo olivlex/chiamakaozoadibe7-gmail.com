@@ -1,9 +1,9 @@
 ﻿
 @{
-    @*ViewBag.Title = "Sigin";*@
+    //ViewBag.Title = "Sigin";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-@model DataAccessA.Classes.AppLoans
+@model DataAccessA.Classes.AppLoanss
 <div class="page-header01">
     <div class="container">
         <div class="row">
@@ -30,14 +30,20 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                @using (Html.BeginForm("CheckNYSCLoan", "AdminA", FormMethod.Post, new { id = "signup" }))
+                @using (Html.BeginForm("CheckNYSCLoan", "NYSCLOAN", FormMethod.Post, new { id = "signup" }))
                 {
                     <form action="#" method="post">
 
-                        @if (TempData["ErrMsg"] != null)
+                        @if (TempData["ErrMsg"] != "")
                         {
                             <div id="Msgs" class="alert alert-danger">
                                 @TempData["ErrMsg"]
+                            </div>
+                        }
+                        @if (TempData["SucMsg"] != "")
+                        {
+                            <div id="Msgs" class="alert alert-success">
+                                @TempData["SucMsg"]
                             </div>
                         }
 
@@ -82,10 +88,10 @@
                     <span>@Model.Surname</span>
                 </div>
 
-                                <div class="col-sm-6 col-lg-5">
-                                    <label class="control-label">Firstname<span class="color-red">*</span></label>
-                                    <span>@Model.Firstname</span>
-                                </div>
+                <div class="col-sm-6 col-lg-5">
+                    <label class="control-label">Firstname<span class="color-red">*</span></label>
+                    <span>@Model.Firstname</span>
+                </div>
                 <div class="col-sm-6 col-lg-5">
                     <label class="control-label">DateCreated<span class="color-red">*</span></label>
                     <span>@Model.ValueDate</span>
@@ -94,25 +100,33 @@
                                 <div class="col-sm-6 col-lg-5">
                                     @*<div class="col-md-6 mr0">
                                         <div class="single-get-touch">*@
-                                            <label class="control-label">Email Address<span class="color-red">*</span></label>
-                                            <span>@Model.EmailAddress</span>
-                                        </div>
+                                    <label class="control-label">Email Address<span class="color-red">*</span></label>
+                                    <span>@Model.EmailAddress</span>
+                                </div>
 
                                 <div class="col-sm-6 col-lg-5">
                                     <label class="control-label">Application Status<span class="color-red">*</span></label>
-                                    <span>@Model.ApplicationStatus</span>
-                                </div>
-                                
-                                <div class="col-sm-6 col-lg-5">
-                                    <label class="control-label">Loan Amount<span class="color-red">*</span></label>
-                                    <span>@Model.LoanAmount</span>
+                                    <span>@Model.AppStat</span>
                                 </div>
 
-                                <div class="col-sm-6 col-lg-5">
-                                    <label class="control-label">Loan Tenure<span class="color-red">*</span></label>
-                                    <span>@Model.LoanTenure
-                                    </span>
-                                </div>
+                                        <div class="col-sm-6 col-lg-5">
+                                            <label class="control-label">Loan Amount(&#8358;)<span class="color-red">*</span></label>
+                                            <span>@Model.LoanAmount</span>
+                                        </div>
+
+                                        <div class="col-sm-6 col-lg-5">
+                                            <label class="control-label">Loan Tenure<span class="color-red">*</span></label>
+                                            <span>
+                                                @Model.LoanTenure
+                                            </span>
+                                        </div>
+
+
+                                        <div class="col-sm-6 col-lg-10">
+                                            <label class="control-label">Monthly Repayment Amount(&#8358;)<span class="color-red"></span></label>
+                                            <span>@Model.RepaymentAmount</span>
+                                        </div>
+                                       
 
             }
 

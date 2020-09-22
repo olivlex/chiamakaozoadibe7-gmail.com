@@ -143,14 +143,9 @@
 
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
-                                        @*<select id="Titles" name="Titles" data-live-search="true" required="required">
-                                            <option data-tokens="Select State">SELECT TITLE</option>*@
-                                            @*@foreach (var nTitle in ViewBag.nTitles)
-                                            {
-                                                <option id="Title" value="@nTitle.ID" data-tokens="@nTitle.Name">@nTitle.Name</option>
-                                            }*@
+                                        
                                             @Html.DropDownListFor(model => model.Title_FK, (SelectList)ViewData["nTitles"], "Title", new { @id = "Titles", @required = "required", name = "Titles" })
-                                        @*</select>*@
+                                       
 
                                     </div>
                                 </div>
@@ -158,15 +153,9 @@
                                 <div class="col-md-6 right">
                                     <div class="single-get-touch">
 
-                                        @*<select id="Marital" name="Marital" data-live-search="true" required="required">
-                                            <option data-tokens="Select State">SELECT STATUS</option>*@
-                                            @*@foreach (var nstatus in ViewBag.nmaritalStatus)
-                                            {
-                                                <option id="Marital" name="Marital" value="@nstatus.ID" data-tokens="@nstatus.Name">@nstatus.Name</option>
-                                            }*@
+                                       
                                             @Html.DropDownListFor(model => model.MaritalStatus_FK, (SelectList)ViewData["nMarital"], "Marital Status", new { @id = "Marital", @required = "required", @name = "Marital" })
-                                        @*</select>*@
-
+                                     
 
                                     </div>
                                 </div>
@@ -192,36 +181,12 @@
 
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
-                                        @*<select name="selectGender" required>
-                                            <option value="Select Title">SELECT GENDER</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                        </select>*@
+                                       
                                         @Html.DropDownListFor(model => model.Gender_FK, (SelectList)ViewData["nGender"], "Gender", new { @id = "selectGender", @name = "selectGender" })
                                     </div>
                                 </div>
                                
-                                @*<div class="col-md-6 mr0">
-                                    <div class="single-get-touch">
-                                        <select id="meansOfID" name="meansOfID" data-live-search="true" required="required">
-                                            <option data-tokens="Select MeansOfID">MEANS OF IDENTIFICATION</option>
-                                            @foreach (var nMeansOfID in ViewBag.nMeansOfIDs)
-                                            {
-                                                <option id="meansOfIDs" value="@nMeansOfID.ID" data-tokens="@nMeansOfID.Name">@nMeansOfID.Name</option>
-                                            }
-                                        </select>
-                                    </div>
-                                </div>*@
-
-
-                                @*<div class="col-md-6">
-                                    <div class="single-get-touch">
-                                        <input type="text" name="idNumber" placeholder="IDENTIFICATION NUMBER" required>
-                                        @Html.TextBoxFor(model => model.IdentficationNumber, new { placeholder = "IDENTIFICATION NUMBER" })
-                                    </div>
-                                </div>*@
-
-
+                               
                                 <div class="col-md-12 col-lg-12 formHeaderBg">
                                     <h3 class="formHeader">Contact Information </h3>
                                 </div>
@@ -248,14 +213,7 @@
                                 </div>
                                 <div class="col-md-6 mr0">
                                     <div class="single-get-touch">
-                                        @*@Html.DropDownListFor(model => model.State, ViewBag.state as List<SelectListItem>, new { style = "width: 200px;" })*@
-                                        @*<select id="States" name="States" data-live-search="true" required="required">
-                                            <option data-tokens="Select State">STATE OF RESIDENCE</option>
-                                            @foreach (var nState in ViewBag.nStates)
-                                            {
-                                                <option id="States" value="@nState.ID" data-tokens="@nState.Name">@nState.Name</option>
-                                            }
-                                        </select>*@
+                                      
                                         @Html.DropDownListFor(model => model.StateofResidence_FK, (SelectList)ViewData["nStates"], "Residence Type*", new { @id = "States", @name = "States" , onchange = "call('States')" })
                                     </div>
                                 </div>
@@ -285,14 +243,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-get-touch">
-                                        @*@Html.DropDownListFor(model => model.State, ViewBag.state as List<SelectListItem>, new { style = "width: 200px;" })*@
-                                        @*<select id="States" name="States" data-live-search="true" required="required">
-                                            <option data-tokens="Select State">STATE OF RESIDENCE</option>
-                                            @foreach (var nState in ViewBag.nStates)
-                                            {
-                                                <option id="States" value="@nState.ID" data-tokens="@nState.Name">@nState.Name</option>
-                                            }
-                                        </select>*@
+                                       
                                         @Html.DropDownListFor(model => model.TempStateofResidence_FK, (SelectList)ViewData["nStates"], "Residence Type*", new { @id = "Statess", @name = "States" })
                                     </div>
                                 </div>
@@ -310,17 +261,7 @@
                                         @Html.TextBoxFor(model => model.TempClosestBusStop, new { placeholder = "CLOSEST BUS STOP*", required = "required" })
                                     </div>
                                 </div>
-                                @*<div class="col-md-6">
-                                    <div class="single-get-touch">
-                                        <select id="AccomodationTypes" name="AccomodationTypes" data-live-search="true" required="required">
-                                            <option data-tokens="Select AccomodationTypes">ACCOMMODATION TYPE</option>
-                                            @foreach (var nAccomodationType in ViewBag.nAccomodationTypes)
-                                            {
-                                                <option id="AccomodationTypes" value="@nAccomodationType.ID" data-tokens="@nAccomodationType.Name">@nAccomodationType.Name</option>
-                                            }
-                                        </select>
-                                    </div>
-                                </div>*@
+                             
 
                                 <div class="col-md-12 col-lg-12 formHeaderBg">
                                     <h3 class="formHeader">NYSC Information </h3>
@@ -570,12 +511,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                @*<div class="col-md-6">
                                     <div class="single-get-touch">
                                         @Html.TextBoxFor(model => model.BVN, new { placeholder = "BANK VERIFICATION NUMBER (BVN)*", required = "required" })
                                     </div>
-                                </div>
+                                </div>*@
                                 
+
+                                @Html.TextBoxFor(model => model.BVN, new { placeholder = "BVN*", id = "Bvn", required = "required", onkeypress = "return isNumber(event);", ondrop = "return isNumber(event);", onpaste = "return isNumber(event);", autocomplete = "off", onfocusout = "ValidateBvn()", onkeyup = "ValidateBvn()" })
                                 <div class="col-md-12">
                                     <div class="single-get-check">
 
@@ -812,7 +755,37 @@
   });
     </script>
 
+    <script>
+    function ValidateBvn() {
+        var txtBvn = $("#Bvn").val()
+        alert(txtBvn);
+        $.ajax({
+            type: "POST",
+          
+                url: "/NYSCLOAN/BVNValidation",
+              
+                data: "{Bvn:'" + txtBvn + "'}",
+                
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
 
+            success: function (response)
+               
+                
+            {
+
+                if (response.Success === "true")
+				{
+
+
+                }
+
+                }
+
+            })
+        };
+   
+    </script>
 
     @*<script type="text/javascript">
 

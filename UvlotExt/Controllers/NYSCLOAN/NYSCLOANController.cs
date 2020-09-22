@@ -39,13 +39,9 @@ namespace UvlotExt.Controllers.NYSCLOAN
                 string respmsg = ""; ;
                 // double repaymentmsg = 0;
                 bool valid = false;
-
-
-                int Tenures = Convert.ToInt16(Tenure);
-
-                Tenures = Tenures + 1;
-                //Tenures = Tenures ;//TO DO 
-                // List<LRepay> LoanRecords = _DR.GetloanParam(LoanTenure);
+               int Tenures = Convert.ToInt16(Tenure);
+               Tenures = Tenures + 1;
+               
                 NYSCLoanSetUp Nysc = new NYSCLoanSetUp();
                 Nysc = _DR.GetloanParam(Tenures);
                 if (Nysc != null)
@@ -66,6 +62,8 @@ namespace UvlotExt.Controllers.NYSCLOAN
             }
         }
 
+
+
         [HttpPost]
         public JsonResult getLGAsByStateID(int id)
         {
@@ -85,6 +83,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
 
         public ActionResult Acknowledgement(string Refid)
         {
+            TempData["SucMsg"] = ""; TempData["ErrMsg"] = "";
             // MyUtility utilities = new MyUtility();
             if (Refid == null || Refid == "")
             {
@@ -133,11 +132,12 @@ namespace UvlotExt.Controllers.NYSCLOAN
             ViewBag.nLGAs = _DR.GetAllLGAs();
             ViewBag.nTitles = _DR.GetTitles();
             ViewBag.nMarital = _DR.GetMaritalStatus();
+            ViewBag.nRelative = _DR.GetRelative();
             int val = 0;
             ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", val);
             ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", val);
             ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", val);
-
+            ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", val);
             ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", val);
             ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", val);
             ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", val);
@@ -153,6 +153,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
             ViewBag.channel = channels;
             return View(laobj);
         }
+
 
         public List<SelectListItem> GetAllGender()
         {
@@ -364,18 +365,19 @@ namespace UvlotExt.Controllers.NYSCLOAN
         }
 
         [HttpPost]
-        public ActionResult NYSCLoanAppForm(FormCollection form, HttpPostedFileBase PostedFile, DataAccessA.Classes.LoanApplication lApObj, HttpPostedFileBase NyscIDCard, HttpPostedFileBase StatementOfAccount)
+        public ActionResult NYSCLoanAppForm(FormCollection form, HttpPostedFileBase PostedFile, DataAccessA.Classes.LoanApplication lApObj, HttpPostedFileBase NyscIDCard, HttpPostedFileBase StatementOfAccount, HttpPostedFileBase NyscPassport, HttpPostedFileBase NyscPostingLetter, HttpPostedFileBase NyscCallUpLetter, HttpPostedFileBase NyscProfileDashboard, string submit)
         {
             try
             {
+
                 var channellist = Request["checkboxName"];
-              
-                if(channellist == null)
+                if (channellist == null)
                 {
                     TempData["Error"] = "Please Select Marketing Channel";
                     // NYSCLoanAppForm();
                     ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
                     ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
+                    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
                     ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
                     ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
                     ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
@@ -392,7 +394,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
                 }
                 string[] arr = channellist.Split(',');
                 var chanList = removestring(arr);
-               
+
                 TempData["Error"] = "";
                 var cPassOutMonth = lApObj.PassOutMonth;
                 // DateTime cv = Convert.ToDateTime(lApObj.PassOutMonth);
@@ -405,6 +407,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
                     // NYSCLoanAppForm();
                     ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
                     ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
+                    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
                     ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
                     ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
                     ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
@@ -422,9 +425,9 @@ namespace UvlotExt.Controllers.NYSCLOAN
                 var dCDSDay = Convert.ToString(form["selectDays"]);
                 int LoanTenure = Convert.ToInt16(lApObj.LoanTenure);
                 //  LoanTenure = LoanTenure;
-                // lApObj.ValueDate = MyUtility.getCurrentLocalDateTime().ToString("dd/MM/yyyy H:mm ss");
-                //lApObj.RepaymentAmount= _DR.GetRepaymenrAmount(LoanTenure);
-                // lApObj.LoanTenureStr = LoanTenure.ToString() + " months";
+                //  lApObj.ValueDate = MyUtility.getCurrentLocalDateTime().ToString("dd/MM/yyyy H:mm ss");
+                //  lApObj.RepaymentAmount= _DR.GetRepaymenrAmount(LoanTenure);
+                //  lApObj.LoanTenureStr = LoanTenure.ToString() + " months";
                 cPassOutMonth = lApObj.PassOutMonth;
                 dCDSDay = lApObj.CDSDay;
                 var Marital = lApObj.MaritalStatus_FK;
@@ -439,15 +442,23 @@ namespace UvlotExt.Controllers.NYSCLOAN
                 WebLog.Log("nyscPath Path" + NyscIDCards);
                 string StatementOfAccounts = saveImages(StatementOfAccount);
                 WebLog.Log("StatementOfAccounts Path" + StatementOfAccounts);
+                //string NyscPassports = saveImagesss(NyscPassport);
+                //WebLog.Log("NyscPassports Path" + NyscPassports);
+                //string NyscPostingLetters = saveImagesss(NyscPostingLetter);
+                //WebLog.Log("NyscPostingLetters Path" + NyscPostingLetter);
+                //string NyscCallUpLetters = saveImagessss(NyscCallUpLetter);
+                //WebLog.Log("NyscCallUpLetters Path" + NyscCallUpLetter);
+                //string NyscProfileDashboards = saveImagesssss(NyscProfileDashboard);
+                //WebLog.Log("NyscProfileDashboards Path" + NyscProfileDashboard);
 
                 if (NyscIDCard.ContentLength == 0)
                 {
-                    TempData["Error"] = "Input Statement Of Accounts";
-                    // NYSCLoanAppForm();
+                    TempData["Error"] = "Input Nysc ID Card";
+
                     ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
                     ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
                     ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
-
+                    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
                     ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
                     ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
                     ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
@@ -464,12 +475,12 @@ namespace UvlotExt.Controllers.NYSCLOAN
 
                 if (StatementOfAccount.ContentLength == 0)
                 {
-                    TempData["Error"] = "Input Nysc ID Cards";
-                    // NYSCLoanAppForm();
+                    TempData["Error"] = "Input Nysc Statement Of Account";
+
                     ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
                     ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
                     ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
-
+                    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
                     ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
                     ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
                     ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
@@ -478,13 +489,99 @@ namespace UvlotExt.Controllers.NYSCLOAN
                     ViewData["nLoanTenure"] = new SelectList(_DR.GetAllTenure(), "ID", "Tenure", lApObj.LoanTenure);
                     ViewData["nGender"] = new SelectList(GetAllGender(), "Value", "Text", lApObj.Gender_FK);
                     ViewData["nemploymentStatus"] = new SelectList(GetAppStatus(), "Value", "Text", lApObj.Contract);
-                    ViewData["nCDDays"] = new SelectList(GetDayOfTheWeek(), "Value", "Text",lApObj.CDSDay);
+                    ViewData["nCDDays"] = new SelectList(GetDayOfTheWeek(), "Value", "Text", lApObj.CDSDay);
                     var channels = _DR.GetMarketChannel();
                     ViewBag.channel = channels;
                     return View("NYSCLoanAppForm", lApObj);
                 }
 
+                //if (NyscPassport.ContentLength == 0)
+                //{
+                //    TempData["Error"] = "Input Nysc Passport";
 
+                //    ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
+                //    ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
+                //    ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
+                //    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
+                //    ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
+                //    ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
+                //    ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
+                //    ViewData["nBanks"] = new SelectList(_DR.GetBanks(), "FlutterWaveBankCode", "NAME", lApObj.Bank_FK);
+                //    ViewData["nRepmtMethods"] = new SelectList(_DR.GetRepaymentMethods(), "ID", "NAME", lApObj.RepaymentMethod_FK);
+                //    ViewData["nLoanTenure"] = new SelectList(_DR.GetAllTenure(), "ID", "Tenure", lApObj.LoanTenure);
+                //    ViewData["nGender"] = new SelectList(GetAllGender(), "Value", "Text", lApObj.Gender_FK);
+                //    ViewData["nemploymentStatus"] = new SelectList(GetAppStatus(), "Value", "Text", lApObj.Contract);
+                //    ViewData["nCDDays"] = new SelectList(GetDayOfTheWeek(), "Value", "Text", lApObj.CDSDay);
+                //    var channels = _DR.GetMarketChannel();
+                //    ViewBag.channel = channels;
+                //    return View("NYSCLoanAppForm", lApObj);
+                //}
+
+                //if (NyscPostingLetter.ContentLength == 0)
+                //{
+                //    TempData["Error"] = "Input Nysc Posting Letter";
+
+                //    ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
+                //    ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
+                //    ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
+                //    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
+                //    ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
+                //    ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
+                //    ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
+                //    ViewData["nBanks"] = new SelectList(_DR.GetBanks(), "FlutterWaveBankCode", "NAME", lApObj.Bank_FK);
+                //    ViewData["nRepmtMethods"] = new SelectList(_DR.GetRepaymentMethods(), "ID", "NAME", lApObj.RepaymentMethod_FK);
+                //    ViewData["nLoanTenure"] = new SelectList(_DR.GetAllTenure(), "ID", "Tenure", lApObj.LoanTenure);
+                //    ViewData["nGender"] = new SelectList(GetAllGender(), "Value", "Text", lApObj.Gender_FK);
+                //    ViewData["nemploymentStatus"] = new SelectList(GetAppStatus(), "Value", "Text", lApObj.Contract);
+                //    ViewData["nCDDays"] = new SelectList(GetDayOfTheWeek(), "Value", "Text", lApObj.CDSDay);
+                //    var channels = _DR.GetMarketChannel();
+                //    ViewBag.channel = channels;
+                //    return View("NYSCLoanAppForm", lApObj);
+                //}
+
+                //if (NyscCallUpLetter.ContentLength == 0)
+                //{
+                //    TempData["Error"] = "Input Nysc CallUp Letter";
+
+                //    ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
+                //    ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
+                //    ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
+                //    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
+                //    ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
+                //    ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
+                //    ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
+                //    ViewData["nBanks"] = new SelectList(_DR.GetBanks(), "FlutterWaveBankCode", "NAME", lApObj.Bank_FK);
+                //    ViewData["nRepmtMethods"] = new SelectList(_DR.GetRepaymentMethods(), "ID", "NAME", lApObj.RepaymentMethod_FK);
+                //    ViewData["nLoanTenure"] = new SelectList(_DR.GetAllTenure(), "ID", "Tenure", lApObj.LoanTenure);
+                //    ViewData["nGender"] = new SelectList(GetAllGender(), "Value", "Text", lApObj.Gender_FK);
+                //    ViewData["nemploymentStatus"] = new SelectList(GetAppStatus(), "Value", "Text", lApObj.Contract);
+                //    ViewData["nCDDays"] = new SelectList(GetDayOfTheWeek(), "Value", "Text", lApObj.CDSDay);
+                //    var channels = _DR.GetMarketChannel();
+                //    ViewBag.channel = channels;
+                //    return View("NYSCLoanAppForm", lApObj);
+                //}
+
+                //if (NyscProfileDashboard.ContentLength == 0)
+                //{
+                //    TempData["Error"] = "Input Nysc Profile Dashboard screenshot";
+
+                //    ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
+                //    ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
+                //    ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
+                //    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
+                //    ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
+                //    ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
+                //    ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
+                //    ViewData["nBanks"] = new SelectList(_DR.GetBanks(), "FlutterWaveBankCode", "NAME", lApObj.Bank_FK);
+                //    ViewData["nRepmtMethods"] = new SelectList(_DR.GetRepaymentMethods(), "ID", "NAME", lApObj.RepaymentMethod_FK);
+                //    ViewData["nLoanTenure"] = new SelectList(_DR.GetAllTenure(), "ID", "Tenure", lApObj.LoanTenure);
+                //    ViewData["nGender"] = new SelectList(GetAllGender(), "Value", "Text", lApObj.Gender_FK);
+                //    ViewData["nemploymentStatus"] = new SelectList(GetAppStatus(), "Value", "Text", lApObj.Contract);
+                //    ViewData["nCDDays"] = new SelectList(GetDayOfTheWeek(), "Value", "Text", lApObj.CDSDay);
+                //    var channels = _DR.GetMarketChannel();
+                //    ViewBag.channel = channels;
+                //    return View("NYSCLoanAppForm", lApObj);
+                //}
                 var OutstandingAmount = lApObj.ExistingLoan_OutstandingAmount;
                 if (OutstandingAmount == null)
                 {
@@ -505,7 +602,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
                     ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
                     ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
                     ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
-
+                    ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
                     ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
                     ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
                     ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
@@ -522,116 +619,106 @@ namespace UvlotExt.Controllers.NYSCLOAN
                 double repaymentAmt = 0;
                 double.TryParse(lApObj.RepaymentAmount, out repaymentAmt);
 
-                DataAccessA.DataManager.NyscLoanApplication NyscLA = new DataAccessA.DataManager.NyscLoanApplication
+
+
+
+                if (submit == "Save and Continue")
                 {
-                    AccountNumber = lApObj.AccountNumber,
-                    AccountName = lApObj.AccountName,
-                    Firstname = lApObj.Firstname,
-                    Othernames = lApObj.Othernames,
-                    NYSCApplicationStatus_FK = 1,
-                    NyscIdCardFilePath = NyscIDCards,
-                    STA_FilePath = StatementOfAccounts,
-                    RepaymentAmount = repaymentAmt,
-                    RefNumber = "NY" + MyUtility.GenerateRefNo(),
-                    Gender_FK = Gender_FK,//Convert.ToInt32(form["selectGender"]),
-                    MaritalStatus_FK = lApObj.MaritalStatus_FK,//Convert.ToInt16(form["Marital"]),
-                    Surname = lApObj.Surname,
-                    //CreatedBy = Convert.ToString(userid),
-                    DateOfBirth = Convert.ToString(lApObj.DateOfBirth),
-                    Title_FK = lApObj.Title_FK,//Convert.ToInt32(form["Titles"]),
-                    PhoneNumber = lApObj.PhoneNumber,
-                    EmailAddress = lApObj.EmailAddress,
-                    PermanentAddress = lApObj.PermanentAddress,
-                    Landmark = lApObj.Landmark,
-                    ClosestBusStop = lApObj.ClosestBusStop,
-                    LGA_FK = Convert.ToInt16(form["lgaList"]),
-                    TempLGA_FK = Convert.ToInt16(form["lgaLists"]),
-                    NyscLGA_FK = Convert.ToInt16(form["lgaListsss"]),
-                    StateofResidence_FK = lApObj.StateofResidence_FK,////Convert.ToInt32(form["States"]),
-                    TempStateofResidence_FK = lApObj.TempStateofResidence_FK,//Convert.ToInt32(form["States"]),
-                    NyscStateofResidence_FK = lApObj.NyscStateofResidence_FK,//Convert.ToInt32(form["States"]),
-                    TemporaryAddress = lApObj.TemporaryAddress,
-                    OfficialAddress = lApObj.OfficialAddress,
-                    StateCode = lApObj.StateCode,
-                    Employer = lApObj.Employer,
-                    PassOutMonth = lApObj.PassOutMonth,
-                    CDSDay = lApObj.CDSDay,
-                    TempLandmark = lApObj.TempLandmark,
-                    TempClosestBusStop = lApObj.TempClosestBusStop,
-                    ReferralCode = lApObj.ReferalCode,
-                    BVN = lApObj.BVN,
-                    CDSGroup = lApObj.CDSGroup,
-                    NetMonthlyIncome = Convert.ToDouble(lApObj.NetMonthlyIncome),
-                    EMG_EmailAddress = lApObj.EMG_EmailAddress,
-                    EMG_FullName = lApObj.EMG_FullName,
-                    EMG_HomeAddress = lApObj.EMG_HomeAddress,
-                    EMG_PhoneNumber = lApObj.EMG_PhoneNumber,
-                    EMG_Relationship = lApObj.EMG_Relationship,
-                    LoanAmount = Convert.ToDouble(lApObj.LoanAmount),
-                    LoanTenure = LoanTenure,
-                    ExistingLoan = lApObj.ExistingLoan,
-                    LoanComment = lApObj.LoanComment,
-                    ExistingLoan_NoOfMonthsLeft = Convert.ToInt16(lApObj.ExistingLoan_NoOfMonthsLeft),
-                    ExistingLoan_OutstandingAmount = lApObj.ExistingLoan_OutstandingAmount,
-                    BankCode =Helper.GetRemitaBankCodeByFlutterCode(lApObj.BankCode),  
-                    IsVisible = 1,
-                    DateCreated = MyUtility.getCurrentLocalDateTime(),
-                    DateModified = MyUtility.getCurrentLocalDateTime(),
-                    //ValueDate = MyUtility.getCurrentLocalDateTime().ToString("yyyy/MM/dd"),
-                    ValueDate = MyUtility.getCurrentLocalDateTime().ToString("dddd, dd MMMM yyyy"),
-                    ValueTime = MyUtility.getCurrentLocalDateTime().ToString("H:mmss"),
-                    MarketingChannel = chanList.ToString(),
-                };
-
-
-                WebLog.Log("nyscPath Path 2" + NyscIDCards);
-
-
-                WebLog.Log("StatementOfAccounts Path 2" + StatementOfAccounts);
-                var id = DataWriter.CreateNYSCLoanApplication(NyscLA);
-
-                if (id == 0)
-                {
-                    TempData["Error"] = "Please Check Next Of kin Phone Number";
-                    //NYSCLoanAppForm();
-                    ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
-                    ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
-                    ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
-
-                    ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
-                    ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
-                    ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
-                    ViewData["nBanks"] = new SelectList(_DR.GetBanks(), "FlutterWaveBankCode", "NAME", lApObj.Bank_FK);
-                    ViewData["nRepmtMethods"] = new SelectList(_DR.GetRepaymentMethods(), "ID", "NAME", lApObj.RepaymentMethod_FK);
-                    ViewData["nLoanTenure"] = new SelectList(_DR.GetAllTenure(), "ID", "LoanTenure", lApObj.LoanTenure);
-                    ViewData["nGender"] = new SelectList(GetAllGender(), "Value", "Text", lApObj.Gender_FK);
-                    ViewData["nemploymentStatus"] = new SelectList(GetAppStatus(), "Value", "Text", lApObj.Contract);
-                    var channels = _DR.GetMarketChannel();
-                    ViewBag.channel = channels;
-                    return View("NYSCLoanAppForm", NyscLA);
-                }
-
-                if (id != 0)
-                {
-                   
-                    string idv = "";
-                    MarketingChannel Mc = new MarketingChannel();
-                    //if (arr.Length == 1)
-                    //{
-
-                    //    insertMarketChannel(arr[0],id);
-
-                    //}
-                    //else 
-                    if (arr.Length > 0)
+                    DataAccessA.DataManager.NyscLoanApplication NyscLA = new DataAccessA.DataManager.NyscLoanApplication
                     {
-                        for (var i = 0; i < arr.Length; i++)
-                        {
-                            string arrc = Convert.ToString(arr[i]);
-                            insertMarketChannel(arrc,id);
-                        }
-                      
-                    }
+                        AccountNumber = lApObj.AccountNumber,
+                        AccountName = lApObj.AccountName,
+                        Firstname = lApObj.Firstname,
+                        Othernames = lApObj.Othernames,
+                        NYSCApplicationStatus_FK = 11,
+                        NyscIdCardFilePath=StatementOfAccounts,
+                      //  NyscIdCardFilePath = "None",
+                        STA_FilePath = NyscIDCards,
+                        PPA_Department = lApObj.PPA_Department,
+                        PPA_EmailAddress = lApObj.PPA_EmailAddress,
+                        PPA_PhoneNumber = lApObj.PPA_PhoneNumber,
+                        PPA_ROle = lApObj.PPA_ROle,
+                        PPA_supervisorEmail = lApObj.PPA_supervisorEmail,
+                        PPA_supervisorName = lApObj.PPA_supervisorName,
+                        PPA_supervisorPhonenumber = lApObj.PPA_supervisorPhonenumber,
+                        EMG_FullName2 = lApObj.EMG_FullName2,
+                        EMG_EmailAddress2 = lApObj.EMG_EmailAddress2,
+                        EMG_HomeAddress2 = lApObj.EMG_HomeAddress2,
+                        EMG_PhoneNumber2 = lApObj.EMG_PhoneNumber2,
+                        EMG_Relationship2 = lApObj.EMG_Relationship2,
+                        FirstRelativeName = lApObj.FirstRelativeName,
+                        FirstRelativePhoneNumber = lApObj.FirstRelativePhoneNumber,
+                        RelativeRelationship2_FK = lApObj.RelativeRelationship2_FK,
+                        SecondRelativeName = lApObj.SecondRelativeName,
+                        SecondRelativePhoneNumber = lApObj.SecondRelativePhoneNumber,
+                        RelativeRelationship_FK = lApObj.RelativeRelationship_FK,
+                        NyscpassportFilePath =  "None",
+                        NyscCallUpLetterFilePath = "None",
+                        NyscPostingLetterFllePath = "None",
+                        NyscProfileDashboardFilePath = "None",
+                        FacebookName = lApObj.FacebookName,
+                        InstagramHandle = lApObj.InstagramHandle,
+                        TwitterHandle = lApObj.TwitterHandle,
+                        RepaymentAmount = repaymentAmt,
+                        RefNumber = "NY" + MyUtility.GenerateRefNo(),
+                        Gender_FK = Gender_FK,//Convert.ToInt32(form["selectGender"]),
+                        MaritalStatus_FK = lApObj.MaritalStatus_FK,//Convert.ToInt16(form["Marital"]),
+                        Surname = lApObj.Surname,
+                        //CreatedBy = Convert.ToString(userid),
+                        DateOfBirth = Convert.ToString(lApObj.DateOfBirth),
+                        Title_FK = lApObj.Title_FK,//Convert.ToInt32(form["Titles"]),
+                        PhoneNumber = lApObj.PhoneNumber,
+                        EmailAddress = lApObj.EmailAddress,
+                        PermanentAddress = lApObj.PermanentAddress,
+                        Landmark = lApObj.Landmark,
+                        ClosestBusStop = lApObj.ClosestBusStop,
+                        LGA_FK = Convert.ToInt16(form["lgaList"]),
+                        TempLGA_FK = Convert.ToInt16(form["lgaLists"]),
+                        NyscLGA_FK = Convert.ToInt16(form["lgaListsss"]),
+                        StateofResidence_FK = lApObj.StateofResidence_FK,////Convert.ToInt32(form["States"]),
+                        TempStateofResidence_FK = lApObj.TempStateofResidence_FK,//Convert.ToInt32(form["States"]),
+                        NyscStateofResidence_FK = lApObj.NyscStateofResidence_FK,//Convert.ToInt32(form["States"]),
+                        TemporaryAddress = lApObj.TemporaryAddress,
+                        OfficialAddress = lApObj.OfficialAddress,
+                        StateCode = lApObj.StateCode,
+                        Employer = lApObj.Employer,
+                        PassOutMonth = lApObj.PassOutMonth,
+                        CDSDay = lApObj.CDSDay,
+                        TempLandmark = lApObj.TempLandmark,
+                        TempClosestBusStop = lApObj.TempClosestBusStop,
+                        ReferralCode = lApObj.ReferalCode,
+                        BVN = lApObj.BVN,
+                        CDSGroup = lApObj.CDSGroup,
+                        NetMonthlyIncome = Convert.ToDouble(lApObj.NetMonthlyIncome),
+                        EMG_EmailAddress = lApObj.EMG_EmailAddress,
+                        EMG_FullName = lApObj.EMG_FullName,
+                        EMG_HomeAddress = lApObj.EMG_HomeAddress,
+                        EMG_PhoneNumber = lApObj.EMG_PhoneNumber,
+                        EMG_Relationship = lApObj.EMG_Relationship,
+                        LoanAmount = Convert.ToDouble(lApObj.LoanAmount),
+                        LoanTenure = LoanTenure,
+                        ExistingLoan = lApObj.ExistingLoan,
+                        LoanComment = lApObj.LoanComment,
+                        ExistingLoan_NoOfMonthsLeft = Convert.ToInt16(lApObj.ExistingLoan_NoOfMonthsLeft),
+                        ExistingLoan_OutstandingAmount = lApObj.ExistingLoan_OutstandingAmount,
+                        BankCode = Helper.GetRemitaBankCodeByFlutterCode(lApObj.BankCode),
+                        IsVisible = 1,
+                        DateCreated = MyUtility.getCurrentLocalDateTime(),
+                        DateModified = MyUtility.getCurrentLocalDateTime(),
+                        //ValueDate = MyUtility.getCurrentLocalDateTime().ToString("yyyy/MM/dd"),
+                        ValueDate = MyUtility.getCurrentLocalDateTime().ToString("dddd, dd MMMM yyyy"),
+                        ValueTime = MyUtility.getCurrentLocalDateTime().ToString("H:mmss"),
+                        MarketingChannel = chanList.ToString(),
+                    };
+
+
+                    WebLog.Log("nyscPath Path 2" + NyscIDCards);
+                    WebLog.Log("StatementOfAccounts Path 2" + StatementOfAccounts);
+                    //WebLog.Log("NyscPassports Path 2" + NyscPassports);
+                    //WebLog.Log("NyscProfileDashboards Path 2" + NyscProfileDashboards);
+                    //WebLog.Log("NyscCallUpLetters Path 2" + NyscCallUpLetters);
+                    //WebLog.Log("NyscPostingLetters Path 2" + NyscPostingLetters);
+                    var id = DataWriter.CreateNYSCLoanApplication(NyscLA);
                     var email = _DR.getUser(NyscLA.EmailAddress);
                     string password = "";
                     string referralCode = "";
@@ -639,25 +726,473 @@ namespace UvlotExt.Controllers.NYSCLOAN
                     {
 
                         referralCode = createUser(NyscLA, out password);
-                        SendReferralEmail(NyscLA, referralCode, password);
-                        //NyscLA.MyReferralCode = refCode;
-                        //NyscLA.PaswordVal = password;
-                    }
-                    //var generateCode=  DataAccessA.MyUtility.getReferralCode(Userid.ToString());
-                    SendEmail(NyscLA);
-                    //var paswrd = "password";
-                   
+                        SendSaveEmail(NyscLA, referralCode, password);
 
-                    return RedirectToAction("Acknowledgement", new { @Refid = NyscLA.RefNumber });
+                    }
+                    return RedirectToAction("SaveAcknowledgement", new { @Refid = NyscLA.RefNumber });
                 }
+
+
+                if (submit == "Apply-Now")
+                {
+                    DataAccessA.DataManager.NyscLoanApplication NyscLA = new DataAccessA.DataManager.NyscLoanApplication
+                    {
+                        AccountNumber = lApObj.AccountNumber,
+                        AccountName = lApObj.AccountName,
+                        Firstname = lApObj.Firstname,
+                        Othernames = lApObj.Othernames,
+                        PPA_Department = lApObj.PPA_Department,
+                        PPA_EmailAddress = lApObj.PPA_EmailAddress,
+                        PPA_PhoneNumber =lApObj.PPA_PhoneNumber,
+                        PPA_ROle =lApObj.PPA_ROle,
+                        PPA_supervisorEmail = lApObj.PPA_supervisorEmail,
+                        PPA_supervisorName = lApObj.PPA_supervisorName,
+                        PPA_supervisorPhonenumber = lApObj.PPA_supervisorPhonenumber,
+                       
+                        NYSCApplicationStatus_FK = 1,
+                        NyscIdCardFilePath = NyscIDCards,
+                        STA_FilePath = StatementOfAccounts,
+                        //NyscpassportFilePath = NyscPassports,
+                        //NyscCallUpLetterFilePath = NyscCallUpLetters,
+                        //NyscPostingLetterFllePath = NyscPostingLetters,
+                        //NyscProfileDashboardFilePath = NyscProfileDashboards,
+                        FacebookName = lApObj.FacebookName,
+                        InstagramHandle = lApObj.InstagramHandle,
+                        TwitterHandle = lApObj.TwitterHandle,
+                        RepaymentAmount = repaymentAmt,
+                        RefNumber = "NY" + MyUtility.GenerateRefNo(),
+                        Gender_FK = Gender_FK,//Convert.ToInt32(form["selectGender"]),
+                        MaritalStatus_FK = lApObj.MaritalStatus_FK,//Convert.ToInt16(form["Marital"]),
+                        Surname = lApObj.Surname,
+                        //CreatedBy = Convert.ToString(userid),
+                        DateOfBirth = Convert.ToString(lApObj.DateOfBirth),
+                        Title_FK = lApObj.Title_FK,//Convert.ToInt32(form["Titles"]),
+                        PhoneNumber = lApObj.PhoneNumber,
+                        EmailAddress = lApObj.EmailAddress,
+                        PermanentAddress = lApObj.PermanentAddress,
+                        Landmark = lApObj.Landmark,
+                        ClosestBusStop = lApObj.ClosestBusStop,
+                        LGA_FK = Convert.ToInt16(form["lgaList"]),
+                        TempLGA_FK = Convert.ToInt16(form["lgaLists"]),
+                        NyscLGA_FK = Convert.ToInt16(form["lgaListsss"]),
+                        StateofResidence_FK = lApObj.StateofResidence_FK,////Convert.ToInt32(form["States"]),
+                        TempStateofResidence_FK = lApObj.TempStateofResidence_FK,//Convert.ToInt32(form["States"]),
+                        NyscStateofResidence_FK = lApObj.NyscStateofResidence_FK,//Convert.ToInt32(form["States"]),
+                        TemporaryAddress = lApObj.TemporaryAddress,
+                        OfficialAddress = lApObj.OfficialAddress,
+                        StateCode = lApObj.StateCode,
+                        Employer = lApObj.Employer,
+                        PassOutMonth = lApObj.PassOutMonth,
+                        CDSDay = lApObj.CDSDay,
+                        TempLandmark = lApObj.TempLandmark,
+                        TempClosestBusStop = lApObj.TempClosestBusStop,
+                        ReferralCode = lApObj.ReferalCode,
+                        BVN = lApObj.BVN,
+                        CDSGroup = lApObj.CDSGroup,
+                        NetMonthlyIncome = Convert.ToDouble(lApObj.NetMonthlyIncome),
+                        EMG_EmailAddress = lApObj.EMG_EmailAddress,
+                        EMG_FullName = lApObj.EMG_FullName,
+                        EMG_HomeAddress = lApObj.EMG_HomeAddress,
+                        EMG_PhoneNumber = lApObj.EMG_PhoneNumber,
+                        EMG_Relationship = lApObj.EMG_Relationship,
+                        EMG_FullName2 = lApObj.EMG_FullName2,
+                        EMG_EmailAddress2 = lApObj.EMG_EmailAddress2,
+                        EMG_HomeAddress2 = lApObj.EMG_HomeAddress2,
+                        EMG_PhoneNumber2 =lApObj.EMG_PhoneNumber2,
+                        EMG_Relationship2 = lApObj.EMG_Relationship2,
+                        FirstRelativeName = lApObj.FirstRelativeName,
+                        FirstRelativePhoneNumber =lApObj.FirstRelativePhoneNumber,
+                        RelativeRelationship2_FK =lApObj.RelativeRelationship2_FK,
+                        SecondRelativeName =lApObj.SecondRelativeName,
+                        SecondRelativePhoneNumber =lApObj.SecondRelativePhoneNumber,
+                        RelativeRelationship_FK = lApObj.RelativeRelationship_FK,
+                        LoanAmount = Convert.ToDouble(lApObj.LoanAmount),
+                        LoanTenure = LoanTenure,
+                        ExistingLoan = lApObj.ExistingLoan,
+                        LoanComment = lApObj.LoanComment,
+                        ExistingLoan_NoOfMonthsLeft = Convert.ToInt16(lApObj.ExistingLoan_NoOfMonthsLeft),
+                        ExistingLoan_OutstandingAmount = lApObj.ExistingLoan_OutstandingAmount,
+                        BankCode = Helper.GetRemitaBankCodeByFlutterCode(lApObj.BankCode),
+                        IsVisible = 1,
+                        DateCreated = MyUtility.getCurrentLocalDateTime(),
+                        DateModified = MyUtility.getCurrentLocalDateTime(),
+                        //ValueDate = MyUtility.getCurrentLocalDateTime().ToString("yyyy/MM/dd"),
+                        ValueDate = MyUtility.getCurrentLocalDateTime().ToString("dddd, dd MMMM yyyy"),
+                        ValueTime = MyUtility.getCurrentLocalDateTime().ToString("H:mmss"),
+                        MarketingChannel = chanList.ToString(),
+                    };
+
+
+                    WebLog.Log("nyscPath Path 2" + NyscIDCards);
+                    WebLog.Log("StatementOfAccounts Path 2" + StatementOfAccounts);
+                    //WebLog.Log("NyscPassports Path 2" + NyscPassports);
+                    //WebLog.Log("NyscProfileDashboards Path 2" + NyscProfileDashboards);
+                    //WebLog.Log("NyscCallUpLetters Path 2" + NyscCallUpLetters);
+                    //WebLog.Log("NyscPostingLetters Path 2" + NyscPostingLetters);
+                    var id = DataWriter.CreateNYSCLoanApplication(NyscLA);
+
+                    if (id == 0)
+                    {
+                        TempData["Error"] = "Please Check Next Of kin Phone Number";
+                        //NYSCLoanAppForm();
+                        ViewData["nTitles"] = new SelectList(_DR.GetTitles(), "ID", "NAME", lApObj.Title_FK);
+                        ViewData["nMarital"] = new SelectList(_DR.GetMaritalStatus(), "ID", "NAME", lApObj.MaritalStatus_FK);
+                        ViewData["nLGAs"] = new SelectList(_DR.GetAllLGAs(), "ID", "NAME", lApObj.LGA_FK);
+                        ViewData["nRelative"] = new SelectList(_DR.GetRelative(), "ID", "NAME", lApObj.RelativeRelationship_FK);
+                        ViewData["nAccomodationTypes"] = new SelectList(_DR.GetAccomodationTypes(), "ID", "NAME", lApObj.AccomodationType_FK);
+                        ViewData["nMeansOfIDs"] = new SelectList(_DR.GetMeansOfIdentifications(), "ID", "NAME", lApObj.MeansOfID_FK);
+                        ViewData["nStates"] = new SelectList(_DR.GetNigerianStates(), "ID", "NAME", lApObj.StateofResidence_FK);
+                        ViewData["nBanks"] = new SelectList(_DR.GetBanks(), "FlutterWaveBankCode", "NAME", lApObj.Bank_FK);
+                        ViewData["nRepmtMethods"] = new SelectList(_DR.GetRepaymentMethods(), "ID", "NAME", lApObj.RepaymentMethod_FK);
+                        ViewData["nLoanTenure"] = new SelectList(_DR.GetAllTenure(), "ID", "LoanTenure", lApObj.LoanTenure);
+                        ViewData["nGender"] = new SelectList(GetAllGender(), "Value", "Text", lApObj.Gender_FK);
+                        ViewData["nemploymentStatus"] = new SelectList(GetAppStatus(), "Value", "Text", lApObj.Contract);
+                        var channels = _DR.GetMarketChannel();
+                        ViewBag.channel = channels;
+                        return View("NYSCLoanAppForm", NyscLA);
+                    }
+
+                    if (id != 0)
+                    {
+
+                        string idv = "";
+                        MarketingChannel Mc = new MarketingChannel();
+                        //if (arr.Length == 1)
+                        //{
+
+                        //    insertMarketChannel(arr[0],id);
+
+                        //}
+                        //else 
+                        if (arr.Length > 0)
+                        {
+                            for (var i = 0; i < arr.Length; i++)
+                            {
+                                string arrc = Convert.ToString(arr[i]);
+                                insertMarketChannel(arrc, id);
+                            }
+
+                        }
+
+                        var email = _DR.getUser(NyscLA.EmailAddress);
+                        string password = "";
+                        string referralCode = "";
+                        if (email == null)
+                        {
+
+                            referralCode = createUser(NyscLA, out password);
+                            SendReferralEmail(NyscLA, referralCode, password);
+                            //NyscLA.MyReferralCode = refCode;
+                            //NyscLA.PaswordVal = password;
+                        }
+                        //var generateCode=  DataAccessA.MyUtility.getReferralCode(Userid.ToString());
+                        SendEmail(NyscLA);
+                        //var paswrd = "password";
+
+
+                        return RedirectToAction("Acknowledgement", new { @Refid = NyscLA.RefNumber });
+                    }
+                }
+
                 return View();
+                //return View();
             }
+
             catch (Exception ex)
             {
                 WebLog.Log(ex.Message.ToString());
                 return null;
             }
         }
+
+
+        //[HttpPost]
+        //public ActionResult SaveApplication(DataAccessA.Classes.LoanApplication lApObj, HttpPostedFileBase PostedFile, string StatementOfAccount, HttpPostedFileBase NyscIDCard)
+        //{
+        //    try
+        //    {
+
+        //        int LoanTenure = Convert.ToInt16(lApObj.LoanTenure);
+        //        NyscLoanApplication NyscLA = new NyscLoanApplication();
+
+        //        NyscLA.Firstname = lApObj.Firstname;
+        //        NyscLA.Title_FK = lApObj.Title_FK;
+        //        NyscLA.MaritalStatus_FK = lApObj.MaritalStatus_FK;
+        //        NyscLA.Surname = lApObj.Surname;
+        //        NyscLA.Othernames = lApObj.Othernames;
+        //        NyscLA.DateOfBirth = lApObj.DateOfBirth;
+        //        NyscLA.Gender_FK = lApObj.Gender_FK;
+        //        NyscLA.InstagramHandle = lApObj.InstagramHandle;
+        //        NyscLA.TwitterHandle = lApObj.TwitterHandle;
+        //        NyscLA.FacebookName = lApObj.FacebookName;
+        //        NyscLA.TempClosestBusStop = lApObj.TempClosestBusStop;
+        //        NyscLA.ClosestBusStop = lApObj.ClosestBusStop;
+        //        NyscLA.TempLGA_FK = lApObj.TempLGA_FK;
+        //        NyscLA.TempStateofResidence_FK = lApObj.TempStateofResidence_FK;
+        //        NyscLA.TempLandmark = lApObj.TempLandmark;
+        //        NyscLA.TemporaryAddress = lApObj.TemporaryAddress;
+        //        NyscLA.RefNumber = "NY" + MyUtility.GenerateRefNo();
+        //        NyscLA.NYSCApplicationStatus_FK = 11;
+        //        NyscLA.EmailAddress = lApObj.EmailAddress;
+        //        NyscLA.PhoneNumber = lApObj.PhoneNumber;
+        //        NyscLA.PermanentAddress = lApObj.PermanentAddress;
+        //        NyscLA.Landmark = lApObj.Landmark;
+        //        NyscLA.StateofResidence_FK = lApObj.StateofResidence_FK;
+        //        NyscLA.LGA_FK = lApObj.LGA_FK;
+        //        NyscLA.Employer = lApObj.Employer;
+        //        NyscLA.OfficialAddress = lApObj.OfficialAddress;
+        //        NyscLA.PPA_ROle = lApObj.PPA_ROle;
+        //        NyscLA.PPA_Department = lApObj.PPA_Department;
+        //        NyscLA.PPA_EmailAddress = lApObj.PPA_EmailAddress;
+        //        NyscLA.PPA_PhoneNumber = lApObj.PPA_PhoneNumber;
+        //        NyscLA.PPA_supervisorName = lApObj.PPA_supervisorName;
+        //        NyscLA.PPA_supervisorEmail = lApObj.PPA_supervisorEmail;
+        //        NyscLA.PPA_supervisorPhonenumber = lApObj.PPA_supervisorPhonenumber;
+        //        NyscLA.StateCode = lApObj.StateCode;
+        //        NyscLA.NyscStateofResidence_FK = lApObj.NyscStateofResidence_FK;
+        //        NyscLA.NyscLGA_FK = lApObj.NyscLGA_FK;
+        //        NyscLA.PassOutMonth = lApObj.PassOutMonth;
+        //        NyscLA.CDSGroup = lApObj.CDSGroup;
+        //        NyscLA.CDSDay = lApObj.CDSDay;
+        //        NyscLA.NetMonthlyIncome = lApObj.NetMonthlyIncome;
+        //        NyscLA.EMG_FullName = lApObj.EMG_FullName;
+        //        NyscLA.EMG_Relationship = lApObj.EMG_Relationship;
+        //        NyscLA.EMG_EmailAddress = lApObj.EMG_EmailAddress;
+        //        NyscLA.EMG_HomeAddress = lApObj.EMG_HomeAddress;
+        //        NyscLA.EMG_PhoneNumber = lApObj.EMG_PhoneNumber;
+        //        NyscLA.IsVisible = 1;
+        //        NyscLA.EMG_FullName2 = lApObj.EMG_FullName2;
+        //        NyscLA.EMG_Relationship2 = lApObj.EMG_Relationship2;
+        //        NyscLA.EMG_HomeAddress2 = lApObj.EMG_HomeAddress2;
+        //        NyscLA.EMG_EmailAddress2 = lApObj.EMG_EmailAddress2;
+
+        //        NyscLA.EMG_PhoneNumber2 = lApObj.EMG_PhoneNumber2;
+        //        NyscLA.FirstRelativeName = lApObj.FirstRelativeName;
+        //        NyscLA.FirstRelativePhoneNumber = lApObj.FirstRelativePhoneNumber;
+        //        NyscLA.RelativeRelationship_FK = lApObj.RelativeRelationship_FK;
+        //        NyscLA.RelativeRelationship2_FK = lApObj.RelativeRelationship2_FK;
+        //        NyscLA.SecondRelativeName = lApObj.SecondRelativeName;
+        //        NyscLA.SecondRelativePhoneNumber = lApObj.SecondRelativePhoneNumber;
+        //        NyscLA.LoanAmount = Convert.ToDouble(lApObj.LoanAmount);
+        //        NyscLA.LoanTenure = LoanTenure;
+        //        NyscLA.ExistingLoan_OutstandingAmount = 0;
+        //        NyscLA.ExistingLoan_NoOfMonthsLeft = 0;
+        //        NyscLA.BankCode = lApObj.BankCode;
+        //        NyscLA.AccountNumber = lApObj.AccountNumber;
+        //        NyscLA.AccountName = lApObj.AccountName;
+        //        NyscLA.BVN = lApObj.BVN;
+        //        NyscLA.ReferralCode = lApObj.ReferalCode;
+
+
+
+
+
+        //        var SaveRec = _DM.SaveApplication(NyscLA);
+        //        //var id = DataWriter.CreateNYSCLoanApplication(NyscLA);
+        //        var email = _DR.getUser(NyscLA.EmailAddress);
+        //        string password = "";
+        //        string referralCode = "";
+        //        if (email == null)
+        //        {
+
+        //            referralCode = createUser(NyscLA, out password);
+        //            SendSaveEmail(NyscLA, referralCode, password);
+
+        //        }
+        //        var Refid = NyscLA.RefNumber;
+        //        return Json(new { Data = true, Refid = Refid });
+
+        //        // return RedirectToAction("SaveAcknowledgement", new { @Refid = NyscLA.RefNumber });
+        //    }
+
+
+
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message.ToString());
+        //        return null;
+        //    }
+        //}
+
+        [HttpPost]
+        public ActionResult SaveApplication(DataAccessA.Classes.LoanApplication lApObj, HttpPostedFileBase PostedFile, HttpPostedFileBase NyscIDCardmn, string StatementOfAccount, HttpPostedFileBase NyscIDCard)
+        {
+            try
+            {
+                var fP = "";
+                var imgPath = "h:\\root\\home\\paelyt-001\\www\\paelyt\\uvlotapublish\\Images\\";
+                if (lApObj.STA_FilePath == null || lApObj.STA_FilePath == "")
+                {
+
+                    lApObj.STA_FilePath = "none";
+
+                }
+                else
+                {
+                    fP = lApObj.STA_FilePath.After("C:\\fakepath\\").Replace("\\", "/");
+                    lApObj.STA_FilePath = imgPath+ fP;
+                }
+                var np = "";
+                if (lApObj.NyscIdCardFilePath == null || lApObj.NyscIdCardFilePath == "")
+                {
+
+                    lApObj.NyscIdCardFilePath = "none";
+
+                }
+                else
+                {
+                   
+                    np = lApObj.NyscIdCardFilePath.After("C:\\fakepath\\").Replace("\\", "/");
+                    lApObj.NyscIdCardFilePath = imgPath + np ;
+                }
+                int LoanTenure = Convert.ToInt16(lApObj.LoanTenure);
+                NyscLoanApplication NyscLA = new NyscLoanApplication();
+                // Do This to pass values
+                NyscLA.Firstname = lApObj.Firstname;
+                NyscLA.Title_FK = lApObj.Title_FK;
+                NyscLA.MaritalStatus_FK = lApObj.MaritalStatus_FK;
+                NyscLA.Surname = lApObj.Surname;
+                NyscLA.Othernames = lApObj.Othernames;
+                NyscLA.DateOfBirth = lApObj.DateOfBirth;
+                NyscLA.Gender_FK = lApObj.Gender_FK;
+                NyscLA.InstagramHandle = lApObj.InstagramHandle;
+                NyscLA.TwitterHandle = lApObj.TwitterHandle;
+                NyscLA.FacebookName = lApObj.FacebookName;
+                NyscLA.TempClosestBusStop = lApObj.TempClosestBusStop;
+                NyscLA.ClosestBusStop = lApObj.ClosestBusStop;
+                NyscLA.TempLGA_FK = lApObj.TempLGA_FK;
+                NyscLA.TempStateofResidence_FK = lApObj.TempStateofResidence_FK;
+                NyscLA.TempLandmark = lApObj.TempLandmark;
+                NyscLA.TemporaryAddress = lApObj.TemporaryAddress;
+                NyscLA.RefNumber = "NY" + MyUtility.GenerateRefNo();
+                NyscLA.NYSCApplicationStatus_FK = 11;
+                NyscLA.EmailAddress = lApObj.EmailAddress;
+                NyscLA.PhoneNumber = lApObj.PhoneNumber;
+                NyscLA.PermanentAddress = lApObj.PermanentAddress;
+                NyscLA.Landmark = lApObj.Landmark;
+                NyscLA.StateofResidence_FK = lApObj.StateofResidence_FK;
+                NyscLA.LGA_FK = lApObj.LGA_FK;
+                NyscLA.Employer = lApObj.Employer;
+                NyscLA.OfficialAddress = lApObj.OfficialAddress;
+                NyscLA.PPA_ROle = lApObj.PPA_ROle;
+                NyscLA.PPA_Department = lApObj.PPA_Department;
+                NyscLA.PPA_EmailAddress = lApObj.PPA_EmailAddress;
+                NyscLA.PPA_PhoneNumber = lApObj.PPA_PhoneNumber;
+                NyscLA.PPA_supervisorName = lApObj.PPA_supervisorName;
+                NyscLA.PPA_supervisorEmail = lApObj.PPA_supervisorEmail;
+                NyscLA.PPA_supervisorPhonenumber = lApObj.PPA_supervisorPhonenumber;
+                NyscLA.StateCode = lApObj.StateCode;
+                NyscLA.NyscStateofResidence_FK = lApObj.NyscStateofResidence_FK;
+                NyscLA.NyscLGA_FK = lApObj.NyscLGA_FK;
+                NyscLA.PassOutMonth = lApObj.PassOutMonth;
+                NyscLA.CDSGroup = lApObj.CDSGroup;
+                NyscLA.CDSDay = lApObj.CDSDay;
+                NyscLA.NetMonthlyIncome = lApObj.NetMonthlyIncome;
+                NyscLA.EMG_FullName = lApObj.EMG_FullName;
+                NyscLA.EMG_Relationship = lApObj.EMG_Relationship;
+                NyscLA.EMG_EmailAddress = lApObj.EMG_EmailAddress;
+                NyscLA.EMG_HomeAddress = lApObj.EMG_HomeAddress;
+                NyscLA.EMG_PhoneNumber = lApObj.EMG_PhoneNumber;
+                NyscLA.IsVisible = 1;
+                NyscLA.EMG_FullName2 = lApObj.EMG_FullName2;
+                NyscLA.EMG_Relationship2 = lApObj.EMG_Relationship2;
+                NyscLA.EMG_HomeAddress2 = lApObj.EMG_HomeAddress2;
+                NyscLA.EMG_EmailAddress2 = lApObj.EMG_EmailAddress2;
+
+                NyscLA.EMG_PhoneNumber2 = lApObj.EMG_PhoneNumber2;
+                NyscLA.FirstRelativeName = lApObj.FirstRelativeName;
+                NyscLA.FirstRelativePhoneNumber = lApObj.FirstRelativePhoneNumber;
+                NyscLA.RelativeRelationship_FK = lApObj.RelativeRelationship_FK;
+                NyscLA.RelativeRelationship2_FK = lApObj.RelativeRelationship2_FK;
+                NyscLA.SecondRelativeName = lApObj.SecondRelativeName;
+                NyscLA.SecondRelativePhoneNumber = lApObj.SecondRelativePhoneNumber;
+                NyscLA.LoanAmount = Convert.ToDouble(lApObj.LoanAmount);
+                NyscLA.LoanTenure = LoanTenure;
+                NyscLA.ExistingLoan_OutstandingAmount = 0;
+                NyscLA.ExistingLoan_NoOfMonthsLeft = 0;
+                NyscLA.BankCode = lApObj.BankCode;
+                NyscLA.AccountNumber = lApObj.AccountNumber;
+                NyscLA.AccountName = lApObj.AccountName;
+                NyscLA.BVN = lApObj.BVN;
+                NyscLA.ReferralCode = lApObj.ReferalCode;
+                NyscLA.STA_FilePath = lApObj.STA_FilePath;
+                NyscLA.NyscIdCardFilePath = lApObj.NyscIdCardFilePath;
+
+
+                var SaveRec = _DM.SaveApplication(NyscLA);
+                //var id = DataWriter.CreateNYSCLoanApplication(NyscLA);
+                var email = _DR.getUser(NyscLA.EmailAddress);
+                string password = "";
+                string referralCode = "";
+                if (email == null)
+                {
+
+                    referralCode = createUser(NyscLA, out password);
+                    SendSaveEmail(NyscLA, referralCode, password);
+
+                }
+                var Refid = NyscLA.RefNumber;
+                return Json(new { Data = true, Refid = Refid });
+
+                // return RedirectToAction("SaveAcknowledgement", new { @Refid = NyscLA.RefNumber });
+            }
+
+
+
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+
+
+        [HttpPost]
+        public ActionResult UploadFiles()
+        {
+            if (Request.Files.Count > 0)
+            {
+                try
+                {
+                    HttpFileCollectionBase files = Request.Files;
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        string path = AppDomain.CurrentDomain.BaseDirectory + "Images/";
+                        string filename = Path.GetFileName(Request.Files[i].FileName);
+
+                        HttpPostedFileBase file = files[i];
+                        string fname;
+                        if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
+                        {
+                            string[] testfiles = file.FileName.Split(new char[] { '\\' });
+                            fname = testfiles[testfiles.Length - 1];
+                        }
+                        else
+                        {
+                            fname = file.FileName;
+                        }
+
+                        fname = Path.Combine(Server.MapPath("~/Images/"), fname);
+                        file.SaveAs(fname);
+                    }
+
+                    //return Json("File Uploaded Successfully!");
+                    return Json("");
+                }
+                catch (Exception ex)
+                {
+                    return Json("Error occurred. Error details: " + ex.Message);
+                }
+            }
+            else
+            {
+                // return Json("No files selected.");
+                return Json("");
+            }
+        }
+
 
         public string createUser(NyscLoanApplication nyscObj, out string password)
         {
@@ -693,6 +1228,27 @@ namespace UvlotExt.Controllers.NYSCLOAN
             return user.MyReferralCode;
         }
 
+        public ActionResult SaveAcknowledgement(string Refid)
+        {
+            // MyUtility utilities = new MyUtility();
+            TempData["SucMsg"] = ""; TempData["ErrMsg"] = "";// TempData["Error"] = "";
+            if (Refid == null || Refid == "")
+            {
+                return RedirectToAction("/");
+            }
+           // var LoanApps = _DR.LoanDetails(Refid);
+            //string LoanAmount = LoanApps.LoanAmount.ToString();
+            //LoanApps.ConvertedAmount = MyUtility.ConvertToCurrency(LoanAmount);
+            //LoanApps.RepaymentAmount = _DR.GetRepaymenrAmount(LoanApps.LoanTenure);
+            //LoanApps.RepaymentAmount = MyUtility.ConvertToCurrency(LoanApps.RepaymentAmount);
+            TempData["SucMsg"] = "Your Application has been saved successfully. You can update your application records anytime and submit for loan processing. Please check your email for your login details.  Thank You!";
+            //if (LoanApps == null)
+            //{
+            //    return RedirectToAction("/");
+            //}
+            return View();
+           // return View(LoanApps);
+        }
 
         public void createUserRole(User user, NyscLoanApplication nyscObj)
         {
@@ -714,13 +1270,25 @@ namespace UvlotExt.Controllers.NYSCLOAN
             }
         }
 
+        public ActionResult BVNValidation(DataAccessA.Classes.LoanApplication Apploans, FormCollection form, string bvnNumber)
+        {
+
+            try
+            {
+                
+                var BC = Helper.BVNValidationResps(Apploans.BVN);
 
 
-     
+                return Json(new { BC });
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
 
+        }
 
-
-        
         [HttpPost]
         public ActionResult VerifyAccountNumber(string Account)
         {
@@ -763,10 +1331,9 @@ namespace UvlotExt.Controllers.NYSCLOAN
                 return null;
             }
         }
-
-
-
         
+
+
             public string removestring(string[] channelist)
            {
             try
@@ -954,6 +1521,30 @@ namespace UvlotExt.Controllers.NYSCLOAN
         }
 
 
+        //public string imgsv( string StatementOfAccount, Optional HttpPostedFileBase StatementOfAccount)
+        //{
+        //    try
+            //{
+                //var iName = StatementOfAccount; string folder = @"Images\"; var path = Path.Combine(folder, Path.GetFileName(iName));
+                //    if (!Directory.Exists(folder)) { Directory.CreateDirectory(folder); }
+
+
+
+                //File.Copy(iName, path);
+                //HttpPostedFileBase NyscIDCard = new HttpPostedFileBase ;
+        //        string iName = StatementOfAccount; string targetPath = Path.Combine(Server.MapPath(@"~/Images"), iName);
+        //        StatementOfAccount.SaveAs;
+        //        //file.SaveAs(targetPath);
+
+        //        return iName;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        WebLog.Log(ex.Message.ToString());
+        //        return null;
+        //    }
+        //}
+
         public string saveImages(HttpPostedFileBase StatementOfAccount)
         {
             try
@@ -982,8 +1573,120 @@ namespace UvlotExt.Controllers.NYSCLOAN
             }
         }
 
+        public string saveImagess(HttpPostedFileBase NyscPassport)
+        {
+            try
+            {
+                string filePath = "";
+                if (NyscPassport != null && NyscPassport.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(NyscPassport.FileName);
+                    //filePath = System.IO.Path.Combine(Server.MapPath("~/Images"), pic);
+                    string fileExt = Path.GetExtension(filename);
 
-        
+                    if (fileExt == ".jpg" || fileExt == ".JPG" || fileExt == ".png" || fileExt == ".PNG" )
+                    {
+                        filePath = Path.Combine(Server.MapPath(@"~/Images"), filename);
+                        WebLog.Log("file Path" + filePath);
+                        NyscPassport.SaveAs((filePath));
+                    }
+
+                }
+                return filePath;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public string saveImagesss(HttpPostedFileBase NyscPostingLetter)
+        {
+            try
+            {
+                string filePath = "";
+                if (NyscPostingLetter != null && NyscPostingLetter.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(NyscPostingLetter.FileName);
+                    //filePath = System.IO.Path.Combine(Server.MapPath("~/Images"), pic);
+                    string fileExt = Path.GetExtension(filename);
+
+                    if (fileExt == ".jpg" || fileExt == ".JPG" || fileExt == ".png" || fileExt == ".PNG")
+                    {
+                        filePath = Path.Combine(Server.MapPath(@"~/Images"), filename);
+                        WebLog.Log("file Path" + filePath);
+                        NyscPostingLetter.SaveAs((filePath));
+                    }
+
+                }
+                return filePath;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public string saveImagessss(HttpPostedFileBase NyscCallUpLetter)
+        {
+            try
+            {
+                string filePath = "";
+                if (NyscCallUpLetter != null && NyscCallUpLetter.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(NyscCallUpLetter.FileName);
+                    //filePath = System.IO.Path.Combine(Server.MapPath("~/Images"), pic);
+                    string fileExt = Path.GetExtension(filename);
+
+                    if (fileExt == ".jpg" || fileExt == ".JPG" || fileExt == ".png" || fileExt == ".PNG")
+                    {
+                        filePath = Path.Combine(Server.MapPath(@"~/Images"), filename);
+                        WebLog.Log("file Path" + filePath);
+                        NyscCallUpLetter.SaveAs((filePath));
+                    }
+
+                }
+                return filePath;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
+        public string saveImagesssss(HttpPostedFileBase NyscProfileDashboard)
+        {
+            try
+            {
+                string filePath = "";
+                if (NyscProfileDashboard != null && NyscProfileDashboard.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(NyscProfileDashboard.FileName);
+                    //filePath = System.IO.Path.Combine(Server.MapPath("~/Images"), pic);
+                    string fileExt = Path.GetExtension(filename);
+
+                    if (fileExt == ".jpg" || fileExt == ".JPG" || fileExt == ".png" || fileExt == ".PNG")
+                    {
+                        filePath = Path.Combine(Server.MapPath(@"~/Images"), filename);
+                        WebLog.Log("file Path" + filePath);
+                        NyscProfileDashboard.SaveAs((filePath));
+                    }
+
+                }
+                return filePath;
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+                return null;
+            }
+        }
+
+
 
         //private void CreateMarketingDetails(int User_FK, out string servicechannels)
         //{
@@ -991,7 +1694,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
         //    servicechannels = "";
         //    try
         //    {
-             
+
         //        foreach (ListItem listItem in chkMarketing.Items)
         //        {
         //            if (listItem.Selected)
@@ -1028,7 +1731,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
         [HttpGet]
         public ActionResult CheckNYSCLoan()
         {
-
+            TempData["SucMsg"] = ""; TempData["ErrMsg"] = ""; TempData["Error"] = "";
             // ViewBag.Data = _DR.CheckAppStatus(ApplicationFk);
 
             return View();
@@ -1044,21 +1747,22 @@ namespace UvlotExt.Controllers.NYSCLOAN
 
             {
 
-                // Utility utilities = new Utility();
+                TempData["SucMsg"] = ""; TempData["ErrMsg"] = ""; TempData["Error"] = "";
+
                 string msg = "";
                 var ApplicationFk = Convert.ToString(form["RefNumber"]);
 
                 DataAccessA.Classes.AppLoanss Apploan = _DR.CheckAppStatus(ApplicationFk);
-
-                //string LoanAmt = Convert.ToString(Apploan.LoanAmount);
-                //Apploan.ConvertedLoanAmt = utilities.ConvertToCurrency(LoanAmt);
+                Apploan.RepaymentAmount = _DR.GetRepaymenrAmount(Apploan.LoanTenure);
+                Apploan.RepaymentAmount = MyUtility.ConvertToCurrency(Apploan.RepaymentAmount);
                 if (Apploan == null)
                 {
                     TempData["ErrMsg"] = "Record Not Found! ";
                     return View();
                 }
-
+              
                 return View(Apploan);
+
             }
             catch (Exception ex)
             {
@@ -1144,7 +1848,7 @@ namespace UvlotExt.Controllers.NYSCLOAN
         //}
 
 
-      
+
 
 
 
@@ -1172,6 +1876,30 @@ namespace UvlotExt.Controllers.NYSCLOAN
             }
         }
 
+
+
+        public void SendSaveEmail(NyscLoanApplication nyscObj, string referralCode, string passWord)
+        {
+            try
+            {
+               
+                var bodyTxt = System.IO.File.ReadAllText(HostingEnvironment.MapPath("~/EmailNotifications/SaveWelcomeEmail.html"));
+
+                string myname = nyscObj.Firstname;
+                bodyTxt = bodyTxt.Replace("$firstName", myname);
+                bodyTxt = bodyTxt.Replace("$UserName", nyscObj.EmailAddress);
+                bodyTxt = bodyTxt.Replace("$passwordVal", passWord);
+               
+               
+                var msgHeader = $"Welcome to CashNowNow NYSC Loan";
+                WebLog.Log("msgHeader " + msgHeader);
+                var sendMail = NotificationService.SendMailOut(msgHeader, bodyTxt, nyscObj.EmailAddress, null, null);
+            }
+            catch (Exception ex)
+            {
+                WebLog.Log(ex.Message.ToString());
+            }
+        }
 
         public void SendReferralEmail(NyscLoanApplication nyscObj,string referralCode, string passWord)
         {

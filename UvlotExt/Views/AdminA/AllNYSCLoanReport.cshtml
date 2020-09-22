@@ -51,9 +51,13 @@ $('table td:nth-child(6)').each(function() {
             </div>
         }
             <section class="section-padding contact-us-padding form-padding">
-
+                <div class="col-md-2">
+                    <a href=@Url.Action("Ex2Excel", "AdminA", new { }) class="">
+                        <button type="submit" class="btn btn-default" onchange="CallChangefunc()">Export To Excel</button>
+                    </a>
+                </div>
                 <div class="tables">
-                    <h2 class="title1">Recommend Loan</h2>
+                    <h2 class="title1">All Loans</h2>
                     <div class="table-responsive bs-example widget-shadow">
                         @*<h4>Users:</h4>*@
                         @{int i = 0;}
@@ -64,11 +68,11 @@ $('table td:nth-child(6)').each(function() {
                                     @*<th>Title</th>*@
                                     <th>SURNAME</th>
                                     <th>FIRST NAME</th>
-                                    <th>GENDER</th>
+                                    @*<th>GENDER</th>*@
                                     @*<th>Marital Status</th>*@
-                                    <th>DATE OF BIRTH</th>
+                                    @*<th>DATE OF BIRTH</th>
                                     <th>PHONE NUMBER</th>
-                                    <th>EMAIL ADDRESS</th>
+                                    <th>EMAIL ADDRESS</th>*@
                                     @*<th>Permanent Address</th>
 
                                    
@@ -80,17 +84,17 @@ $('table td:nth-child(6)').each(function() {
                                     <th>TempLGA</th>*@
                                     <th>STATE CODE</th>
 
-                                    <th>NYSC STATE OF RESIDENCE</th>
-                                    <th>NYSC LGA</th>
+                                    @*<th>NYSC STATE OF RESIDENCE</th>
+                                    <th>NYSC LGA</th>*@
                                     <th>LOAN TENURE</th>
-                                    <th>EMPLOYER</th>
+                                    @*<th>EMPLOYER</th>
                                     <th>OFFICIAL ADDRESS</th>
 
                                     <th>PASS OUT MONTH</th>
 
                                     <th>CDS DAY</th>
                                     <th>CDS GROUP</th>
-                                    <th>NET MONTHLY INCOME</th>
+                                    <th>NET MONTHLY INCOME</th>*@
                                     @*<th>EMG FullName</th>
 
                                     <th>EMG Relationship</th>
@@ -103,10 +107,10 @@ $('table td:nth-child(6)').each(function() {
                                     @*<th>EXISTING LOAN</th>
                                     <th>EXISTING-LOAN OUTSTANDING-AMOUNT</th>
                                     <th>EXISTING LOAN  NUMBER OF MONTHS LEFT</th>*@
-                                    <th>REFERRAL CODE</th>
+                                    @*<th>REFERRAL CODE</th>
                                     
                                     <th>BVN</th>
-                                    <th>VALUE DATE</th>
+                                    <th>VALUE DATE</th>*@
                                     <th>APPLICATION STATUS</th>
 
 
@@ -130,11 +134,11 @@ $('table td:nth-child(6)').each(function() {
                                             @*<td>@LoanApp.Title</td>*@
                                             <td>@LoanApp.Surname</td>
                                             <td>@LoanApp.Firstname</td>
-                                            <td>@LoanApp.Gender</td>
+                                            @*<td>@LoanApp.Gender</td>*@
                                             @*<td>@LoanApp.MaritalStatus</td>*@
-                                            <td>@LoanApp.DateOfBirth</td>
+                                            @*<td>@LoanApp.DateOfBirth</td>
                                             <td>@LoanApp.PhoneNumber</td>
-                                            <td>@LoanApp.EmailAddress</td>
+                                            <td>@LoanApp.EmailAddress</td>*@
                                             @*<td>@LoanApp.PermanentAddress</td>
                                            
                                             <td>@LoanApp.StateofResidence</td>
@@ -144,18 +148,18 @@ $('table td:nth-child(6)').each(function() {
                                             <td>@LoanApp.TempStateofResidence</td>
                                             <td>@LoanApp.TempLGAs</td>*@
                                             <td>@LoanApp.StateCode</td>
-                                            <td>@LoanApp.NyscStateofResidence</td>
+                                            @*<td>@LoanApp.NyscStateofResidence</td>
 
-                                            <td>@LoanApp.NyscLGAs</td>
+                                            <td>@LoanApp.NyscLGAs</td>*@
                                             <td>@LoanApp.LoanTenure</td>
-                                            <td>@LoanApp.Employer</td>
+                                            @*<td>@LoanApp.Employer</td>
                                             <td>@LoanApp.OfficialAddress</td>
                                             <td>@LoanApp.PassOutMonth</td>
 
                                             <td>@LoanApp.CDSDay</td>
 
                                             <td>@LoanApp.CDSGroup</td>
-                                            <td>@LoanApp.NetMonthlyIncome</td>
+                                            <td>@LoanApp.NetMonthlyIncome</td>*@
                                             @*<td>@LoanApp.EMG_FullName</td>
                                             <td>@LoanApp.EMG_Relationship</td>
                                             <td>@LoanApp.EMG_PhoneNumber</td>
@@ -171,10 +175,10 @@ $('table td:nth-child(6)').each(function() {
                                             <td>@LoanApp.ExistingLoan_NoOfMonthsLeft</td>*@
 
 
-                                            <td>@LoanApp.ReferralCode</td>
+                                            @*<td>@LoanApp.ReferralCode</td>
                                            
                                             <td>@LoanApp.BVN</td>
-                                            <td>@LoanApp.ValueDate</td>
+                                            <td>@LoanApp.ValueDate</td>*@
                                             <td>@LoanApp.ApplicationStatus</td>
 
                                             @*<td>
@@ -196,6 +200,13 @@ $('table td:nth-child(6)').each(function() {
 
     </div>
 </div>
+<script>
+function CallChangefunc(val)
+{
+    window.location.href = "/AdminA/Ex2Excel";
+}
+</script>
+
 <script type="text/javascript">
     function ConvertAmount(amount) {
 
